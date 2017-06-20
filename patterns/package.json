@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "react": "^15.6.1",
+    "react-cellblock": "^3.0.0",
     "react-dom": "^15.6.1",
     "react-google-login": "^2.9.2",
     "react-router-dom": "^4.1.1"
