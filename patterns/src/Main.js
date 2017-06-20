@@ -4,17 +4,17 @@ import Content from './Content.js';
 
 class Main extends Component {
 
-    render() {
-        return( 
-            <div>   
-                Login successful!! 
+  render() {
+    return( 
+      <div>   
+        Login successful!! 
 
-                Main
-                <Sidebar /> 
-                <Content />
-            </div>
-    )};
-        
+        Main
+        <Sidebar /> 
+        <Content />
+      </div>
+  )};
+    
 }
 
 export default Main;
