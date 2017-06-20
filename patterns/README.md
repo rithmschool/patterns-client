@@ -1,3 +1,14 @@
+# React App by Rithm School Cohort 3 Students
+
+## Questions and Issues
+
+* UI
+  * Does the bike background image scale as the user changes the window width? Is there a min or max width? 
+* Logic
+  * 
+
+*******
+
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>
