@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
-// import GoogleLogin from 'react-google-login';
 import './Login.css';
 import {Grid, Row, Column} from 'react-cellblock';
 import logo from './images/logo-light-gray.png';
-
-// const BASE_URL = process.env.REACT_APP_SERVER_URL || 'http://localhost:3001';
 
 class Login extends Component {
   constructor(props) {

@@ -3,10 +3,10 @@ import './Sidebar.css';
 
 class Sidebar extends Component {
 
-  render() {
+render() {
   return( 
     <div>   
-    Sidebar
+      Sidebar
     </div>
   )};
 
