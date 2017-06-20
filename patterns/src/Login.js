@@ -46,7 +46,7 @@ class Login extends Component {
               <Column offset="1/7" width="5/7">
                 <Row className="sign-in-box">
                   <h1>Sign In</h1>
-                  <button className="google-sign-in" />
+                  <a className="google-sign-in" href='http://localhost:3001/auth/google'/>
                   <p className="aside">Use your Tradecraft / Rithmschool email address</p>
                  </Row>
                </Column>
