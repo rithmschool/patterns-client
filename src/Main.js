@@ -6,10 +6,7 @@ class Main extends Component {
 
   render() {
     return( 
-      <div>   
-        Login successful!! 
-
-        Main
+      <div className="main">   
         <Sidebar /> 
         <Content />
       </div>
