@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './Login.css';
 import {Grid, Row, Column} from 'react-cellblock';
 import logo from './images/logo-light-gray.png';
+import {BASE_URL} from './actions/auth';
 
 class Login extends Component {
   constructor(props) {
@@ -12,6 +13,7 @@ class Login extends Component {
       width: 7
     }
     this.updateBreakpoint = this.updateBreakpoint.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
   updateBreakpoint(breakpoint) {
@@ -32,6 +34,10 @@ class Login extends Component {
     this.setState(vals)
   }
 
+  handleClick() {
+    window.location = `${BASE_URL}/auth/google`;
+  }
+
   render() {
     return( 
       <Grid columnWidth={64.5} gutterWidth={24} flexible={true} onChange={this.updateBreakpoint} className="container">
@@ -46,8 +52,8 @@ class Login extends Component {
               <Column offset="1/7" width="5/7">
                 <Row className="sign-in-box">
                   <h1>Sign In</h1>
-                  <a className="google-sign-in" href='http://localhost:3001/auth/google'/>
-                  <p className="aside">Use your Tradecraft / Rithmschool email address</p>
+                  <button className="google-sign-in" onClick={this.handleClick}/>
+                  <p className="aside">Use your Tradecraft / Rithm School email address</p>
                  </Row>
                </Column>
              </Row>

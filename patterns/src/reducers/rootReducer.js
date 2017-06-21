@@ -1,25 +1,19 @@
 import {
-  SET_CURRENT_USER,
+  SET_TOKEN,
   SET_LOGIN_ERROR
-} from '../actions/auth'
+} from '../actions/auth';
 
 const DEFAULT_STATE = {
-  currentUser : '',
-  loginError:''
+  currentUser: '',
+  loginError: ''
 }
 
 export default (state=DEFAULT_STATE, action={type:null}) => {
   switch (action.type){
-    case SET_CURRENT_USER:
+    case SET_TOKEN:
       return Object.keys(action).length > 1 ? {
         ...state,
-        currentUser: {
-          googleId: action.googleId,
-          firstName: action.firstName,
-          lastName: action.lastName
-        },
-        // token: action.token,
-        // refreshToken: action.refreshToken,
+        currentUserToken: action.token,
         loginError: null
       } : {};
     case SET_LOGIN_ERROR:

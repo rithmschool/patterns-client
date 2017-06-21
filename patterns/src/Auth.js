@@ -1,15 +1,14 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router';
-import { login, catchLoginErr } from './actions/auth';
 import { connect } from 'react-redux';
 import 'url-search-params-polyfill';
-
+import { login, catchLoginErr } from './actions/auth';
 
 class Auth extends Component {
 
   componentWillMount() {
-    let params = new URLSearchParams(this.props.location.search)
-    this.props.login({code: params.get('code')})
+    let params = new URLSearchParams(this.props.location.search);
+    this.props.login({code: params.get('code')});
   }
 
   render() {
@@ -18,7 +17,7 @@ class Auth extends Component {
       <div>
         <div id="content">
           {
-            this.props.user.googleId ? 
+            this.props.userToken ? 
             <Redirect to={redirectUrl}/> : 
             <div>
               <p>Please stand by...</p>
@@ -32,7 +31,7 @@ class Auth extends Component {
 
 function mapStateForAuth(state){
   return {
-    user: state.currentUser,
+    userToken: state.currentUserToken,
     loginError: state.loginError
   }
 }

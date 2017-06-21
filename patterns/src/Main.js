@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import Sidebar from './Sidebar.js';
-import Content from './Content.js';
+import Sidebar from './Sidebar';
+import Content from './Content';
 
 class Main extends Component {
 
