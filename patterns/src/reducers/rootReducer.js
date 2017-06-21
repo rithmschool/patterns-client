@@ -4,7 +4,7 @@ import {
 } from '../actions/auth';
 
 const DEFAULT_STATE = {
-  currentUser: '',
+  currentUserToken: '',
   loginError: ''
 }
 
