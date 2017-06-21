@@ -1,1 +1,241 @@
+/*SIDEBAR WIDTH BREAKPOINTS FOR MOBILE SCREENS & SMALLER DESKTOP*/
+
+@media (max-width: 768px) {
+  .sidebar, .profile-header, .logo-footer, .add-activity, .activity, .menu-item  {
+    width: 150px;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1099px) {
+  .sidebar, .profile-header, .logo-footer, .add-activity, .activity, .menu-item  {
+    width: 270px;
+  }
+}
+
+@media (min-width: 1100px) {
+  .sidebar, .profile-header, .logo-footer, .add-activity, .activity, .menu-item  {
+    width: 354px;
+  }
+}
+
+/*MAIN SIDEBAR STYLES*/
+
+.sidebar {
+  height: 100vh;
+  background-color: #25272a;
+  z-index: 5;
+  box-shadow: 0 3px 8px 0 rgba(0, 0, 0, 0.04), 0 1px 2px 0 rgba(0, 0, 0, 0.04);
+  position: inline-block;
+  float: left;
+}
+
+/* HEIGHT BREAKPOINTS FOR SHORTER DISPLAYS */
+
+@media (max-height: 1000px) {
+  .profile-header {
+    height: 8vh;
+  }
+
+  .add-activity {
+    height: 8vh;
+  }
+
+  .activity .title {
+    height: 6vh;
+  } 
+
+  .menu-item {
+    height: 6vh;
+  }
+
+  .logo-footer {
+    height: 10vh;
+  }
+}
+
+@media (min-height: 1001px) {
+  .profile-header {
+    height: 6vh;
+  }
+
+  .add-activity {
+    height: 6vh;
+  }
+
+  .activity .title {
+    height: 4vh;
+  } 
+
+  .menu-item {
+    height: 4vh;
+  }
+
+  .logo-footer {
+    height: 8vh;
+  }
+}
+
+/* PROFILE HEADER */
+
+.profile-header {
+  z-index: 10;
+  background-color: #585b60;
+  display: inline-block;
+  padding: 0;
+}
+
+.profile-picture {
+  border-radius: 50px;
+  width: 4vh;
+  height: 4vh;
+  margin: 1vh 2vh 12px 2vh;
+  background-color: #ffffff;
+  display: inline-block;
+  float: left;
+}
+
+@media (max-width: 768px) {
+  .profile-header h1 {
+    display: none;
+  }
+}
+
+.profile-header h1 {
+  font-family: 'Source Sans Pro';
+  font-size: 20px;
+  line-height: 4vh;
+  vertical-align: middle;
+  font-weight: 400;
+  color: #ffffff;
+  float: left;
+}
+
+.settings-icon {
+  float: right;
+  padding: 2.5vh 24px 29px 0px;
+  height: 16px;
+  width: 16px;
+}
+
+/* SIDEBAR NAV MENU */
+
+/* ADD ACTIVITY */
+
+.add-activity {
+  display: inline-block;
+}
+
+.sidebar-nav h2 {
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.33;
+  color: #585b60;
+  float: left;
+  padding: 2vh;
+  margin: 0;
+}
+
+.sidebar-nav .add-new {
+  float: right;
+  padding: 2vh;
+}
+
+@media (max-width: 768px) {
+  .sidebar-nav a {
+    display: none;
+  }
+}
+
+.sidebar-nav a {
+  font-size: 12px;
+  font-weight: bold;
+  line-height: 2.0;
+  color: #a0a1a5;
+  font-weight: 600;
+  text-decoration: none;
+  vertical-align: middle;
+}
+
+.sidebar-nav span {
+  font-weight: normal;
+  font-size: 32px;
+  line-height: 12px;
+  font-weight: 300;
+  color: #a0a1a5;
+  vertical-align: middle;
+}
+
+/* ACTIVITY LIST STYLING */
+
+.activity .title .active-toggle {
+  width: 1vh;
+  height: inherit;
+  background-color: #38d682;
+  float: left;
+} 
+
+.activity .title h2 {
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.33;
+  color: #585b60;
+  padding: 1vh 1vh 1vh 2vh;
+}
+
+.activity .title img {
+  float: right;
+  vertical-align: middle;
+  padding: 1vh;
+  transform: rotate(270deg);
+  height: 16px;
+  width: 16px;
+} 
+
+.menu-item {
+  display: inline-block;
+}
+
+.menu-item:hover {
+  background-color: rgba(88, 91, 96, 0.5);
+}
+
+/*WHEN CLICKED, display inline-block. otherwise, display none*/
+/*.menu-item {
+  display: inline-block;
+}*/
+
+.menu-item h2 {
+  font-size: 18px;
+  line-height: 1.33;
+  color: #e7e8ec;
+  padding: 1vh 1vh 1vh 4vh;
+  font-weight: 300;
+}
+
+.menu-item > .count-aside {
+  font-size: 12px;
+  font-weight: 200;
+  line-height: 2.0;
+  text-align: right;
+  color: #fbfbfb;
+  padding-right: 2vh;
+}
+
+/* FOOTER */
+
+.logo-footer {
+  line-height: 8vh;
+  text-align:center;
+  position: fixed;
+  z-index: 10;
+  bottom: 0;
+  background-color: #0b0b0c;
+}
+
+.logo-footer img {
+  vertical-align: middle;
+}
+
+
+
 

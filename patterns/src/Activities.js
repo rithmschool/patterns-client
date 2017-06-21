@@ -5,7 +5,6 @@ class Activities extends Component {
   render() {
     return( 
       <div>   
-        Activities
       </div>
   )};
 
