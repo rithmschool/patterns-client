@@ -1,5 +1,65 @@
+* {
+  box-sizing: border-box; }
+
 body {
   margin: 0;
   padding: 0;
   font-family: 'Source Sans Pro', sans-serif;
-}
+  font-size: 50%; }
+
+/* COLORS */
+/* FONTS */
+.sidebar {
+  text-align: left; }
+
+/* Activities */
+.sidebar h1 {
+  font-size: 2.4rem;
+  color: #a0a1a5;
+  font-weight: 400; }
+
+/* User name */
+.sidebar h2 {
+  font-size: 2.0rem;
+  color: #ffffff;
+  font-weight: 400; }
+
+/* Individual activity (stage 1) */
+.sidebar h3 {
+  font-size: 1.8rem;
+  color: #a0a1a5;
+  font-weight: 400; }
+
+/* Stage */
+.sidebar h4 {
+  font-size: 1.8rem;
+  color: #a0a1a5;
+  font-weight: 200; }
+
+.sidebar h4:hover {
+  color: #ffffff;
+  font-weight: bold; }
+
+/* Add new activity button */
+.sidebar h5 {
+  font-size: 1.4rem;
+  color: #ffffff;
+  font-weight: 400;
+  text-transform: uppercase; }
+
+/* Count */
+.sidebar h6 {
+  font-size: 1.2rem;
+  color: #a0a1a5;
+  line-height: 2.4rem;
+  font-weight: bold; }
+
+.sidebar h6:hover {
+  color: #ffffff; }
+
+/* Hide button */
+.sidebar p {
+  font-size: 1.2rem;
+  color: #a0a1a5;
+  font-weight: bold;
+  text-transform: uppercase; }

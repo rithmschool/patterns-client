@@ -1,38 +1,37 @@
 import React, { Component } from 'react';
 import './Login.css';
-import {Grid, Row, Column} from 'react-cellblock';
 import logo from './images/logo-light-gray.png';
 import {BASE_URL} from './actions/auth';
 
 class Login extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      breakpoint: 16,
-      offset: 8,
-      width: 7
-    }
-    this.updateBreakpoint = this.updateBreakpoint.bind(this);
+    // this.state = {
+    //   breakpoint: 16,
+    //   offset: 8,
+    //   width: 7
+    // }
+    // this.updateBreakpoint = this.updateBreakpoint.bind(this);
     this.handleClick = this.handleClick.bind(this);
   }
 
-  updateBreakpoint(breakpoint) {
-    var vals = { breakpoint };
-    if (breakpoint <= 4) {
-      vals.offset = 0;
-      vals.width = 4;
-    } else if (breakpoint <= 8) {
-      vals.offset = 2;
-      vals.width = 5;
-    } else if (breakpoint <= 12) {
-      vals.offset = 5;
-      vals.width = 6;
-    } else {
-      vals.offset = 8;
-      vals.width = 7;
-    }
-    this.setState(vals)
-  }
+  // updateBreakpoint(breakpoint) {
+  //   var vals = { breakpoint };
+  //   if (breakpoint <= 4) {
+  //     vals.offset = 0;
+  //     vals.width = 4;
+  //   } else if (breakpoint <= 8) {
+  //     vals.offset = 2;
+  //     vals.width = 5;
+  //   } else if (breakpoint <= 12) {
+  //     vals.offset = 5;
+  //     vals.width = 6;
+  //   } else {
+  //     vals.offset = 8;
+  //     vals.width = 7;
+  //   }
+  //   this.setState(vals)
+  // }
 
   handleClick() {
     window.location = `${BASE_URL}/auth/google`;
@@ -40,26 +39,26 @@ class Login extends Component {
 
   render() {
     return( 
-      <Grid columnWidth={64.5} gutterWidth={24} flexible={true} onChange={this.updateBreakpoint} className="container">
-        <Row>  
-          <Column offset={[this.state.offset,this.state.breakpoint].join('/')} width={[this.state.width,this.state.breakpoint].join('/')} className="content-box"> 
-            <Row className="logo-row">
-              <Column offset="3/7" width="1/7">
+      <div className="container">
+        <div className="row">  
+          <div className="content-box col-xs-5 col-xs-offset-6"> 
+            <div className="logo-row">
+              <div>
                 <img src={logo} alt="tradecraft logo"></img> 
-              </Column>          
-            </Row>
-            <Row>   
-              <Column offset="1/7" width="5/7">
-                <Row className="sign-in-box">
-                  <h1>Sign In</h1>
+              </div>          
+            </div>
+            <div>   
+              <div>
+                <div className="sign-in-box">
+                  <h1 id="sign-in">Sign In</h1>
                   <button className="google-sign-in" onClick={this.handleClick}/>
                   <p className="aside">Use your Tradecraft / Rithm School email address</p>
-                 </Row>
-               </Column>
-             </Row>
-           </Column>
-        </Row>
-      </Grid>
+                 </div>
+               </div>
+             </div>
+           </div>
+        </div>
+      </div>
   )};
 }
 

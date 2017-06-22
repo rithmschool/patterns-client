@@ -1,4 +1,6 @@
-/*SIDEBAR WIDTH BREAKPOINTS FOR MOBILE SCREENS & SMALLER DESKTOP*/
+@import "../index.scss";
+
+/* SIDEBAR WIDTH BREAKPOINTS FOR MOBILE SCREENS & SMALLER DESKTOP */
 
 @media (max-width: 768px) {
   .sidebar, .profile-header, .logo-footer, .add-activity, .activity, .menu-item  {
@@ -18,11 +20,11 @@
   }
 }
 
-/*MAIN SIDEBAR STYLES*/
+/* MAIN SIDEBAR STYLES */
 
 .sidebar {
   height: 100vh;
-  background-color: #25272a;
+  background-color: $dark-grey;
   z-index: 5;
   box-shadow: 0 3px 8px 0 rgba(0, 0, 0, 0.04), 0 1px 2px 0 rgba(0, 0, 0, 0.04);
   position: inline-block;
@@ -79,7 +81,7 @@
 
 .profile-header {
   z-index: 10;
-  background-color: #585b60;
+  background-color: $slate-grey;
   display: inline-block;
   padding: 0;
 }
@@ -89,24 +91,19 @@
   width: 4vh;
   height: 4vh;
   margin: 1vh 2vh 12px 2vh;
-  background-color: #ffffff;
+  background-color: $white;
   display: inline-block;
   float: left;
 }
 
 @media (max-width: 768px) {
-  .profile-header h1 {
+  .profile-header h2 {
     display: none;
   }
 }
 
-.profile-header h1 {
-  font-family: 'Source Sans Pro';
-  font-size: 20px;
-  line-height: 4vh;
+.profile-header h2 {
   vertical-align: middle;
-  font-weight: 400;
-  color: #ffffff;
   float: left;
 }
 
@@ -126,10 +123,6 @@
 }
 
 .sidebar-nav h2 {
-  font-size: 18px;
-  font-weight: 600;
-  line-height: 1.33;
-  color: #585b60;
   float: left;
   padding: 2vh;
   margin: 0;
@@ -140,45 +133,16 @@
   padding: 2vh;
 }
 
-@media (max-width: 768px) {
-  .sidebar-nav a {
-    display: none;
-  }
-}
-
-.sidebar-nav a {
-  font-size: 12px;
-  font-weight: bold;
-  line-height: 2.0;
-  color: #a0a1a5;
-  font-weight: 600;
-  text-decoration: none;
-  vertical-align: middle;
-}
-
-.sidebar-nav span {
-  font-weight: normal;
-  font-size: 32px;
-  line-height: 12px;
-  font-weight: 300;
-  color: #a0a1a5;
-  vertical-align: middle;
-}
-
 /* ACTIVITY LIST STYLING */
 
 .activity .title .active-toggle {
   width: 1vh;
   height: inherit;
-  background-color: #38d682;
+  background-color: $greenish-teal;
   float: left;
 } 
 
-.activity .title h2 {
-  font-size: 18px;
-  font-weight: 600;
-  line-height: 1.33;
-  color: #585b60;
+.activity .title h3 {
   padding: 1vh 1vh 1vh 2vh;
 }
 
@@ -196,7 +160,11 @@
 }
 
 .menu-item:hover {
-  background-color: rgba(88, 91, 96, 0.5);
+  background-color: $slate-grey;
+}
+
+.menu-item:hover h2, .menu-item:hover .count-aside {
+  color: $white;
 }
 
 /*WHEN CLICKED, display inline-block. otherwise, display none*/
@@ -204,20 +172,12 @@
   display: inline-block;
 }*/
 
-.menu-item h2 {
-  font-size: 18px;
-  line-height: 1.33;
-  color: #e7e8ec;
+.menu-item h4 {
   padding: 1vh 1vh 1vh 4vh;
-  font-weight: 300;
 }
 
-.menu-item > .count-aside {
-  font-size: 12px;
-  font-weight: 200;
-  line-height: 2.0;
+.menu-item h6 {
   text-align: right;
-  color: #fbfbfb;
   padding-right: 2vh;
 }
 
@@ -229,7 +189,7 @@
   position: fixed;
   z-index: 10;
   bottom: 0;
-  background-color: #0b0b0c;
+  background-color: $dark;
 }
 
 .logo-footer img {

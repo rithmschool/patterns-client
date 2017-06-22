@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './Content.css';
-import Activities from './Activities.js';
-import breadcrumb from './images/icon-arrow-right-gray@2x.png';
+import Activities from '../Activities.js';
+import breadcrumb from '../images/icon-arrow-right-gray@2x.png';
 
 class Content extends Component {
 
