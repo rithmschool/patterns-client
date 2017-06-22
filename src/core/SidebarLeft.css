@@ -4,10 +4,19 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Source Sans Pro', sans-serif;
-  font-size: 50%; }
+  font-family: 'Source Sans Pro', sans-serif; }
 
 /* COLORS */
+/* PADDINGS AND MARGINS */
+/* MEDIA QUERIES */
+@media (min-width: 768px) {
+  html {
+    font-size: 46.875%; } }
+
+@media (min-width: 1024px) {
+  html {
+    font-size: 62.5%; } }
+
 /* FONTS */
 .sidebar {
   text-align: left; }
@@ -24,21 +33,17 @@ body {
   color: #ffffff;
   font-weight: 400; }
 
-/* Individual activity (stage 1) */
+/* Individual activity (my funnel) */
 .sidebar h3 {
   font-size: 1.8rem;
   color: #a0a1a5;
   font-weight: 400; }
 
-/* Stage */
+/* Funnel */
 .sidebar h4 {
   font-size: 1.8rem;
   color: #a0a1a5;
-  font-weight: 200; }
-
-.sidebar h4:hover {
-  color: #ffffff;
-  font-weight: bold; }
+  font-weight: 300; }
 
 /* Add new activity button */
 .sidebar h5 {
@@ -52,30 +57,14 @@ body {
   font-size: 1.2rem;
   color: #a0a1a5;
   line-height: 2.4rem;
-  font-weight: bold; }
-
-.sidebar h6:hover {
-  color: #ffffff; }
+  font-weight: 500; }
 
 /* Hide button */
 .sidebar p {
   font-size: 1.2rem;
   color: #a0a1a5;
-  font-weight: bold;
+  font-weight: 400;
   text-transform: uppercase; }
-
-/* SIDEBAR WIDTH BREAKPOINTS FOR MOBILE SCREENS & SMALLER DESKTOP */
-@media (max-width: 768px) {
-  .sidebar, .profile-header, .logo-footer, .add-activity, .activity, .menu-item {
-    width: 150px; } }
-
-@media (min-width: 769px) and (max-width: 1099px) {
-  .sidebar, .profile-header, .logo-footer, .add-activity, .activity, .menu-item {
-    width: 270px; } }
-
-@media (min-width: 1100px) {
-  .sidebar, .profile-header, .logo-footer, .add-activity, .activity, .menu-item {
-    width: 354px; } }
 
 /* MAIN SIDEBAR STYLES */
 .sidebar {
@@ -86,43 +75,150 @@ body {
   position: inline-block;
   float: left; }
 
-/* HEIGHT BREAKPOINTS FOR SHORTER DISPLAYS */
-@media (max-height: 1000px) {
-  .profile-header {
-    height: 8vh; }
-  .add-activity {
-    height: 8vh; }
-  .activity .title {
-    height: 6vh; }
-  .menu-item {
-    height: 6vh; }
-  .logo-footer {
-    height: 10vh; } }
+/* SIDEBAR WIDTH BREAKPOINTS FOR MOBILE SCREENS & SMALLER DESKTOP */
+@media (max-width: 768px) {
+  .sidebar, .profile-header, .logo-footer, .add-activity, .activity, .menu-item {
+    width: 72px; } }
 
-@media (min-height: 1001px) {
+@media (min-width: 768px) {
+  .sidebar, .profile-header, .logo-footer, .add-activity, .activity, .menu-item {
+    width: 264px; }
+  .profile-picture {
+    width: 36px;
+    height: 36px;
+    margin: 9px 7.5px 9px 18px; }
   .profile-header {
-    height: 6vh; }
-  .add-activity {
-    height: 6vh; }
+    height: 54px;
+    line-height: 54px; }
+  .activity-heading {
+    padding: 13.5px 18px; }
+  .activity-heading h1 {
+    margin: 0; }
   .activity .title {
-    height: 4vh; }
+    height: 36px;
+    line-height: 36px;
+    min-width: 264px; }
+  .activity .title .active-toggle {
+    width: 6px;
+    height: 36px;
+    line-height: 36px; }
+  .activity .title .activity-name {
+    width: 187.5px;
+    margin: 0px 12px; }
+  .activity .title h3 {
+    height: 36px;
+    line-height: 36px;
+    margin: 0; }
+  .activity .title .arrow {
+    padding: 0px 18px 12px 18px;
+    height: 36px;
+    width: 36px; }
+  .activity .title img {
+    height: 12px;
+    width: 12px; }
   .menu-item {
-    height: 4vh; }
-  .logo-footer {
-    height: 8vh; } }
+    height: 36px;
+    line-height: 36px; }
+  .menu-item h4 {
+    padding: 0 19.5px;
+    margin: 0; }
+  .menu-item h6 {
+    padding: 9px 18px;
+    margin: 0;
+    height: 36px;
+    line-height: 36px; }
+  button {
+    margin: 18px;
+    padding: 0 70.5px; }
+  .footer {
+    line-height: 54px;
+    width: 264px; }
+  .logo-holder {
+    margin: 0 18px; }
+  .hide-holder {
+    margin: 13.5px 18px; }
+  .hide-holder img {
+    margin-bottom: 6px;
+    margin-left: 3px;
+    height: 12px;
+    width: 12px; }
+  .logo-holder img {
+    height: 27px;
+    width: 27px; } }
+
+@media (min-width: 1024px) {
+  .sidebar, .profile-header, .logo-footer, .add-activity, .activity, .menu-item {
+    width: 352px; }
+  .profile-picture {
+    width: 48px;
+    height: 48px;
+    margin: 12px 10px 12px 24px; }
+  .profile-header {
+    height: 72px;
+    line-height: 72px; }
+  .activity-heading {
+    padding: 18px 24px; }
+  .activity-heading h1 {
+    margin: 0; }
+  .activity .title {
+    height: 48px;
+    line-height: 48px;
+    min-width: 352px; }
+  .activity .title .active-toggle {
+    width: 8px;
+    height: 48px;
+    line-height: 48px; }
+  .activity .title .activity-name {
+    width: 250px;
+    margin: 0px 16px; }
+  .activity .title h3 {
+    height: 48px;
+    line-height: 48px;
+    margin: 0; }
+  .activity .title .arrow {
+    padding: 0px 24px 16px 24px;
+    height: 48px;
+    width: 48px; }
+  .activity .title img {
+    height: 16px;
+    width: 16px; }
+  .menu-item {
+    height: 48px;
+    line-height: 48px; }
+  .menu-item h4 {
+    padding: 0 26px;
+    margin: 0; }
+  .menu-item h6 {
+    padding: 12px 24px;
+    margin: 0;
+    height: 48px;
+    line-height: 48px; }
+  button {
+    margin: 24px;
+    padding: 0 94px; }
+  .footer {
+    line-height: 72px;
+    width: 352px; }
+  .logo-holder {
+    margin: 0 24px; }
+  .hide-holder {
+    margin: 18px 24px; }
+  .hide-holder img {
+    margin-bottom: 8px;
+    margin-left: 4px;
+    height: 16px;
+    width: 16px; }
+  .logo-holder img {
+    height: 36px;
+    width: 36px; } }
 
 /* PROFILE HEADER */
 .profile-header {
-  z-index: 10;
   background-color: #585b60;
-  display: inline-block;
-  padding: 0; }
+  display: inline-block; }
 
 .profile-picture {
   border-radius: 50px;
-  width: 4vh;
-  height: 4vh;
-  margin: 1vh 2vh 12px 2vh;
   background-color: #ffffff;
   display: inline-block;
   float: left; }
@@ -133,48 +229,48 @@ body {
 
 .profile-header h2 {
   vertical-align: middle;
-  float: left; }
-
-.settings-icon {
-  float: right;
-  padding: 2.5vh 24px 29px 0px;
-  height: 16px;
-  width: 16px; }
-
-/* SIDEBAR NAV MENU */
-/* ADD ACTIVITY */
-.add-activity {
-  display: inline-block; }
-
-.sidebar-nav h2 {
   float: left;
-  padding: 2vh;
   margin: 0; }
 
-.sidebar-nav .add-new {
-  float: right;
-  padding: 2vh; }
-
 /* ACTIVITY LIST STYLING */
+.activity-list {
+  background-color: #0b0b0c; }
+
+.activity {
+  padding: 1px 0; }
+
+.activity .title {
+  display: inline-block;
+  background-color: #25272a; }
+
+.activity .title:hover {
+  background-color: #585b60; }
+
 .activity .title .active-toggle {
-  width: 1vh;
-  height: inherit;
   background-color: #38d682;
-  float: left; }
+  display: inline-block;
+  vertical-align: top; }
+
+.activity .title .activity-name {
+  display: inline-block; }
+
+.activity .title:hover h3 {
+  color: #ffffff; }
 
 .activity .title h3 {
-  padding: 1vh 1vh 1vh 2vh; }
+  vertical-align: middle; }
 
-.activity .title img {
-  float: right;
-  vertical-align: middle;
-  padding: 1vh;
-  transform: rotate(270deg);
-  height: 16px;
-  width: 16px; }
+.activity .title .arrow {
+  display: inline-block;
+  vertical-align: top; }
+
+.activity .title .arrow img {
+  transform: rotate(90deg);
+  vertical-align: middle; }
 
 .menu-item {
-  display: inline-block; }
+  display: inline-block;
+  background-color: #0b0b0c; }
 
 .menu-item:hover {
   background-color: #585b60; }
@@ -182,25 +278,60 @@ body {
 .menu-item:hover h2, .menu-item:hover .count-aside {
   color: #ffffff; }
 
-/*WHEN CLICKED, display inline-block. otherwise, display none*/
-/*.menu-item {
-  display: inline-block;
-}*/
 .menu-item h4 {
-  padding: 1vh 1vh 1vh 4vh; }
+  display: inline-block; }
+
+.menu-item:hover h4 {
+  color: #ffffff;
+  font-weight: 500; }
 
 .menu-item h6 {
-  text-align: right;
-  padding-right: 2vh; }
+  float: right;
+  vertical-align: middle; }
+
+.menu-item:hover h6 {
+  color: #ffffff; }
+
+/* BUTTON */
+.button-holder {
+  text-align: center; }
+
+button {
+  background-color: #585b60;
+  border: none;
+  outline: none;
+  border-radius: 2px;
+  text-align: center; }
+
+.sidebar button p {
+  color: #ffffff;
+  width: 100%; }
 
 /* FOOTER */
-.logo-footer {
-  line-height: 8vh;
+.footer {
   text-align: center;
   position: fixed;
-  z-index: 10;
   bottom: 0;
   background-color: #0b0b0c; }
 
-.logo-footer img {
+.logo-holder {
+  display: inline-block;
+  float: left; }
+
+.hide-holder {
+  display: inline-block;
+  float: right;
+  padding: 0;
   vertical-align: middle; }
+
+.hide-holder p {
+  margin: 0;
+  line-height: 1.4rem;
+  display: block; }
+
+.footer img {
+  vertical-align: middle;
+  line-height: 0; }
+
+.hide-holder img {
+  display: block; }

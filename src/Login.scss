@@ -1,6 +1,6 @@
 @import "./index.scss";
 
-.container {
+.container-fluid {
   background-image: url('./images/login-bike.png');
   background-repeat: no-repeat;
   background-size: contain;
@@ -19,24 +19,28 @@
 
 .logo-row {
   height: 17.17vh;
-  padding-top: 12.17vh;
+  padding-top: 15vh;
+  padding-bottom: 19vh;
 }
 
 @media (max-height: 900px) {
   .sign-in-box {
-    padding-top: 10.28vh;
+    padding-top: 5vh;
     padding-bottom: 12.26vh;
-    height: 25vh;
+    height: 32vh;
+    min-height: 350px;
   }
 } 
 
 @media (min-height: 901px) {
   .sign-in-box {
-    padding-top: 10.28vh;
-    padding-bottom: 12.26vh;
-    height: 16.23vh;
+    padding-top: 6vh;
+    padding-bottom: 12vh;
+    height: 32vh;
+    min-height: 400px;
   }
 }
+
 
 .sign-in-box {
   border-radius: 4px;
@@ -74,6 +78,7 @@
 
 .google-sign-in:hover {
   background-image: url('./images/google-signin-focus.png');
+  border: none;
 }
 
 .aside {

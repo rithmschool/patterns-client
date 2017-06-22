@@ -1,24 +1,5 @@
 @import "../index.scss";
 
-/* SIDEBAR WIDTH BREAKPOINTS FOR MOBILE SCREENS & SMALLER DESKTOP */
-
-@media (max-width: 768px) {
-  .sidebar, .profile-header, .logo-footer, .add-activity, .activity, .menu-item  {
-    width: 150px;
-  }
-}
-
-@media (min-width: 769px) and (max-width: 1099px) {
-  .sidebar, .profile-header, .logo-footer, .add-activity, .activity, .menu-item  {
-    width: 270px;
-  }
-}
-
-@media (min-width: 1100px) {
-  .sidebar, .profile-header, .logo-footer, .add-activity, .activity, .menu-item  {
-    width: 354px;
-  }
-}
 
 /* MAIN SIDEBAR STYLES */
 
@@ -31,66 +12,113 @@
   float: left;
 }
 
-/* HEIGHT BREAKPOINTS FOR SHORTER DISPLAYS */
+/* SIDEBAR WIDTH BREAKPOINTS FOR MOBILE SCREENS & SMALLER DESKTOP */
 
-@media (max-height: 1000px) {
-  .profile-header {
-    height: 8vh;
-  }
-
-  .add-activity {
-    height: 8vh;
-  }
-
-  .activity .title {
-    height: 6vh;
-  } 
-
-  .menu-item {
-    height: 6vh;
-  }
-
-  .logo-footer {
-    height: 10vh;
+@media (max-width: 768px) {
+  .sidebar, .profile-header, .logo-footer, .add-activity, .activity, .menu-item  {
+    width: 72px;
+    // ADD COLLAPSED STYLING
   }
 }
 
-@media (min-height: 1001px) {
-  .profile-header {
-    height: 6vh;
-  }
-
-  .add-activity {
-    height: 6vh;
-  }
-
-  .activity .title {
-    height: 4vh;
-  } 
-
-  .menu-item {
-    height: 4vh;
-  }
-
-  .logo-footer {
-    height: 8vh;
+@each $p in ($md-percentage, $lg-percentage) {
+  @media (min-width: $p * 1024px) {
+    .sidebar, .profile-header, .logo-footer, .add-activity, .activity, .menu-item  {
+      width: $p * 352px;
+    }
+    .profile-picture { 
+      width: $p * 48px;
+      height: $p * 48px;
+      margin: $p * 12px $p * 10px $p * 12px $p * 24px;
+    }
+    .profile-header {
+      height: $p * 72px;
+      line-height: $p * 72px;
+    }
+    .activity-heading {
+      padding: $p * 18px $p * 24px;
+    }
+    .activity-heading h1 {
+      margin: 0;
+    }
+    .activity .title {
+      height: $p * 48px;
+      line-height: $p * 48px;
+      min-width: $p * 352px
+    }
+    .activity .title .active-toggle {
+      width: $p * 8px;
+      height: $p * 48px;
+      line-height: $p * 48px;
+    }
+    .activity .title .activity-name {
+      width: $p * 250px;
+      margin: 0px $p * 16px;
+    }
+    .activity .title h3 {
+      height: $p * 48px;
+      line-height: $p * 48px;
+      margin: 0;
+    }
+    .activity .title .arrow {
+      padding: 0px $p *24px $p * 16px $p * 24px;
+      height: $p * 48px;
+      width: $p * 48px;
+    } 
+    .activity .title img {
+      height: $p * 16px;
+      width: $p * 16px;
+    }
+    .menu-item {
+      height: $p * 48px;
+      line-height: $p * 48px;
+    }
+    .menu-item h4 {
+      padding: 0 $p * 26px;
+      margin: 0;
+    }
+    .menu-item h6 {
+      padding: $p * 12px $p * 24px;
+      margin: 0;
+      height: $p * 48px;
+      line-height: $p * 48px;
+    }
+    button {
+      margin: $p * 24px;
+      padding: 0 $p * 94px;
+    }
+    .footer {
+      line-height: $p * 72px;
+      width: $p * 352px;
+    }
+    .logo-holder {
+      margin: 0 $p * 24px;
+    }
+    .hide-holder {
+      margin: $p * 18px $p * 24px;
+    }
+    .hide-holder img {
+      margin-bottom: $p * 8px;
+      margin-left: $p * 4px;
+      height: $p * 16px;
+      width: $p * 16px;
+    }
+    .logo-holder img {
+      height: $p * 36px;
+      width: $p * 36px;
+    }
   }
 }
 
 /* PROFILE HEADER */
 
 .profile-header {
-  z-index: 10;
   background-color: $slate-grey;
   display: inline-block;
-  padding: 0;
 }
 
 .profile-picture {
   border-radius: 50px;
-  width: 4vh;
-  height: 4vh;
-  margin: 1vh 2vh 12px 2vh;
   background-color: $white;
   display: inline-block;
   float: left;
@@ -105,58 +133,59 @@
 .profile-header h2 {
   vertical-align: middle;
   float: left;
-}
-
-.settings-icon {
-  float: right;
-  padding: 2.5vh 24px 29px 0px;
-  height: 16px;
-  width: 16px;
-}
-
-/* SIDEBAR NAV MENU */
-
-/* ADD ACTIVITY */
-
-.add-activity {
-  display: inline-block;
-}
-
-.sidebar-nav h2 {
-  float: left;
-  padding: 2vh;
   margin: 0;
 }
 
-.sidebar-nav .add-new {
-  float: right;
-  padding: 2vh;
+/* ACTIVITY LIST STYLING */ 
+
+.activity-list {
+  background-color: $dark;
 }
 
-/* ACTIVITY LIST STYLING */
+.activity {
+  padding: 1px 0;
+}
+
+.activity .title {
+  display: inline-block;
+  background-color: $dark-grey;
+}
+
+.activity .title:hover {
+  background-color: $slate-grey;
+}
 
 .activity .title .active-toggle {
-  width: 1vh;
-  height: inherit;
   background-color: $greenish-teal;
-  float: left;
-} 
-
-.activity .title h3 {
-  padding: 1vh 1vh 1vh 2vh;
+  display: inline-block;
+  vertical-align:top;
 }
 
-.activity .title img {
-  float: right;
+.activity .title .activity-name {
+  display: inline-block;
+}
+
+.activity .title:hover h3 {
+  color: $white;
+}
+
+.activity .title h3 {
   vertical-align: middle;
-  padding: 1vh;
-  transform: rotate(270deg);
-  height: 16px;
-  width: 16px;
+}
+
+.activity .title .arrow {
+  display: inline-block;
+  vertical-align:top;
+} 
+
+.activity .title .arrow img {
+  transform: rotate(90deg);
+  vertical-align: middle;
 } 
 
 .menu-item {
   display: inline-block;
+  background-color: $dark;
 }
 
 .menu-item:hover {
@@ -167,35 +196,75 @@
   color: $white;
 }
 
-/*WHEN CLICKED, display inline-block. otherwise, display none*/
-/*.menu-item {
-  display: inline-block;
-}*/
-
 .menu-item h4 {
-  padding: 1vh 1vh 1vh 4vh;
+  display: inline-block;
+}
+
+.menu-item:hover h4 { 
+  color: $white;
+  font-weight: 500;
 }
 
 .menu-item h6 {
-  text-align: right;
-  padding-right: 2vh;
+  float: right;
+  vertical-align: middle;
+}
+
+.menu-item:hover h6 {
+  color: $white;
+}
+
+/* BUTTON */
+
+.button-holder {
+  text-align: center;
+}
+
+button {
+  background-color: $slate-grey;
+  border: none;
+  outline: none;
+  border-radius: 2px;
+  text-align: center;
+}
+
+.sidebar button p {
+  color: $white;
+  width: 100%;
 }
 
 /* FOOTER */
 
-.logo-footer {
-  line-height: 8vh;
-  text-align:center;
+.footer {
+  text-align: center;
   position: fixed;
-  z-index: 10;
   bottom: 0;
   background-color: $dark;
 }
 
-.logo-footer img {
+.logo-holder {
+  display: inline-block;
+  float: left;
+}
+
+.hide-holder {
+  display: inline-block;
+  float: right;
+  padding: 0;
   vertical-align: middle;
 }
 
+.hide-holder p {
+  margin: 0;
+  line-height: 1.4rem;
+  display: block;
+}
 
+.footer img {
+  vertical-align: middle;
+  line-height: 0;
+}
 
-
+.hide-holder img {
+  display: block;
+}

@@ -4,10 +4,19 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Source Sans Pro', sans-serif;
-  font-size: 50%; }
+  font-family: 'Source Sans Pro', sans-serif; }
 
 /* COLORS */
+/* PADDINGS AND MARGINS */
+/* MEDIA QUERIES */
+@media (min-width: 768px) {
+  html {
+    font-size: 46.875%; } }
+
+@media (min-width: 1024px) {
+  html {
+    font-size: 62.5%; } }
+
 /* FONTS */
 .sidebar {
   text-align: left; }
@@ -24,21 +33,17 @@ body {
   color: #ffffff;
   font-weight: 400; }
 
-/* Individual activity (stage 1) */
+/* Individual activity (my funnel) */
 .sidebar h3 {
   font-size: 1.8rem;
   color: #a0a1a5;
   font-weight: 400; }
 
-/* Stage */
+/* Funnel */
 .sidebar h4 {
   font-size: 1.8rem;
   color: #a0a1a5;
-  font-weight: 200; }
-
-.sidebar h4:hover {
-  color: #ffffff;
-  font-weight: bold; }
+  font-weight: 300; }
 
 /* Add new activity button */
 .sidebar h5 {
@@ -52,14 +57,11 @@ body {
   font-size: 1.2rem;
   color: #a0a1a5;
   line-height: 2.4rem;
-  font-weight: bold; }
-
-.sidebar h6:hover {
-  color: #ffffff; }
+  font-weight: 500; }
 
 /* Hide button */
 .sidebar p {
   font-size: 1.2rem;
   color: #a0a1a5;
-  font-weight: bold;
+  font-weight: 400;
   text-transform: uppercase; }

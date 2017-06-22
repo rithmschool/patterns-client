@@ -6,32 +6,8 @@ import {BASE_URL} from './actions/auth';
 class Login extends Component {
   constructor(props) {
     super(props);
-    // this.state = {
-    //   breakpoint: 16,
-    //   offset: 8,
-    //   width: 7
-    // }
-    // this.updateBreakpoint = this.updateBreakpoint.bind(this);
     this.handleClick = this.handleClick.bind(this);
   }
-
-  // updateBreakpoint(breakpoint) {
-  //   var vals = { breakpoint };
-  //   if (breakpoint <= 4) {
-  //     vals.offset = 0;
-  //     vals.width = 4;
-  //   } else if (breakpoint <= 8) {
-  //     vals.offset = 2;
-  //     vals.width = 5;
-  //   } else if (breakpoint <= 12) {
-  //     vals.offset = 5;
-  //     vals.width = 6;
-  //   } else {
-  //     vals.offset = 8;
-  //     vals.width = 7;
-  //   }
-  //   this.setState(vals)
-  // }
 
   handleClick() {
     window.location = `${BASE_URL}/auth/google`;
@@ -39,21 +15,19 @@ class Login extends Component {
 
   render() {
     return( 
-      <div className="container">
+      <div className="container-fluid">
         <div className="row">  
-          <div className="content-box col-xs-5 col-xs-offset-6"> 
+          <div className="content-box col-xs-12 col-sm-8 col-sm-offset-2 col-md-5 col-md-offset-6"> 
             <div className="logo-row">
               <div>
                 <img src={logo} alt="tradecraft logo"></img> 
               </div>          
-            </div>
-            <div>   
-              <div>
-                <div className="sign-in-box">
-                  <h1 id="sign-in">Sign In</h1>
-                  <button className="google-sign-in" onClick={this.handleClick}/>
-                  <p className="aside">Use your Tradecraft / Rithm School email address</p>
-                 </div>
+            </div>   
+            <div className="row">
+              <div className="sign-in-box col-xs-8 col-xs-offset-2">
+                <h1 id="sign-in">Sign In</h1>
+                <button className="google-sign-in" onClick={this.handleClick}/>
+                <p className="aside">Use your Tradecraft / Rithm School email address</p>
                </div>
              </div>
            </div>

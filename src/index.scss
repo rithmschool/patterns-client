@@ -6,7 +6,6 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Source Sans Pro', sans-serif;
-  font-size: 50%
 }
 
 /* COLORS */
@@ -25,6 +24,22 @@ $header-background: #f8f9fa;
 $inner-content-background: #edf0f2;
 $profile-image-placeholder: #e6eaee;
 
+
+/* PADDINGS AND MARGINS */
+
+$lg-percentage: 1;
+$md-percentage: .75;
+$sm-percentage: .2;
+
+/* MEDIA QUERIES */
+
+@each $p in ($md-percentage, $lg-percentage) {
+  @media (min-width: $p * 1024px) {
+    html {
+      font-size: $p * 62.5%;
+    }
+  }
+}
 
 /* FONTS */
 
@@ -46,23 +61,18 @@ $profile-image-placeholder: #e6eaee;
   font-weight: 400;
 }
 
-/* Individual activity (stage 1) */
+/* Individual activity (my funnel) */
 .sidebar h3 { 
   font-size: 1.8rem;
   color: $cool-grey;
   font-weight: 400;
 }
 
-/* Stage */
+/* Funnel */
 .sidebar h4 { 
   font-size: 1.8rem;
   color: $cool-grey;
-  font-weight: 200;
-}
-
-.sidebar h4:hover { 
-  color: $white;
-  font-weight: bold;
+  font-weight: 300;
 }
 
 /* Add new activity button */
@@ -78,17 +88,13 @@ $profile-image-placeholder: #e6eaee;
   font-size: 1.2rem;
   color: $cool-grey;
   line-height: 2 * 1.2rem;
-  font-weight: bold;
-}
-
-.sidebar h6:hover {
-  color: $white;
+  font-weight: 500;
 }
 
 /* Hide button */
 .sidebar p {
   font-size: 1.2rem;
   color: $cool-grey;
-  font-weight: bold;
+  font-weight: 400;
   text-transform: uppercase;
 }
