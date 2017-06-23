@@ -1,0 +1,90 @@
+@import "./index.scss";
+
+.container-fluid {
+  background-image: url('./images/login-bike.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center; 
+  background-color: $inner-content-background;
+  height: 100vh;
+  text-align: center;
+}
+
+.content-box {
+  height: 100vh;
+  background-color: $white;
+  border-radius: 2px;
+  box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.06);
+}
+
+.logo-row {
+  height: 17.17vh;
+  padding-top: 15vh;
+  padding-bottom: 19vh;
+}
+
+@media (max-height: 900px) {
+  .sign-in-box {
+    padding-top: 5vh;
+    padding-bottom: 12.26vh;
+    height: 32vh;
+    min-height: 350px;
+  }
+} 
+
+@media (min-height: 901px) {
+  .sign-in-box {
+    padding-top: 6vh;
+    padding-bottom: 12vh;
+    height: 32vh;
+    min-height: 400px;
+  }
+}
+
+
+.sign-in-box {
+  border-radius: 4px;
+  border: solid 15px #f7f9fa;
+}
+
+#sign-in {
+  font-family: 'Libre Baskerville', serif;
+  font-weight: bold;
+  font-size: 24px;
+  font-weight: bold;
+  line-height: 2.5;
+  text-align: center;
+  color: #1b2431;
+}
+
+.google-sign-in {
+  background-image: url('./images/google-signin-normal.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  background-color: $white;
+  border-width: none;
+  border-style: none;
+  cursor: pointer;
+  width: 166px;
+  height: 40px;
+  padding: 0px;
+}
+
+.google-sign-in:active {
+  background-image: url('./images/google-signin-pressed.png');
+  outline: none;
+}
+
+.google-sign-in:hover {
+  background-image: url('./images/google-signin-focus.png');
+  border: none;
+}
+
+.aside {
+  margin-top: 4.15vh;
+  font-size: 12px;
+  line-height: 1.0;
+  color: #7f8fa4;
+}
+

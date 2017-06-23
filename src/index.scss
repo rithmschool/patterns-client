@@ -1,0 +1,99 @@
+* { 
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+/* COLORS */
+
+$white: #ffffff;
+$pale-grey: #e7e8ec;
+$cool-grey: #a0a1a5;
+$slate-grey: #585b60;
+$dark-grey: #25272a;
+$dark: #0b0b0c;
+$camel: #cb9c59;
+$sienna: #a26116;
+$greenish-teal: #38d682;
+
+$header-background: #f8f9fa;
+$inner-content-background: #edf0f2;
+$profile-image-placeholder: #e6eaee;
+
+/* PADDINGS AND MARGINS */
+
+$lg-percentage: 1;
+$md-percentage: .75;
+$sm-percentage: .2;
+
+/* MEDIA QUERIES */
+
+@each $p in ($md-percentage, $lg-percentage) {
+  @media (min-width: $p * 1024px) {
+    html {
+      font-size: $p * 62.5%;
+    }
+  }
+}
+
+/* FONTS */
+
+.sidebar {
+  text-align: left;
+}
+
+/* Activities */
+.sidebar h1 { 
+  font-size: 2.4rem;
+  color: $cool-grey;
+  font-weight: 400;
+}
+
+/* User name */
+.sidebar h2 { 
+  font-size: 2.0rem;
+  color: $white;
+  font-weight: 400;
+}
+
+/* Individual activity (my funnel) */
+.sidebar h3 { 
+  font-size: 1.8rem;
+  color: $cool-grey;
+  font-weight: 400;
+}
+
+/* Funnel */
+.sidebar h4 { 
+  font-size: 1.8rem;
+  color: $cool-grey;
+  font-weight: 300;
+}
+
+/* Add new activity button */
+.sidebar h5 {
+  font-size: 1.4rem;
+  color: $white;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+/* Count */
+.sidebar h6 {
+  font-size: 1.2rem;
+  color: $cool-grey;
+  line-height: 2 * 1.2rem;
+  font-weight: 500;
+}
+
+/* Hide button */
+.sidebar p {
+  font-size: 1.2rem;
+  color: $cool-grey;
+  font-weight: 400;
+  text-transform: uppercase;
+}
