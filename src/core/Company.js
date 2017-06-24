@@ -11,7 +11,7 @@ const Company =  (props) => (
       {props.name}
     </div>
     <div className='company-data col-xs-7 row'>
-      <div className='first-data-collection col-lg-3 col-md-4 col-sm-6 col-xs-12'>
+      <div className='first-data-collection col-lg-3 col-md-4 col-sm-6 hidden-xs'>
         <div className='company-data-point'>
           DATA POINT
         </div>
@@ -45,7 +45,7 @@ const Company =  (props) => (
       </div>
     </div>
     <div className='company-arrow col-xs-1'>
-      <img src={down} alt="Down Arrow"/>
+       <img src={down} alt="Down Arrow"/>
     </div>
   </div>
 );

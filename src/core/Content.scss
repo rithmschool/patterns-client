@@ -1,5 +1,11 @@
 @import "../index.scss";
 
+@media (min-width: .2 * 1024px) {
+  .content-holder  {
+    width: calc(100% - (.2 * 352px));
+  }
+}
+
 
 @media (min-width: .75 * 1024px) {
   .content-holder  {
