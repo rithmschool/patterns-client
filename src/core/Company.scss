@@ -1,26 +1,5 @@
 @import "../index.scss";
 
-// @media (min-width:728px) and (max-width:848px){
-//   .fourth-data-collection{
-//     display:none;
-//   }
-// }
-
-// @media (min-width: 504px) {
-//   .third-data-collection, .fourth-data-collection{
-//     display:none;
-//   }
-// }
-
-// @media (max-width: 503px) {
-//   .second-data-collection, .third-data-collection, .fourth-data-collection{
-//     display:none;
-//   }
-// }
-
-
-// @media(min-width)
-
 .company {
   background-color: $white;
   // width: 1038px;
@@ -34,7 +13,7 @@
   width: 48px;
   height: 48px;
   background-color: $pale-grey;
-  margin: 24px auto 24px auto;
+  margin: 24px auto 24px 24px;
   display:inline-block;
   float: left;
 }

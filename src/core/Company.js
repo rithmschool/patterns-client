@@ -44,7 +44,7 @@ const Company =  (props) => (
         </div>
       </div>
     </div>
-    <div className='company-arrow col-xs-1'>
+    <div className='company-arrow col-xs-1 hidden-sm hidden-xs'>
        <img src={down} alt="Down Arrow"/>
     </div>
   </div>

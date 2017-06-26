@@ -14,9 +14,34 @@
 /* SIDEBAR WIDTH BREAKPOINTS FOR MOBILE SCREENS & SMALLER DESKTOP */
 
 @media (max-width: 768px) {
-  .sidebar, .profile-header, .logo-footer, .add-activity, .activity, .menu-item  {
-    width: 72px;
+  
+  .add-activity, 
+  .activity, 
+  .menu-item,
+  .button-holder,
+  .activity-heading,
+  .footer .logo-holder {
+    display:none;
     // ADD COLLAPSED STYLING
+  }
+  .sidebar,
+  .profile-header,
+  .footer {
+    width: 72px;  // .2 * 352px i.e $sm-percentage 
+  }
+  .profile-picture{
+    width:48px;
+    height:48px;
+    margin:12px;
+  }
+  .footer .hide-holder p{
+    font-size: 0.8rem;
+  }
+
+  .footer .hide-holder img{
+    margin-left: 16px
+    margin-right:16px;
+    float:none;
   }
 }
 
