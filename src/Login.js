@@ -20,7 +20,7 @@ class Login extends Component {
           <div className="content-box col-xs-12 col-sm-8 col-sm-offset-2 col-md-5 col-md-offset-6"> 
             <div className="logo-row">
               <div>
-                <img src={logo} alt="tradecraft logo"></img> 
+                <img className='logo'src={logo} alt="tradecraft logo"></img> 
               </div>          
             </div>   
             <div className="row">

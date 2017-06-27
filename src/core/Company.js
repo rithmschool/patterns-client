@@ -45,7 +45,7 @@ const Company =  (props) => (
       </div>
     </div>
     <div className='company-arrow col-xs-1 hidden-sm hidden-xs'>
-       <img src={down} alt="Down Arrow"/>
+       <img className = 'companyRightArrow'src={down} alt="Right Arrow"/>
     </div>
   </div>
 );
