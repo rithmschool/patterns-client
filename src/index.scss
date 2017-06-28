@@ -52,7 +52,7 @@ $sm-percentage: .2;
   }
 }
 
-/* FONTS */
+/* FONTS - LEFT SIDEBAR */
 
 .sidebar {
   text-align: left;
@@ -109,3 +109,111 @@ $sm-percentage: .2;
   font-weight: 400;
   text-transform: uppercase;
 }
+
+/* FONTS - RIGHT SIDEBAR */
+
+/* Activity Name ex. Job Search (June 2017) */
+.sidebar-right h1 { 
+  font-size: 1.8rem;
+  color: $slate-grey;
+  line-height: 2.4rem;
+  font-weight: 500;
+}
+
+/* Dropdown ex. Research & Number of Items */
+.sidebar-right h2 { 
+  font-size: 1.4rem;
+  color: $slate-grey;
+  line-height: 2.4rem;
+  font-weight: 500;
+}
+
+/* Post Button */
+.sidebar-right h3 { 
+  font-size: 1.4rem;
+  color: $white;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+/* Notes / Tasks / Log */
+.sidebar-right h4 { 
+  font-size: 1.2rem;
+  color: $slate-grey;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+/* Labels (Private Note & Hide) */
+.sidebar-right h5 {
+  font-size: 1.2rem;
+  color: $cool-grey;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+/* Note Date */
+.sidebar-right h6 {
+  font-size: 1.2rem;
+  color: $cool-grey;
+  font-weight: 600;
+}
+
+/* Note Content */
+.sidebar-right p {
+  font-size: 1.2rem;
+  color: $slate-grey;
+  font-weight: 400;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
