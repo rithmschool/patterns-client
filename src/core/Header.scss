@@ -1,0 +1,50 @@
+.header{
+  width: 100%;
+  height: 192px;
+  background-color: #f8f9fa;
+  box-shadow: 0 3px 8px 0 rgba(0, 0, 0, 0.04), 0 1px 2px 0 rgba(0, 0, 0, 0.04);
+}
+
+.headerTitle{
+  font-size: 26px;
+  margin: 24px 24px 12px 24px;
+  font-weight: 600;
+  line-height: 1.38;
+}
+
+.headerRectangle {
+  width: 50px;
+  height: 24px;
+  border-radius: 2px;
+  background-color: #38d682;
+}
+
+.potentialEmployer{
+  height: 23px;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.33;
+  text-align: left;
+  color: #585b60;
+}
+
+.lastUpdated{
+  height: 17px;
+  font-size: 12px;
+  font-weight: bold;
+  line-height: 1;
+  text-align: left;
+  color: #a0a1a5;
+}
+
+.editActivityButton{
+  background-color: #585b60;
+  text-align: center;
+  color: #ffffff;
+}
+
+.addActivityButton{
+  background-color: #cb9c59;
+  text-align: center;
+  color: #ffffff;
+}

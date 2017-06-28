@@ -8,6 +8,5 @@ describe('<Content />', () =>{
 
   it('should render InnerContent Component ', () => {
     expect(wrapper.find(InnerContent)).toHaveLength(1);
-  })
-
+  });
 })

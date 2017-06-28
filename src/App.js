@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link, Route } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import Main from './Main';
 import Auth from './Auth';
 import Login from './Login';
@@ -11,11 +11,10 @@ class App extends Component {
       <div className="App">
         <Route exact path="/" component={Login}></Route>
         <Route path="/auth/google/callback" component={Auth}></Route>
-        <Route path="/home" component={Main}></Route>
+        <Route path="/activities" component={Main}></Route>
       </div>
     );
   }
 }
 
 export default App;
-

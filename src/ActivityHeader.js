@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import './Header.css';
+import './ActivityHeader.css';
 
-const Header =  (props) => (
-    <div className='header'>
+const ActivityHeader =  (props) => (
+    <div className='activityHeader'>
       <div>
-        <h3 className='headerTitle'> Job Search (June 2017) </h3>
-        <span className='headerRectangle'> Open </span> 
+        <h3 className='activityTitle'> Job Search (June 2017) </h3>
+        <span className='rectangle'> Open </span> 
         <input type='submit' className='editActivityButton btn btn-warning' value='Edit' /> 
         <input type='submit' className='addActivityButton btn btn-primary' value='Add' /> 
         <p className='potentialEmployer'> Potential employer </p>
@@ -15,4 +15,4 @@ const Header =  (props) => (
     </div>
   )
 
-export default Header;
+export default ActivityHeader;

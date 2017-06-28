@@ -12,7 +12,7 @@ class Auth extends Component {
   }
 
   render() {
-    let redirectUrl = '/home';
+    let redirectUrl = '/activities';
     return (
       <div>
         <div id="content">
