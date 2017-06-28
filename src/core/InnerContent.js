@@ -13,25 +13,21 @@ class InnerContent extends Component {
   }
 
   getAllCompanies() {
-    var companyId = '594d56183475e0b70b26acaf';
+    // NEED TO FIGURE THIS OUT
+    // var companyId = '594d56183475e0b70b26acaf';
 
-    axios.get(`${BASE_URL}/types/${companyId}/assets`).then(res => {
-      this.setState({
-        companies: res.data.assets
-      })
-    })
-    .catch(error => console.log(error));
+    // axios.get(`${BASE_URL}/types/${companyId}/assets`).then(res => {
+    //   console.log(res.data);
+    //   this.setState({
+    //     companies: res.data.assets
+    //   });
+    // })
+    // .catch(error => console.log(error));
   }
 
   componentDidMount(){
-    this.getAllCompanies()
+    return this.getAllCompanies()
   }
-
-  // componentWillUpdate(nextProps, nextState){
-  //   if(this.state.companies.length !== nextState.companies.length){
-  //     this.getAllCompanies()
-  //   }
-  // }
 
   render() {
     let companies = null;
@@ -56,5 +52,5 @@ class InnerContent extends Component {
     ) 
   };  
 }
-  
+
 export default InnerContent;
