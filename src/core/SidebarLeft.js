@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './SidebarLeft.css';
 import logo from '../images/logo-dark-gray.svg';
 import down from '../images/icon-chevron-right-gray.svg';
-import hide from '../images/icon-open-collapse-left-gray.svg'
+import hide from '../images/icon-open-collapse-left-gray.svg';
 
 class SidebarLeft extends Component {
 

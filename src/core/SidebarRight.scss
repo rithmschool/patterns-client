@@ -1,0 +1,117 @@
+@import "../index.scss";
+
+/* MAIN SIDEBAR STYLES */
+
+.sidebar-right {
+  height: 100vh;
+  background-color: #dde1e3;
+  z-index: 5;
+  box-shadow: 0 3px 8px 0 rgba(0, 0, 0, 0.04), 0 1px 2px 0 rgba(0, 0, 0, 0.04);
+  position: inline-block;
+  float: right;
+}
+
+/* SIDEBAR WIDTH BREAKPOINTS FOR MOBILE SCREENS & SMALLER DESKTOP */
+
+@media (max-width: 768px) {
+  .sidebar-right, .activity-header{
+    width: 72px;
+    // ADD COLLAPSED STYLING
+  }
+}
+
+@each $p in ($md-percentage, $lg-percentage) {
+  @media (min-width: $p * 1024px) {
+    .sidebar-right, .activity-header, .right-footer {
+      width: $p * 352px;
+    }
+    .icon-picture { 
+      width: $p * 48px;
+      height: $p * 48px;
+      margin: $p * 12px $p * 10px $p * 12px $p * 24px;
+    }
+    .activity-header {
+      height: $p * 72px;
+      line-height: $p * 72px;
+    }
+    .footer {
+      line-height: $p * 72px;
+    }
+    .hide-holder {
+      margin: $p * 18px $p * 24px;
+    }
+    .hide-holder img {
+      margin-bottom: $p * 8px;
+      margin-left: $p * 4px;
+      height: $p * 16px;
+      width: $p * 16px;
+    }
+  }
+}
+
+/* ACTIVITY HEADER */
+
+.activity-header {
+  background-color: #f7f9fa;
+  display: inline-block;
+}
+
+.icon-picture {
+  display: inline-block;
+  float: left;
+}
+
+@media (max-width: 768px) {
+  .activity-header h2 {
+    display: none;
+  }
+}
+
+.activity-header h2 {
+  vertical-align: middle;
+  float: left;
+  margin: 0;
+}
+
+/* STAGE DROPDOWN */
+
+
+/* SELECTORS (NOTES - TASKS - LOG) */
+
+.number {
+  width: 24px;
+  height: 24px;
+  background-color: $white;
+  border-radius: 50px;
+}
+
+
+/* FOOTER */
+
+.right-footer {
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+}
+
+.hide-holder {
+  display: inline-block;
+  float: right;
+  padding: 0;
+  vertical-align: middle;
+}
+
+.hide-holder p {
+  margin: 0;
+  line-height: 1.4rem;
+  display: block;
+}
+
+.right-footer img {
+  vertical-align: middle;
+  line-height: 0;
+}
+
+.hide-holder img {
+  display: block;
+}
