@@ -1,20 +1,42 @@
-.content {
-  background-color: #eef0f3;
-  float: right;
-  display: inline;
+@import "../index.scss";
+
+@media (min-width: .2 * 1024px) {
+  .content-holder  {
+    width: calc(100% - (.2 * 352px));
+  }
+}
+
+@media (min-width: .75 * 1024px) {
+  .content-holder  {
+    width: calc(100% - (.75 * 352px));
+  }
+}
+
+@media (min-width: 1 * 1024px) {
+  .content-holder  {
+    width: calc(100% - (1 * 352px));
+  }
+}
+
+.content-holder {
+  background-color: $content-background;
+  display: inline-block;
+  min-height:100vh;
 }
 
 .navbar {
   margin: 0;
   padding: 0;
-  background-color: #ffffff;
+  background-color: $white;
 }
 
 .content .navbar h2 {
   font-size: 20px;
   font-weight: 400;
   line-height: 1.2;
-  color: #a0a1a5;
+  color: $cool-grey;
   margin: 0;
   text-align: left;
 }
+
+

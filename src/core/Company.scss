@@ -1,0 +1,60 @@
+@import "../index.scss";
+
+.company {
+  background-color: $white;
+  height: 96px;
+  border-radius: 2px;
+  margin:10px 24px;
+}
+
+.company-logo{
+  width: 48px;
+  height: 48px;
+  background-color: $pale-grey;
+  margin: 24px auto 24px 24px;
+  display:inline-block;
+  float: left;
+}
+
+.company-name{
+  font-size: 20px;
+  font-weight: 600;
+  color: $dark-grey;
+  display: inline-block;
+  float: left;
+  vertical-align: middle;
+  line-height: 96px;
+  text-align:left;
+}
+
+.company-data{
+  display: inline-block;
+  vertical-align: middle;
+  text-align: left;
+  float:left;
+}
+
+.company-data-point{
+  color: $cool-grey;
+  font-weight:bold;
+  font-size: 12px;
+  margin-top:30px;
+  margin-bottom:6px;
+}
+
+.company-data-value{
+  color: $dark-grey;
+  font-size: 16px;
+}
+
+.company-arrow {
+  display: inline-block;
+  vertical-align:top;
+  line-height:96px;
+  text-align:right;
+} 
+
+.company-arrow img {
+  vertical-align: middle;
+} 
+

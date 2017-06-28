@@ -17,7 +17,7 @@ export function login(code) {
   return dispatch => {
     return axios.post(`${BASE_URL}/auth/google/callback`, code)
     .then(res => {
-      const token = res.data
+      const token = res.data;
       localStorage.setItem('jwtToken', token);
       setAuthorizationToken(token);
       dispatch(setToken(token));
