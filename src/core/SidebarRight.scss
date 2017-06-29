@@ -187,10 +187,10 @@
     .footer {
       line-height: $p * 72px;
     }
-    .hide-holder {
+    .right-hide-holder {
       margin: $p * 18px $p * 24px;
     }
-    .hide-holder img {
+    .right-hide-holder img {
       margin-bottom: $p * 8px;
       margin-left: $p * 4px;
       height: $p * 16px;
@@ -318,14 +318,14 @@
   bottom: 0;
 }
 
-.hide-holder {
+.right-hide-holder {
   display: inline-block;
   float: left;
   padding: 0;
   vertical-align: middle;
 }
 
-.hide-holder h5 {
+.right-hide-holder h5 {
   margin: 0;
   line-height: 1.4rem;
   display: block;
@@ -336,7 +336,7 @@
   line-height: 0;
 }
 
-.hide-holder img {
+.right-hide-holder img {
   display: block;
   transform: scaleX(-1);
 }
