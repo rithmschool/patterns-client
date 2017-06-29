@@ -12,7 +12,7 @@ class Main extends Component {
   render() {
     return( 
       <div className="main">  
-        <EditCompany />
+        { /* <EditCompany /> */ }
         { /* <AddCompany /> */ }
 
         <SidebarLeft /> 
