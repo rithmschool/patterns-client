@@ -55,7 +55,7 @@ render() {
         </button>
       </div>
 
-      <div className="footer">
+     <div className="footer">
         <div className="logo-holder">
           <img src={logo} alt="Tradecraft Logo" />
         </div>
@@ -65,6 +65,7 @@ render() {
           <p className="open">OPEN</p>
         </div>
       </div>
+
     </div>
   )};
 

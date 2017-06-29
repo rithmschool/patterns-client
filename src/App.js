@@ -8,7 +8,7 @@ import './App.css';
 class App extends Component {
   render() {
     return (
-      <div className="App">
+      <div className="App container-fluid">
         <Route exact path="/" component={Login}></Route>
         <Route path="/auth/google/callback" component={Auth}></Route>
         <Route path="/activities" component={Main}></Route>
