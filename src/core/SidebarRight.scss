@@ -130,6 +130,13 @@
     font-size: 12px;
   }
 
+  .right-hide-holder .hide-right {
+    display: none;
+  }
+
+  .right-hide-holder .open-right {
+    display: block;
+  }
 }
 
 /* SIDEBAR WIDTH BREAKPOINTS FOR SMALLER DESKTOP */
@@ -259,6 +266,14 @@
       height: $p * 16px;
       width: $p * 16px;
       transform: scaleX(-1);
+    }
+
+    .right-hide-holder .hide-right {
+      display: block;
+    }
+
+    .right-hide-holder .open-right {
+      display: none;
     }
   }
 }
