@@ -66,25 +66,77 @@
   line-height: 1.5rem;
 }
 
-/* SIDEBAR WIDTH BREAKPOINTS FOR MOBILE SCREENS & SMALLER DESKTOP */
+/* SIDEBAR STYLING FOR COLLAPSED/SMALL WIDTH */
 
 @media (max-width: 768px) {
-  .sidebar-right, .activity-header, .left-footer {
+  .sidebar-right, .activity-header, .right-footer {
     width: 72px;
   }
 
-  .activity-header h1, .notes-tasks-log, .post-box {
+  .activity-header h1, select, .notes-previews, .post-box {
     display: none;
   }
 
-  .notes-previews {
-    display: none;
+  /* HEADER WITH ICON */ 
+
+  .activity-header {
+    height: 72px;
   }
+
+  .icon-bookmark img {
+    margin: 28px;
+  }
+
+  /* TYPES AND COUNTS */
+
+  .select-item {
+    width: 72px;
+  }
+
+  #selected, .select-item:hover  {
+    background-color: transparent;
+  }
+
+  .number {
+    width: 24px;
+    height: 24px;
+  }
+
+  .number h2 {
+    font-size: 14px;
+    line-height: 24px;
+  }
+
+  .type h4 {
+    font-size: 12px;
+  }
+
+  /* FOOTER */
+
+  .right-footer {
+    width: 72px;
+    height: 84px;
+    text-align: center;
+    padding: 24px;
+  }
+
+  .right-footer img {
+    height: 16px;
+    width: 16px;
+    margin: 4px auto;
+  }
+
+  .right-hide-holder h5 {
+    font-size: 12px;
+  }
+
 }
+
+/* SIDEBAR WIDTH BREAKPOINTS FOR SMALLER DESKTOP */
 
 @each $p in ($md-percentage, $lg-percentage) {
   @media (min-width: $p * 1024px) {
-    .sidebar-right, .activity-header, .left-footer {
+    .sidebar-right, .activity-header, .right-footer {
       width: $p * 352px;
     }
 
@@ -125,6 +177,11 @@
       width: $p * 72px;
       height: $p * 72px;
       margin: 0px $p * 16px;
+    }
+
+    #selected, .select-item:hover {
+      background-color: #c2cbd3;
+      border-radius: 4px;
     }
 
     .number {
@@ -184,17 +241,20 @@
 
     /* FOOTER */
 
-    .footer {
+    .right-footer {
       line-height: $p * 72px;
     }
+
     .right-hide-holder {
       margin: $p * 18px $p * 24px;
     }
+
     .right-hide-holder img {
       margin-bottom: $p * 8px;
       margin-left: $p * 4px;
       height: $p * 16px;
       width: $p * 16px;
+      transform: scaleX(-1);
     }
   }
 }
@@ -242,11 +302,6 @@
 
 .select-item {
   display: inline-block;
-}
-
-#selected, .select-item:hover {
-  background-color: #c2cbd3;
-  border-radius: 4px;
 }
 
 .number {
@@ -312,7 +367,7 @@
 
 /* FOOTER */
 
-.left-footer {
+.right-footer {
   text-align: center;
   position: fixed;
   bottom: 0;
@@ -331,12 +386,11 @@
   display: block;
 }
 
-.left-footer img {
+.right-footer img {
   vertical-align: middle;
   line-height: 0;
 }
 
 .right-hide-holder img {
   display: block;
-  transform: scaleX(-1);
 }

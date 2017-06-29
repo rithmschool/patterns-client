@@ -81,7 +81,7 @@ render() {
           </div>
         </div>
 
-        <div className="left-footer">
+        <div className="right-footer">
           <div className="right-hide-holder">
             <img src={hide} alt="Hide sidebar" />
             <h5>HIDE</h5>
