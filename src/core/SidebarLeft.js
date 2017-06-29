@@ -61,7 +61,8 @@ render() {
         </div>
         <div className="hide-holder">
           <img src={hide} alt="Hide sidebar" />
-          <p>HIDE</p>
+          <p className="hide">HIDE</p>
+          <p className="open">OPEN</p>
         </div>
       </div>
     </div>

@@ -80,26 +80,40 @@
   .activity-heading,
   .footer .logo-holder {
     display:none;
-    // ADD COLLAPSED STYLING
   }
+
   .sidebar,
   .profile-header,
   .footer {
-    width: 72px;  // .2 * 352px i.e $sm-percentage 
+    width: 72px;
   }
+
+  .footer {
+    height: 72px;
+    padding: 12px 24px;
+  }
+
   .profile-picture{
     width: 48px;
     height: 48px;
     margin: 12px;
   }
+
   .footer .hide-holder p{
     font-size: 0.8rem;
   }
 
   .footer .hide-holder img{
-    margin-left: 16px;
-    margin-right: 16px;
-    float:none;
+    margin: 4px auto;
+    transform: scaleX(-1);
+  }
+
+  .hide-holder .hide {
+    display: none;
+  }
+
+  .hide-holder .open {
+    display: block;
   }
 }
 
@@ -188,6 +202,14 @@
     .logo-holder img {
       height: $p * 36px;
       width: $p * 36px;
+    }
+
+    .hide-holder .open {
+      display: none;
+    }
+
+    .hide-holder .hide {
+      display: block;
     }
   }
 }
