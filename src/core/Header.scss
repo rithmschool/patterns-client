@@ -97,6 +97,11 @@
   margin-top: 24px;
 }
 
+input {
+  border-style: none;
+  border-radius: 2px;
+}
+
 .editB, .addB, .headerRect{
   display:inline-block;
 }

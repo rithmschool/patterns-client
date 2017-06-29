@@ -12,6 +12,7 @@ class App extends Component {
         <Route exact path="/" component={Login}></Route>
         <Route path="/auth/google/callback" component={Auth}></Route>
         <Route path="/activities" component={Main}></Route>
+      { /* <Route path="/assets" component={Asset}></Route> */ }
       </div>
     );
   }
