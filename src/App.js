@@ -11,11 +11,10 @@ class App extends Component {
       <div className="App">
         <Route exact path="/" component={Login}></Route>
         <Route path="/auth/google/callback" component={Auth}></Route>
-        <Route path="/home" component={Main}></Route>
+        <Route path="/activities" component={Main}></Route>
       </div>
     );
   }
 }
 
 export default App;
-

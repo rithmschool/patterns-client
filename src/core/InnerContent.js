@@ -1,56 +1,15 @@
 import axios from 'axios';
+import { Route, Switch } from 'react-router';
 import React, { Component } from 'react';
 import { BASE_URL } from '../actions/auth';
-import Company from './Company';
+import BrowseContainer from '../BrowseContainer';
+import ActivityContainer from '../ActivityContainer';
 
-class InnerContent extends Component {
-  constructor(props){
-    super(props)
-    this.getAllCompanies = this.getAllCompanies.bind(this);
-    this.state = {
-      companies : []
-    }
-  }
-
-  getAllCompanies() {
-    // NEED TO FIGURE THIS OUT
-    // var companyId = '594d56183475e0b70b26acaf';
-
-    // axios.get(`${BASE_URL}/types/${companyId}/assets`).then(res => {
-    //   console.log(res.data);
-    //   this.setState({
-    //     companies: res.data.assets
-    //   });
-    // })
-    // .catch(error => console.log(error));
-  }
-
-  componentDidMount(){
-    return this.getAllCompanies()
-  }
-
-  render() {
-    let companies = null;
-    if(this.state.companies.length >0){
-      companies = this.state.companies.map((company, i) =>(
-        <Company 
-          key={i}
-          name={company.name}
-          description={company.description}
-        />
-      ) 
-    )} 
-     return( 
-      <div className="inner-content">
-        <div className='number-of-companies'>
-          {this.state.companies.length} Potential Employers
-        </div>
-        <div className='company-holder'>   
-          {companies}
-        </div>
-      </div>
-    ) 
-  };  
-}
+const InnerContent = () => (
+  <Switch>
+    <Route exact path='/activities/browse' component ={BrowseContainer} />
+    <Route exact path='/activities' component ={ActivityContainer} />
+  </Switch>
+)
 
 export default InnerContent;
