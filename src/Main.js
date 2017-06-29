@@ -10,8 +10,8 @@ class Main extends Component {
     return( 
       <div className="main">   
         <SidebarLeft /> 
-      { /* <Content /> */ }
-        <SidebarRight />
+        <Content />
+        { /* <SidebarRight /> */}
       </div>
   )};
     
