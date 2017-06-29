@@ -18,18 +18,17 @@ class ActivityContainer extends Component {
 
   getAllStages(){
 
-    // NEED TO FIGURE THIS OUT 
+   //  NEED TO FIGURE THIS OUT 
 
-    // var user_id = '5952c7827c16df049ab3842d';
-    // var activity_id='5952cc31e02b027a3285d798';
-    // axios.get(`${BASE_URL}/users/${user_id}/activities/${activity_id}`)
-    // .then(res => {
-    //   console.log(res.data.stages)
-    //   this.setState({
-    //     stages: res.data.stages
-    //   })
-    // })
-    // .catch(error => console.log(error));
+    var user_id = '5952c7827c16df049ab3842d';
+    var activity_id='5952cc31e02b027a3285d798';
+    axios.get(`${BASE_URL}/users/${user_id}/activities/${activity_id}`)
+    .then(res => {
+      this.setState({
+        stages: res.data.stages
+      })
+    })
+    .catch(error => console.log(error));
   }
 
   componentDidMount(){
@@ -51,10 +50,8 @@ class ActivityContainer extends Component {
       )}
     return(
       <div className='ActivityContainerHolder'>
-      <Link to='/activities/browse'> Browse Companies!</Link> 
         <BrowseCompanies />
           {stages}
-          <hr className='line' />
       </div>
     )
   }

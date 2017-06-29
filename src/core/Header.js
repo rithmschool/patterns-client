@@ -4,13 +4,23 @@ import './Header.css';
 const Header =  (props) => (
     <div className='header'>
       <div>
-        <h3 className='headerTitle'> Job Search (June 2017) </h3>
-        <span className='headerRectangle'> Open </span> 
-        <input type='submit' className='editActivityButton btn btn-warning' value='Edit' /> 
-        <input type='submit' className='addActivityButton btn btn-primary' value='Add' /> 
+        <div className='headerTop row'>
+          <p className='headerTitle'> Job Search (June 2017) </p>
+          <div className='headerRectangle'>
+            <div className='headerRecText'>
+              OPEN  
+            </div>
+          </div>
+          <div className='editB'>
+            <input type='submit' className='editActivityButton' value='EDIT' /> 
+          </div>
+          <div className='addB'>
+            <input type='submit' className='addActivityButton' value='ADD' /> 
+          </div>
+        </div>
         <p className='potentialEmployer'> Potential employer </p>
         <p className='lastUpdated'> LAST UPDATED </p>
-        <p> 7/15/2017 </p> 
+        <p className='latestUpdatedText'> 7/15/2017 </p> 
       </div>
     </div>
   )

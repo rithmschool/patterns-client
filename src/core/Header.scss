@@ -1,3 +1,4 @@
+
 .header{
   width: 100%;
   height: 192px;
@@ -5,18 +6,12 @@
   box-shadow: 0 3px 8px 0 rgba(0, 0, 0, 0.04), 0 1px 2px 0 rgba(0, 0, 0, 0.04);
 }
 
-.headerTitle{
-  font-size: 26px;
-  margin: 24px 24px 12px 24px;
-  font-weight: 600;
-  line-height: 1.38;
-}
-
 .headerRectangle {
   width: 50px;
   height: 24px;
   border-radius: 2px;
   background-color: #38d682;
+  float:left;
 }
 
 .potentialEmployer{
@@ -26,6 +21,7 @@
   line-height: 1.33;
   text-align: left;
   color: #585b60;
+  margin: 12px 0px 12px 12px;
 }
 
 .lastUpdated{
@@ -35,16 +31,82 @@
   line-height: 1;
   text-align: left;
   color: #a0a1a5;
+  margin: 12px 0px 12px 12px;
+}
+
+.latestUpdatedText{
+  font-size: 16px;
+  margin: 12px 0px 12px 12px;
+  line-height: 1.5;
+  text-align: left;
+  color: #25272a;
+}
+
+.headerTitle{
+  font-size: 26px;
+  line-height: 1.38;
+  margin: 24px 24px 12px 24px;
+  font-weight: 600;
+  float:left;
+}
+
+.headerRectangle {
+  font-size: 12px;
+  font-weight: 600;
+  width: 50px;
+  line-height:24px;
+  border-radius: 2px;
+  background-color: #38d682;
+  text-align:center;
+  color:white;
+  float:left;
+  margin-top:32px;
+}
+
+.headerRectText{
+  font-size: 12px;
+  font-weight: 600;
+  text-align: left;
+  color: #ffffff;
+  margin: 5px 10px 5px 10px;
 }
 
 .editActivityButton{
   background-color: #585b60;
   text-align: center;
   color: #ffffff;
+  font-size: 14px;
+  float:right;
+  margin-right:12px;
+  margin-top: 24px;
+  width: 96px;
+  height: 36px;
+  line-height: 1.38;
 }
 
 .addActivityButton{
   background-color: #cb9c59;
   text-align: center;
   color: #ffffff;
+  font-size: 14px;
+  float:right;
+  font-weight: 600;
+  width: 96px;
+  height: 36px;
+  line-height: 1.38;
+  margin-top: 24px;
+}
+
+.editB, .addB, .headerRect{
+  display:inline-block;
+}
+
+.editB{
+  float:right;
+  margin-right:24px;
+}
+
+.addB{
+  float:right;
+  margin-right:12px;
 }
