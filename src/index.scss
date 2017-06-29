@@ -15,8 +15,6 @@ body {
   min-height:1vh;
 }
 
-
-
 /* COLORS */
 
 $white: #ffffff;
@@ -41,7 +39,6 @@ $md-percentage: .75;
 $sm-percentage: .2;
 // $lg-sidebar-left-width:352px;
 
-
 /* MEDIA QUERIES */
 
 @each $p in ($md-percentage, $lg-percentage) {
@@ -51,55 +48,3 @@ $sm-percentage: .2;
     }
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

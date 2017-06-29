@@ -39,12 +39,9 @@ render() {
         </div>
 
         <div className="post-box">
-          <div className="input-field">
-            { /* how do we change the width dynamically?
-            <textarea name="note" rows="6" cols="10">
-              Add a note
-            </textarea> */}
-          </div>
+          <textarea className="input-field" name="note" rows="6">
+            Add a note
+          </textarea> 
           <div className="post-info">
             <div className="lock-icon">
               <img src={lock} alt="Lock Icon"/>
