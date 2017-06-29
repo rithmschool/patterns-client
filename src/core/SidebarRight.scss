@@ -226,6 +226,10 @@
 
     /* NOTES PREVIEWS */
 
+    .notes-previews {
+      overflow: hidden;
+    }
+
     .indiv-note {
       margin: $p * 24px;
     }
@@ -368,6 +372,7 @@
 /* FOOTER */
 
 .right-footer {
+  background-color: #dde1e3;
   text-align: center;
   position: fixed;
   bottom: 0;
