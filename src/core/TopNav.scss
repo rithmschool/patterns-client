@@ -1,22 +1,49 @@
-.topNav {
-  width: 100%;
-  height: 67px;
-  background-color: #ffffff;
-  background-color: var(--white);
-  box-shadow: 0 3px 8px 0 rgba(0, 0, 0, 0.04), 0 1px 1px 0 rgba(0, 0, 0, 0.04); }
+@import "../index.scss";
 
-.topNavTitle {
-  font-size: 20px;
-  line-height: 24px;
-  color: #a0a1a5;
-  text-align: left;
-  margin: 24px 12px 24px 24px;
+@each $p in ($md-percentage, $lg-percentage) {
+  @media (min-width: $p * 1024px) {
+    .topNav {
+      height: $p * 72px;
+    }
+
+    h1 {
+      font-size: $p * 20px;
+      line-height: $p * 24px;
+      margin: $p * 24px $p * 12px $p * 24px $p * 24px;
+    }
+
+    img {
+      width: $p * 16px;
+      height: $p * 16px;
+    }
+
+    select {
+      height: $p * 24px;
+      margin-top: $p * 24px;
+    }
+  }
 }
 
-.topNavOptions {
+.topNav {
+  width: 100%;
+  background-color: $white;
+  box-shadow: 0 3px 8px 0 rgba(0, 0, 0, 0.04), 0 1px 1px 0 rgba(0, 0, 0, 0.04); 
+  display: inline-block;
+  vertical-align: middle;
+}
+
+h1 {
+  color: $cool-grey;
+  text-align: left;
+  font-weight: 500;
+  display: inline-block;
+}
+
+select {
   width: 242px;
-  height: 34px;
   border-radius: 4px;
-  background-color: #ffffff;
+  background-color: $white;
   border: solid 1px #c3cbd3;
-  margin: 17px 0px 17px 12px; }
+  margin-left: 12px;
+  vertical-align: top;
+}
