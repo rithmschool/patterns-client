@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './SidebarLeft.css';
 import logo from '../images/logo-dark-gray.svg';
 import down from '../images/icon-chevron-right-gray.svg';
-import hide from '../images/icon-open-collapse-left-gray.svg'
+import hide from '../images/icon-open-collapse-left-gray.svg';
 
 class SidebarLeft extends Component {
 
@@ -61,7 +61,8 @@ render() {
         </div>
         <div className="hide-holder">
           <img src={hide} alt="Hide sidebar" />
-          <p>HIDE</p>
+          <p className="hide">HIDE</p>
+          <p className="open">OPEN</p>
         </div>
       </div>
     </div>

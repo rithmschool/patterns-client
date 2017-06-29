@@ -1,0 +1,416 @@
+@import "../index.scss";
+
+/* MAIN SIDEBAR STYLES */
+
+.sidebar-right {
+  height: 100vh;
+  background-color: #dde1e3;
+  z-index: 5;
+  box-shadow: 0 3px 8px 0 rgba(0, 0, 0, 0.04), 0 1px 2px 0 rgba(0, 0, 0, 0.04);
+  position: inline-block;
+  float: right;
+}
+
+/* FONTS */
+
+/* Activity Name ex. Job Search (June 2017) */
+.sidebar-right h1 { 
+  font-size: 1.8rem;
+  color: $slate-grey;
+  font-weight: 500;
+}
+
+/* Number Counts */
+.sidebar-right h2 { 
+  font-size: 1.4rem;
+  color: $slate-grey;
+  font-weight: 600;
+}
+
+/* Post Button */
+.sidebar-right h3 { 
+  font-size: 1.4rem;
+  color: $white;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+/* Notes / Tasks / Log */
+.sidebar-right h4 { 
+  font-size: 1.2rem;
+  color: $slate-grey;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+/* Labels (Private Note & Hide) */
+.sidebar-right h5 {
+  font-size: 1.2rem;
+  color: $cool-grey;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+/* Note Date */
+.sidebar-right h6 {
+  font-size: 1.2rem;
+  color: $cool-grey;
+  font-weight: 600;
+}
+
+/* Note Content */
+.sidebar-right p {
+  font-size: 1.2rem;
+  color: $slate-grey;
+  font-weight: 400;
+  line-height: 1.5rem;
+}
+
+/* SIDEBAR STYLING FOR COLLAPSED/SMALL WIDTH */
+
+@media (max-width: 768px) {
+  .sidebar-right, .activity-header, .right-footer {
+    width: 72px;
+  }
+
+  .activity-header h1, select, .notes-previews, .post-box {
+    display: none;
+  }
+
+  /* HEADER WITH ICON */ 
+
+  .activity-header {
+    height: 72px;
+  }
+
+  .icon-bookmark img {
+    margin: 28px;
+  }
+
+  /* TYPES AND COUNTS */
+
+  .select-item {
+    width: 72px;
+  }
+
+  #selected, .select-item:hover  {
+    background-color: transparent;
+  }
+
+  .number {
+    width: 24px;
+    height: 24px;
+  }
+
+  .number h2 {
+    font-size: 14px;
+    line-height: 24px;
+  }
+
+  .type h4 {
+    font-size: 12px;
+  }
+
+  /* FOOTER */
+
+  .right-footer {
+    width: 72px;
+    height: 84px;
+    text-align: center;
+    padding: 24px;
+  }
+
+  .right-footer img {
+    height: 16px;
+    width: 16px;
+    margin: 4px auto;
+  }
+
+  .right-hide-holder h5 {
+    font-size: 12px;
+  }
+
+  .right-hide-holder .hide-right {
+    display: none;
+  }
+
+  .right-hide-holder .open-right {
+    display: block;
+  }
+}
+
+/* SIDEBAR WIDTH BREAKPOINTS FOR SMALLER DESKTOP */
+
+@each $p in ($md-percentage, $lg-percentage) {
+  @media (min-width: $p * 1024px) {
+    .sidebar-right, .activity-header, .right-footer {
+      width: $p * 352px;
+    }
+
+    /* ACTIVITY HEADER */
+
+    .activity-header {
+      height: $p * 72px;
+    }
+    .activity-header h1 {
+      line-height: $p * 72px;
+    }
+    .icon-bookmark { 
+      margin: $p * 28px $p * 24px;
+    }
+    .icon-bookmark img {
+      width: $p * 16px;
+      height: $p * 16px;
+    }
+
+    /* STAGE DROPDOWN */ 
+
+    #stage {
+      margin: $p * 24px;
+      width: $p * 304px;
+      height: $p * 36px;
+      padding: 0px $p * 9px;
+
+      // remove right arrow and replace with their arrow
+      -webkit-appearance: none; 
+      background: url(../images/icon-chevron-down-gray.svg) no-repeat right;
+      background-color: $white;
+      background-position-x: $p * 274px;
+    } 
+
+    /* SELECTORS (NOTES - TASKS - LOG) */
+
+    .select-item {
+      width: $p * 72px;
+      height: $p * 72px;
+      margin: 0px $p * 16px;
+    }
+
+    #selected, .select-item:hover {
+      background-color: #c2cbd3;
+      border-radius: 4px;
+    }
+
+    .number {
+      width: $p * 24px;
+      height: $p * 24px;
+      line-height: $p * 24px;
+    }
+
+    .type h4 {
+      margin: $p * 12px 0px;
+    }
+
+    /* POST INPUT */
+
+    .input-field {
+      width: $p * 306px;
+      height: $p * 84px;
+      margin: $p * 24px;
+    }
+
+    .post-info {
+      width: $p * 352px;
+    }
+
+    .lock-icon img {
+      width: $p * 16px;
+      height: $p * 16px;
+      margin: $p * 12px;
+    }
+
+    .private-note {
+      margin-top: $p * 12px;
+    }
+    
+    .post-button {
+      margin: 0 $p * 24px 0 $p * 12px;
+    }
+
+    .post-button button {
+      padding: 0 $p * 36px;
+    }
+
+    /* NOTES PREVIEWS */
+
+    .notes-previews {
+      overflow: hidden;
+    }
+
+    .indiv-note {
+      margin: $p * 24px;
+    }
+
+    .note-date h6 {
+      margin: $p * 4px 0;
+    }
+
+    .note-date img {
+      height: $p * 16px;
+      width: $p * 16px;
+    }
+
+    /* FOOTER */
+
+    .right-footer {
+      line-height: $p * 72px;
+    }
+
+    .right-hide-holder {
+      margin: $p * 18px $p * 24px;
+    }
+
+    .right-hide-holder img {
+      margin-bottom: $p * 8px;
+      margin-left: $p * 4px;
+      height: $p * 16px;
+      width: $p * 16px;
+      transform: scaleX(-1);
+    }
+
+    .right-hide-holder .hide-right {
+      display: block;
+    }
+
+    .right-hide-holder .open-right {
+      display: none;
+    }
+  }
+}
+
+/* ACTIVITY HEADER */
+
+.activity-header {
+  background-color: #f7f9fa;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.icon-bookmark {
+  float: left;
+  padding: 0;
+}
+
+.icon-bookmark img {
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .activity-header h1 {
+    display: none;
+  }
+}
+
+.activity-header h1 {
+  vertical-align: middle;
+  margin: 0;
+}
+
+/* STAGE DROPDOWN */ 
+
+#stage {
+  border: 1px solid #c3cbd3;
+  color: $slate-grey;
+} 
+
+#stage:focus {
+  outline: none;
+}
+
+/* SELECTORS (NOTES - TASKS - LOG) */
+
+.select-item {
+  display: inline-block;
+}
+
+.number {
+  background-color: $white;
+  border-radius: 50px;
+  vertical-align: middle;
+  margin: 0px auto;
+}
+
+/* POST BOX & INPUT */
+
+.input-field {
+  background-color: $white;
+  border-radius: 4px;
+  border: solid 1px #c3cbd3;
+}
+
+.post-info {
+  display: inline-block;
+  text-align: right;
+}
+
+.lock-icon {
+  display: inline-block;
+}
+
+.private-note {
+  display: inline-block;
+  text-align: right;
+}
+
+.post-button {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.private-note h5 {
+  margin: 0;
+}
+
+.post-button button {
+  margin: 0;
+}
+
+/* NOTES PREVIEWS */
+
+.notes-previews {
+  text-align: left;
+}
+
+.note-date h6 {
+  display: inline-block;
+}
+
+.note-date img {
+  display: inline-block;
+  float: right;
+}
+
+.note-content p {
+  margin: 0;
+}
+
+/* FOOTER */
+
+.right-footer {
+  background-color: #dde1e3;
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+}
+
+.right-hide-holder {
+  display: inline-block;
+  float: left;
+  padding: 0;
+  vertical-align: middle;
+}
+
+.right-hide-holder h5 {
+  margin: 0;
+  line-height: 1.4rem;
+  display: block;
+}
+
+.right-footer img {
+  vertical-align: middle;
+  line-height: 0;
+}
+
+.right-hide-holder img {
+  display: block;
+}

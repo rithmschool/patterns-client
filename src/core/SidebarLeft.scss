@@ -7,8 +7,66 @@
   background-color: $dark-grey;
   z-index: 5;
   box-shadow: 0 3px 8px 0 rgba(0, 0, 0, 0.04), 0 1px 2px 0 rgba(0, 0, 0, 0.04);
-  postion: inline-block;
+  position: inline-block;
   float: left;
+}
+
+/* FONTS */
+
+.sidebar {
+  text-align: left;
+}
+
+/* Activities */
+.sidebar h1 { 
+  font-size: 2.4rem;
+  color: $cool-grey;
+  font-weight: 400;
+}
+
+/* User name */
+.sidebar h2 { 
+  font-size: 2.0rem;
+  color: $white;
+  font-weight: 400;
+}
+
+/* Individual activity (my funnel) */
+.sidebar h3 { 
+  font-size: 1.8rem;
+  color: $cool-grey;
+  font-weight: 400;
+}
+
+/* Funnel */
+.sidebar h4 { 
+  font-size: 1.8rem;
+  color: $cool-grey;
+  font-weight: 300;
+}
+
+/* Add new activity button */
+.sidebar h5 {
+  font-size: 1.4rem;
+  color: $white;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+/* Count */
+.sidebar h6 {
+  font-size: 1.2rem;
+  color: $cool-grey;
+  line-height: 2 * 1.2rem;
+  font-weight: 500;
+}
+
+/* Hide button */
+.sidebar p {
+  font-size: 1.2rem;
+  color: $cool-grey;
+  font-weight: 400;
+  text-transform: uppercase;
 }
 
 /* SIDEBAR WIDTH BREAKPOINTS FOR MOBILE SCREENS & SMALLER DESKTOP */
@@ -23,24 +81,39 @@
   .footer .logo-holder {
     display:none;
   }
+
   .sidebar,
   .profile-header,
   .footer {
-    width: 72px;  
+    width: 72px;
   }
+
+  .footer {
+    height: 72px;
+    padding: 12px 24px;
+  }
+
   .profile-picture{
-    width:48px;
-    height:48px;
-    margin:12px;
+    width: 48px;
+    height: 48px;
+    margin: 12px;
   }
+
   .footer .hide-holder p{
     font-size: 0.8rem;
   }
 
   .footer .hide-holder img{
-    margin-left: 16px;
-    margin-right:16px;
-    float:none;
+    margin: 4px auto;
+    transform: scaleX(-1);
+  }
+
+  .hide-holder .hide {
+    display: none;
+  }
+
+  .hide-holder .open {
+    display: block;
   }
 }
 
@@ -129,6 +202,14 @@
     .logo-holder img {
       height: $p * 36px;
       width: $p * 36px;
+    }
+
+    .hide-holder .open {
+      display: none;
+    }
+
+    .hide-holder .hide {
+      display: block;
     }
   }
 }
