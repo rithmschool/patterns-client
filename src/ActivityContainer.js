@@ -9,7 +9,7 @@ import Stage from './Stage';
 class ActivityContainer extends Component {
   constructor(props){
     super(props);
-    this.getAllstages = this.getAllStages.bind(this);
+    this.getAllStages = this.getAllStages.bind(this);
 
     this.state = {
       stages: []
@@ -18,17 +18,19 @@ class ActivityContainer extends Component {
 
   getAllStages(){
 
-   //  NEED TO FIGURE THIS OUT 
+  //  //  NEED TO FIGURE THIS OUT 
 
-    var user_id = '5952c7827c16df049ab3842d';
-    var activity_id='5952cc31e02b027a3285d798';
-    axios.get(`${BASE_URL}/users/${user_id}/activities/${activity_id}`)
-    .then(res => {
-      this.setState({
-        stages: res.data.stages
-      })
-    })
-    .catch(error => console.log(error));
+  // Will update this when server route exists
+
+  //   var user_id = '5952c7827c16df049ab3842d';
+  //   var activity_id='5952cc31e02b027a3285d798';
+  //   axios.get(`${BASE_URL}/users/${user_id}/activities/${activity_id}`)
+  //   .then(res => {
+  //     this.setState({
+  //       stages: res.data.stages
+  //     })
+  //   })
+  //   .catch(error => console.log(error));
   }
 
   componentDidMount(){
@@ -51,7 +53,7 @@ class ActivityContainer extends Component {
     return(
       <div className='ActivityContainerHolder'>
         <BrowseCompanies />
-          {stages}
+        {stages}
       </div>
     )
   }

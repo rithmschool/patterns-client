@@ -10,6 +10,6 @@ const InnerContent = () => (
     <Route exact path='/activities/browse' component ={BrowseContainer} />
     <Route exact path='/activities' component ={ActivityContainer} />
   </Switch>
-  )
+)
 
 export default InnerContent;

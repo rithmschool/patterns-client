@@ -15,14 +15,16 @@ class BrowseContainer extends Component {
   getAllCompanies() {
     //  NEED TO FIGURE THIS OUT 
 
-    var companyId = '594d56183475e0b70b26acaf';
+    // Will update this when server route exists
 
-    axios.get(`${BASE_URL}/types/${companyId}/assets`).then(res => {
-      this.setState({
-        companies: res.data.assets
-      });
-    })
-    .catch(error => console.log(error));
+    // var companyId = '594d56183475e0b70b26acaf';
+
+    // axios.get(`${BASE_URL}/types/${companyId}/assets`).then(res => {
+    //   this.setState({
+    //     companies: res.data.assets
+    //   });
+    // })
+    // .catch(error => console.log(error));
   }
 
   componentDidMount(){
