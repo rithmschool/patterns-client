@@ -64,7 +64,7 @@ form {
     padding-top: 36px;
     text-align: right;
 
-    button {
+    .cancel, .save {
       color: $white;
       text-transform: uppercase;
       font-size: 12px;

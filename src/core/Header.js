@@ -1,18 +1,32 @@
 import React from 'react';
 import './Header.css';
+import { connect } from 'react-redux';
 
-const Header =  (props) => (
+const Header =  (props) => {
+  return(
     <div className='header'>
+      <div>
         <div className='headerTop row'>
           <p className='headerTitle'> Job Search (June 2017) </p>
-          <div className='statusToggle'>Open</div>
-            <input type='submit' className='addActivityButton' value='ADD' />
-            <input type='submit' className='editActivityButton' value='EDIT' />  
+          <div className='statusToggle'>
+              OPEN  
+          </div>
+            <input type='submit' className='editActivityButton' value='EDIT' /> 
+            <input type='submit' className='addActivityButton' value='ADD' /> 
         </div>
-        <p className='potentialEmployer'>Potential employer</p>
-        <p className='lastUpdated'>Last Updated</p>
-        <p className='latestUpdatedText'>7/15/2017</p> 
+        <p className='potentialEmployer'> Potential employer: {props.asset ? props.asset.name : ''} </p>
+        <p className='lastUpdated'> LAST UPDATED </p>
+        <p className='latestUpdatedText'> {props.asset ? props.asset.updatedAt : ''} </p> 
+      </div>
     </div>
   )
+}
 
-export default Header;
+function mapStateForAddCompany(state){
+  return {
+    asset: state.currentAsset
+  }
+}
+
+
+export default connect (mapStateForAddCompany, null)(Header);

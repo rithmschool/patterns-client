@@ -6,29 +6,39 @@ import Company from './core/Company';
 class BrowseContainer extends Component {
   constructor(props){
     super(props)
+    this.getCompanyId = this.getCompanyId.bind(this);
     this.getAllCompanies = this.getAllCompanies.bind(this);
     this.state = {
-      companies : []
+      companies : [],
+      companyId: ''
     }
   }
 
-  getAllCompanies() {
-    // NEED TO FIGURE THIS OUT 
-
-    // Will update this when server route exists
-
-    // var companyId = '594d56183475e0b70b26acaf';
-
-    // axios.get(`${BASE_URL}/types/${companyId}/assets`).then(res => {
-    //   this.setState({
-    //     companies: res.data.assets
-    //   });
-    // })
-    // .catch(error => console.log(error));
+  getCompanyId() {
+    const companyId = null;
+    axios.get(`${BASE_URL}/types`)
+    .then(res => {
+      this.setState({
+        companyId: res.data.find(obj => obj.name ==='Company')._id
+      });
+    })
+    .then((companyId) => this.getAllCompanies(this.state.companyId))
+    .catch(error => console.log(error));
   }
 
+  getAllCompanies(companyId){
+    axios.get(`${BASE_URL}/types/${companyId}/assets`)
+    .then(res => {
+      this.setState({
+        companies: res.data.assets
+      });
+    })
+    .catch(error => console.log(error));
+  }
+
+
   componentDidMount(){
-    return this.getAllCompanies()
+    this.getCompanyId();
   }
 
   render() {
