@@ -66,6 +66,7 @@ class ModalCompany extends Component {
         showModal: false
       })
     })
+    .then(() => this.removeModal())
     .catch(err => console.log(err))
   }
 

@@ -5,7 +5,7 @@ import { Route } from 'react-router-dom';
 import './ActivityContainer.css'
 import BrowseCompanies from './BrowseCompanies';
 import Stage from './Stage';
-var jwtDecode = require('jwt-decode');
+import jwtDecode from 'jwt-decode';
 
 class ActivityContainer extends Component {
   constructor(props){
