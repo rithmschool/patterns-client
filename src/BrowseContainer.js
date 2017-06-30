@@ -1,6 +1,4 @@
-import axios from 'axios';
 import React, { Component } from 'react';
-import { BASE_URL } from './actions/auth';
 import Company from './core/Company';
 
 class BrowseContainer extends Component {
