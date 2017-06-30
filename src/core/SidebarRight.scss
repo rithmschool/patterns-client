@@ -9,6 +9,7 @@
   box-shadow: 0 3px 8px 0 rgba(0, 0, 0, 0.04), 0 1px 2px 0 rgba(0, 0, 0, 0.04);
   position: inline-block;
   float: right;
+  overflow: hidden;
 }
 
 /* FONTS */
@@ -179,6 +180,10 @@
     } 
 
     /* SELECTORS (NOTES - TASKS - LOG) */
+
+    .selectors {
+      padding: $p * 0px $p * 20px;
+    }
 
     .select-item {
       width: $p * 72px;

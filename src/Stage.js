@@ -1,8 +1,6 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './Stage.css';
 import StageCompany from './StageCompany';
-import Company from './core/Company';
-import axios from 'axios';
 
 const Stage = (props) => {
   return(

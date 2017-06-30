@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import down from '../images/icon-chevron-right-gray.svg';
 import './Company.css'
 

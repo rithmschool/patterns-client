@@ -25,7 +25,7 @@ class Login extends Component {
             </div>   
             <div className="row">
               <div className="sign-in-box col-xs-8 col-xs-offset-2">
-                <h1 id="sign-in">Sign In</h1>
+                <h1 id="sign-in">Sign In</h1><br/>
                 <button className="google-sign-in" onClick={this.handleClick}/>
                 <p className="aside">Use your Tradecraft / Rithm School email address</p>
                </div>
