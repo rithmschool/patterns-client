@@ -51,7 +51,7 @@ const Company =  (props) => {
            <img className = 'companyRightArrow'src={down} alt="Right Arrow"/>
         </div>
       </div>
-          )
+    )
 };
 
 export default Company;
