@@ -1,3 +1,5 @@
+@import "./index.scss";
+
 .browseComps{
   margin: 0px;
   background-color:white;
@@ -31,6 +33,6 @@
   width: 36px;
   height: 36px;
   border-radius: 4px;
-  background-color: peachpuff;
+  background-color: $pale-grey;
   margin: 24px 12px 12px 12px ;
 }

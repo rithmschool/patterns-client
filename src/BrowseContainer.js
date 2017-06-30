@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import Company from './core/Company';
+import axios from 'axios';
+import { BASE_URL } from './actions/auth';
 
 class BrowseContainer extends Component {
   constructor(props){
@@ -52,9 +54,9 @@ class BrowseContainer extends Component {
     )} 
      return( 
       <div className="inner-content">
-        <div className='number-of-companies'>
+        {/* <div className='number-of-companies'>
           {this.state.companies.length} Potential Employers
-        </div>
+        </div> */}
         <div className='company-holder'>   
           {companies}
         </div>
