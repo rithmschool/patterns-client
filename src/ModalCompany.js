@@ -91,4 +91,4 @@ function mapStateForAddCompany(state){
   }
 }
 
-export default connect (mapStateForAddCompany, { setCurrentAsset})(ModalCompany);
+export default connect (mapStateForAddCompany, { setCurrentAsset })(ModalCompany);

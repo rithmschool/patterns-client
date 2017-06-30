@@ -10,7 +10,7 @@ var jwtDecode = require('jwt-decode');
 class ActivityContainer extends Component {
   constructor(props){
     super(props);
-    this.getAllStages = this.getAllStages.bind(this)
+    this.getAllStages = this.getAllStages.bind(this);
 
     this.state = {
       stages: []
@@ -20,12 +20,12 @@ class ActivityContainer extends Component {
   getAllStages(){
     const userId = jwtDecode(localStorage.getItem('jwtToken')).mongoId;
     axios.get(`${BASE_URL}/users/${userId}/activities`)
-    .then(res =>
+    .then(res => {
       this.setState({
         stages: res.data[0].stages
-      })
-    ) 
-    .catch(error=> console.log(error))
+      });
+    }) 
+    .catch(error=> console.log(error));
   }
 
   componentDidMount(){

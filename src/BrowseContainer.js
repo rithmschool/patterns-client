@@ -20,7 +20,7 @@ class BrowseContainer extends Component {
     .then(res => {
       this.setState({
         companyId: res.data.find(obj => obj.name ==='Company')._id
-      })
+      });
     })
     .then((companyId) => this.getAllCompanies(this.state.companyId))
     .catch(error => console.log(error));
@@ -31,14 +31,14 @@ class BrowseContainer extends Component {
     .then(res => {
       this.setState({
         companies: res.data.assets
-      })
+      });
     })
     .catch(error => console.log(error));
   }
 
 
   componentDidMount(){
-    return this.getCompanyId();
+    this.getCompanyId();
   }
 
   render() {
