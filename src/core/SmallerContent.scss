@@ -1,24 +1,24 @@
 @import "../index.scss";
 
 @media (min-width: .2 * 1024px) {
-  .content-holder  {
+  .smaller-content-holder  {
     width: calc(100% - (.4 * 368px));
   }
 }
 
 @media (min-width: .75 * 1024px) {
-  .content-holder  {
+  .smaller-content-holder  {
     width: calc(100% - (1.5 * 352px));
   }
 }
 
 @media (min-width: 1 * 1024px) {
-  .content-holder  {
+  .smaller-content-holder  {
     width: calc(100% - (2 * 352px));
   }
 }
 
-.content-holder {
+.smaller-content-holder {
   background-color: $content-background;
   display: inline-block;
   min-height:100vh;

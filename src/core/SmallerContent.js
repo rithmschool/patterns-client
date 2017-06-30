@@ -5,7 +5,7 @@ import TopNav from './TopNav';
 import Header from './Header';
 
 const SmallerContent = () => (
-  <div className='content-holder'> 
+  <div className='smaller-content-holder'> 
     <TopNav />
     <Header />
     <InnerContent />

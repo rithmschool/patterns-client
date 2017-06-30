@@ -18,6 +18,7 @@
     }
 
     select {
+      width: $p * 200px;
       height: $p * 24px;
       margin-top: $p * 24px;
     }
@@ -40,7 +41,6 @@ h1 {
 }
 
 select {
-  width: 242px;
   border-radius: 4px;
   background-color: $white;
   border: solid 1px #c3cbd3;
