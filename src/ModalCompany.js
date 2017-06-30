@@ -5,7 +5,7 @@ import close from './images/icon-x-gray.svg';
 import {setCurrentAsset} from './actions/asset';
 import { connect } from 'react-redux';
 
-class AddCompany extends Component {
+class ModalCompany extends Component {
   constructor(props){
     super(props)
     this.state = {
@@ -92,4 +92,4 @@ function mapStateForAddCompany(state){
   }
 }
 
-export default connect (mapStateForAddCompany, { setCurrentAsset})(AddCompany);
+export default connect (mapStateForAddCompany, { setCurrentAsset})(ModalCompany);
