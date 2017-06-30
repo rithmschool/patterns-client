@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './AddCompany.css';
+// import './AddCompany.css';
 import axios from 'axios';
 import close from './images/icon-x-gray.svg';
 import {setCurrentAsset} from './actions/asset';
@@ -16,7 +16,7 @@ class AddCompany extends Component {
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.addCompaniesFunc = this.addCompaniesFunc.bind(this);
+    // this.addCompaniesFunc = this.addCompaniesFunc.bind(this);
     this.removeModal = this.removeModal.bind(this);
   }
 
@@ -28,7 +28,7 @@ class AddCompany extends Component {
 
   handleSubmit(e){
     e.preventDefault();
-    this.addCompaniesFunc()
+    this.addCompaniesFunc();
   }
 
   // addCompaniesFunc(){
@@ -91,6 +91,5 @@ function mapStateForAddCompany(state){
     asset: state.currentAsset
   }
 }
-
 
 export default connect (mapStateForAddCompany, { setCurrentAsset})(AddCompany);

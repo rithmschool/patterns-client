@@ -8,7 +8,6 @@ import { SET_CURRENT_ASSET } from '../actions/asset';
 const DEFAULT_STATE = {
   currentUserToken: '',
   loginError: '',
-  lastUpdated: ''
 }
 
 export default (state=DEFAULT_STATE, action={type:null}) => {
