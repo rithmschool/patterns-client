@@ -16,7 +16,7 @@
       width: $p * 40px;
       height: $p * 20px;
       font-size: $p * 10px;
-      margin-top: $p * 30px;
+      margin-top: $p * 28px;
       padding: $p * 4px;
     }
 
@@ -91,18 +91,11 @@
 input {
   border-style: none;
   border-radius: 2px;
+  float: right;
 }
 
-.editB, .addB, .headerRect {
+.headerRect {
   display:inline-block;
-}
-
-.editB {
-  float:right;
-}
-
-.addB {
-  float:right;
 }
 
 .potentialEmployer {
@@ -122,4 +115,3 @@ input {
   text-align: left;
   color: #25272a;
 }
-

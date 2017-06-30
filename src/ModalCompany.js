@@ -3,6 +3,8 @@ import axios from 'axios';
 import close from './images/icon-x-gray.svg';
 import {setCurrentAsset} from './actions/asset';
 import { connect } from 'react-redux';
+import './ModalCompany.css'
+import { BASE_URL } from './actions/auth'
 
 class ModalCompany extends Component {
   constructor(props){
@@ -11,12 +13,14 @@ class ModalCompany extends Component {
       name : '',
       url: '',
       logo: '',
-      showModal: true
+      showModal: true,
+      companyId: ''
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    // this.addCompaniesFunc = this.addCompaniesFunc.bind(this);
+    this.addCompanies = this.addCompanies.bind(this);
     this.removeModal = this.removeModal.bind(this);
+    this.getCompanyId = this.getCompanyId.bind(this);
   }
 
   handleChange(e){
@@ -27,25 +31,43 @@ class ModalCompany extends Component {
 
   handleSubmit(e){
     e.preventDefault();
-    this.addCompaniesFunc();
+    this.getCompanyId();
   }
 
-  // addCompaniesFunc(){
-  //   // This will be updated before we deploy to production
 
-  //   let companyInfo = this.state;
-  //   return axios.post("http://localhost:3001/types/594d56183475e0b70b26acaf/assets", companyInfo)
-  //   .then(res => {
-  //     this.props.setCurrentAsset(res.data)
-  //     this.setState({
-  //       name : '',
-  //       url: '',
-  //       logo: '',
-  //       showModal: false
-  //     })
-  //   })
-  //   .catch(err => console.log(err))
-  // }
+  getCompanyId() {
+    // This should be refactored to use Redux by saving Activity (and companyId) in the store.
+
+    const companyId = null;
+    axios.get(`${BASE_URL}/types`)
+    .then(res => {
+      this.setState({
+        companyId: res.data.find(obj => obj.name ==='Company')._id
+      });
+    })
+    .then((companyId) => this.addCompanies(this.state.companyId))
+    .catch(error => console.log(error));
+  }
+
+  addCompanies(companyId){
+
+    let companyInfo = {
+      name : this.state.name,
+      url: this.state.url,
+      logo: this.state.logo
+    }
+    return axios.post(`${BASE_URL}/types/${this.state.companyId}/assets`, companyInfo)
+    .then(res => {
+      this.props.setCurrentAsset(res.data)
+      this.setState({
+        name : '',
+        url: '',
+        logo: '',
+        showModal: false
+      })
+    })
+    .catch(err => console.log(err))
+  }
 
   removeModal(){
     this.setState({
