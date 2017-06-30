@@ -13,7 +13,7 @@ class BrowseContainer extends Component {
   }
 
   getAllCompanies() {
-    //  NEED TO FIGURE THIS OUT 
+    // NEED TO FIGURE THIS OUT 
 
     // Will update this when server route exists
 

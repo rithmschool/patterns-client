@@ -51,7 +51,7 @@ class ActivityContainer extends Component {
         )
       )}
     return(
-      <div className='ActivityContainerHolder'>
+      <div className='ActivityContainerHolder row'>
         <BrowseCompanies />
         {stages}
       </div>

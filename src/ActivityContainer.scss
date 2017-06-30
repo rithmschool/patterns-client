@@ -1,5 +1,9 @@
-@import "../index.scss";
+@import "./index.scss";
 
 .activityContentHolder{
   background-color: $content-background;
+}
+
+.row {
+  margin: 0;
 }

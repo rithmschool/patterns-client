@@ -1,15 +1,15 @@
 import React from 'react';
-import './Content.css';
+import './SmallerContent.css';
 import InnerContent from './InnerContent';
 import TopNav from './TopNav';
 import Header from './Header';
 
-const Content = () => (
-  <div className='content-holder'> 
+const SmallerContent = () => (
+  <div className='smaller-content-holder'> 
     <TopNav />
     <Header />
     <InnerContent />
   </div>
 );
 
-export default Content;
+export default SmallerContent;
