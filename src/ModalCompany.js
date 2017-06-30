@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import './AddCompany.css';
 import axios from 'axios';
 import close from './images/icon-x-gray.svg';
 import {setCurrentAsset} from './actions/asset';

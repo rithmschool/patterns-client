@@ -5,7 +5,6 @@ import ModalCompany from './ModalCompany';
 import SidebarRight from './core/SidebarRight';
 import "./Main.css";
 
-
 const Main =() => (
   <div className="main"> 
     <ModalCompany name="Edit" logo="Replace" />  
