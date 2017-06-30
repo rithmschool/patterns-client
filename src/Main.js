@@ -8,7 +8,7 @@ import "./Main.css";
 
 const Main =() => (
   <div className="main"> 
-    <ModalCompany />  
+    <ModalCompany name="Edit" logo="Replace" />  
     <SidebarLeft /> 
     <Content />
     { /* <SidebarRight /> */}
