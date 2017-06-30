@@ -45,7 +45,7 @@ class ModalCompany extends Component {
         companyId: res.data.find(obj => obj.name ==='Company')._id
       });
     })
-    .then((companyId) => this.addCompanies(this.state.companyId))
+    .then( companyId => this.addCompanies(this.state.companyId))
     .catch(error => console.log(error));
   }
 
