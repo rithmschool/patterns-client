@@ -7,7 +7,7 @@ class Asset extends Component {
 
   render() {
     return( 
-      <div className="asset"> 
+      <div className="asset row"> 
         <SidebarLeft /> 
         <SmallerContent />
         <SidebarRight />
