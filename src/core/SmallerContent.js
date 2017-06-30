@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './SmallerContent.css';
 import InnerContent from './InnerContent';
 import TopNav from './TopNav';

@@ -3,7 +3,6 @@ import SidebarLeft from './core/SidebarLeft';
 import SmallerContent from './core/SmallerContent';
 import SidebarRight from './core/SidebarRight';
 import "./Asset.css";
-import { Route } from 'react-router-dom';
 
 class Asset extends Component {
 

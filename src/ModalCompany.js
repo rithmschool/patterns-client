@@ -16,7 +16,7 @@ class ModalCompany extends Component {
           col-sm-6 col-sm-offset-3 
           col-md-4 col-md-offset-4`}>
             <div className="heading">
-              {this.props.name} Company {/* Add or Edit */}
+              {this.props.name} Company
               <img src={close} alt="Close Modal"/>
             </div>
             <form>
@@ -26,7 +26,7 @@ class ModalCompany extends Component {
               <label htmlFor="companyUrl">Company Url</label><br/>
               <input className="text-input" type="text" name="companyUrl" /><br/>
 
-              <label htmlFor="companyLogo">{this.props.logo} Logo</label><br/> {/* Company or Replace */}
+              <label htmlFor="companyLogo">{this.props.logo} Logo</label><br/> 
               <input type="file" name="companyLogo" /><br/>
 
               <div className="button-wrap">

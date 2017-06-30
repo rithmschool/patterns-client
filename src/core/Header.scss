@@ -7,41 +7,29 @@
     }
 
     .headerTitle {
-      font-size: $p * 26px;
+      font-size: $p * 20px;
       line-height: $p * 1.38;
-      margin: $p * 24px $p * 24px $p * 12px $p * 24px;
+      margin: $p * 24px;
     }
 
     .statusToggle {
-      width: $p * 50px;
-      height: $p * 24px;
-      font-size: $p * 12px;
-      margin-top: $p * 32px;
-      padding: $p * 5px $p * 10px $p * 5px $p * 10px;
+      width: $p * 40px;
+      height: $p * 20px;
+      font-size: $p * 10px;
+      margin-top: $p * 30px;
+      padding: $p * 4px;
+    }
+
+    .headerTop input {
+      font-size: $p * 14px;
+      width: $p * 96px;
+      height: $p * 36px;
+      line-height: $p * 1.38;
+      margin-top: $p * 24px;
+      margin-right: 12px;
     }
 
     .editActivityButton {
-      font-size: $p * 14px;
-      margin-right: $p * 12px;
-      margin-top: $p * 24px;
-      width: $p * 96px;
-      height: $p * 36px;
-      line-height: $p * 1.38;
-    }
-
-    .addActivityButton {
-      font-size: $p * 14px;
-      width: $p * 96px;
-      height: $p * 36px;
-      line-height: $p * 1.38;
-      margin-top: $p * 24px;
-    }
-
-    .editB {
-      margin-right: $p * 24px;
-    }
-
-    .addB {
       margin-right: $p * 12px;
     }
 
