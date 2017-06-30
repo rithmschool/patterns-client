@@ -12,20 +12,19 @@ class BrowseContainer extends Component {
     }
   }
 
-  getAllCompanies() {
-    //  NEED TO FIGURE THIS OUT 
+  // getAllCompanies() {
+  //   //  NEED TO FIGURE THIS OUT 
+  //   // Will update this when server route exists
 
-    // Will update this when server route exists
+  //   var companyId = '594d56183475e0b70b26acaf';
 
-    // var companyId = '594d56183475e0b70b26acaf';
-
-    // axios.get(`${BASE_URL}/types/${companyId}/assets`).then(res => {
-    //   this.setState({
-    //     companies: res.data.assets
-    //   });
-    // })
-    // .catch(error => console.log(error));
-  }
+  //   axios.get(`${BASE_URL}/types/${companyId}/assets`).then(res => {
+  //     this.setState({
+  //       companies: res.data.assets
+  //     });
+  //   })
+  //   .catch(error => console.log(error));
+  // }
 
   componentDidMount(){
     return this.getAllCompanies()

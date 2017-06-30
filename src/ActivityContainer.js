@@ -16,11 +16,11 @@ class ActivityContainer extends Component {
     }
   }
 
-  getAllStages(){
+  // getAllStages(){
 
-  //  //  NEED TO FIGURE THIS OUT 
+  // // NEED TO FIGURE THIS OUT 
 
-  // Will update this when server route exists
+  // // Will update this when server route
 
   //   var user_id = '5952c7827c16df049ab3842d';
   //   var activity_id='5952cc31e02b027a3285d798';
@@ -31,7 +31,7 @@ class ActivityContainer extends Component {
   //     })
   //   })
   //   .catch(error => console.log(error));
-  }
+  // }
 
   componentDidMount(){
     this.getAllStages();
@@ -41,9 +41,8 @@ class ActivityContainer extends Component {
     var stages = null;
     if(this.state.stages.length > 0){
       stages = this.state.stages.map((stage, i) => (
-        <div className='stage col-lg-3'>
+        <div key={i} className='stage col-lg-3'>
           <Stage 
-            key={i}
             name={stage.name}
             companies={stage.assets}
           />

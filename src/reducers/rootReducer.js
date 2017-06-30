@@ -3,9 +3,12 @@ import {
   SET_LOGIN_ERROR
 } from '../actions/auth';
 
+import { SET_CURRENT_ASSET } from '../actions/asset';
+
 const DEFAULT_STATE = {
   currentUserToken: '',
-  loginError: ''
+  loginError: '',
+  lastUpdated: ''
 }
 
 export default (state=DEFAULT_STATE, action={type:null}) => {
@@ -20,6 +23,11 @@ export default (state=DEFAULT_STATE, action={type:null}) => {
       return {
         ...state,
         loginError: action.errObj
+      };
+    case SET_CURRENT_ASSET:
+      return {
+        ...state,
+        currentAsset: action.currentAssetObj
       };
     default:
       return state;
