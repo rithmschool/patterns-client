@@ -35,15 +35,20 @@ class ActivityContainer extends Component {
   render(){
     var stages = null;
     if(this.state.stages.length > 0){
-      stages = this.state.stages.map((stage, i) => (
-        <div key={i} className='stage col-lg-3'>
-          <Stage 
-            name={stage.name}
-            companies={stage.assets}
-          />
-        </div>  
-        )
-      )}
+      stages = this.state.stages.map((stage, i) => {
+        if (stage.assets.length > 0){
+          return (
+            <div key={i} className='stage col-lg-3'>
+              <Stage
+                name={stage.name}
+                companies={stage.assets}
+              />
+            </div>
+          );
+        }
+        return null;
+      }
+    )}
     return(
       <div className='ActivityContainerHolder row'>
         <BrowseCompanies />

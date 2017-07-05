@@ -2,7 +2,7 @@ import React from 'react';
 import './Header.css';
 import { connect } from 'react-redux';
 
-const Header =  (props) => {
+const Header = (props) => {
   return(
     <div className='header'>
       <div>
@@ -12,7 +12,7 @@ const Header =  (props) => {
               OPEN  
           </div>
             <input type='submit' className='editActivityButton' value='EDIT' /> 
-            <input type='submit' className='addActivityButton' value='ADD' /> 
+            <input type='submit' className='addActivityButton' value='ADD' onClick={props.toggleModal} />
         </div>
         <p className='potentialEmployer'> Potential employer: {props.asset ? props.asset.name : ''} </p>
         <p className='lastUpdated'> LAST UPDATED </p>
