@@ -5,8 +5,8 @@ import ActivityContainer from '../ActivityContainer';
 
 const InnerContent = () => (
   <Switch>
-    <Route path='/activities/browse' component ={BrowseContainer} />
-    <Route exact path='/activities' component ={ActivityContainer} />
+    <Route path='/activities/browse' component={BrowseContainer} />
+    <Route exact path='/activities' component={ActivityContainer} />
   </Switch>
 )
 
