@@ -14,7 +14,7 @@ const ActivitySideBox = (props) => {
     <div className="activity">
       <div className="title">
         <div className="active-toggle"></div>
-        <div className="activity-name"><h3>{props.data.name} (Month 2017)</h3></div>
+        <div className="activity-name"><h3>{props.data.name}</h3></div>
         <div className="arrow"><img src={down} alt="Down Arrow" /></div>
       </div>
       {menuItems}

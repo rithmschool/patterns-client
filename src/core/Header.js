@@ -1,8 +1,9 @@
 import React from 'react';
-import './Header.css';
 import { connect } from 'react-redux';
+import './Header.css';
+import { toggleModal } from '../actions/auth';
 
-const Header = (props) => {
+const Header = props => {
   return(
     <div className='header'>
       <div>
@@ -28,5 +29,4 @@ function mapStateForAddCompany(state){
   }
 }
 
-
-export default connect (mapStateForAddCompany, null)(Header);
+export default connect (mapStateForAddCompany, { toggleModal })(Header);
