@@ -4,6 +4,7 @@ import {
   SET_USER,
   SET_ACTIVITIES,
   TOGGLE_MODAL,
+  setAuthorizationToken,
 } from '../actions/auth';
 
 const DEFAULT_STATE = {
@@ -43,6 +44,9 @@ export default (state=DEFAULT_STATE, action={type:null}) => {
         ...state,
         modal: toggle
       };
+    case 'persist/REHYDRATE':
+      setAuthorizationToken(action.payload.currentUserToken);
+      return Object.assign({}, state, action.payload);
     default:
       return state;
   }
