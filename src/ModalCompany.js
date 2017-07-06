@@ -3,8 +3,7 @@ import { connect } from 'react-redux';
 import axios from 'axios';
 import close from './images/icon-x-gray.svg';
 import './ModalCompany.css'
-import { BASE_URL } from './actions/auth'
-import { toggleModal } from './actions/auth';
+import { BASE_URL, toggleModal } from './actions/auth'
 
 class ModalCompany extends Component {
   constructor(props) {
