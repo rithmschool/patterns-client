@@ -5,6 +5,7 @@ export const SET_TOKEN = 'SET_TOKEN';
 export const SET_LOGIN_ERROR = 'SET_LOGIN_ERROR';
 export const SET_USER = 'SET_USER';
 export const SET_ACTIVITIES = 'SET_ACTIVITIES';
+export const TOGGLE_MODAL = 'TOGGLE_MODAL';
 
 export const BASE_URL = process.env.REACT_APP_SERVER_URL || 'http://localhost:3001';
 
@@ -31,10 +32,9 @@ export function login(code) {
       dispatch(setUser(userProfile));
       const userId = jwtDecode(token).mongoId;
       return axios.get(`${BASE_URL}/users/${userId}/activities`)
-      .then(ares => {
-        dispatch(setActivities(ares.data));
-      })
-      .catch(error => console.log(error));
+    })
+    .then(ares => {
+      dispatch(setActivities(ares.data));
     })
     .catch(err => {
       var errObj = Object.keys(err).length ? err : null;
@@ -82,5 +82,11 @@ export function setActivities(activities) {
   return {
     type: SET_ACTIVITIES,
     activities
+  }
+}
+
+export function toggleModal() {
+  return {
+    type: TOGGLE_MODAL,
   }
 }

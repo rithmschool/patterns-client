@@ -9,7 +9,6 @@ class UserProfile extends Component {
   render() {
     let pictureStyle = {
       backgroundImage: `url(${this.props.user.picture})`,
-      backgroundSize: "cover",
     };
 
     return (
@@ -27,4 +26,4 @@ function mapToUserProfile(state) {
   };
 }
 
-export default connect (mapToUserProfile)(UserProfile);
+export default connect(mapToUserProfile)(UserProfile);

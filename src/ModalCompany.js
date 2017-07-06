@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import axios from 'axios';
 import close from './images/icon-x-gray.svg';
 import './ModalCompany.css'
 import { BASE_URL } from './actions/auth'
+import { toggleModal } from './actions/auth';
 
 class ModalCompany extends Component {
   constructor(props) {
@@ -61,7 +63,6 @@ class ModalCompany extends Component {
           logo: '',
         })
       })
-      // this.props.toggleModal needs to run here
       .then(() => this.props.toggleModal())
       .catch(err => console.log(err))
   }
@@ -85,14 +86,20 @@ class ModalCompany extends Component {
             <img onClick={this.props.toggleModal} src={close} alt="Close Modal" />
           </div>
           <form onSubmit={this.handleSubmit}>
-            <label htmlFor="company-name">Company Name</label><br />
-            <input className="text-input" type="text" name="name" value={this.state.name} onChange={this.handleChange} /><br />
+            <div className="form-group">
+              <label htmlFor="company-name">Company Name</label>
+              <input className="text-input" type="text" name="name" value={this.state.name} onChange={this.handleChange} />
+            </div>
 
-            <label htmlFor="company-url">Company Url</label><br />
-            <input className="text-input" type="text" name="url" value={this.state.url} onChange={this.handleChange} /><br />
+            <div className="form-group">
+              <label htmlFor="company-url">Company Url</label>
+              <input className="text-input" type="text" name="url" value={this.state.url} onChange={this.handleChange} />
+            </div>
 
-            <label htmlFor="company-logo">Company Logo</label><br />
-            <input type="file" name="logo" value={this.state.logo} onChange={this.handleChange} /><br />
+            <div className="form-group">
+              <label htmlFor="company-logo">Company Logo</label>
+              <p><input className="file-input" type="file" name="logo" value={this.state.logo} onChange={this.handleChange} /></p>
+            </div>
 
             <div className="button-wrap">
               <button className="cancel" onClick={this.cancelModal}>Cancel</button>
@@ -105,4 +112,4 @@ class ModalCompany extends Component {
   };
 }
 
-export default ModalCompany;
+export default connect(undefined, { toggleModal })(ModalCompany);
