@@ -5,6 +5,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import { createStore, compose, applyMiddleware } from 'redux';
+import { persistStore, autoRehydrate } from 'redux-persist';
 import 'bootstrap-grid';
 import rootReducer from './reducers/rootReducer';
 import App from './App';
@@ -13,10 +14,13 @@ import './index.css';
 const store = createStore(
   rootReducer,
   compose(
-    applyMiddleware(thunk), 
-    window.devToolsExtension ? window.devToolsExtension() : f => f
+    applyMiddleware(thunk),
+    window.devToolsExtension ? window.devToolsExtension() : f => f,
+    autoRehydrate(),
   )
 )
+
+persistStore(store);
 
 ReactDOM.render(
   <Provider store={store}>
