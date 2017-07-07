@@ -30,13 +30,7 @@ export default (state=DEFAULT_STATE, action={type:null}) => {
         loginError: action.errObj
       };
     case LOG_OUT:
-      return {
-        currentUserToken: '',
-        loginError: '',
-        userProfile: {},
-        activities: [],
-        modal: false,
-      };
+      return {...DEFAULT_STATE};
     case SET_USER:
       return {
         ...state,
