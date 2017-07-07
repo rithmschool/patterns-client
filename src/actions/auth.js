@@ -3,6 +3,7 @@ import jwtDecode from 'jwt-decode';
 
 export const SET_TOKEN = 'SET_TOKEN';
 export const SET_LOGIN_ERROR = 'SET_LOGIN_ERROR';
+export const LOG_OUT = 'LOG_OUT';
 export const SET_USER = 'SET_USER';
 export const SET_ACTIVITIES = 'SET_ACTIVITIES';
 export const TOGGLE_MODAL = 'TOGGLE_MODAL';
@@ -47,7 +48,7 @@ export function logout() {
   return dispatch => {
     localStorage.clear();
     setAuthorizationToken(false);
-    dispatch(setToken({}));
+    dispatch(logoutUser());
   }
 }
 
@@ -68,6 +69,12 @@ export function setLoginError(errObj) {
   return {
     type: SET_LOGIN_ERROR,
     errObj
+  }
+}
+
+export function logoutUser() {
+  return {
+    type: LOG_OUT,
   }
 }
 

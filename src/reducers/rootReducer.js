@@ -1,6 +1,7 @@
 import {
   SET_TOKEN,
   SET_LOGIN_ERROR,
+  LOG_OUT,
   SET_USER,
   SET_ACTIVITIES,
   TOGGLE_MODAL,
@@ -27,6 +28,14 @@ export default (state=DEFAULT_STATE, action={type:null}) => {
       return {
         ...state,
         loginError: action.errObj
+      };
+    case LOG_OUT:
+      return {
+        currentUserToken: '',
+        loginError: '',
+        userProfile: {},
+        activities: [],
+        modal: false,
       };
     case SET_USER:
       return {
