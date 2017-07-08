@@ -27,6 +27,11 @@
   font-weight: 400;
 }
 
+.sidebar h1 a {
+  text-decoration: none;
+  color: $cool-grey;
+}
+
 /* User name */
 .sidebar h2 { 
   font-size: 2.0rem;
@@ -39,6 +44,11 @@
   font-size: 1.8rem;
   color: $cool-grey;
   font-weight: 400;
+}
+
+.sidebar h3 a {
+  text-decoration: none;
+  color: $cool-grey;
 }
 
 /* Funnel */

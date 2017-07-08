@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import registerServiceWorker from './registerServiceWorker';
 import { BrowserRouter as Router } from 'react-router-dom';
@@ -20,13 +20,31 @@ const store = createStore(
   )
 )
 
-persistStore(store);
+class AppProvider extends Component {
+  constructor() {
+    super();
+    this.state = { rehydrated: false };
+  }
+
+  componentWillMount() {
+    persistStore(store, {}, () => {
+      this.setState({ rehydrated: true });
+    });
+  }
+
+  render() {
+    if (!this.state.rehydrated) return null
+    return (
+      <Provider store={store}>
+        <Router>
+          <App />
+        </Router>
+      </Provider>
+    )
+  }
+}
 
 ReactDOM.render(
-  <Provider store={store}>
-    <Router>
-      <App />
-    </Router>
-  </Provider>, 
+  <AppProvider />,
   document.getElementById('root'));
 registerServiceWorker();

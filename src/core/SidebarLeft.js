@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 import './SidebarLeft.css';
 import logo from '../images/logo-dark-gray.svg';
 import hide from '../images/icon-open-collapse-left-gray.svg';
 import ActivitySideBox from './ActivitySideBox';
 import UserProfile from './UserProfile';
-import { connect } from 'react-redux';
 
 class SidebarLeft extends Component {
 
@@ -16,7 +17,7 @@ render() {
     <div className="sidebar">   
       <UserProfile />
       <div className="activity-heading">
-        <h1>Activities</h1>
+        <h1><Link to="/activities">Activities</Link></h1>
       </div>
       <div className="activity-list">
         {allActivities}

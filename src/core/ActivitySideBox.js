@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import down from '../images/icon-chevron-right-gray.svg';
 
 const ActivitySideBox = (props) => {
@@ -14,7 +15,9 @@ const ActivitySideBox = (props) => {
     <div className="activity">
       <div className="title">
         <div className="active-toggle"></div>
-        <div className="activity-name"><h3>{props.data.name}</h3></div>
+        <div className="activity-name">
+          <h3><Link to={`/activities/${props.data._id}`}>{props.data.name}</Link></h3>
+        </div>
         <div className="arrow"><img src={down} alt="Down Arrow" /></div>
       </div>
       {menuItems}
