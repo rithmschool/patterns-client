@@ -7,7 +7,7 @@ class HeaderActivityShow extends Component {
 
   componentWillMount() {
     let foundActivity = this.props.activities.find(val => (
-      val._id = this.props.match.params.activities
+      val._id === this.props.match.params.activityId
     ));
     this.props.setActiveActivity(foundActivity);
   }

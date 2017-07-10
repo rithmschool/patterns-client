@@ -6,7 +6,8 @@ import HeaderActivityShow from './HeaderActivityShow';
 const Header = () => (
   <Switch>
     <Route exact path='/activities' component={HeaderActivityIndex} />
-    <Route exact path='/activities/:activities' component={HeaderActivityShow} />
+    <Route exact path='/activities/browse' component={HeaderActivityIndex} />
+    <Route exact path='/activities/:activityId' component={HeaderActivityShow} />
   </Switch>
 );
 

@@ -1,12 +1,12 @@
 import React from 'react';
-import './StageCompany.css';
+import './StageAsset.css';
 import down from './images/icon-chevron-right-gray.svg';
 
-const StageCompany = (props) => {
+const StageAsset = (props) => {
   const logo = props.logo;
   logo ? <img src={logo} alt={`${props.name}'s logo`}/> : null;
   return(
-    <div className='stageCompany col xs-12 row '>
+    <div className='stageAsset col xs-12 row '>
       <div className='company-logo col-xs-1'>
        {logo}
       </div>
@@ -20,4 +20,4 @@ const StageCompany = (props) => {
     ) 
 };
   
-export default StageCompany;
+export default StageAsset;

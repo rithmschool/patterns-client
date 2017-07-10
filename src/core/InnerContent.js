@@ -8,7 +8,7 @@ const InnerContent = () => (
   <Switch>
     <Route exact path='/activities' component={ActivityDashboard} />
     <Route exact path='/activities/browse' component={BrowseContainer} />
-    <Route exact path='/activities/:activities' component={ActivityContainer} />
+    <Route exact path='/activities/:activityId' component={ActivityContainer} />
   </Switch>
 )
 
