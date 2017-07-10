@@ -3,12 +3,15 @@
 /* MAIN SIDEBAR STYLES */
 
 .sidebar {
-  height: 100vh;
+  min-height: 100vh;
   background-color: $dark-grey;
   z-index: 5;
   box-shadow: 0 3px 8px 0 rgba(0, 0, 0, 0.04), 0 1px 2px 0 rgba(0, 0, 0, 0.04);
   position: inline-block;
   float: left;
+  overflow: hidden;
+  margin-bottom: -50000px;
+  padding-bottom: 50000px;
 }
 
 /* FONTS */
@@ -24,6 +27,11 @@
   font-weight: 400;
 }
 
+.sidebar h1 a {
+  text-decoration: none;
+  color: $cool-grey;
+}
+
 /* User name */
 .sidebar h2 { 
   font-size: 2.0rem;
@@ -36,6 +44,11 @@
   font-size: 1.8rem;
   color: $cool-grey;
   font-weight: 400;
+}
+
+.sidebar h3 a {
+  text-decoration: none;
+  color: $cool-grey;
 }
 
 /* Funnel */
@@ -81,6 +94,13 @@
     display:none;
   }
 
+  .profile-menu {
+    margin-top: 10px;
+    width: 162px;
+    height: 50px;
+    border-radius: 2px;
+  }
+
   .sidebar,
   .profile-header,
   .footer {
@@ -97,6 +117,7 @@
     height: 48px;
     margin: 12px;
     background-size: cover;
+    cursor: pointer;
   }
 
   .footer .hide-holder p{
@@ -126,6 +147,25 @@
       width: $p * 48px;
       height: $p * 48px;
       margin: $p * 12px $p * 10px $p * 12px $p * 24px;
+    }
+    .profile-menu {
+      top: $p * 35px;
+      width: $p * 162px;
+      height: $p * 50px;
+      border-radius: $p * 2px;
+    }
+    .logout-item img {
+      width: $p * 16px;
+      height: $p * 16px;
+      object-fit: contain;
+    }
+    .logout-item {
+      padding-left: $p * 15px;
+      line-height: $p * 5;
+    }
+    .logout-text {
+      padding-left: $p * 7px;
+      bottom: $p * 3px;
     }
     .profile-header {
       height: $p * 72px;
@@ -226,6 +266,35 @@
   display: inline-block;
   float: left;
   background-size: cover;
+  cursor: pointer;
+}
+
+.profile-menu {
+  position: relative;
+  top: 35px;
+  width: 162px;
+  height: 50px;
+  border-radius: 2px;
+  background-color: $white;
+  box-shadow: 0 6px 12px 0 rgba(0, 0, 0, 0.12);
+}
+
+.logout-item {
+  padding-left: 15px;
+  line-height: 5;
+}
+
+.logout-text {
+  position: relative;
+  font-size: 12px;
+  padding-left: 7px;
+  bottom: 3px;
+}
+
+.logout-item img {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
 }
 
 @media (max-width: 768px) {

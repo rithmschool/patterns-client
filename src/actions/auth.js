@@ -3,9 +3,11 @@ import jwtDecode from 'jwt-decode';
 
 export const SET_TOKEN = 'SET_TOKEN';
 export const SET_LOGIN_ERROR = 'SET_LOGIN_ERROR';
+export const LOG_OUT = 'LOG_OUT';
 export const SET_USER = 'SET_USER';
 export const SET_ACTIVITIES = 'SET_ACTIVITIES';
 export const TOGGLE_MODAL = 'TOGGLE_MODAL';
+export const SET_ACTIVE_ACTIVITY = 'SET_ACTIVE_ACTIVITY';
 
 export const BASE_URL = process.env.REACT_APP_SERVER_URL || 'http://localhost:3001';
 
@@ -47,7 +49,7 @@ export function logout() {
   return dispatch => {
     localStorage.clear();
     setAuthorizationToken(false);
-    dispatch(setToken({}));
+    dispatch(logoutUser());
   }
 }
 
@@ -71,6 +73,12 @@ export function setLoginError(errObj) {
   }
 }
 
+export function logoutUser() {
+  return {
+    type: LOG_OUT,
+  }
+}
+
 export function setUser(userObj) {
   return {
     type: SET_USER,
@@ -88,5 +96,12 @@ export function setActivities(activities) {
 export function toggleModal() {
   return {
     type: TOGGLE_MODAL,
+  }
+}
+
+export function setActiveActivity(activity) {
+  return {
+    type: SET_ACTIVE_ACTIVITY,
+    activity
   }
 }

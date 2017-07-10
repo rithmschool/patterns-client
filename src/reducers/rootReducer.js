@@ -1,9 +1,11 @@
 import {
   SET_TOKEN,
   SET_LOGIN_ERROR,
+  LOG_OUT,
   SET_USER,
   SET_ACTIVITIES,
   TOGGLE_MODAL,
+  SET_ACTIVE_ACTIVITY,
   setAuthorizationToken,
 } from '../actions/auth';
 
@@ -12,6 +14,7 @@ const DEFAULT_STATE = {
   loginError: '',
   userProfile: {},
   activities: [],
+  activity: {},
   modal: false,
 }
 
@@ -28,6 +31,8 @@ export default (state=DEFAULT_STATE, action={type:null}) => {
         ...state,
         loginError: action.errObj
       };
+    case LOG_OUT:
+      return {...DEFAULT_STATE};
     case SET_USER:
       return {
         ...state,
@@ -43,6 +48,11 @@ export default (state=DEFAULT_STATE, action={type:null}) => {
       return {
         ...state,
         modal: toggle
+      };
+    case SET_ACTIVE_ACTIVITY:
+      return {
+        ...state,
+        activity: action.activity
       };
     case 'persist/REHYDRATE':
       setAuthorizationToken(action.payload.currentUserToken);
