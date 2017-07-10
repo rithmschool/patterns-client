@@ -1,32 +1,14 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import './Header.css';
-import { toggleModal } from '../actions/auth';
+import { Route, Switch } from 'react-router';
+import HeaderActivityIndex from './HeaderActivityIndex';
+import HeaderActivityShow from './HeaderActivityShow';
 
-const Header = props => {
-  return(
-    <div className='header'>
-      <div>
-        <div className='headerTop row'>
-          <p className='headerTitle'> Job Search (June 2017) </p>
-          <div className='statusToggle'>
-              OPEN  
-          </div>
-            <input type='submit' className='editActivityButton' value='EDIT' /> 
-            <input type='submit' className='addActivityButton' value='ADD' onClick={props.toggleModal} />
-        </div>
-        <p className='potentialEmployer'> Potential employer: {props.asset ? props.asset.name : ''} </p>
-        <p className='lastUpdated'> LAST UPDATED </p>
-        <p className='latestUpdatedText'> {props.asset ? props.asset.updatedAt : ''} </p> 
-      </div>
-    </div>
-  )
-}
+const Header = () => (
+  <Switch>
+    <Route exact path='/activities' component={HeaderActivityIndex} />
+    <Route exact path='/activities/browse' component={HeaderActivityIndex} />
+    <Route exact path='/activities/:activityId' component={HeaderActivityShow} />
+  </Switch>
+);
 
-function mapStateForAddCompany(state){
-  return {
-    asset: state.currentAsset
-  }
-}
-
-export default connect (mapStateForAddCompany, { toggleModal })(Header);
+export default Header;

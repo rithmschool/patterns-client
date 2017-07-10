@@ -2,8 +2,8 @@
 
 @each $p in ($md-percentage, $lg-percentage) {
   @media (min-width: $p * 1024px) {
-    .header {
-      height: $p * 192px;
+    .header-index {
+      height: $p * 84px;
     }
 
     .headerTitle {
@@ -53,7 +53,7 @@
   }
 }
 
-.header {
+.header-index {
   width: 100%;
   background-color: #f8f9fa;
   box-shadow: 0 3px 8px 0 rgba(0, 0, 0, 0.04), 0 1px 2px 0 rgba(0, 0, 0, 0.04);
@@ -116,4 +116,9 @@ input {
 .latestUpdatedText {
   text-align: left;
   color: #25272a;
+}
+
+.row {
+  margin-left: 0;
+  margin-right: 0;
 }
