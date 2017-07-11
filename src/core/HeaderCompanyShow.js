@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './HeaderCompanyShow.css';
-import { setActiveCompany, toggleModal } from '../actions/auth';
+import { setActiveCompany, toggleModal } from '../actions/action';
 
 class HeaderCompanyShow extends Component {
 

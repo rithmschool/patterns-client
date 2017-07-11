@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios';
 import close from './images/icon-x-gray.svg';
-import './ModalCompany.css'
-import { BASE_URL, toggleModal, addCompany } from './actions/auth'
+import './ModalCompany.css';
+import { BASE_URL } from './actions/auth';
+import { toggleModal, addCompany } from './actions/action';
 
 class ModalCompany extends Component {
   constructor(props) {

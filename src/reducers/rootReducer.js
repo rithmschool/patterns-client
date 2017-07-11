@@ -4,13 +4,16 @@ import {
   LOG_OUT,
   SET_USER,
   SET_ACTIVITIES,
+  setAuthorizationToken,
+} from '../actions/auth';
+
+import {
   SET_COMPANIES,
   TOGGLE_MODAL,
   SET_ACTIVE_ACTIVITY,
   ADD_COMPANY,
   SET_ACTIVE_COMPANY,
-  setAuthorizationToken,
-} from '../actions/auth';
+} from '../actions/action'
 
 const DEFAULT_STATE = {
   currentUserToken: '',

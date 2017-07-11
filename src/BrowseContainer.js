@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Company from './core/Company';
 import axios from 'axios';
-import { BASE_URL, setCompanies } from './actions/auth';
+import { BASE_URL } from './actions/auth';
+import { setCompanies } from './actions/action';
+
 
 class BrowseContainer extends Component {
   constructor(props){

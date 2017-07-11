@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import './HeaderActivityIndex.css';
-import { toggleModal } from '../actions/auth';
+import { toggleModal } from '../actions/action';
 
 const HeaderActivityIndex = props => {
   return(
