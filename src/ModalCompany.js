@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import axios from 'axios';
 import close from './images/icon-x-gray.svg';
 import './ModalCompany.css'
-import { BASE_URL, toggleModal } from './actions/auth'
+import { BASE_URL, toggleModal, addCompany } from './actions/auth'
 
 class ModalCompany extends Component {
   constructor(props) {
@@ -56,6 +56,7 @@ class ModalCompany extends Component {
     }
     return axios.post(`${BASE_URL}/types/${this.state.companyId}/assets`, companyInfo)
       .then(res => {
+        this.props.addCompany(res.data);
         this.setState({
           name: '',
           url: '',
@@ -111,4 +112,4 @@ class ModalCompany extends Component {
   };
 }
 
-export default connect(undefined, { toggleModal })(ModalCompany);
+export default connect(undefined, { toggleModal, addCompany })(ModalCompany);

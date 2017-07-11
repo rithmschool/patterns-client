@@ -6,8 +6,11 @@ export const SET_LOGIN_ERROR = 'SET_LOGIN_ERROR';
 export const LOG_OUT = 'LOG_OUT';
 export const SET_USER = 'SET_USER';
 export const SET_ACTIVITIES = 'SET_ACTIVITIES';
+export const SET_COMPANIES = 'SET_COMPANIES';
 export const TOGGLE_MODAL = 'TOGGLE_MODAL';
 export const SET_ACTIVE_ACTIVITY = 'SET_ACTIVE_ACTIVITY';
+export const ADD_COMPANY = 'ADD_COMPANY';
+export const SET_ACTIVE_COMPANY = 'SET_ACTIVE_COMPANY';
 
 export const BASE_URL = process.env.REACT_APP_SERVER_URL || 'http://localhost:3001';
 
@@ -93,6 +96,13 @@ export function setActivities(activities) {
   }
 }
 
+export function setCompanies(companies) {
+  return {
+    type: SET_COMPANIES,
+    companies
+  }
+}
+
 export function toggleModal() {
   return {
     type: TOGGLE_MODAL,
@@ -103,5 +113,19 @@ export function setActiveActivity(activity) {
   return {
     type: SET_ACTIVE_ACTIVITY,
     activity
+  }
+}
+
+export function addCompany(company) {
+  return {
+    type: ADD_COMPANY,
+    company
+  }
+}
+
+export function setActiveCompany(company) {
+  return {
+    type: SET_ACTIVE_COMPANY,
+    company
   }
 }

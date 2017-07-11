@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import Company from './core/Company';
 import axios from 'axios';
-import { BASE_URL } from './actions/auth';
+import { BASE_URL, setCompanies } from './actions/auth';
 
 class BrowseContainer extends Component {
   constructor(props){
@@ -9,7 +10,6 @@ class BrowseContainer extends Component {
     this.getCompanyId = this.getCompanyId.bind(this);
     this.getAllCompanies = this.getAllCompanies.bind(this);
     this.state = {
-      companies : [],
       companyId: ''
     }
   }
@@ -29,9 +29,7 @@ class BrowseContainer extends Component {
   getAllCompanies(companyId){
     axios.get(`${BASE_URL}/types/${companyId}/assets`)
     .then(res => {
-      this.setState({
-        companies: res.data.assets
-      });
+      this.props.setCompanies(res.data.assets)
     })
     .catch(error => console.log(error));
   }
@@ -43,10 +41,11 @@ class BrowseContainer extends Component {
 
   render() {
     let companies = null;
-    if(this.state.companies.length >0){
-      companies = this.state.companies.map((company, i) =>(
+    if(this.props.companies.length >0){
+      companies = this.props.companies.map((company, i) =>(
         <Company 
           key={i}
+          c_id={company._id}
           name={company.name}
           description={company.description}
         />
@@ -54,9 +53,9 @@ class BrowseContainer extends Component {
     )} 
      return( 
       <div className="inner-content">
-        {/* <div className='number-of-companies'>
-          {this.state.companies.length} Potential Employers
-        </div> */}
+        <div className='number-of-companies'>
+          {this.props.companies.length} Potential Employers
+        </div>
         <div className='company-holder'>   
           {companies}
         </div>
@@ -65,4 +64,10 @@ class BrowseContainer extends Component {
   };  
 }
 
-export default BrowseContainer;
+function mapStateToProps(state) {
+  return {
+    companies: state.companies,
+  }
+}
+
+export default connect(mapStateToProps, { setCompanies })(BrowseContainer);

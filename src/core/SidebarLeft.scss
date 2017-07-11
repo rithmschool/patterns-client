@@ -187,6 +187,11 @@
       height: $p * 48px;
       line-height: $p * 48px;
     }
+    .activity .title .inactive-toggle {
+      width: $p * 8px;
+      height: $p * 48px;
+      line-height: $p * 48px;
+    }
     .activity .title .activity-name {
       width: $p * 250px;
       margin: 0px $p * 16px;
@@ -201,6 +206,11 @@
       height: $p * 48px;
       width: $p * 48px;
     } 
+    .activity .title .inactive-arrow {
+      padding: 0px $p *24px $p * 16px $p * 24px;
+      height: $p * 48px;
+      width: $p * 48px;
+    }
     .activity .title img {
       height: $p * 16px;
       width: $p * 16px;
@@ -334,6 +344,12 @@
   vertical-align:top;
 }
 
+.activity .title .inactive-toggle {
+  background-color: $cool-grey;
+  display: inline-block;
+  vertical-align:top;
+}
+
 .activity .title .activity-name {
   display: inline-block;
 }
@@ -355,6 +371,19 @@
   transform: rotate(90deg);
   vertical-align: middle;
 } 
+
+.activity .title .inactive-arrow {
+  display: inline-block;
+  vertical-align:top;
+}
+
+.activity .title .inactive-arrow img {
+  vertical-align: middle;
+}
+
+.arrow img, .inactive-arrow img, .arrow img:hover, .inactive-arrow img:hover {
+  cursor:pointer;
+}
 
 .menu-item {
   display: inline-block;

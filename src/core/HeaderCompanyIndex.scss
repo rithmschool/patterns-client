@@ -1,0 +1,124 @@
+@import "../index.scss";
+
+@each $p in ($md-percentage, $lg-percentage) {
+  @media (min-width: $p * 1024px) {
+    .header-index {
+      height: $p * 84px;
+    }
+
+    .headerTitle {
+      font-size: $p * 20px;
+      line-height: $p * 1.38;
+      margin: $p * 24px;
+    }
+
+    .statusToggle {
+      width: $p * 40px;
+      height: $p * 20px;
+      font-size: $p * 10px;
+      margin-top: $p * 28px;
+      padding: $p * 4px;
+    }
+
+    .headerTop input {
+      font-size: $p * 14px;
+      width: $p * 96px;
+      height: $p * 36px;
+      line-height: $p * 1.38;
+      margin-top: $p * 24px;
+      margin-right: 12px;
+    }
+
+    .editActivityButton {
+      margin-right: $p * 12px;
+    }
+
+    .potentialEmployer {
+      height: $p * 23px;
+      font-size: $p * 18px;
+      line-height: $p * 1.33;
+      margin: $p * 12px $p * 24px;
+    }
+
+    .lastUpdated {
+      font-size: $p * 12px;
+      margin: $p * 0px $p * 24px;
+    }
+
+    .latestUpdatedText {
+      font-size: $p * 16px;
+      margin: $p * 0px $p * 24px;
+      line-height: $p * 1.5;
+    }
+  }
+}
+
+.header-index {
+  width: 100%;
+  background-color: #f8f9fa;
+  box-shadow: 0 3px 8px 0 rgba(0, 0, 0, 0.04), 0 1px 2px 0 rgba(0, 0, 0, 0.04);
+}
+
+.headerTitle {
+  font-weight: 600;
+  float:left;
+}
+
+.statusToggle {
+  border-radius: 2px;
+  background-color: #38d682;
+  float: left;
+  font-weight: 600;
+  text-align: center;
+  color: $white;
+  text-transform: uppercase;
+}
+
+.editActivityButton {
+  background-color: #585b60;
+  text-align: center;
+  color: #ffffff;
+  float:right;
+  cursor: pointer;
+}
+
+.addActivityButton {
+  background-color: #cb9c59;
+  text-align: center;
+  color: #ffffff;
+  float:right;
+  cursor: pointer;
+}
+
+input {
+  border-style: none;
+  border-radius: 2px;
+  float: right;
+}
+
+.headerRect {
+  display:inline-block;
+}
+
+.potentialEmployer {
+  font-weight: 600;
+  text-align: left;
+  color: #585b60;
+}
+
+.lastUpdated {
+  font-weight: bold;
+  text-align: left;
+  color: #a0a1a5;
+  text-transform: uppercase;
+}
+
+.latestUpdatedText {
+  text-align: left;
+  color: #25272a;
+}
+
+.row {
+  margin-left: 0;
+  margin-right: 0;
+}
