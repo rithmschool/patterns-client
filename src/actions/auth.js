@@ -6,8 +6,6 @@ export const SET_LOGIN_ERROR = 'SET_LOGIN_ERROR';
 export const LOG_OUT = 'LOG_OUT';
 export const SET_USER = 'SET_USER';
 export const SET_ACTIVITIES = 'SET_ACTIVITIES';
-export const TOGGLE_MODAL = 'TOGGLE_MODAL';
-export const SET_ACTIVE_ACTIVITY = 'SET_ACTIVE_ACTIVITY';
 
 export const BASE_URL = process.env.REACT_APP_SERVER_URL || 'http://localhost:3001';
 
@@ -90,18 +88,5 @@ export function setActivities(activities) {
   return {
     type: SET_ACTIVITIES,
     activities
-  }
-}
-
-export function toggleModal() {
-  return {
-    type: TOGGLE_MODAL,
-  }
-}
-
-export function setActiveActivity(activity) {
-  return {
-    type: SET_ACTIVE_ACTIVITY,
-    activity
   }
 }

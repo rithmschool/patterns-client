@@ -1,28 +1,46 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import down from '../images/icon-chevron-right-gray.svg';
 
-const ActivitySideBox = (props) => {
-  let menuItems = props.data.stages.map(val => {
-    return (
-      <div key={val._id} className="menu-item">
-        <h4>{val.name}</h4>
-        <h6 className="count-aside">{val.assets.length}</h6>
-      </div>
-    )
-  });
-  return (
-    <div className="activity">
-      <div className="title">
-        <div className="active-toggle"></div>
-        <div className="activity-name">
-          <h3><Link to={`/activities/${props.data._id}`}>{props.data.name}</Link></h3>
+class ActivitySideBox extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      status: false,
+    }
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick() {
+    let status = !this.state.status;
+    this.setState({ status });
+  }
+
+  render() {
+    let toggleStatus = this.state.status ? "active-toggle" : "inactive-toggle";
+    let toggleArrow = this.state.status ? "arrow" : "inactive-arrow"
+    let menuItems = this.props.data.stages.map(val => {
+      return (
+        <div key={val._id} className="menu-item">
+          <h4>{val.name}</h4>
+          <h6 className="count-aside">{val.assets.length}</h6>
         </div>
-        <div className="arrow"><img src={down} alt="Down Arrow" /></div>
-      </div>
-      {menuItems}
-    </div>
-  )
+      )
+    });
+    let toggleItems = this.state.status ? menuItems : null;
+    return (
+      <div className="activity">
+        <div className="title">
+          <div className={toggleStatus}></div>
+          <div className="activity-name">
+            <h3><Link to={`/activities/${this.props.data._id}`}>{this.props.data.name}</Link></h3>
+          </div>
+          <div className={toggleArrow} onClick={this.handleClick}><img src={down} alt="Activity Toggle Arrow" /></div>
+        </div>
+        {toggleItems}
+     </div>
+    )
+  }
 };
 
 export default ActivitySideBox;

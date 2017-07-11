@@ -10,7 +10,7 @@ const BrowseCompanies =  (props) => (
       <div className='searchIcon col-lg-1'>
       </div>
       <div className='findCompanies col-lg-8'>
-        <p className='findCompaniesText'> <Link to='/activities/browse'>Find Companies </Link> </p>
+        <p className='findCompaniesText'> <Link to='/assets/companies'>Find Companies </Link> </p>
       </div>
     </div>
   </div>

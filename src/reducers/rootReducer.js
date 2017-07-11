@@ -4,10 +4,16 @@ import {
   LOG_OUT,
   SET_USER,
   SET_ACTIVITIES,
-  TOGGLE_MODAL,
-  SET_ACTIVE_ACTIVITY,
   setAuthorizationToken,
 } from '../actions/auth';
+
+import {
+  SET_COMPANIES,
+  TOGGLE_MODAL,
+  SET_ACTIVE_ACTIVITY,
+  ADD_COMPANY,
+  SET_ACTIVE_COMPANY,
+} from '../actions/action'
 
 const DEFAULT_STATE = {
   currentUserToken: '',
@@ -15,6 +21,8 @@ const DEFAULT_STATE = {
   userProfile: {},
   activities: [],
   activity: {},
+  companies: [],
+  company: {},
   modal: false,
 }
 
@@ -43,6 +51,11 @@ export default (state=DEFAULT_STATE, action={type:null}) => {
         ...state,
         activities: action.activities
       };
+    case SET_COMPANIES:
+      return {
+        ...state,
+        companies: action.companies
+      };
     case TOGGLE_MODAL:
       let toggle = !state.modal;
       return {
@@ -54,6 +67,16 @@ export default (state=DEFAULT_STATE, action={type:null}) => {
         ...state,
         activity: action.activity
       };
+    case ADD_COMPANY:
+      return {
+        ...state,
+        companies:[...state.companies, action.company]
+      };
+    case SET_ACTIVE_COMPANY:
+      return {
+        ...state,
+        company: action.company
+      }
     case 'persist/REHYDRATE':
       setAuthorizationToken(action.payload.currentUserToken);
       return Object.assign({}, state, action.payload);
