@@ -302,6 +302,20 @@
   display: block;
 }
 
+.funnel-button {
+  width: 306px;
+  height: 36px;
+  border-radius: 2px;
+  background-color: $camel;
+  cursor: pointer;
+}
+
+.funnel-button p {
+  font-size: 12px;
+  text-align: center;
+  color: $white;
+}
+
 @media (max-width: 768px) {
   .activity-header h1 {
     display: none;
