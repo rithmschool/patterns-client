@@ -13,6 +13,8 @@ import {
   SET_ACTIVE_ACTIVITY,
   ADD_COMPANY,
   SET_ACTIVE_COMPANY,
+  ADD_ASSET,
+  CHANGE_ASSET,
 } from '../actions/action'
 
 const DEFAULT_STATE = {
@@ -76,7 +78,70 @@ export default (state=DEFAULT_STATE, action={type:null}) => {
       return {
         ...state,
         company: action.company
+      };
+    case ADD_ASSET:
+      let newStageAsset = [
+        ...state.activity.stages[0].assets,
+        Object.assign({}, state.company)
+      ];
+      let firstStage = {
+        ...state.activity.stages[0],
+        assets: newStageAsset
+      };
+      let stages = [
+        firstStage,
+        ...state.activity.stages.slice(1)
+      ];
+      let activity = {...state.activity, stages};
+      let activities = [activity];
+      return {
+        ...state,
+        activity,
+        activities,
+      };
+    case CHANGE_ASSET:
+      let oldStageIdx = state.activity.stages.findIndex(val => {
+        return val._id === action.changeObj.prev;
+      });
+      let oldArr = state.activity.stages[oldStageIdx].assets;
+      let oldAssetIdx = oldArr.findIndex(val => {
+        return val._id === action.changeObj.assetId;
+      });
+      let oldStageAssetsArr = [...oldArr.slice(0, oldAssetIdx), ...oldArr.slice(oldAssetIdx + 1)];
+      let oldStage = {
+        ...state.activity.stages[oldStageIdx],
+        assets: oldStageAssetsArr,
+      };
+      let newStageIdx = state.activity.stages.findIndex(val => {
+        return val._id === action.changeObj.next;
+      });
+      let newArr = state.activity.stages[newStageIdx].assets;
+      let newStageAssetsArr = [...newArr, Object.assign({}, state.company)];
+      let newStage = {
+        ...state.activity.stages[newStageIdx],
+        assets: newStageAssetsArr,
+      };
+      let changeObj = {};
+      changeObj[oldStageIdx] = oldStage;
+      changeObj[newStageIdx] = newStage;
+      let newStagesArr = [];
+      for (let i = 0; i < state.activity.stages.length; i++) {
+        if (changeObj.hasOwnProperty(i)) {
+          newStagesArr.push(changeObj[i]);
+        } else {
+          newStagesArr.push(Object.assign({}, state.activity.stages[i]));
+        }
       }
+      let changeActivity = {
+        ...state.activity,
+        stages: newStagesArr,
+      };
+      let changeActivities = [changeActivity];
+      return {
+        ...state,
+        activity: changeActivity,
+        activities: changeActivities,
+      };
     case 'persist/REHYDRATE':
       setAuthorizationToken(action.payload.currentUserToken);
       return Object.assign({}, state, action.payload);
