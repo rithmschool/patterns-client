@@ -13,7 +13,6 @@ import {
   SET_ACTIVE_ACTIVITY,
   ADD_COMPANY,
   SET_ACTIVE_COMPANY,
-  ADD_ASSET,
   CHANGE_ASSET,
 } from '../actions/action'
 
@@ -79,41 +78,10 @@ export default (state=DEFAULT_STATE, action={type:null}) => {
         ...state,
         company: action.company
       };
-    case ADD_ASSET:
-      let newStageAsset = [
-        ...state.activity.stages[0].assets,
-        Object.assign({}, state.company)
-      ];
-      let firstStage = {
-        ...state.activity.stages[0],
-        assets: newStageAsset
-      };
-      let stages = [
-        firstStage,
-        ...state.activity.stages.slice(1)
-      ];
-      let activity = {...state.activity, stages};
-      let activities = [activity];
-      return {
-        ...state,
-        activity,
-        activities,
-      };
     case CHANGE_ASSET:
-      let changeObj = {};
-      changeObj[action.changeObj.prevIdx] = action.changeObj.prevStage;
-      changeObj[action.changeObj.nextIdx] = action.changeObj.nextStage;
-      let newStagesArr = [];
-      for (let i = 0; i < state.activity.stages.length; i++) {
-        if (changeObj.hasOwnProperty(i)) {
-          newStagesArr.push(changeObj[i]);
-        } else {
-          newStagesArr.push(Object.assign({}, state.activity.stages[i]));
-        }
-      }
       let changeActivity = {
         ...state.activity,
-        stages: newStagesArr,
+        stages: action.stages,
       };
       let changeActivities = [changeActivity];
       return {
