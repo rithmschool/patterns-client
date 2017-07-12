@@ -100,30 +100,9 @@ export default (state=DEFAULT_STATE, action={type:null}) => {
         activities,
       };
     case CHANGE_ASSET:
-      let oldStageIdx = state.activity.stages.findIndex(val => {
-        return val._id === action.changeObj.prev;
-      });
-      let oldArr = state.activity.stages[oldStageIdx].assets;
-      let oldAssetIdx = oldArr.findIndex(val => {
-        return val._id === action.changeObj.assetId;
-      });
-      let oldStageAssetsArr = [...oldArr.slice(0, oldAssetIdx), ...oldArr.slice(oldAssetIdx + 1)];
-      let oldStage = {
-        ...state.activity.stages[oldStageIdx],
-        assets: oldStageAssetsArr,
-      };
-      let newStageIdx = state.activity.stages.findIndex(val => {
-        return val._id === action.changeObj.next;
-      });
-      let newArr = state.activity.stages[newStageIdx].assets;
-      let newStageAssetsArr = [...newArr, Object.assign({}, state.company)];
-      let newStage = {
-        ...state.activity.stages[newStageIdx],
-        assets: newStageAssetsArr,
-      };
       let changeObj = {};
-      changeObj[oldStageIdx] = oldStage;
-      changeObj[newStageIdx] = newStage;
+      changeObj[action.changeObj.prevIdx] = action.changeObj.prevStage;
+      changeObj[action.changeObj.nextIdx] = action.changeObj.nextStage;
       let newStagesArr = [];
       for (let i = 0; i < state.activity.stages.length; i++) {
         if (changeObj.hasOwnProperty(i)) {

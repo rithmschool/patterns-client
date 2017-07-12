@@ -17,9 +17,8 @@ class SidebarRight extends Component {
   }
 
   funnelClick() {
-    let body = {
-      assetId: this.props.company._id,
-    };
+    let newAsset = [...this.props.activity.stages[0].assets, this.props.company];
+    let body = { assets: newAsset };
 
     axios.patch(`${BASE_URL}/stages/${this.props.activity.stages[0]._id}`, body)
       .then(res => {
@@ -31,15 +30,39 @@ class SidebarRight extends Component {
   dropdownChange(e) {
     e.preventDefault();
     let stageId = e.target.value.split('.');
-    let body = {
-      prev: stageId[0],
-      next: stageId[1],
-      assetId: this.props.company._id,
-    };
-    if (body.prev !== body.next) {
-      axios.patch(`${BASE_URL}/stages/${body.prev}/change`, body)
-        .then(res => {
-          this.props.changeAsset(body);
+    if (stageId[0] !== stageId[1]) {
+      let prevStageIdx = this.props.activity.stages.findIndex(val => {
+        return val._id === stageId[0];
+      });
+      let prevAssets = this.props.activity.stages[prevStageIdx].assets;
+      let prevAssetIdx = prevAssets.findIndex(val => {
+        return val._id === this.props.company._id;
+      });
+      let prevStageAssetsArr = [...prevAssets.slice(0, prevAssetIdx), ...prevAssets.slice(prevAssetIdx + 1)];
+      let prevBody = {
+        assets: prevStageAssetsArr,
+      };
+
+      let nextStageIdx = this.props.activity.stages.findIndex(val => {
+        return val._id === stageId[1];
+      });
+      let nextAssets = this.props.activity.stages[nextStageIdx].assets;
+      let nextStageAssetsArr = [...nextAssets, this.props.company];
+      let nextBody = {
+        assets: nextStageAssetsArr,
+      };
+      
+      axios.patch(`${BASE_URL}/stages/${stageId[0]}`, prevBody)
+        .then(prevRes => {
+          axios.patch(`${BASE_URL}/stages/${stageId[1]}`, nextBody)
+            .then(nextRes => {
+              this.props.changeAsset({
+                prevIdx: prevStageIdx,
+                prevStage: prevRes.data,
+                nextIdx: nextStageIdx,
+                nextStage: nextRes.data,
+              });
+            })
         })
         .catch(error => console.log(error));
     }
@@ -71,9 +94,9 @@ class SidebarRight extends Component {
 
     let funnelDropdownOptions = this.props.activity.stages.map(val => {
       if (foundStage === val._id){
-        return <option value={`${foundStage}.${val._id}`} selected>{val.name}</option>
+        return <option key={val._id} value={`${foundStage}.${val._id}`} selected>{val.name}</option>
       } else {
-        return <option value={`${foundStage}.${val._id}`}>{val.name}</option>
+        return <option key={val._id} value={`${foundStage}.${val._id}`}>{val.name}</option>
       }
     });
 
