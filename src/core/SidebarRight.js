@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios';
 import { BASE_URL } from '../actions/auth';
-import { addAsset, changeAsset } from '../actions/action';
+import { changeAsset } from '../actions/action';
 import './SidebarRight.css';
 import bookmark from '../images/icon-diary-gray.svg';
 import lock from '../images/icon-lock-gray.svg';
@@ -19,10 +19,21 @@ class SidebarRight extends Component {
   funnelClick() {
     let newAsset = [...this.props.activity.stages[0].assets, this.props.company];
     let body = { assets: newAsset };
-
     axios.patch(`${BASE_URL}/stages/${this.props.activity.stages[0]._id}`, body)
       .then(res => {
-        this.props.addAsset();
+        let newStageAsset = [
+          ...this.props.activity.stages[0].assets,
+          this.props.company
+        ];
+        let firstStage = {
+          ...this.props.activity.stages[0],
+          assets: newStageAsset
+        };
+        let stages = [
+          firstStage,
+          ...this.props.activity.stages.slice(1)
+        ];
+        this.props.changeAsset(stages);
       })
       .catch(error => console.log(error));
   }
@@ -31,6 +42,7 @@ class SidebarRight extends Component {
     e.preventDefault();
     let stageId = e.target.value.split('.');
     if (stageId[0] !== stageId[1]) {
+      // update previous stage assets array to remove company
       let prevStageIdx = this.props.activity.stages.findIndex(val => {
         return val._id === stageId[0];
       });
@@ -43,6 +55,7 @@ class SidebarRight extends Component {
         assets: prevStageAssetsArr,
       };
 
+      // update next stage assets array to add company
       let nextStageIdx = this.props.activity.stages.findIndex(val => {
         return val._id === stageId[1];
       });
@@ -52,31 +65,40 @@ class SidebarRight extends Component {
         assets: nextStageAssetsArr,
       };
       
+      // patch request to server to update stages
+      let firstRes;
       axios.patch(`${BASE_URL}/stages/${stageId[0]}`, prevBody)
         .then(prevRes => {
-          axios.patch(`${BASE_URL}/stages/${stageId[1]}`, nextBody)
-            .then(nextRes => {
-              this.props.changeAsset({
-                prevIdx: prevStageIdx,
-                prevStage: prevRes.data,
-                nextIdx: nextStageIdx,
-                nextStage: nextRes.data,
-              });
-            })
+          firstRes = prevRes;
+          return axios.patch(`${BASE_URL}/stages/${stageId[1]}`, nextBody)
+        })
+        .then(nextRes => {
+          let changeObj = {};
+          changeObj[prevStageIdx] = firstRes.data;
+          changeObj[nextStageIdx] = nextRes.data;
+          let newStagesArr = [];
+          for (let i = 0; i < this.props.activity.stages.length; i++) {
+            if (changeObj.hasOwnProperty(i)) {
+              newStagesArr.push(changeObj[i]);
+            } else {
+              newStagesArr.push(this.props.activity.stages[i]);
+            }
+          }
+          this.props.changeAsset(newStagesArr);
         })
         .catch(error => console.log(error));
     }
   }
 
   render() {
-    let activity = this.props.activity.stages;
+    let stages = this.props.activity.stages;
     let curStage, foundStage;
     let foundObj = false;
-    for (let i = 0; i < activity.length; i++) {
-      curStage = activity[i]._id;
+    for (let i = 0; i < stages.length; i++) {
+      curStage = stages[i]._id;
       if (foundObj) { break; }
-      for (let j = 0; j < activity[i].assets.length; j++) {
-        if (this.props.match.params.companyId === activity[i].assets[j]._id) {
+      for (let j = 0; j < stages[i].assets.length; j++) {
+        if (this.props.match.params.companyId === stages[i].assets[j]._id) {
           foundStage = curStage;
           foundObj = true;
           break;
@@ -192,4 +214,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, { addAsset, changeAsset })(SidebarRight);
+export default connect(mapStateToProps, { changeAsset })(SidebarRight);
