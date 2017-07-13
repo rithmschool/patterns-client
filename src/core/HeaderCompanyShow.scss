@@ -66,6 +66,9 @@
   margin: 24px auto 24px 24px;
   display:inline-block;
   float: left;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position-y: center;
 }
 
 .headerTitle {

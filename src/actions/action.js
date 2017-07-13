@@ -1,16 +1,8 @@
-export const SET_COMPANIES = 'SET_COMPANIES';
 export const TOGGLE_MODAL = 'TOGGLE_MODAL';
 export const SET_ACTIVE_ACTIVITY = 'SET_ACTIVE_ACTIVITY';
 export const ADD_COMPANY = 'ADD_COMPANY';
 export const SET_ACTIVE_COMPANY = 'SET_ACTIVE_COMPANY';
 export const CHANGE_ASSET = 'CHANGE_ASSET';
-
-export function setCompanies(companies) {
-  return {
-    type: SET_COMPANIES,
-    companies
-  }
-}
 
 export function toggleModal() {
   return {

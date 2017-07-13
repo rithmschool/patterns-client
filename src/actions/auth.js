@@ -6,6 +6,7 @@ export const SET_LOGIN_ERROR = 'SET_LOGIN_ERROR';
 export const LOG_OUT = 'LOG_OUT';
 export const SET_USER = 'SET_USER';
 export const SET_ACTIVITIES = 'SET_ACTIVITIES';
+export const SET_COMPANIES = 'SET_COMPANIES';
 
 export const BASE_URL = process.env.REACT_APP_SERVER_URL || 'http://localhost:3001';
 
@@ -35,6 +36,14 @@ export function login(code) {
     })
     .then(ares => {
       dispatch(setActivities(ares.data));
+      return axios.get(`${BASE_URL}/types`)
+    })
+    .then(types => {
+      let companyId = types.data.find(obj => obj.name ==='Company')._id;
+      return axios.get(`${BASE_URL}/types/${companyId}/assets`)
+    })
+    .then(companies => {
+      dispatch(setCompanies(companies.data.assets));
     })
     .catch(err => {
       var errObj = Object.keys(err).length ? err : null;
@@ -88,5 +97,12 @@ export function setActivities(activities) {
   return {
     type: SET_ACTIVITIES,
     activities
+  }
+}
+
+export function setCompanies(companies) {
+  return {
+    type: SET_COMPANIES,
+    companies
   }
 }
