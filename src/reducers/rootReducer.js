@@ -4,11 +4,11 @@ import {
   LOG_OUT,
   SET_USER,
   SET_ACTIVITIES,
+  SET_COMPANIES,
   setAuthorizationToken,
 } from '../actions/auth';
 
 import {
-  SET_COMPANIES,
   TOGGLE_MODAL,
   SET_ACTIVE_ACTIVITY,
   ADD_COMPANY,

@@ -65,6 +65,21 @@ form {
     float: left;
   }
 
+  .uploadcare--widget__button {
+    padding-top: 36px;
+    color: $white;
+    text-transform: uppercase;
+    font-size: 12px;
+    padding: 5px;
+    width: 94px;
+    cursor: pointer;
+    background-color: $cool-grey;
+  }
+
+  .uploadcare--widget__button:hover {
+    background-color: $camel;
+  }
+
   .button-wrap {
     padding-top: 36px;
     text-align: right;

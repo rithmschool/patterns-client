@@ -13,13 +13,17 @@ class HeaderCompanyShow extends Component {
   }
 
   render() {
+    let logo = this.props.company.logo ? this.props.company.logo : null;
+    let pictureStyle = {
+      backgroundImage: `url(${logo})`,
+    }
     let date = new Date(this.props.company.updatedAt)
     let dateStr = `${date.getUTCMonth() + 1}/${date.getUTCDate()}/${date.getUTCFullYear()}`;
     return (
       <div className='header'>
         <div>
           <div className='headerTop row'>
-            <div className='company-logo'/>
+            <div className='company-logo' style={pictureStyle} />
             <p className='headerTitle'> {this.props.company.name} </p>
             <input type='submit' className='editActivityButton' value='EDIT' />
             <input type='submit' className='addActivityButton' value='ADD' onClick={this.props.toggleModal} />

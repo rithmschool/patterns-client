@@ -5,6 +5,7 @@ import close from './images/icon-x-gray.svg';
 import './ModalCompany.css';
 import { BASE_URL } from './actions/auth';
 import { toggleModal, addCompany } from './actions/action';
+import UploadCare from './UploadCare';
 
 class ModalCompany extends Component {
   constructor(props) {
@@ -16,6 +17,7 @@ class ModalCompany extends Component {
       companyId: ''
     }
     this.handleChange = this.handleChange.bind(this);
+    this.handleLogo = this.handleLogo.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.addCompanies = this.addCompanies.bind(this);
     this.getCompanyId = this.getCompanyId.bind(this);
@@ -28,11 +30,16 @@ class ModalCompany extends Component {
     });
   }
 
+  handleLogo(e) {
+    this.setState({
+      logo: e,
+    })
+  }
+
   handleSubmit(e) {
     e.preventDefault();
     this.getCompanyId();
   }
-
 
   getCompanyId() {
     // This should be refactored to use Redux by saving Activity (and companyId) in the store.
@@ -49,7 +56,6 @@ class ModalCompany extends Component {
   }
 
   addCompanies(companyId) {
-
     let companyInfo = {
       name: this.state.name,
       url: this.state.url,
@@ -99,7 +105,7 @@ class ModalCompany extends Component {
 
             <div className="form-group">
               <label htmlFor="company-logo">Company Logo</label>
-              <p><input className="file-input" type="file" name="logo" value={this.state.logo} onChange={this.handleChange} /></p>
+              <p><UploadCare id="logo" name="logo" onChange={this.handleLogo} /></p>
             </div>
 
             <div className="button-wrap">
