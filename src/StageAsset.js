@@ -4,7 +4,7 @@ import './StageAsset.css';
 import down from './images/icon-chevron-right-gray.svg';
 
 const StageAsset = (props) => {
-  let logo = props.logo ? props.logo : null;
+  let logo = props.logo || null;
   let pictureStyle = {
     backgroundImage: `url(${logo})`,
   }

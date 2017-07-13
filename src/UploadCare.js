@@ -23,8 +23,7 @@ class UploadCare extends Component {
 
   render() {
     const {id, name} = this.props;
-
-    return (<input type="hidden" id={id} name={name} data-public-key="a46f15f21038ecbd3aef"/>)
+    return (<input type="hidden" id={id} name={name} data-public-key={process.env.REACT_APP_UPLOADCARE_PUBLIC_KEY} />)
   }
 }
 

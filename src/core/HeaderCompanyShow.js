@@ -13,11 +13,11 @@ class HeaderCompanyShow extends Component {
   }
 
   render() {
-    let logo = this.props.company.logo ? this.props.company.logo : null;
+    let logo = this.props.company.logo || null;
     let pictureStyle = {
       backgroundImage: `url(${logo})`,
     }
-    let date = new Date(this.props.company.updatedAt)
+    let date = new Date(this.props.company.updatedAt);
     let dateStr = `${date.getUTCMonth() + 1}/${date.getUTCDate()}/${date.getUTCFullYear()}`;
     return (
       <div className='header'>
