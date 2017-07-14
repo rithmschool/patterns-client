@@ -7,3 +7,13 @@
 .row {
   margin: 0;
 }
+
+.dragTarget {
+  height: 200px;
+}
+
+.isDragging {
+  font-size: 15;
+  font-weight: bold;
+  cursor: move;
+}

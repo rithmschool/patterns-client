@@ -47,7 +47,7 @@ class StageContainer extends Component {
     };
     // find next list and add dragged item
     const nextStageAssets = allStages[targetListIdx].assets.slice();
-    nextStageAssets.length !== 0 ? nextStageAssets.splice(hoverIndex, 0, movingAsset) : nextStageAssets.push(movingAsset);
+    nextStageAssets.splice(hoverIndex, 0, movingAsset);
     const nextStage = {
       ...allStages[targetListIdx],
       assets: nextStageAssets,

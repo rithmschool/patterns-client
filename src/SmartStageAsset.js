@@ -34,13 +34,9 @@ const stageAssetTarget = {
     const clientOffset = monitor.getClientOffset();
     const hoverClientY = clientOffset.y - hoverBoundingRect.top;
 
-    if (dragIndex < hoverIndex && hoverClientY < hoverMiddleY) {
-      return;
-    }
-
-    if (dragIndex > hoverIndex && hoverClientY > hoverMiddleY) {
-      return;
-    }
+    const hoverIdxLower = dragIndex < hoverIndex && hoverClientY < hoverMiddleY;
+    const hoverIdxHigher = dragIndex > hoverIndex && hoverClientY > hoverMiddleY;
+    if (hoverIdxLower || hoverIdxHigher)  return;
 
     if (dragListIdx === targetListIdx) {
       props.moveCard(dragIndex, hoverIndex, dragListIdx);
@@ -57,12 +53,7 @@ class SmartStageAsset extends Component {
   render() {
     const { connectDragSource, isDragging, connectDropTarget } = this.props;
     return connectDragSource(connectDropTarget(
-      <div style={{
-        opacity: isDragging ? 0.5 : 1,
-        fontSize: 15,
-        fontWeight: 'bold',
-        cursor: 'move'
-      }}>
+      <div className='isDragging' style={{opacity: isDragging ? 0.5 : 1}}>
         <StageAsset {...this.props} />
       </div>
     ));

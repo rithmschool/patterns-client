@@ -30,7 +30,7 @@ class SmartStage extends Component {
     const { connectDropTarget } = this.props;
 
     return connectDropTarget(
-      <div style={{height: '200px'}}>
+      <div className='dragTarget'>
         <Stage {...this.props} />
       </div>
     )

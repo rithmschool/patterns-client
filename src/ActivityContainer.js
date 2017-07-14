@@ -3,15 +3,13 @@ import './ActivityContainer.css'
 import BrowseCompanies from './BrowseCompanies';
 import StageContainer from './StageContainer';
 
-class ActivityContainer extends Component {
-  render(){
-    return(
-      <div className='ActivityContainerHolder row'>
-        <BrowseCompanies />
-        <StageContainer />
-      </div>
-    )
-  }
+const ActivityContainer = props => {
+  return(
+    <div className='ActivityContainerHolder row'>
+      <BrowseCompanies />
+      <StageContainer />
+    </div>
+  )
 }
 
 export default ActivityContainer;
