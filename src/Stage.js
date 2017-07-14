@@ -6,12 +6,15 @@ const Stage = props => {
   let allAssets = props.assets.map((val,idx) => (
     <SmartStageAsset 
       key={val._id} 
-      stageId={props.stageId}
+      stageIdx={props.stageIdx}
       stageName={props.name}
       assetId={val._id} 
       name={val.name}
       logo={val.logo}
-      position={idx} 
+      index={idx}
+      moveCard={props.moveCard}
+      moveAndUpdateCard={props.moveAndUpdateCard}
+      dispatchState={props.dispatchState}
     />
   ));
   return(
