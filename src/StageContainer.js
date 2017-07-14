@@ -7,6 +7,28 @@ import SmartStage from './SmartStage';
 import { setActiveActivity, changeAsset } from './actions/action';
 import { BASE_URL } from './actions/auth';
 
+const ModifiedBackend = (...args) => {
+  const instance = new HTML5Backend(...args);
+
+  // Fix Chrome 59 not sending a DragEnd after Drop, which other browsers do and react-dnd expects - issue noted in Github
+  // Note: Review issue #789 in React-dnd to see if it has been resolved
+  const originalTopDrop = instance.handleTopDrop;
+  const originalTopDragEndCapture = instance.handleTopDragEndCapture;
+  let dragEndTimeout;
+  instance.handleTopDrop = (e, ...args) => {
+    dragEndTimeout = setTimeout(() => {
+      originalTopDragEndCapture(e, ...args);
+    }, 0);
+    originalTopDrop(e, ...args);
+  };
+  instance.handleTopDragEndCapture = (e, ...args) => {
+    clearTimeout(dragEndTimeout);
+    originalTopDragEndCapture(e, ...args);
+  };
+
+  return instance;
+};
+
 class StageContainer extends Component {
   constructor(props) {
     super(props);
@@ -117,4 +139,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default DragDropContext(HTML5Backend)(connect(mapStateToProps, { setActiveActivity, changeAsset })(StageContainer));
+export default DragDropContext(ModifiedBackend)(connect(mapStateToProps, { setActiveActivity, changeAsset })(StageContainer));
