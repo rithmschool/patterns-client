@@ -5,7 +5,7 @@ import Header from './Header';
 import InnerContent from './InnerContent';
 import Content from './Content';
 
-describe('<Content />', () =>{
+describe('<Content />', () => {
   const wrapper = shallow(<Content />);
 
   it('should render one TopNav Component ', () => {
@@ -19,5 +19,4 @@ describe('<Content />', () =>{
   it('should render one InnerContent Component ', () => {
     expect(wrapper.find(InnerContent)).toHaveLength(1);
   });
-  
-})
+});

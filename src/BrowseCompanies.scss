@@ -1,22 +1,22 @@
-@import "./index.scss";
+@import './index.scss';
 
-.browseComps{
+.browseComps {
   margin: 0px;
-  background-color:white;
+  background-color: white;
 }
 
-.browseCompsHolder{
+.browseCompsHolder {
   color: #354052;
   font-size: 16px;
 }
 
-.line{
+.line {
   height: 2px;
   border: solid 1px #ccd3da;
 }
 
-.findCompanies{
-  height:96px;
+.findCompanies {
+  height: 96px;
   background-color: white;
   font-size: 18px;
   font-weight: 600;
@@ -25,14 +25,14 @@
   color: #354052;
 }
 
-.findCompaniesText{
+.findCompaniesText {
   margin: 24px 12px 12px 12px;
 }
 
-.searchIcon{
+.searchIcon {
   width: 36px;
   height: 36px;
   border-radius: 4px;
   background-color: $pale-grey;
-  margin: 24px 12px 12px 12px ;
+  margin: 24px 12px 12px 12px;
 }

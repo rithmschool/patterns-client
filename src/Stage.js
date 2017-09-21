@@ -3,12 +3,12 @@ import './Stage.css';
 import SmartStageAsset from './SmartStageAsset';
 
 const Stage = props => {
-  let allAssets = props.assets.map((val,idx) => (
-    <SmartStageAsset 
-      key={val._id} 
+  let allAssets = props.assets.map((val, idx) => (
+    <SmartStageAsset
+      key={val._id}
       stageIdx={props.stageIdx}
       stageName={props.name}
-      assetId={val._id} 
+      assetId={val._id}
       name={val.name}
       logo={val.logo}
       index={idx}
@@ -17,13 +17,13 @@ const Stage = props => {
       dispatchState={props.dispatchState}
     />
   ));
-  return(
-    <div className='stageText'>
+  return (
+    <div className="stageText">
       <p> {props.name} </p>
-      <hr className='line' /> 
+      <hr className="line" />
       {allAssets}
-  </div>
+    </div>
   );
-}
+};
 
 export default Stage;

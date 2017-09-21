@@ -1,19 +1,19 @@
-@import "../index.scss";
+@import '../index.scss';
 
-@media (min-width: .2 * 1024px) {
-  .smaller-content-holder  {
-    width: calc(100% - (.4 * 360px));
+@media (min-width: 0.2 * 1024px) {
+  .smaller-content-holder {
+    width: calc(100% - (0.4 * 360px));
   }
 }
 
-@media (min-width: .75 * 1024px) {
-  .smaller-content-holder  {
+@media (min-width: 0.75 * 1024px) {
+  .smaller-content-holder {
     width: calc(100% - (1.5 * 352px));
   }
 }
 
 @media (min-width: 1 * 1024px) {
-  .smaller-content-holder  {
+  .smaller-content-holder {
     width: calc(100% - (2 * 352px));
   }
 }
@@ -21,7 +21,7 @@
 .smaller-content-holder {
   background-color: $content-background;
   display: inline-block;
-  min-height:100vh;
+  min-height: 100vh;
 }
 
 .navbar {

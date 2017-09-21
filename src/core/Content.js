@@ -5,7 +5,7 @@ import TopNav from './TopNav';
 import Header from './Header';
 
 const Content = props => (
-  <div className='content-holder'> 
+  <div className="content-holder">
     <TopNav />
     <Header />
     <InnerContent />

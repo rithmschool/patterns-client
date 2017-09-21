@@ -4,33 +4,38 @@ import './HeaderCompanyShow.css';
 import { setActiveCompany, toggleModal } from '../actions/action';
 
 class HeaderCompanyShow extends Component {
-
   componentWillMount() {
-    let foundCompany = this.props.companies.find(val => (
-      val._id === this.props.match.params.companyId
-    ));
+    let foundCompany = this.props.companies.find(
+      val => val._id === this.props.match.params.companyId
+    );
     this.props.setActiveCompany(foundCompany);
   }
 
   render() {
     let logo = this.props.company.logo || null;
     let pictureStyle = {
-      backgroundImage: `url(${logo})`,
-    }
+      backgroundImage: `url(${logo})`
+    };
     let date = new Date(this.props.company.updatedAt);
-    let dateStr = `${date.getUTCMonth() + 1}/${date.getUTCDate()}/${date.getUTCFullYear()}`;
+    let dateStr = `${date.getUTCMonth() +
+      1}/${date.getUTCDate()}/${date.getUTCFullYear()}`;
     return (
-      <div className='header'>
+      <div className="header">
         <div>
-          <div className='headerTop row'>
-            <div className='company-logo' style={pictureStyle} />
-            <p className='headerTitle'> {this.props.company.name} </p>
-            <input type='submit' className='editActivityButton' value='EDIT' />
-            <input type='submit' className='addActivityButton' value='ADD' onClick={this.props.toggleModal} />
+          <div className="headerTop row">
+            <div className="company-logo" style={pictureStyle} />
+            <p className="headerTitle"> {this.props.company.name} </p>
+            <input type="submit" className="editActivityButton" value="EDIT" />
+            <input
+              type="submit"
+              className="addActivityButton"
+              value="ADD"
+              onClick={this.props.toggleModal}
+            />
           </div>
-          <p className='potentialEmployer'> Potential employer: [Blank] </p>
-          <p className='lastUpdated'> LAST UPDATED </p>
-          <p className='latestUpdatedText'> {dateStr} </p> 
+          <p className="potentialEmployer"> Potential employer: [Blank] </p>
+          <p className="lastUpdated"> LAST UPDATED </p>
+          <p className="latestUpdatedText"> {dateStr} </p>
         </div>
       </div>
     );
@@ -40,8 +45,10 @@ class HeaderCompanyShow extends Component {
 function mapStateToProps(state) {
   return {
     companies: state.companies,
-    company: state.company,
-  }
+    company: state.company
+  };
 }
 
-export default connect(mapStateToProps, { setActiveCompany, toggleModal })(HeaderCompanyShow);
+export default connect(mapStateToProps, { setActiveCompany, toggleModal })(
+  HeaderCompanyShow
+);

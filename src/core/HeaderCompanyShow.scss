@@ -1,4 +1,4 @@
-@import "../index.scss";
+@import '../index.scss';
 
 @each $p in ($md-percentage, $lg-percentage) {
   @media (min-width: $p * 1024px) {
@@ -59,12 +59,12 @@
   box-shadow: 0 3px 8px 0 rgba(0, 0, 0, 0.04), 0 1px 2px 0 rgba(0, 0, 0, 0.04);
 }
 
-.company-logo{
+.company-logo {
   width: 48px;
   height: 48px;
   background-color: $pale-grey;
   margin: 24px auto 24px 24px;
-  display:inline-block;
+  display: inline-block;
   float: left;
   background-size: contain;
   background-repeat: no-repeat;
@@ -73,10 +73,10 @@
 
 .headerTitle {
   font-weight: 600;
-  float:left;
+  float: left;
   vertical-align: middle;
   line-height: 45px;
-  text-align:left;
+  text-align: left;
   margin-left: 20px;
 }
 
@@ -94,7 +94,7 @@
   background-color: #585b60;
   text-align: center;
   color: #ffffff;
-  float:right;
+  float: right;
   cursor: pointer;
 }
 
@@ -102,7 +102,7 @@
   background-color: #cb9c59;
   text-align: center;
   color: #ffffff;
-  float:right;
+  float: right;
   cursor: pointer;
 }
 
@@ -113,7 +113,7 @@ input {
 }
 
 .headerRect {
-  display:inline-block;
+  display: inline-block;
 }
 
 .potentialEmployer {

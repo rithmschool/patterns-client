@@ -6,8 +6,8 @@ class ActivitySideBox extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      status: false,
-    }
+      status: false
+    };
     this.handleClick = this.handleClick.bind(this);
   }
 
@@ -17,30 +17,36 @@ class ActivitySideBox extends Component {
   }
 
   render() {
-    let toggleStatus = this.state.status ? "active-toggle" : "inactive-toggle";
-    let toggleArrow = this.state.status ? "arrow" : "inactive-arrow"
+    let toggleStatus = this.state.status ? 'active-toggle' : 'inactive-toggle';
+    let toggleArrow = this.state.status ? 'arrow' : 'inactive-arrow';
     let menuItems = this.props.data.stages.map(val => {
       return (
         <div key={val._id} className="menu-item">
           <h4>{val.name}</h4>
           <h6 className="count-aside">{val.assets.length}</h6>
         </div>
-      )
+      );
     });
     let toggleItems = this.state.status ? menuItems : null;
     return (
       <div className="activity">
         <div className="title">
-          <div className={toggleStatus}></div>
+          <div className={toggleStatus} />
           <div className="activity-name">
-            <h3><Link to={`/activities/${this.props.data._id}`}>{this.props.data.name}</Link></h3>
+            <h3>
+              <Link to={`/activities/${this.props.data._id}`}>
+                {this.props.data.name}
+              </Link>
+            </h3>
           </div>
-          <div className={toggleArrow} onClick={this.handleClick}><img src={down} alt="Activity Toggle Arrow" /></div>
+          <div className={toggleArrow} onClick={this.handleClick}>
+            <img src={down} alt="Activity Toggle Arrow" />
+          </div>
         </div>
         {toggleItems}
-     </div>
-    )
+      </div>
+    );
   }
-};
+}
 
 export default ActivitySideBox;

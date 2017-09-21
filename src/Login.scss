@@ -1,10 +1,10 @@
-@import "./index.scss";
+@import './index.scss';
 
 .login-image {
   background-image: url('./images/login-bike.png');
   background-repeat: no-repeat;
   background-size: contain;
-  background-position: center; 
+  background-position: center;
   background-color: $inner-content-background;
   height: 100vh;
   text-align: center;
@@ -30,7 +30,7 @@
     height: 32vh;
     min-height: 350px;
   }
-} 
+}
 
 @media (min-height: 901px) {
   .sign-in-box {
@@ -40,7 +40,6 @@
     min-height: 400px;
   }
 }
-
 
 .sign-in-box {
   border-radius: 4px;
@@ -85,7 +84,6 @@
 .aside {
   margin-top: 4.15vh;
   font-size: 12px;
-  line-height: 1.0;
+  line-height: 1;
   color: #7f8fa4;
 }
-

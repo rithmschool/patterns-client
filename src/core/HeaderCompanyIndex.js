@@ -4,16 +4,21 @@ import './HeaderCompanyIndex.css';
 import { toggleModal } from '../actions/action';
 
 const HeaderCompanyIndex = props => {
-  return(
-    <div className='header-index'>
+  return (
+    <div className="header-index">
       <div>
-        <div className='headerTop row'>
-          <p className='headerTitle'> Companies </p>
-          <input type='submit' className='addActivityButton' value='ADD' onClick={props.toggleModal} />
+        <div className="headerTop row">
+          <p className="headerTitle"> Companies </p>
+          <input
+            type="submit"
+            className="addActivityButton"
+            value="ADD"
+            onClick={props.toggleModal}
+          />
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default connect (undefined, { toggleModal })(HeaderCompanyIndex);
+export default connect(undefined, { toggleModal })(HeaderCompanyIndex);

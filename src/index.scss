@@ -1,18 +1,18 @@
-// $icon-font-path:"~bootstrap-sass/assets/fonts/bootstrap/"; 
+// $icon-font-path:"~bootstrap-sass/assets/fonts/bootstrap/";
 // @import '../node_modules/bootstrap-sass/assets/stylesheets/bootstrap-custom.scss';
 
-* { 
+* {
   box-sizing: border-box;
 }
 
-html{
-  min-height:1vh;
+html {
+  min-height: 1vh;
 }
 body {
   margin: 0;
   padding: 0;
   font-family: 'Source Sans Pro', sans-serif;
-  min-height:1vh;
+  min-height: 1vh;
 }
 
 /* COLORS */
@@ -35,8 +35,8 @@ $content-background: #eef0f3;
 /* PADDINGS AND MARGINS */
 
 $lg-percentage: 1;
-$md-percentage: .75;
-$sm-percentage: .2;
+$md-percentage: 0.75;
+$sm-percentage: 0.2;
 // $lg-sidebar-left-width:352px;
 
 /* MEDIA QUERIES */

@@ -1,4 +1,4 @@
-@import "../index.scss";
+@import '../index.scss';
 
 @each $p in ($md-percentage, $lg-percentage) {
   @media (min-width: $p * 1024px) {
@@ -61,7 +61,7 @@
 
 .headerTitle {
   font-weight: 600;
-  float:left;
+  float: left;
 }
 
 .statusToggle {
@@ -78,7 +78,7 @@
   background-color: #585b60;
   text-align: center;
   color: #ffffff;
-  float:right;
+  float: right;
   cursor: pointer;
 }
 
@@ -86,7 +86,7 @@
   background-color: #cb9c59;
   text-align: center;
   color: #ffffff;
-  float:right;
+  float: right;
   cursor: pointer;
 }
 
@@ -97,7 +97,7 @@ input {
 }
 
 .headerRect {
-  display:inline-block;
+  display: inline-block;
 }
 
 .potentialEmployer {

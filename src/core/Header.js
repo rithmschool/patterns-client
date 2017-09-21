@@ -7,10 +7,18 @@ import HeaderCompanyShow from './HeaderCompanyShow';
 
 const Header = () => (
   <Switch>
-    <Route exact path='/activities' component={HeaderActivityIndex} />
-    <Route exact path='/activities/:activityId' component={HeaderActivityShow} />
-    <Route exact path='/assets/companies' component={HeaderCompanyIndex} />
-    <Route exact path='/assets/companies/:companyId' component={HeaderCompanyShow} />
+    <Route exact path="/activities" component={HeaderActivityIndex} />
+    <Route
+      exact
+      path="/activities/:activityId"
+      component={HeaderActivityShow}
+    />
+    <Route exact path="/assets/companies" component={HeaderCompanyIndex} />
+    <Route
+      exact
+      path="/assets/companies/:companyId"
+      component={HeaderCompanyShow}
+    />
   </Switch>
 );
 

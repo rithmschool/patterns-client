@@ -9,25 +9,34 @@ import ModalCompany from './ModalCompany';
 
 class Asset extends Component {
   render() {
-    let modal = this.props.modalState
-      ? <ModalCompany name="Edit" logo="Replace" />
-      : null;
-    return( 
-      <div className="asset row"> 
+    let modal = this.props.modalState ? (
+      <ModalCompany name="Edit" logo="Replace" />
+    ) : null;
+    return (
+      <div className="asset row">
         {modal}
-        <SidebarLeft /> 
+        <SidebarLeft />
         <Switch>
           <Route exact path="/assets/companies" component={Content} />
-          <Route exact path="/assets/companies/:companyId" component={SmallerContent} />
+          <Route
+            exact
+            path="/assets/companies/:companyId"
+            component={SmallerContent}
+          />
         </Switch>
-        <Route exact path="/assets/companies/:companyId" component={SidebarRight} />
+        <Route
+          exact
+          path="/assets/companies/:companyId"
+          component={SidebarRight}
+        />
       </div>
-  )};
+    );
+  }
 }
 
 function mapModalState(state) {
   return {
-    modalState: state.modal,
+    modalState: state.modal
   };
 }
 

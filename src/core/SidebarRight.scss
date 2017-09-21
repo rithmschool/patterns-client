@@ -1,4 +1,4 @@
-@import "../index.scss";
+@import '../index.scss';
 
 /* MAIN SIDEBAR STYLES */
 
@@ -15,21 +15,21 @@
 /* FONTS */
 
 /* Activity Name ex. Job Search (June 2017) */
-.sidebar-right h1 { 
+.sidebar-right h1 {
   font-size: 1.8rem;
   color: $slate-grey;
   font-weight: 500;
 }
 
 /* Number Counts */
-.sidebar-right h2 { 
+.sidebar-right h2 {
   font-size: 1.4rem;
   color: $slate-grey;
   font-weight: 600;
 }
 
 /* Post Button */
-.sidebar-right h3 { 
+.sidebar-right h3 {
   font-size: 1.4rem;
   color: $white;
   font-weight: 400;
@@ -37,7 +37,7 @@
 }
 
 /* Notes / Tasks / Log */
-.sidebar-right h4 { 
+.sidebar-right h4 {
   font-size: 1.2rem;
   color: $slate-grey;
   font-weight: 600;
@@ -70,15 +70,20 @@
 /* SIDEBAR STYLING FOR COLLAPSED/SMALL WIDTH */
 
 @media (max-width: 768px) {
-  .sidebar-right, .activity-header, .right-footer {
+  .sidebar-right,
+  .activity-header,
+  .right-footer {
     width: 72px;
   }
 
-  .activity-header h1, select, .notes-previews, .post-box {
+  .activity-header h1,
+  select,
+  .notes-previews,
+  .post-box {
     display: none;
   }
 
-  /* HEADER WITH ICON */ 
+  /* HEADER WITH ICON */
 
   .activity-header {
     height: 72px;
@@ -94,7 +99,8 @@
     width: 72px;
   }
 
-  #selected, .select-item:hover  {
+  #selected,
+  .select-item:hover {
     background-color: transparent;
   }
 
@@ -144,7 +150,9 @@
 
 @each $p in ($md-percentage, $lg-percentage) {
   @media (min-width: $p * 1024px) {
-    .sidebar-right, .activity-header, .right-footer {
+    .sidebar-right,
+    .activity-header,
+    .right-footer {
       width: $p * 352px;
     }
 
@@ -156,7 +164,7 @@
     .activity-header h1 {
       line-height: $p * 72px;
     }
-    .icon-bookmark { 
+    .icon-bookmark {
       margin: $p * 28px $p * 24px;
     }
     .icon-bookmark img {
@@ -164,7 +172,7 @@
       height: $p * 16px;
     }
 
-    /* STAGE DROPDOWN */ 
+    /* STAGE DROPDOWN */
 
     #stage {
       margin: $p * 24px;
@@ -173,11 +181,11 @@
       padding: 0px $p * 9px;
 
       // remove right arrow and replace with their arrow
-      -webkit-appearance: none; 
+      -webkit-appearance: none;
       background: url(../images/icon-chevron-down-gray.svg) no-repeat right;
       background-color: $white;
       background-position-x: $p * 274px;
-    } 
+    }
 
     /* SELECTORS (NOTES - TASKS - LOG) */
 
@@ -191,7 +199,8 @@
       margin: 0px $p * 16px;
     }
 
-    #selected, .select-item:hover {
+    #selected,
+    .select-item:hover {
       background-color: #c2cbd3;
       border-radius: 4px;
     }
@@ -229,7 +238,7 @@
     .private-note {
       margin-top: $p * 12px;
     }
-    
+
     .post-button {
       margin: 0 $p * 24px 0 $p * 12px;
     }
@@ -327,12 +336,12 @@
   margin: 0;
 }
 
-/* STAGE DROPDOWN */ 
+/* STAGE DROPDOWN */
 
 #stage {
   border: 1px solid #c3cbd3;
   color: $slate-grey;
-} 
+}
 
 #stage:focus {
   outline: none;

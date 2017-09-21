@@ -8,7 +8,6 @@ import ActivitySideBox from './ActivitySideBox';
 import UserProfile from './UserProfile';
 
 class SidebarLeft extends Component {
-
   render() {
     let allActivities = this.props.activities.map(val => (
       <ActivitySideBox key={val._id} data={val} />
@@ -17,11 +16,11 @@ class SidebarLeft extends Component {
       <div className="sidebar">
         <UserProfile />
         <div className="activity-heading">
-          <h1><Link to="/activities">Activities</Link></h1>
+          <h1>
+            <Link to="/activities">Activities</Link>
+          </h1>
         </div>
-        <div className="activity-list">
-          {allActivities}
-        </div>
+        <div className="activity-list">{allActivities}</div>
 
         <div className="button-holder">
           <button>
@@ -29,7 +28,7 @@ class SidebarLeft extends Component {
           </button>
         </div>
 
-       <div className="footer">
+        <div className="footer">
           <div className="logo-holder">
             <img src={logo} alt="Tradecraft Logo" />
           </div>
@@ -39,16 +38,15 @@ class SidebarLeft extends Component {
             <p className="open">OPEN</p>
           </div>
         </div>
-
       </div>
-    )};
-
+    );
   }
+}
 
-  function mapStateForActivities(state) {
-    return {
-      activities: state.activities
-    };
+function mapStateForActivities(state) {
+  return {
+    activities: state.activities
+  };
 }
 
 export default connect(mapStateForActivities)(SidebarLeft);

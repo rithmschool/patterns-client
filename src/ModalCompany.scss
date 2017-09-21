@@ -1,8 +1,8 @@
-@import "./index.scss";
+@import './index.scss';
 
 .overlay {
   position: fixed;
-  background-color: rgba(0,0,0,0.3);
+  background-color: rgba(0, 0, 0, 0.3);
   padding: 0;
   margin: 0;
   height: 100vh;
@@ -84,7 +84,8 @@ form {
     padding-top: 36px;
     text-align: right;
 
-    .cancel, .save {
+    .cancel,
+    .save {
       color: $white;
       text-transform: uppercase;
       font-size: 12px;

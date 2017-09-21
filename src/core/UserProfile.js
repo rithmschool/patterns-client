@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router';
 import { connect } from 'react-redux';
-import { logout } from '../actions/auth'
+import { logout } from '../actions/auth';
 import signout from '../images/icon-signout-gray.svg';
 
 class UserProfile extends Component {
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = {
-      userProfile: false,
+      userProfile: false
     };
     this.onProfileClick = this.onProfileClick.bind(this);
     this.onProfileEnter = this.onProfileEnter.bind(this);
@@ -18,19 +18,19 @@ class UserProfile extends Component {
 
   onProfileClick() {
     this.setState({
-      userProfile: !this.state.userProfile,
+      userProfile: !this.state.userProfile
     });
   }
 
   onProfileEnter() {
     this.setState({
-      userProfile: true,
+      userProfile: true
     });
   }
 
   onProfileLeave() {
     this.setState({
-      userProfile: false,
+      userProfile: false
     });
   }
 
@@ -41,13 +41,16 @@ class UserProfile extends Component {
 
   render() {
     let pictureStyle = {
-      backgroundImage: `url(${this.props.user.picture})`,
+      backgroundImage: `url(${this.props.user.picture})`
     };
 
     let userMenu = (
       <div className="profile-menu" onMouseEnter={this.onProfileEnter}>
         <div className="logout-item" onClick={this.onLogout}>
-          <p><img src={signout} alt="Sign Out" /><span className="logout-text">Sign Out</span></p>
+          <p>
+            <img src={signout} alt="Sign Out" />
+            <span className="logout-text">Sign Out</span>
+          </p>
         </div>
       </div>
     );
@@ -56,18 +59,22 @@ class UserProfile extends Component {
 
     return (
       <div className="profile-header" onMouseLeave={this.onProfileLeave}>
-        <div className="profile-picture" style={pictureStyle} onClick={this.onProfileClick}>
+        <div
+          className="profile-picture"
+          style={pictureStyle}
+          onClick={this.onProfileClick}
+        >
           {userDropdown}
         </div>
         <h2>{this.props.user.name}</h2>
       </div>
-    )
+    );
   }
 }
 
 function mapToUserProfile(state) {
   return {
-    user: state.userProfile,
+    user: state.userProfile
   };
 }
 

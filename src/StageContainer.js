@@ -33,7 +33,7 @@ class StageContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      stages: this.props.activity.stages,
+      stages: this.props.activity.stages
     };
     this.moveCard = this.moveCard.bind(this);
     this.moveAndUpdateCard = this.moveAndUpdateCard.bind(this);
@@ -44,16 +44,23 @@ class StageContainer extends Component {
     const allStages = this.state.stages;
     const dummyStageAssets = allStages[dragListIdx].assets;
     const dragStage = dummyStageAssets[dragIndex];
-    let newStageAssets = [...dummyStageAssets.slice(0, dragIndex), ...dummyStageAssets.slice(dragIndex + 1)];
+    let newStageAssets = [
+      ...dummyStageAssets.slice(0, dragIndex),
+      ...dummyStageAssets.slice(dragIndex + 1)
+    ];
     newStageAssets.splice(hoverIndex, 0, dragStage);
     let newStage = {
       ...allStages[dragListIdx],
-      assets: newStageAssets,
+      assets: newStageAssets
     };
-    let newStages = [...allStages.slice(0, dragListIdx), newStage, ...allStages.slice(dragListIdx + 1)];
+    let newStages = [
+      ...allStages.slice(0, dragListIdx),
+      newStage,
+      ...allStages.slice(dragListIdx + 1)
+    ];
     this.setState({
       ...this.state,
-      stages: newStages,
+      stages: newStages
     });
   }
 
@@ -65,14 +72,14 @@ class StageContainer extends Component {
     prevStageAssets.splice(dragIndex, 1);
     const prevStage = {
       ...allStages[dragListIdx],
-      assets: prevStageAssets,
+      assets: prevStageAssets
     };
     // find next list and add dragged item
     const nextStageAssets = allStages[targetListIdx].assets.slice();
     nextStageAssets.splice(hoverIndex, 0, movingAsset);
     const nextStage = {
       ...allStages[targetListIdx],
-      assets: nextStageAssets,
+      assets: nextStageAssets
     };
     // create new array and pass through stages in order
     const modObj = {};
@@ -88,18 +95,19 @@ class StageContainer extends Component {
     }
     this.setState({
       ...this.state,
-      stages: newStages,
+      stages: newStages
     });
   }
 
   dispatchState(prevIdx, nextIdx) {
     const prevId = this.state.stages[prevIdx]._id;
     const nextId = this.state.stages[nextIdx]._id;
-    const prevBody = {assets: this.state.stages[prevIdx].assets};
-    const nextBody = {assets: this.state.stages[nextIdx].assets};
-    axios.patch(`${BASE_URL}/stages/${prevId}`, prevBody)
+    const prevBody = { assets: this.state.stages[prevIdx].assets };
+    const nextBody = { assets: this.state.stages[nextIdx].assets };
+    axios
+      .patch(`${BASE_URL}/stages/${prevId}`, prevBody)
       .then(prevRes => {
-        return axios.patch(`${BASE_URL}/stages/${nextId}`, nextBody)
+        return axios.patch(`${BASE_URL}/stages/${nextId}`, nextBody);
       })
       .then(nextRes => {
         this.props.changeAsset(this.state.stages);
@@ -107,10 +115,10 @@ class StageContainer extends Component {
       .catch(err => console.log(err));
   }
 
-  render(){
-    let stages = this.state.stages.map((val,idx) => {
+  render() {
+    let stages = this.state.stages.map((val, idx) => {
       return (
-        <div key={val._id} className='stage col-lg-3'>
+        <div key={val._id} className="stage col-lg-3">
           <SmartStage
             key={val._id}
             stageId={val._id}
@@ -125,18 +133,16 @@ class StageContainer extends Component {
         </div>
       );
     });
-    return(
-      <div>
-        {stages}
-      </div>
-    )
+    return <div>{stages}</div>;
   }
 }
 
 function mapStateToProps(state) {
   return {
-    activity: state.activity,
+    activity: state.activity
   };
 }
 
-export default DragDropContext(ModifiedBackend)(connect(mapStateToProps, { setActiveActivity, changeAsset })(StageContainer));
+export default DragDropContext(ModifiedBackend)(
+  connect(mapStateToProps, { setActiveActivity, changeAsset })(StageContainer)
+);

@@ -8,7 +8,7 @@ const stageTarget = {
       id: props.name,
       stage: props.stageId,
       stageIdx: props.stageIdx,
-      items: props.items,
+      items: props.items
     };
   },
   hover(props, monitor, component) {
@@ -18,7 +18,12 @@ const stageTarget = {
     const targetListIdx = props.stageIdx;
 
     if (props.items === 0) {
-      props.moveAndUpdateCard(dragIndex, hoverIndex, dragListIdx, targetListIdx);
+      props.moveAndUpdateCard(
+        dragIndex,
+        hoverIndex,
+        dragListIdx,
+        targetListIdx
+      );
       monitor.getItem().index = hoverIndex;
       monitor.getItem().stageIdx = targetListIdx;
     }
@@ -26,18 +31,23 @@ const stageTarget = {
 };
 
 class SmartStage extends Component {
-  render(){
+  render() {
     const { connectDropTarget } = this.props;
 
     return connectDropTarget(
-      <div className='dragTarget'>
+      <div className="dragTarget">
         <Stage {...this.props} />
       </div>
-    )
+    );
   }
 }
 
-export default DropTarget('stageAsset', stageTarget, (connectDragSource, monitor) => ({
-  connectDropTarget: connectDragSource.dropTarget(),
-  isOver: monitor.isOver(),
-  canDrop: monitor.canDrop()}))(SmartStage);
+export default DropTarget(
+  'stageAsset',
+  stageTarget,
+  (connectDragSource, monitor) => ({
+    connectDropTarget: connectDragSource.dropTarget(),
+    isOver: monitor.isOver(),
+    canDrop: monitor.canDrop()
+  })
+)(SmartStage);

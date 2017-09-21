@@ -16,9 +16,9 @@ const store = createStore(
   compose(
     applyMiddleware(thunk),
     window.devToolsExtension ? window.devToolsExtension() : f => f,
-    autoRehydrate(),
+    autoRehydrate()
   )
-)
+);
 
 class AppProvider extends Component {
   constructor() {
@@ -33,18 +33,16 @@ class AppProvider extends Component {
   }
 
   render() {
-    if (!this.state.rehydrated) return null
+    if (!this.state.rehydrated) return null;
     return (
       <Provider store={store}>
         <Router>
           <App />
         </Router>
       </Provider>
-    )
+    );
   }
 }
 
-ReactDOM.render(
-  <AppProvider />,
-  document.getElementById('root'));
+ReactDOM.render(<AppProvider />, document.getElementById('root'));
 registerServiceWorker();

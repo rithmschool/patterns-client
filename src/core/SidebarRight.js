@@ -17,9 +17,13 @@ class SidebarRight extends Component {
   }
 
   funnelClick() {
-    let newAsset = [...this.props.activity.stages[0].assets, this.props.company];
+    let newAsset = [
+      ...this.props.activity.stages[0].assets,
+      this.props.company
+    ];
     let body = { assets: newAsset };
-    axios.patch(`${BASE_URL}/stages/${this.props.activity.stages[0]._id}`, body)
+    axios
+      .patch(`${BASE_URL}/stages/${this.props.activity.stages[0]._id}`, body)
       .then(res => {
         let newStageAsset = [
           ...this.props.activity.stages[0].assets,
@@ -29,10 +33,7 @@ class SidebarRight extends Component {
           ...this.props.activity.stages[0],
           assets: newStageAsset
         };
-        let stages = [
-          firstStage,
-          ...this.props.activity.stages.slice(1)
-        ];
+        let stages = [firstStage, ...this.props.activity.stages.slice(1)];
         this.props.changeAsset(stages);
       })
       .catch(error => console.log(error));
@@ -50,9 +51,12 @@ class SidebarRight extends Component {
       let prevAssetIdx = prevAssets.findIndex(val => {
         return val._id === this.props.company._id;
       });
-      let prevStageAssetsArr = [...prevAssets.slice(0, prevAssetIdx), ...prevAssets.slice(prevAssetIdx + 1)];
+      let prevStageAssetsArr = [
+        ...prevAssets.slice(0, prevAssetIdx),
+        ...prevAssets.slice(prevAssetIdx + 1)
+      ];
       let prevBody = {
-        assets: prevStageAssetsArr,
+        assets: prevStageAssetsArr
       };
 
       // update next stage assets array to add company
@@ -62,15 +66,16 @@ class SidebarRight extends Component {
       let nextAssets = this.props.activity.stages[nextStageIdx].assets;
       let nextStageAssetsArr = [...nextAssets, this.props.company];
       let nextBody = {
-        assets: nextStageAssetsArr,
+        assets: nextStageAssetsArr
       };
-      
+
       // patch request to server to update stages
       let firstRes;
-      axios.patch(`${BASE_URL}/stages/${stageId[0]}`, prevBody)
+      axios
+        .patch(`${BASE_URL}/stages/${stageId[0]}`, prevBody)
         .then(prevRes => {
           firstRes = prevRes;
-          return axios.patch(`${BASE_URL}/stages/${stageId[1]}`, nextBody)
+          return axios.patch(`${BASE_URL}/stages/${stageId[1]}`, nextBody);
         })
         .then(nextRes => {
           let changeObj = {};
@@ -96,7 +101,9 @@ class SidebarRight extends Component {
     let foundObj = false;
     for (let i = 0; i < stages.length; i++) {
       curStage = stages[i]._id;
-      if (foundObj) { break; }
+      if (foundObj) {
+        break;
+      }
       for (let j = 0; j < stages[i].assets.length; j++) {
         if (this.props.match.params.companyId === stages[i].assets[j]._id) {
           foundStage = curStage;
@@ -115,10 +122,18 @@ class SidebarRight extends Component {
     );
 
     let funnelDropdownOptions = this.props.activity.stages.map(val => {
-      if (foundStage === val._id){
-        return <option key={val._id} value={`${foundStage}.${val._id}`} selected>{val.name}</option>
+      if (foundStage === val._id) {
+        return (
+          <option key={val._id} value={`${foundStage}.${val._id}`} selected>
+            {val.name}
+          </option>
+        );
       } else {
-        return <option key={val._id} value={`${foundStage}.${val._id}`}>{val.name}</option>
+        return (
+          <option key={val._id} value={`${foundStage}.${val._id}`}>
+            {val.name}
+          </option>
+        );
       }
     });
 
@@ -130,87 +145,117 @@ class SidebarRight extends Component {
 
     let funnelOption = foundObj ? funnelDropdown : funnelToggle;
 
-    return(
+    return (
       <div className="sidebar-right">
         <div className="activity-header">
-            <div className="icon-bookmark"><img src={bookmark} alt="Bookmark Icon"/></div>
-            <h1>{this.props.activity.name}</h1>
+          <div className="icon-bookmark">
+            <img src={bookmark} alt="Bookmark Icon" />
           </div>
+          <h1>{this.props.activity.name}</h1>
+        </div>
 
-          <div className="notes-tasks-log">
-            {funnelOption}
+        <div className="notes-tasks-log">
+          {funnelOption}
 
-            <div className="selectors">
-              <div className="select-item" id="selected">
-                <div className="number"><h2>2</h2></div>
-                <div className="type"><h4>Notes</h4></div>
+          <div className="selectors">
+            <div className="select-item" id="selected">
+              <div className="number">
+                <h2>2</h2>
               </div>
-              <div className="select-item">
-                <div className="number"><h2>3</h2></div>
-                <div className="type"><h4>Tasks</h4></div>
+              <div className="type">
+                <h4>Notes</h4>
               </div>
-              <div className="select-item">
-                <div className="number"><h2>5</h2></div>
-                <div className="type"><h4>Log</h4></div>
+            </div>
+            <div className="select-item">
+              <div className="number">
+                <h2>3</h2>
+              </div>
+              <div className="type">
+                <h4>Tasks</h4>
+              </div>
+            </div>
+            <div className="select-item">
+              <div className="number">
+                <h2>5</h2>
+              </div>
+              <div className="type">
+                <h4>Log</h4>
               </div>
             </div>
           </div>
+        </div>
 
-          <div className="post-box">
-            <textarea className="input-field" name="note" rows="6">
-              Add a note
-            </textarea>
-            <div className="post-info">
-              <div className="lock-icon">
-                <img src={lock} alt="Lock Icon"/>
-              </div>
-              <div className="private-note">
-                <h5>Private<br /> Note</h5>
-              </div>
-              <div className="post-button">
-                <button>
-                  <h3>Post</h3>
-                </button>
-              </div>
+        <div className="post-box">
+          <textarea className="input-field" name="note" rows="6">
+            Add a note
+          </textarea>
+          <div className="post-info">
+            <div className="lock-icon">
+              <img src={lock} alt="Lock Icon" />
+            </div>
+            <div className="private-note">
+              <h5>
+                Private<br /> Note
+              </h5>
+            </div>
+            <div className="post-button">
+              <button>
+                <h3>Post</h3>
+              </button>
             </div>
           </div>
+        </div>
 
-          <div className="notes-previews">
-            <div className="indiv-note">
-              <div className="note-date">
-                <h6>7/14/2017</h6>
-                <img src={more} alt="More Icon"/>
-              </div>
-              <div className="note-content">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam eget urna magna. Aliquam sit amet erat non nunc pharetra facilisis. Nullam dignissim vestibulum tellus ut mattis. Nullam at diam tellus. Maecenas semper massa felis, vel accumsan massa pulvinar eu. Aenean et mi pretium, imperdiet nulla sed, euismod ex. Morbi leo orci, tempus ut lacus et, aliquam aliquam nibh. Ut tortor nisl, vulputate quis placerat quis, dapibus in massa. Nunc mi dolor, maximus quis magna eget, finibus consequat orci.</p>
-              </div>
+        <div className="notes-previews">
+          <div className="indiv-note">
+            <div className="note-date">
+              <h6>7/14/2017</h6>
+              <img src={more} alt="More Icon" />
             </div>
-            <div className="indiv-note">
-              <div className="note-date">
-                <h6>7/14/2017</h6>
-                <img src={more} alt="More Icon"/>
-              </div>
-              <div className="note-content">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam eget urna magna. Aliquam sit amet erat non nunc pharetra facilisis. Nullam dignissim vestibulum tellus ut mattis.</p>
-              </div>
+            <div className="note-content">
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
+                eget urna magna. Aliquam sit amet erat non nunc pharetra
+                facilisis. Nullam dignissim vestibulum tellus ut mattis. Nullam
+                at diam tellus. Maecenas semper massa felis, vel accumsan massa
+                pulvinar eu. Aenean et mi pretium, imperdiet nulla sed, euismod
+                ex. Morbi leo orci, tempus ut lacus et, aliquam aliquam nibh. Ut
+                tortor nisl, vulputate quis placerat quis, dapibus in massa.
+                Nunc mi dolor, maximus quis magna eget, finibus consequat orci.
+              </p>
             </div>
           </div>
-
-          <div className="right-footer">
-            <div className="right-hide-holder">
-              <img src={hide} alt="Hide sidebar" />
-              <h5 className="hide-right">HIDE</h5>
-              <h5 className="open-right">OPEN</h5>
+          <div className="indiv-note">
+            <div className="note-date">
+              <h6>7/14/2017</h6>
+              <img src={more} alt="More Icon" />
+            </div>
+            <div className="note-content">
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
+                eget urna magna. Aliquam sit amet erat non nunc pharetra
+                facilisis. Nullam dignissim vestibulum tellus ut mattis.
+              </p>
             </div>
           </div>
+        </div>
+
+        <div className="right-footer">
+          <div className="right-hide-holder">
+            <img src={hide} alt="Hide sidebar" />
+            <h5 className="hide-right">HIDE</h5>
+            <h5 className="open-right">OPEN</h5>
+          </div>
+        </div>
       </div>
-  )};
+    );
+  }
 }
 
 function mapStateToProps(state) {
   return {
     activity: state.activity,
-    company: state.company,
+    company: state.company
   };
 }
 

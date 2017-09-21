@@ -17,6 +17,6 @@ const App = () => (
       <Route component={requireAuth(Main)} />
     </Switch>
   </div>
-)
+);
 
 export default App;

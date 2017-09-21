@@ -5,37 +5,34 @@ import axios from 'axios';
 import { BASE_URL } from './actions/auth';
 
 class BrowseContainer extends Component {
-
   render() {
     let companies = null;
-    if(this.props.companies.length >0){
-      companies = this.props.companies.map((company, i) =>(
-        <Company 
+    if (this.props.companies.length > 0) {
+      companies = this.props.companies.map((company, i) => (
+        <Company
           key={i}
           c_id={company._id}
           name={company.name}
           description={company.description}
           logo={company.logo}
         />
-      ) 
-    )} 
-     return( 
+      ));
+    }
+    return (
       <div className="inner-content">
-        <div className='number-of-companies'>
+        <div className="number-of-companies">
           {this.props.companies.length} Potential Employers
         </div>
-        <div className='company-holder'>   
-          {companies}
-        </div>
+        <div className="company-holder">{companies}</div>
       </div>
-    ) 
-  };  
+    );
+  }
 }
 
 function mapStateToProps(state) {
   return {
-    companies: state.companies,
-  }
+    companies: state.companies
+  };
 }
 
 export default connect(mapStateToProps)(BrowseContainer);

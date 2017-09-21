@@ -8,14 +8,14 @@ const stageAssetSource = {
     return {
       assetId: props.assetId,
       stageIdx: props.stageIdx,
-      index: props.index,
+      index: props.index
     };
   },
   endDrag(props, monitor) {
     const prevIdx = props.stageIdx;
     const nextIdx = monitor.getItem().stageIdx;
     props.dispatchState(prevIdx, nextIdx);
-  },
+  }
 };
 
 const stageAssetTarget = {
@@ -35,37 +35,51 @@ const stageAssetTarget = {
     const hoverClientY = clientOffset.y - hoverBoundingRect.top;
 
     const hoverIdxLower = dragIndex < hoverIndex && hoverClientY < hoverMiddleY;
-    const hoverIdxHigher = dragIndex > hoverIndex && hoverClientY > hoverMiddleY;
-    if (hoverIdxLower || hoverIdxHigher)  return;
+    const hoverIdxHigher =
+      dragIndex > hoverIndex && hoverClientY > hoverMiddleY;
+    if (hoverIdxLower || hoverIdxHigher) return;
 
     if (dragListIdx === targetListIdx) {
       props.moveCard(dragIndex, hoverIndex, dragListIdx);
       monitor.getItem().index = hoverIndex;
     } else if (dragListIdx !== targetListIdx) {
-      props.moveAndUpdateCard(dragIndex, hoverIndex, dragListIdx, targetListIdx);
+      props.moveAndUpdateCard(
+        dragIndex,
+        hoverIndex,
+        dragListIdx,
+        targetListIdx
+      );
       monitor.getItem().index = hoverIndex;
       monitor.getItem().stageIdx = targetListIdx;
-    } 
-  },
+    }
+  }
 };
 
 class SmartStageAsset extends Component {
   render() {
     const { connectDragSource, isDragging, connectDropTarget } = this.props;
-    return connectDragSource(connectDropTarget(
-      <div className='isDragging' style={{opacity: isDragging ? 0.5 : 1}}>
-        <StageAsset {...this.props} />
-      </div>
-    ));
+    return connectDragSource(
+      connectDropTarget(
+        <div className="isDragging" style={{ opacity: isDragging ? 0.5 : 1 }}>
+          <StageAsset {...this.props} />
+        </div>
+      )
+    );
   }
 }
 
-export default DropTarget('stageAsset', stageAssetTarget, (connect, monitor) => ({
-               connectDropTarget: connect.dropTarget(),
-               isOver: monitor.isOver(),
-               canDrop: monitor.canDrop(),
-               item: monitor.getItem(),
-               }))(DragSource('stageAsset', stageAssetSource, (connect, monitor) => ({
-               connectDragSource: connect.dragSource(),
-               isDragging: monitor.isDragging(),
-               }))(SmartStageAsset));
+export default DropTarget(
+  'stageAsset',
+  stageAssetTarget,
+  (connect, monitor) => ({
+    connectDropTarget: connect.dropTarget(),
+    isOver: monitor.isOver(),
+    canDrop: monitor.canDrop(),
+    item: monitor.getItem()
+  })
+)(
+  DragSource('stageAsset', stageAssetSource, (connect, monitor) => ({
+    connectDragSource: connect.dragSource(),
+    isDragging: monitor.isDragging()
+  }))(SmartStageAsset)
+);

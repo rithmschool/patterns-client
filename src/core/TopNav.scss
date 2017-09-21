@@ -1,4 +1,4 @@
-@import "../index.scss";
+@import '../index.scss';
 
 @each $p in ($md-percentage, $lg-percentage) {
   @media (min-width: $p * 1024px) {
@@ -28,7 +28,7 @@
 .topNav {
   width: 100%;
   background-color: $white;
-  box-shadow: 0 3px 8px 0 rgba(0, 0, 0, 0.04), 0 1px 1px 0 rgba(0, 0, 0, 0.04); 
+  box-shadow: 0 3px 8px 0 rgba(0, 0, 0, 0.04), 0 1px 1px 0 rgba(0, 0, 0, 0.04);
   display: inline-block;
   vertical-align: middle;
 }

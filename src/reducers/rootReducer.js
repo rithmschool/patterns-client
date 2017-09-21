@@ -5,7 +5,7 @@ import {
   SET_USER,
   SET_ACTIVITIES,
   SET_COMPANIES,
-  setAuthorizationToken,
+  setAuthorizationToken
 } from '../actions/auth';
 
 import {
@@ -13,8 +13,8 @@ import {
   SET_ACTIVE_ACTIVITY,
   ADD_COMPANY,
   SET_ACTIVE_COMPANY,
-  CHANGE_ASSET,
-} from '../actions/action'
+  CHANGE_ASSET
+} from '../actions/action';
 
 const DEFAULT_STATE = {
   currentUserToken: '',
@@ -24,24 +24,26 @@ const DEFAULT_STATE = {
   activity: {},
   companies: [],
   company: {},
-  modal: false,
-}
+  modal: false
+};
 
-export default (state=DEFAULT_STATE, action={type:null}) => {
-  switch (action.type){
+export default (state = DEFAULT_STATE, action = { type: null }) => {
+  switch (action.type) {
     case SET_TOKEN:
-      return Object.keys(action).length > 1 ? {
-        ...state,
-        currentUserToken: action.token,
-        loginError: null
-      } : {};
+      return Object.keys(action).length > 1
+        ? {
+            ...state,
+            currentUserToken: action.token,
+            loginError: null
+          }
+        : {};
     case SET_LOGIN_ERROR:
       return {
         ...state,
         loginError: action.errObj
       };
     case LOG_OUT:
-      return {...DEFAULT_STATE};
+      return { ...DEFAULT_STATE };
     case SET_USER:
       return {
         ...state,
@@ -71,7 +73,7 @@ export default (state=DEFAULT_STATE, action={type:null}) => {
     case ADD_COMPANY:
       return {
         ...state,
-        companies:[...state.companies, action.company]
+        companies: [...state.companies, action.company]
       };
     case SET_ACTIVE_COMPANY:
       return {
@@ -81,13 +83,13 @@ export default (state=DEFAULT_STATE, action={type:null}) => {
     case CHANGE_ASSET:
       let changeActivity = {
         ...state.activity,
-        stages: action.stages,
+        stages: action.stages
       };
       let changeActivities = [changeActivity];
       return {
         ...state,
         activity: changeActivity,
-        activities: changeActivities,
+        activities: changeActivities
       };
     case 'persist/REHYDRATE':
       setAuthorizationToken(action.payload.currentUserToken);
@@ -95,4 +97,4 @@ export default (state=DEFAULT_STATE, action={type:null}) => {
     default:
       return state;
   }
-}
+};

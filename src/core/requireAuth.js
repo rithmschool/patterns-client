@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-export default function (ComposedComponent) {
-  
+export default function(ComposedComponent) {
   class Authenticate extends Component {
     componentWillMount() {
       if (this.props.isAuthenticated === '') {
@@ -18,20 +17,18 @@ export default function (ComposedComponent) {
     }
 
     render() {
-      return (
-        <ComposedComponent {...this.props} />
-      );
+      return <ComposedComponent {...this.props} />;
     }
   }
 
   Authenticate.contextTypes = {
     router: PropTypes.object.isRequired
-  }
+  };
 
   function mapStateToProps(state) {
     return {
       isAuthenticated: state.currentUserToken
-    }
+    };
   }
 
   return connect(mapStateToProps)(Authenticate);

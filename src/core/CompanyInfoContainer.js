@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import CompanyDetail from './CompanyDetail';
 
 class CompanyInfoContainer extends Component {
-  render () {
+  render() {
     return (
       <div>
         <CompanyDetail key="1" name="Brand" />
