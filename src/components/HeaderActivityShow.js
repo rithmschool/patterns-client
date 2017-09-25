@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './HeaderActivityShow.css';
-import { setActiveActivity, toggleModal } from '../actions/action';
+import { setActiveActivity, toggleModal } from '../store/actions/action';
 
 class HeaderActivityShow extends Component {
   componentWillMount() {

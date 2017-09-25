@@ -12,7 +12,7 @@ const Company = props => {
     <div className="company row">
       <div className="company-logo col-xs-1" style={pictureStyle} />
       <div className="company-name col-xs-3">
-        <Link to={`/assets/companies/${props.c_id}`}>{props.name}</Link>
+        <Link to={`/assets/companies/${props.companyId}`}>{props.name}</Link>
       </div>
       <div className="company-data col-xs-7 row">
         <div className="first-data-collection col-lg-3 col-md-4 col-sm-6 hidden-xs">
@@ -33,7 +33,7 @@ const Company = props => {
         </div>
       </div>
       <div className="company-arrow col-xs-1 hidden-sm hidden-xs">
-        <Link to={`/assets/companies/${props.c_id}`}>
+        <Link to={`/assets/companies/${props.companyId}`}>
           <img className="companyRightArrow" src={down} alt="Right Arrow" />
         </Link>
       </div>

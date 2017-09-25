@@ -3,9 +3,9 @@ import { connect } from 'react-redux';
 import axios from 'axios';
 import { DragDropContext } from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
-import SmartStage from './SmartStage';
-import { setActiveActivity, changeAsset } from './actions/action';
-import { BASE_URL } from './actions/auth';
+import SmartStage from '../components/SmartStage';
+import { setActiveActivity, changeAsset } from '../store/actions/action';
+import { BASE_URL } from '../store/actions/auth';
 
 const ModifiedBackend = (...args) => {
   const instance = new HTML5Backend(...args);

@@ -5,7 +5,7 @@ import Activity from './Activity';
 class ActivityDashboard extends Component {
   render() {
     let allActivities = this.props.activities.map(val => (
-      <Activity key={val._id} name={val.name} a_id={val._id} />
+      <Activity key={val._id} name={val.name} activityId={val._id} />
     ));
     return <div>{allActivities}</div>;
   }

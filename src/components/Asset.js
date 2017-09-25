@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
-import SidebarLeft from './core/SidebarLeft';
-import Content from './core/Content';
-import SmallerContent from './core/SmallerContent';
-import SidebarRight from './core/SidebarRight';
+import SidebarLeft from './SidebarLeft';
+import Content from './Content';
+import SmallerContent from './SmallerContent';
+import SidebarRight from './SidebarRight';
 import ModalCompany from './ModalCompany';
 
 class Asset extends Component {

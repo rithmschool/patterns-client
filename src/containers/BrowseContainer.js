@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Company from './core/Company';
+import Company from '../components/Company';
 import axios from 'axios';
-import { BASE_URL } from './actions/auth';
+import { BASE_URL } from '../store/actions/auth';
 
 class BrowseContainer extends Component {
   render() {
@@ -11,7 +11,7 @@ class BrowseContainer extends Component {
       companies = this.props.companies.map((company, i) => (
         <Company
           key={i}
-          c_id={company._id}
+          companyId={company._id}
           name={company.name}
           description={company.description}
           logo={company.logo}

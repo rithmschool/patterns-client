@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './ActivityContainer.css';
-import BrowseCompanies from './BrowseCompanies';
-import StageContainer from './StageContainer';
+import BrowseCompanies from '../components/BrowseCompanies';
+import StageContainer from '../containers/StageContainer';
 
 const ActivityContainer = props => {
   return (

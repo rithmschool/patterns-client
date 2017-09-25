@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router';
 import { connect } from 'react-redux';
-import { logout } from '../actions/auth';
+import { logout } from '../store/actions/auth';
 import signout from '../images/icon-signout-gray.svg';
 
 class UserProfile extends Component {

@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import './HeaderCompanyIndex.css';
-import { toggleModal } from '../actions/action';
+import { toggleModal } from '../store/actions/action';
 
 const HeaderCompanyIndex = props => {
   return (

@@ -1,7 +1,7 @@
-@import './index.scss';
+@import '../index.scss';
 
 .login-image {
-  background-image: url('./images/login-bike.png');
+  background-image: url('../images/login-bike.png');
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
@@ -58,7 +58,7 @@
 }
 
 .google-sign-in {
-  background-image: url('./images/google-signin-normal.png');
+  background-image: url('../images/google-signin-normal.png');
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
@@ -72,12 +72,12 @@
 }
 
 .google-sign-in:active {
-  background-image: url('./images/google-signin-pressed.png');
+  background-image: url('../images/google-signin-pressed.png');
   outline: none;
 }
 
 .google-sign-in:hover {
-  background-image: url('./images/google-signin-focus.png');
+  background-image: url('../images/google-signin-focus.png');
   border: none;
 }
 

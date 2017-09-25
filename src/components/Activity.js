@@ -10,7 +10,7 @@ const Activity = props => {
     <div className="activity-bar row">
       <div className="activity-bar-logo col-xs-1">{logo}</div>
       <div className="activity-bar-name col-xs-3">
-        <Link to={`/activities/${props.a_id}`}>{props.name}</Link>
+        <Link to={`/activities/${props.activityId}`}>{props.name}</Link>
       </div>
       <div className="activity-bar-data col-xs-7 row">
         <div className="first-data-collection col-lg-3 col-md-4 col-sm-6 hidden-xs">
@@ -31,7 +31,7 @@ const Activity = props => {
         </div>
       </div>
       <div className="activity-bar-arrow col-xs-1 hidden-sm hidden-xs">
-        <Link to={`/activities/${props.a_id}`}>
+        <Link to={`/activities/${props.activityId}`}>
           <img
             className="activity-barRightArrow"
             src={down}

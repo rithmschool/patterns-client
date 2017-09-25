@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './Login.css';
-import logo from './images/logo-light-gray.png';
-import { BASE_URL } from './actions/auth';
+import logo from '../images/logo-light-gray.png';
+import { BASE_URL } from '../store/actions/auth';
 
 class Login extends Component {
   constructor(props) {

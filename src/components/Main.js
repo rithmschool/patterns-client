@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import SidebarLeft from './core/SidebarLeft';
-import Content from './core/Content';
+import SidebarLeft from './SidebarLeft';
+import Content from './Content';
 import ModalCompany from './ModalCompany';
-import SidebarRight from './core/SidebarRight';
+import SidebarRight from './SidebarRight';
 import './Main.css';
 
 class Main extends Component {

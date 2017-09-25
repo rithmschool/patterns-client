@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios';
-import { BASE_URL } from '../actions/auth';
-import { changeAsset } from '../actions/action';
+import { BASE_URL } from '../store/actions/auth';
+import { changeAsset } from '../store/actions/action';
 import './SidebarRight.css';
 import bookmark from '../images/icon-diary-gray.svg';
 import lock from '../images/icon-lock-gray.svg';

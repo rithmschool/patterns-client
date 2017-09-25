@@ -7,8 +7,8 @@ import thunk from 'redux-thunk';
 import { createStore, compose, applyMiddleware } from 'redux';
 import { persistStore, autoRehydrate } from 'redux-persist';
 import 'bootstrap-grid';
-import rootReducer from './reducers/rootReducer';
-import App from './App';
+import rootReducer from './store/reducers/rootReducer';
+import App from './components/App';
 import './index.css';
 
 const store = createStore(
