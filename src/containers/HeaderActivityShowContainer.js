@@ -1,9 +1,10 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import './HeaderActivityShow.css';
-import { setActiveActivity, toggleModal } from '../store/actions/action';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import "./HeaderActivityShowContainer.css";
+import { setActiveActivity, toggleModal } from "../store/actions/action";
+import PropTypes from "prop-types";
 
-class HeaderActivityShow extends Component {
+class HeaderActivityShowContainer extends Component {
   componentWillMount() {
     let foundActivity = this.props.activities.find(
       val => val._id === this.props.match.params.activityId
@@ -39,6 +40,25 @@ function mapStateToProps(state) {
   };
 }
 
+HeaderActivityShowContainer.propTypes = {
+  activities: PropTypes.arrayOf(
+    PropTypes.shape({
+      _id: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired
+    })
+  ),
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      activityId: PropTypes.string.isRequired
+    })
+  }),
+  setActiveActivity: PropTypes.func.isRequired,
+  activity: PropTypes.shape({
+    name: PropTypes.string.isRequired
+  }),
+  toggleModal: PropTypes.func.isRequired
+};
+
 export default connect(mapStateToProps, { setActiveActivity, toggleModal })(
-  HeaderActivityShow
+  HeaderActivityShowContainer
 );

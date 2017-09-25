@@ -1,13 +1,15 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import down from '../images/icon-chevron-right-gray.svg';
-import './Company.css';
+import React from "react";
+import { Link } from "react-router-dom";
+import down from "../images/icon-chevron-right-gray.svg";
+import "./Company.css";
+import PropTypes from "prop-types";
 
 const Company = props => {
   let logo = props.logo || null;
   let pictureStyle = {
     backgroundImage: `url(${logo})`
   };
+
   return (
     <div className="company row">
       <div className="company-logo col-xs-1" style={pictureStyle} />
@@ -39,6 +41,11 @@ const Company = props => {
       </div>
     </div>
   );
+};
+
+Company.propTypes = {
+  logo: PropTypes.string,
+  companyId: PropTypes.string
 };
 
 export default Company;

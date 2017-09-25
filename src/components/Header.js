@@ -1,23 +1,27 @@
-import React from 'react';
-import { Route, Switch } from 'react-router';
-import HeaderActivityIndex from './HeaderActivityIndex';
-import HeaderActivityShow from './HeaderActivityShow';
-import HeaderCompanyIndex from './HeaderCompanyIndex';
-import HeaderCompanyShow from './HeaderCompanyShow';
+import React from "react";
+import { Route, Switch } from "react-router";
+import HeaderActivityIndexContainer from "../containers/HeaderActivityIndexContainer";
+import HeaderActivityShowContainer from "../containers/HeaderActivityShowContainer";
+import HeaderCompanyIndexContainer from "../containers/HeaderCompanyIndexContainer";
+import HeaderCompanyShowContainer from "../containers/HeaderCompanyShowContainer";
 
 const Header = () => (
   <Switch>
-    <Route exact path="/activities" component={HeaderActivityIndex} />
+    <Route exact path="/activities" component={HeaderActivityIndexContainer} />
     <Route
       exact
       path="/activities/:activityId"
-      component={HeaderActivityShow}
+      component={HeaderActivityShowContainer}
     />
-    <Route exact path="/assets/companies" component={HeaderCompanyIndex} />
+    <Route
+      exact
+      path="/assets/companies"
+      component={HeaderCompanyIndexContainer}
+    />
     <Route
       exact
       path="/assets/companies/:companyId"
-      component={HeaderCompanyShow}
+      component={HeaderCompanyShowContainer}
     />
   </Switch>
 );

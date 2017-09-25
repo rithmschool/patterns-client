@@ -1,13 +1,14 @@
-import React, { Component } from 'react';
-import { Route, Switch } from 'react-router-dom';
-import { connect } from 'react-redux';
-import SidebarLeft from './SidebarLeft';
-import Content from './Content';
-import SmallerContent from './SmallerContent';
-import SidebarRight from './SidebarRight';
-import ModalCompany from './ModalCompany';
+import React, { Component } from "react";
+import { Route, Switch } from "react-router-dom";
+import { connect } from "react-redux";
+import SidebarLeft from "../components/SidebarLeft";
+import Content from "../components/Content";
+import SmallerContent from "../components/SmallerContent";
+import SidebarRight from "../components/SidebarRight";
+import ModalCompany from "../components/ModalCompany";
+import PropTypes from "prop-types";
 
-class Asset extends Component {
+class AssetContainer extends Component {
   render() {
     let modal = this.props.modalState ? (
       <ModalCompany name="Edit" logo="Replace" />
@@ -40,4 +41,8 @@ function mapModalState(state) {
   };
 }
 
-export default connect(mapModalState)(Asset);
+AssetContainer.propTypes = {
+  modalState: PropTypes.bool.isRequired
+};
+
+export default connect(mapModalState)(AssetContainer);
