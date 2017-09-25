@@ -3,24 +3,24 @@
 React frontend for Patterns App
 
 ## Getting Started
-```
 fork repo (https://github.com/rithmschool/patterns-client)
-$ git clone https://github.com/[YOUR_REPOSITORY]/patterns-client.git
-$ cd patterns-client
-$ npm install
-$ touch .env
+
+```bash
+git clone https://github.com/[YOUR_REPOSITORY]/patterns-client.git
+cd patterns-client
+npm install
+touch .env
 ```
 
 ### Add to .env file
 ```
 REACT_APP_UPLOADCARE_PUBLIC_KEY=* 
-(verify what * is with your team)
 ```
+(verify what * is with your team)
 
 ### Starting the Frontend Server
-```
-open a terminal
-	$ npm start
+```bash
+npm start
 ```
 
 ## General Structure
