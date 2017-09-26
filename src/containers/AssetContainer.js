@@ -1,22 +1,22 @@
 import React, { Component } from "react";
 import { Route, Switch } from "react-router-dom";
 import { connect } from "react-redux";
-import SidebarLeft from "../components/SidebarLeft";
+import SidebarLeftContainer from "./SidebarLeftContainer";
 import Content from "../components/Content";
 import SmallerContent from "../components/SmallerContent";
-import SidebarRight from "../components/SidebarRight";
-import ModalCompany from "../components/ModalCompany";
+import SidebarRightContainer from "./SidebarRightContainer";
+import ModalCompanyContainer from "./ModalCompanyContainer";
 import PropTypes from "prop-types";
 
 class AssetContainer extends Component {
   render() {
     let modal = this.props.modalState ? (
-      <ModalCompany name="Edit" logo="Replace" />
+      <ModalCompanyContainer name="Edit" logo="Replace" />
     ) : null;
     return (
       <div className="asset row">
         {modal}
-        <SidebarLeft />
+        <SidebarLeftContainer />
         <Switch>
           <Route exact path="/assets/companies" component={Content} />
           <Route
@@ -28,7 +28,7 @@ class AssetContainer extends Component {
         <Route
           exact
           path="/assets/companies/:companyId"
-          component={SidebarRight}
+          component={SidebarRightContainer}
         />
       </div>
     );

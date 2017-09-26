@@ -1,10 +1,11 @@
-import React, { Component } from 'react';
-import { withRouter } from 'react-router';
-import { connect } from 'react-redux';
-import { logout } from '../store/actions/auth';
-import signout from '../images/icon-signout-gray.svg';
+import React, { Component } from "react";
+import { withRouter } from "react-router";
+import { connect } from "react-redux";
+import { logout } from "../store/actions/auth";
+import signout from "../images/icon-signout-gray.svg";
+import PropTypes from "prop-types";
 
-class UserProfile extends Component {
+class UserProfileContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -36,7 +37,7 @@ class UserProfile extends Component {
 
   onLogout() {
     this.props.logout();
-    this.props.history.push('/');
+    this.props.history.push("/");
   }
 
   render() {
@@ -72,10 +73,23 @@ class UserProfile extends Component {
   }
 }
 
-function mapToUserProfile(state) {
+function mapToUserProfileContainer(state) {
   return {
     user: state.userProfile
   };
 }
 
-export default connect(mapToUserProfile, { logout })(withRouter(UserProfile));
+UserProfileContainer.propTypes = {
+  logout: PropTypes.func.isRequired,
+  history: PropTypes.shape({
+    push: PropTypes.func.isRequired
+  }),
+  user: PropTypes.shape({
+    picture: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired
+  })
+};
+
+export default connect(mapToUserProfileContainer, { logout })(
+  withRouter(UserProfileContainer)
+);

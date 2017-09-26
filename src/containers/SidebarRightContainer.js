@@ -1,15 +1,16 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import axios from 'axios';
-import { BASE_URL } from '../store/actions/auth';
-import { changeAsset } from '../store/actions/action';
-import './SidebarRight.css';
-import bookmark from '../images/icon-diary-gray.svg';
-import lock from '../images/icon-lock-gray.svg';
-import more from '../images/icon-more-gray.svg';
-import hide from '../images/icon-open-collapse-left-gray.svg';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import axios from "axios";
+import { BASE_URL } from "../store/actions/auth";
+import { changeAsset } from "../store/actions/action";
+import "./SidebarRightContainer.css";
+import bookmark from "../images/icon-diary-gray.svg";
+import lock from "../images/icon-lock-gray.svg";
+import more from "../images/icon-more-gray.svg";
+import hide from "../images/icon-open-collapse-left-gray.svg";
+import PropTypes from "prop-types";
 
-class SidebarRight extends Component {
+class SidebarRightContainer extends Component {
   constructor(props) {
     super(props);
     this.funnelClick = this.funnelClick.bind(this);
@@ -41,7 +42,7 @@ class SidebarRight extends Component {
 
   dropdownChange(e) {
     e.preventDefault();
-    let stageId = e.target.value.split('.');
+    let stageId = e.target.value.split(".");
     if (stageId[0] !== stageId[1]) {
       // update previous stage assets array to remove company
       let prevStageIdx = this.props.activity.stages.findIndex(val => {
@@ -259,4 +260,27 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, { changeAsset })(SidebarRight);
+SidebarRightContainer.propTypes = {
+  company: PropTypes.shape({
+    _id: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired
+  }),
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      companyId: PropTypes.string.isRequired
+    })
+  }),
+  changeAsset: PropTypes.func.isRequired,
+  activity: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    stages: PropTypes.arrayOf(
+      PropTypes.shape({
+        _id: PropTypes.string.isRequired,
+        name: PropTypes.string.isRequired,
+        assets: PropTypes.array.isRequired
+      })
+    )
+  })
+};
+
+export default connect(mapStateToProps, { changeAsset })(SidebarRightContainer);

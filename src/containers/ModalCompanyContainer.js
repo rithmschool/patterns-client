@@ -1,20 +1,21 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import axios from 'axios';
-import close from '../images/icon-x-gray.svg';
-import './ModalCompany.css';
-import { BASE_URL } from '../store/actions/auth';
-import { toggleModal, addCompany } from '../store/actions/action';
-import UploadCare from './UploadCare';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import axios from "axios";
+import close from "../images/icon-x-gray.svg";
+import "./ModalCompanyContainer.css";
+import { BASE_URL } from "../store/actions/auth";
+import { toggleModal, addCompany } from "../store/actions/action";
+import UploadCare from "../components/UploadCare";
+import PropTypes from "prop-types";
 
-class ModalCompany extends Component {
+class ModalCompanyContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: '',
-      url: '',
-      logo: '',
-      companyId: ''
+      name: "",
+      url: "",
+      logo: "",
+      companyId: ""
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleLogo = this.handleLogo.bind(this);
@@ -49,7 +50,7 @@ class ModalCompany extends Component {
       .get(`${BASE_URL}/types`)
       .then(res => {
         this.setState({
-          companyId: res.data.find(obj => obj.name === 'Company')._id
+          companyId: res.data.find(obj => obj.name === "Company")._id
         });
       })
       .then(companyId => this.addCompanies(this.state.companyId))
@@ -67,9 +68,9 @@ class ModalCompany extends Component {
       .then(res => {
         this.props.addCompany(res.data);
         this.setState({
-          name: '',
-          url: '',
-          logo: ''
+          name: "",
+          url: "",
+          logo: ""
         });
       })
       .then(() => this.props.toggleModal())
@@ -78,10 +79,10 @@ class ModalCompany extends Component {
 
   cancelModal() {
     this.setState({
-      name: '',
-      url: '',
-      logo: '',
-      companyId: ''
+      name: "",
+      url: "",
+      logo: "",
+      companyId: ""
     });
     this.props.toggleModal();
   }
@@ -141,4 +142,11 @@ class ModalCompany extends Component {
   }
 }
 
-export default connect(undefined, { toggleModal, addCompany })(ModalCompany);
+ModalCompanyContainer.propTypes = {
+  addCompany: PropTypes.func.isRequired,
+  toggleModal: PropTypes.func.isRequired
+};
+
+export default connect(undefined, { toggleModal, addCompany })(
+  ModalCompanyContainer
+);

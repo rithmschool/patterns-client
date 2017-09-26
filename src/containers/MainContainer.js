@@ -1,23 +1,23 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import SidebarLeft from "../components/SidebarLeft";
+import SidebarLeftContainer from "./SidebarLeftContainer";
 import Content from "../components/Content";
-import ModalCompany from "../components/ModalCompany";
-import SidebarRight from "../components/SidebarRight";
+import ModalCompanyContainer from "./ModalCompanyContainer";
+import SidebarRightContainer from "./SidebarRightContainer";
 import "./MainContainer.css";
 import PropTypes from "prop-types";
 
 class MainContainer extends Component {
   render() {
     let modal = this.props.modalState ? (
-      <ModalCompany name="Edit" logo="Replace" />
+      <ModalCompanyContainer name="Edit" logo="Replace" />
     ) : null;
     return (
       <div className="main">
         {modal}
-        <SidebarLeft />
+        <SidebarLeftContainer />
         <Content />
-        {/* <SidebarRight /> */}
+        {/* <SidebarRightContainer /> */}
       </div>
     );
   }
