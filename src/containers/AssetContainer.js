@@ -1,12 +1,12 @@
-import React, { Component } from "react";
-import { Route, Switch } from "react-router-dom";
-import { connect } from "react-redux";
-import SidebarLeftContainer from "./SidebarLeftContainer";
-import Content from "../components/Content";
-import SmallerContent from "../components/SmallerContent";
-import SidebarRightContainer from "./SidebarRightContainer";
-import ModalCompanyContainer from "./ModalCompanyContainer";
-import PropTypes from "prop-types";
+import React, { Component } from 'react';
+import { Route, Switch } from 'react-router-dom';
+import { connect } from 'react-redux';
+import SidebarLeftContainer from './SidebarLeftContainer';
+import Content from '../components/Content';
+import SmallerContent from '../components/SmallerContent';
+import SidebarRightContainer from './SidebarRightContainer';
+import ModalCompanyContainer from './ModalCompanyContainer';
+import PropTypes from 'prop-types';
 
 class AssetContainer extends Component {
   render() {

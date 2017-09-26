@@ -1,8 +1,8 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import "./HeaderCompanyShowContainer.css";
-import { setActiveCompany, toggleModal } from "../store/actions/action";
-import PropTypes from "prop-types";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import './HeaderCompanyShowContainer.css';
+import { setActiveCompany, toggleModal } from '../store/actions/action';
+import PropTypes from 'prop-types';
 
 class HeaderCompanyShowContainer extends Component {
   componentWillMount() {

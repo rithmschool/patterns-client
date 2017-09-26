@@ -1,8 +1,8 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import down from "../images/icon-chevron-right-gray.svg";
-import "./Company.css";
-import PropTypes from "prop-types";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import down from '../images/icon-chevron-right-gray.svg';
+import './Company.css';
+import PropTypes from 'prop-types';
 
 const Company = props => {
   let logo = props.logo || null;

@@ -1,11 +1,11 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import SidebarLeftContainer from "./SidebarLeftContainer";
-import Content from "../components/Content";
-import ModalCompanyContainer from "./ModalCompanyContainer";
-import SidebarRightContainer from "./SidebarRightContainer";
-import "./MainContainer.css";
-import PropTypes from "prop-types";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import SidebarLeftContainer from './SidebarLeftContainer';
+import Content from '../components/Content';
+import ModalCompanyContainer from './ModalCompanyContainer';
+import SidebarRightContainer from './SidebarRightContainer';
+import './MainContainer.css';
+import PropTypes from 'prop-types';
 
 class MainContainer extends Component {
   render() {

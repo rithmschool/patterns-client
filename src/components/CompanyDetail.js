@@ -1,7 +1,7 @@
-import React from "react";
-import down from "../images/icon-chevron-right-gray.svg";
-import "./CompanyDetail.css";
-import PropTypes from "prop-types";
+import React from 'react';
+import down from '../images/icon-chevron-right-gray.svg';
+import './CompanyDetail.css';
+import PropTypes from 'prop-types';
 
 const CompanyDetail = props => {
   return (

@@ -1,12 +1,12 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import axios from "axios";
-import { DragDropContext } from "react-dnd";
-import HTML5Backend from "react-dnd-html5-backend";
-import SmartStage from "../components/SmartStage";
-import { setActiveActivity, changeAsset } from "../store/actions/action";
-import { BASE_URL } from "../store/actions/auth";
-import PropTypes from "prop-types";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import axios from 'axios';
+import { DragDropContext } from 'react-dnd';
+import HTML5Backend from 'react-dnd-html5-backend';
+import SmartStage from '../components/SmartStage';
+import { setActiveActivity, changeAsset } from '../store/actions/action';
+import { BASE_URL } from '../store/actions/auth';
+import PropTypes from 'prop-types';
 
 const ModifiedBackend = (...args) => {
   const instance = new HTML5Backend(...args);

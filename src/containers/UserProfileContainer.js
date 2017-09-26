@@ -1,9 +1,9 @@
-import React, { Component } from "react";
-import { withRouter } from "react-router";
-import { connect } from "react-redux";
-import { logout } from "../store/actions/auth";
-import signout from "../images/icon-signout-gray.svg";
-import PropTypes from "prop-types";
+import React, { Component } from 'react';
+import { withRouter } from 'react-router';
+import { connect } from 'react-redux';
+import { logout } from '../store/actions/auth';
+import signout from '../images/icon-signout-gray.svg';
+import PropTypes from 'prop-types';
 
 class UserProfileContainer extends Component {
   constructor(props) {
@@ -37,7 +37,7 @@ class UserProfileContainer extends Component {
 
   onLogout() {
     this.props.logout();
-    this.props.history.push("/");
+    this.props.history.push('/');
   }
 
   render() {

@@ -1,14 +1,14 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import axios from "axios";
-import { BASE_URL } from "../store/actions/auth";
-import { changeAsset } from "../store/actions/action";
-import "./SidebarRightContainer.css";
-import bookmark from "../images/icon-diary-gray.svg";
-import lock from "../images/icon-lock-gray.svg";
-import more from "../images/icon-more-gray.svg";
-import hide from "../images/icon-open-collapse-left-gray.svg";
-import PropTypes from "prop-types";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import axios from 'axios';
+import { BASE_URL } from '../store/actions/auth';
+import { changeAsset } from '../store/actions/action';
+import './SidebarRightContainer.css';
+import bookmark from '../images/icon-diary-gray.svg';
+import lock from '../images/icon-lock-gray.svg';
+import more from '../images/icon-more-gray.svg';
+import hide from '../images/icon-open-collapse-left-gray.svg';
+import PropTypes from 'prop-types';
 
 class SidebarRightContainer extends Component {
   constructor(props) {
@@ -42,7 +42,7 @@ class SidebarRightContainer extends Component {
 
   dropdownChange(e) {
     e.preventDefault();
-    let stageId = e.target.value.split(".");
+    let stageId = e.target.value.split('.');
     if (stageId[0] !== stageId[1]) {
       // update previous stage assets array to remove company
       let prevStageIdx = this.props.activity.stages.findIndex(val => {

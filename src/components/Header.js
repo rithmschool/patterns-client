@@ -1,9 +1,9 @@
-import React from "react";
-import { Route, Switch } from "react-router";
-import HeaderActivityIndexContainer from "../containers/HeaderActivityIndexContainer";
-import HeaderActivityShowContainer from "../containers/HeaderActivityShowContainer";
-import HeaderCompanyIndexContainer from "../containers/HeaderCompanyIndexContainer";
-import HeaderCompanyShowContainer from "../containers/HeaderCompanyShowContainer";
+import React from 'react';
+import { Route, Switch } from 'react-router';
+import HeaderActivityIndexContainer from '../containers/HeaderActivityIndexContainer';
+import HeaderActivityShowContainer from '../containers/HeaderActivityShowContainer';
+import HeaderCompanyIndexContainer from '../containers/HeaderCompanyIndexContainer';
+import HeaderCompanyShowContainer from '../containers/HeaderCompanyShowContainer';
 
 const Header = () => (
   <Switch>

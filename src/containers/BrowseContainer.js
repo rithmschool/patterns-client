@@ -1,9 +1,9 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import Company from "../components/Company";
-import axios from "axios";
-import { BASE_URL } from "../store/actions/auth";
-import PropTypes from "prop-types";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import Company from '../components/Company';
+import axios from 'axios';
+import { BASE_URL } from '../store/actions/auth';
+import PropTypes from 'prop-types';
 
 class BrowseContainer extends Component {
   render() {

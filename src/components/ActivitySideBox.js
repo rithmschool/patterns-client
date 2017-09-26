@@ -1,7 +1,7 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import down from "../images/icon-chevron-right-gray.svg";
-import PropTypes from "prop-types";
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import down from '../images/icon-chevron-right-gray.svg';
+import PropTypes from 'prop-types';
 
 class ActivitySideBox extends Component {
   constructor(props) {
@@ -18,8 +18,8 @@ class ActivitySideBox extends Component {
   }
 
   render() {
-    let toggleStatus = this.state.status ? "active-toggle" : "inactive-toggle";
-    let toggleArrow = this.state.status ? "arrow" : "inactive-arrow";
+    let toggleStatus = this.state.status ? 'active-toggle' : 'inactive-toggle';
+    let toggleArrow = this.state.status ? 'arrow' : 'inactive-arrow';
     let menuItems = this.props.data.stages.map(val => {
       return (
         <div key={val._id} className="menu-item">

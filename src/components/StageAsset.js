@@ -1,8 +1,8 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import "./StageAsset.css";
-import down from "../images/icon-chevron-right-gray.svg";
-import PropTypes from "prop-types";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import './StageAsset.css';
+import down from '../images/icon-chevron-right-gray.svg';
+import PropTypes from 'prop-types';
 
 const StageAsset = props => {
   let logo = props.logo || null;

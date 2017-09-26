@@ -1,8 +1,8 @@
-import React from "react";
-import { connect } from "react-redux";
-import "./HeaderCompanyIndexContainer.css";
-import { toggleModal } from "../store/actions/action";
-import PropTypes from "prop-types";
+import React from 'react';
+import { connect } from 'react-redux';
+import './HeaderCompanyIndexContainer.css';
+import { toggleModal } from '../store/actions/action';
+import PropTypes from 'prop-types';
 
 const HeaderCompanyIndexContainer = props => {
   return (

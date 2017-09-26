@@ -1,13 +1,13 @@
-import React, { Component } from "react";
-import uploadcare from "uploadcare-widget";
-import PropTypes from "prop-types";
+import React, { Component } from 'react';
+import uploadcare from 'uploadcare-widget';
+import PropTypes from 'prop-types';
 
 class UploadCare extends Component {
   componentDidMount() {
     const { id, onChange } = this.props;
     const widget = uploadcare.Widget(`#${id}`);
 
-    if (onChange && typeof onChange === "function") {
+    if (onChange && typeof onChange === 'function') {
       widget.onChange(file => {
         if (file) {
           file.done(info => onChange(info.cdnUrl)).fail(() => onChange(null));

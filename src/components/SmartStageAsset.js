@@ -1,8 +1,8 @@
-import React, { Component } from "react";
-import { findDOMNode } from "react-dom";
-import { DragSource, DropTarget } from "react-dnd";
-import StageAsset from "./StageAsset";
-import PropTypes from "prop-types";
+import React, { Component } from 'react';
+import { findDOMNode } from 'react-dom';
+import { DragSource, DropTarget } from 'react-dnd';
+import StageAsset from './StageAsset';
+import PropTypes from 'prop-types';
 
 const stageAssetSource = {
   beginDrag(props) {
@@ -70,7 +70,7 @@ class SmartStageAsset extends Component {
 }
 
 export default DropTarget(
-  "stageAsset",
+  'stageAsset',
   stageAssetTarget,
   (connect, monitor) => ({
     connectDropTarget: connect.dropTarget(),
@@ -79,7 +79,7 @@ export default DropTarget(
     item: monitor.getItem()
   })
 )(
-  DragSource("stageAsset", stageAssetSource, (connect, monitor) => ({
+  DragSource('stageAsset', stageAssetSource, (connect, monitor) => ({
     connectDragSource: connect.dragSource(),
     isDragging: monitor.isDragging()
   }))(SmartStageAsset)

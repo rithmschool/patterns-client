@@ -1,7 +1,7 @@
-import React from "react";
-import "./Stage.css";
-import SmartStageAsset from "./SmartStageAsset";
-import PropTypes from "prop-types";
+import React from 'react';
+import './Stage.css';
+import SmartStageAsset from './SmartStageAsset';
+import PropTypes from 'prop-types';
 
 const Stage = props => {
   let allAssets = props.assets.map((val, idx) => (

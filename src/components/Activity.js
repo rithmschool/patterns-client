@@ -1,8 +1,8 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
-import down from "../images/icon-chevron-right-gray.svg";
-import "./Activity.css";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
+import down from '../images/icon-chevron-right-gray.svg';
+import './Activity.css';
 
 const Activity = props => {
   const logo = props.logo || null;

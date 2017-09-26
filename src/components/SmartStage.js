@@ -1,7 +1,7 @@
-import React, { Component } from "react";
-import { DropTarget } from "react-dnd";
-import Stage from "./Stage";
-import PropTypes from "prop-types";
+import React, { Component } from 'react';
+import { DropTarget } from 'react-dnd';
+import Stage from './Stage';
+import PropTypes from 'prop-types';
 
 const stageTarget = {
   drop(props, monitor, component) {
@@ -44,7 +44,7 @@ class SmartStage extends Component {
 }
 
 export default DropTarget(
-  "stageAsset",
+  'stageAsset',
   stageTarget,
   (connectDragSource, monitor) => ({
     connectDropTarget: connectDragSource.dropTarget(),
