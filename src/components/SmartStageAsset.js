@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { findDOMNode } from 'react-dom';
 import { DragSource, DropTarget } from 'react-dnd';
 import StageAsset from './StageAsset';
+import PropTypes from 'prop-types';
 
 const stageAssetSource = {
   beginDrag(props) {
@@ -83,3 +84,12 @@ export default DropTarget(
     isDragging: monitor.isDragging()
   }))(SmartStageAsset)
 );
+
+SmartStageAsset.PropTypes = {
+  assetId: PropTypes.string.isRequired,
+  stageIdx: PropTypes.number.isRequired,
+  index: PropTypes.number.isRequired,
+  dispatchState: PropTypes.func.isRequired,
+  moveCard: PropTypes.func.isRequired,
+  moveAndUpdateCard: PropTypes.func.isRequired
+};

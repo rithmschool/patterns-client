@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './ActivityContainer.css';
 import BrowseCompanies from '../components/BrowseCompanies';
 import StageContainer from '../containers/StageContainer';

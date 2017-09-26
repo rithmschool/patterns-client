@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './StageAsset.css';
 import down from '../images/icon-chevron-right-gray.svg';
+import PropTypes from 'prop-types';
 
 const StageAsset = props => {
   let logo = props.logo || null;
@@ -21,6 +22,12 @@ const StageAsset = props => {
       </div>
     </div>
   );
+};
+
+StageAsset.propTypes = {
+  logo: PropTypes.string,
+  assetId: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired
 };
 
 export default StageAsset;

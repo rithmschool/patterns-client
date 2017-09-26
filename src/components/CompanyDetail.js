@@ -1,6 +1,7 @@
 import React from 'react';
 import down from '../images/icon-chevron-right-gray.svg';
 import './CompanyDetail.css';
+import PropTypes from 'prop-types';
 
 const CompanyDetail = props => {
   return (
@@ -30,6 +31,10 @@ const CompanyDetail = props => {
       </div>
     </div>
   );
+};
+
+CompanyDetail.propTypes = {
+  name: PropTypes.string.isRequired
 };
 
 export default CompanyDetail;

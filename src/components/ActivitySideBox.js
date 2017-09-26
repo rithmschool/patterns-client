@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import down from '../images/icon-chevron-right-gray.svg';
+import PropTypes from 'prop-types';
 
 class ActivitySideBox extends Component {
   constructor(props) {
@@ -48,5 +49,18 @@ class ActivitySideBox extends Component {
     );
   }
 }
+
+ActivitySideBox.propTypes = {
+  data: PropTypes.shape({
+    stages: PropTypes.arrayOf(
+      PropTypes.shape({
+        _id: PropTypes.string.isRequired,
+        name: PropTypes.string.isRequired,
+        assets: PropTypes.array.isRequired
+      })
+    ),
+    _id: PropTypes.string.isRequired
+  })
+};
 
 export default ActivitySideBox;

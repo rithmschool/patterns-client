@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import uploadcare from 'uploadcare-widget';
+import PropTypes from 'prop-types';
 
 class UploadCare extends Component {
   componentDidMount() {
@@ -29,5 +30,11 @@ class UploadCare extends Component {
     );
   }
 }
+
+UploadCare.propTypes = {
+  id: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired
+};
 
 export default UploadCare;

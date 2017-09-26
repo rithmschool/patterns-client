@@ -1,11 +1,12 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import down from '../images/icon-chevron-right-gray.svg';
 import './Activity.css';
 
 const Activity = props => {
   const logo = props.logo || null;
-  logo ? <img src={logo} alt={`${props.name}'s logo`} /> : null;
+  logo ? <img src={logo} alt={`${props.name}'s logo`} /> : null; // eslint-disable-line
   return (
     <div className="activity-bar row">
       <div className="activity-bar-logo col-xs-1">{logo}</div>
@@ -41,6 +42,12 @@ const Activity = props => {
       </div>
     </div>
   );
+};
+
+Activity.propTypes = {
+  logo: PropTypes.string,
+  name: PropTypes.string.isRequired,
+  activityId: PropTypes.string.isRequired
 };
 
 export default Activity;

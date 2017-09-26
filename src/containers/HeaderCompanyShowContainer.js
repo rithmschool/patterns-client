@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import './HeaderCompanyShow.css';
+import './HeaderCompanyShowContainer.css';
 import { setActiveCompany, toggleModal } from '../store/actions/action';
+import PropTypes from 'prop-types';
 
-class HeaderCompanyShow extends Component {
+class HeaderCompanyShowContainer extends Component {
   componentWillMount() {
     let foundCompany = this.props.companies.find(
       val => val._id === this.props.match.params.companyId
@@ -49,6 +50,27 @@ function mapStateToProps(state) {
   };
 }
 
+HeaderCompanyShowContainer.propTypes = {
+  companies: PropTypes.arrayOf(
+    PropTypes.shape({
+      _id: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired
+    })
+  ),
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      companyId: PropTypes.string.isRequired
+    })
+  }),
+  setActiveCompany: PropTypes.func.isRequired,
+  toggleModal: PropTypes.func.isRequired,
+  company: PropTypes.shape({
+    logo: PropTypes.string,
+    name: PropTypes.string.isRequired,
+    updatedAt: PropTypes.string.isRequired
+  })
+};
+
 export default connect(mapStateToProps, { setActiveCompany, toggleModal })(
-  HeaderCompanyShow
+  HeaderCompanyShowContainer
 );

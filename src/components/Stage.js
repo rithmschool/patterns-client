@@ -1,6 +1,7 @@
 import React from 'react';
 import './Stage.css';
 import SmartStageAsset from './SmartStageAsset';
+import PropTypes from 'prop-types';
 
 const Stage = props => {
   let allAssets = props.assets.map((val, idx) => (
@@ -24,6 +25,21 @@ const Stage = props => {
       {allAssets}
     </div>
   );
+};
+
+Stage.propTypes = {
+  assets: PropTypes.arrayOf(
+    PropTypes.shape({
+      _id: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+      logo: PropTypes.string
+    })
+  ),
+  stageIdx: PropTypes.number.isRequired,
+  name: PropTypes.string.isRequired,
+  moveCard: PropTypes.func.isRequired,
+  moveAndUpdateCard: PropTypes.func.isRequired,
+  dispatchState: PropTypes.func.isRequired
 };
 
 export default Stage;

@@ -1,11 +1,11 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import Main from './Main';
-import SidebarLeft from './SidebarLeft';
-import Content from './Content';
+import MainContainer from './MainContainer';
+import SidebarLeft from '../components/SidebarLeft';
+import Content from '../components/Content';
 
-describe('<Main />', () => {
-  const wrapper = shallow(<Main />);
+describe('<MainContainer />', () => {
+  const wrapper = shallow(<MainContainer />);
 
   it('should render main div ', () => {
     expect(wrapper.find('.main')).toHaveLength(1);

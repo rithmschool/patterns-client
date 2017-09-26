@@ -6,6 +6,7 @@ import HTML5Backend from 'react-dnd-html5-backend';
 import SmartStage from '../components/SmartStage';
 import { setActiveActivity, changeAsset } from '../store/actions/action';
 import { BASE_URL } from '../store/actions/auth';
+import PropTypes from 'prop-types';
 
 const ModifiedBackend = (...args) => {
   const instance = new HTML5Backend(...args);
@@ -142,6 +143,13 @@ function mapStateToProps(state) {
     activity: state.activity
   };
 }
+
+StageContainer.propTypes = {
+  changeAsset: PropTypes.func.isRequired,
+  activity: PropTypes.shape({
+    stages: PropTypes.array
+  })
+};
 
 export default DragDropContext(ModifiedBackend)(
   connect(mapStateToProps, { setActiveActivity, changeAsset })(StageContainer)

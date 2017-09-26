@@ -1,20 +1,21 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import './SidebarLeft.css';
+import './SidebarLeftContainer.css';
 import logo from '../images/logo-dark-gray.svg';
 import hide from '../images/icon-open-collapse-left-gray.svg';
-import ActivitySideBox from './ActivitySideBox';
-import UserProfile from './UserProfile';
+import ActivitySideBox from '../components/ActivitySideBox';
+import UserProfileContainer from './UserProfileContainer';
+import PropTypes from 'prop-types';
 
-class SidebarLeft extends Component {
+class SidebarLeftContainer extends Component {
   render() {
     let allActivities = this.props.activities.map(val => (
       <ActivitySideBox key={val._id} data={val} />
     ));
     return (
       <div className="sidebar">
-        <UserProfile />
+        <UserProfileContainer />
         <div className="activity-heading">
           <h1>
             <Link to="/activities">Activities</Link>
@@ -49,4 +50,12 @@ function mapStateForActivities(state) {
   };
 }
 
-export default connect(mapStateForActivities)(SidebarLeft);
+SidebarLeftContainer.propTypes = {
+  activities: PropTypes.arrayOf(
+    PropTypes.shape({
+      _id: PropTypes.string.isRequired
+    })
+  )
+};
+
+export default connect(mapStateForActivities)(SidebarLeftContainer);

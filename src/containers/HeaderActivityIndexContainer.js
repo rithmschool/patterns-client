@@ -1,14 +1,15 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import './HeaderCompanyIndex.css';
+import './HeaderActivityIndexContainer.css';
 import { toggleModal } from '../store/actions/action';
+import PropTypes from 'prop-types';
 
-const HeaderCompanyIndex = props => {
+const HeaderActivityIndexContainer = props => {
   return (
     <div className="header-index">
       <div>
         <div className="headerTop row">
-          <p className="headerTitle"> Companies </p>
+          <p className="headerTitle"> Activities </p>
           <input
             type="submit"
             className="addActivityButton"
@@ -21,4 +22,10 @@ const HeaderCompanyIndex = props => {
   );
 };
 
-export default connect(undefined, { toggleModal })(HeaderCompanyIndex);
+HeaderActivityIndexContainer.propTypes = {
+  toggleModal: PropTypes.func.isRequired
+};
+
+export default connect(undefined, { toggleModal })(
+  HeaderActivityIndexContainer
+);

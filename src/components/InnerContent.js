@@ -1,6 +1,6 @@
 import { Route, Switch } from 'react-router';
 import React from 'react';
-import ActivityDashboard from './ActivityDashboard';
+import ActivityDashboardContainer from '../containers/ActivityDashboardContainer';
 import ActivityContainer from '../containers/ActivityContainer';
 import BrowseContainer from '../containers/BrowseContainer';
 import CompanyInfoContainer from '../containers/CompanyInfoContainer';
@@ -8,7 +8,7 @@ import './InnerContent.css';
 
 const InnerContent = () => (
   <Switch>
-    <Route exact path="/activities" component={ActivityDashboard} />
+    <Route exact path="/activities" component={ActivityDashboardContainer} />
     <Route exact path="/activities/:activityId" component={ActivityContainer} />
     <Route exact path="/assets/companies" component={BrowseContainer} />
     <Route

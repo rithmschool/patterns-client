@@ -1,4 +1,4 @@
-@import '../index.scss';
+@import "../index.scss";
 
 @each $p in ($md-percentage, $lg-percentage) {
   @media (min-width: $p * 1024px) {
@@ -8,7 +8,7 @@
 
     .headerTitle {
       font-size: $p * 20px;
-      line-height: $p * 1.38;
+      line-height: $p * 45px;
       margin: $p * 24px;
     }
 
@@ -59,9 +59,25 @@
   box-shadow: 0 3px 8px 0 rgba(0, 0, 0, 0.04), 0 1px 2px 0 rgba(0, 0, 0, 0.04);
 }
 
+.company-logo {
+  width: 48px;
+  height: 48px;
+  background-color: $pale-grey;
+  margin: 24px auto 24px 24px;
+  display: inline-block;
+  float: left;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position-y: center;
+}
+
 .headerTitle {
   font-weight: 600;
   float: left;
+  vertical-align: middle;
+  line-height: 45px;
+  text-align: left;
+  margin-left: 20px;
 }
 
 .statusToggle {

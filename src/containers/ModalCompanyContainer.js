@@ -2,12 +2,13 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios';
 import close from '../images/icon-x-gray.svg';
-import './ModalCompany.css';
+import './ModalCompanyContainer.css';
 import { BASE_URL } from '../store/actions/auth';
 import { toggleModal, addCompany } from '../store/actions/action';
-import UploadCare from './UploadCare';
+import UploadCare from '../components/UploadCare';
+import PropTypes from 'prop-types';
 
-class ModalCompany extends Component {
+class ModalCompanyContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -141,4 +142,11 @@ class ModalCompany extends Component {
   }
 }
 
-export default connect(undefined, { toggleModal, addCompany })(ModalCompany);
+ModalCompanyContainer.propTypes = {
+  addCompany: PropTypes.func.isRequired,
+  toggleModal: PropTypes.func.isRequired
+};
+
+export default connect(undefined, { toggleModal, addCompany })(
+  ModalCompanyContainer
+);
