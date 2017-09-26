@@ -1,8 +1,9 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import Company from '../components/Company';
-import axios from 'axios';
-import { BASE_URL } from '../store/actions/auth';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import Company from "../components/Company";
+import axios from "axios";
+import { BASE_URL } from "../store/actions/auth";
+import PropTypes from "prop-types";
 
 class BrowseContainer extends Component {
   render() {
@@ -34,5 +35,16 @@ function mapStateToProps(state) {
     companies: state.companies
   };
 }
+
+BrowseContainer.propTypes = {
+  companies: PropTypes.arrayOf(
+    PropTypes.shape({
+      _id: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+      description: PropTypes.string,
+      logo: PropTypes.string
+    })
+  )
+};
 
 export default connect(mapStateToProps)(BrowseContainer);
