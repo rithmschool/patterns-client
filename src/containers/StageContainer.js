@@ -5,7 +5,7 @@ import { DragDropContext } from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
 import SmartStage from '../components/SmartStage';
 import { setActiveActivity, changeAsset } from '../store/actions/action';
-import { BASE_URL } from '../store/actions/auth';
+import { PATTERNS_API_URL } from '../config';
 import PropTypes from 'prop-types';
 
 const ModifiedBackend = (...args) => {
@@ -106,9 +106,9 @@ class StageContainer extends Component {
     const prevBody = { assets: this.state.stages[prevIdx].assets };
     const nextBody = { assets: this.state.stages[nextIdx].assets };
     axios
-      .patch(`${BASE_URL}/stages/${prevId}`, prevBody)
+      .patch(`${PATTERNS_API_URL}/stages/${prevId}`, prevBody)
       .then(prevRes => {
-        return axios.patch(`${BASE_URL}/stages/${nextId}`, nextBody);
+        return axios.patch(`${PATTERNS_API_URL}/stages/${nextId}`, nextBody);
       })
       .then(nextRes => {
         this.props.changeAsset(this.state.stages);

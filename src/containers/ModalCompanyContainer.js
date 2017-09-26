@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import axios from 'axios';
 import close from '../images/icon-x-gray.svg';
 import './ModalCompanyContainer.css';
-import { BASE_URL } from '../store/actions/auth';
 import { toggleModal, addCompany } from '../store/actions/action';
 import UploadCare from '../components/UploadCare';
 import PropTypes from 'prop-types';
+import { fetchTypes, postType } from '../services/api';
 
 class ModalCompanyContainer extends Component {
   constructor(props) {
@@ -15,13 +14,13 @@ class ModalCompanyContainer extends Component {
       name: '',
       url: '',
       logo: '',
-      companyId: ''
+      companyTypeId: ''
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleLogo = this.handleLogo.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.addCompanies = this.addCompanies.bind(this);
-    this.getCompanyId = this.getCompanyId.bind(this);
+    this.addNewCompany = this.addNewCompany.bind(this);
+    this.getTypeId = this.getTypeId.bind(this);
     this.cancelModal = this.cancelModal.bind(this);
   }
 
@@ -39,34 +38,38 @@ class ModalCompanyContainer extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.getCompanyId();
+    this.getTypeId();
   }
 
-  getCompanyId() {
-    // This should be refactored to use Redux by saving Activity (and companyId) in the store.
+  componentDidUpdate(prevProps, prevState) {
+    if (
+      this.state.companyTypeId &&
+      prevState.companyTypeId !== this.state.companyTypeId
+    ) {
+      this.addNewCompany(this.state.companyTypeId);
+    }
+  }
 
-    const companyId = null;
-    axios
-      .get(`${BASE_URL}/types`)
-      .then(res => {
+  getTypeId() {
+    // This should be refactored to use Redux by saving Activity (and companyTypeId) in the store.
+    fetchTypes()
+      .then(types => {
         this.setState({
-          companyId: res.data.find(obj => obj.name === 'Company')._id
+          companyTypeId: types.find(type => type.name === 'Company')._id
         });
       })
-      .then(companyId => this.addCompanies(this.state.companyId))
       .catch(error => console.log(error));
   }
 
-  addCompanies(companyId) {
+  addNewCompany(companyTypeId) {
     let companyInfo = {
       name: this.state.name,
       url: this.state.url,
       logo: this.state.logo
     };
-    return axios
-      .post(`${BASE_URL}/types/${this.state.companyId}/assets`, companyInfo)
+    postType(companyTypeId, companyInfo)
       .then(res => {
-        this.props.addCompany(res.data);
+        this.props.addCompany(res);
         this.setState({
           name: '',
           url: '',
@@ -82,7 +85,7 @@ class ModalCompanyContainer extends Component {
       name: '',
       url: '',
       logo: '',
-      companyId: ''
+      companyTypeId: ''
     });
     this.props.toggleModal();
   }

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios';
-import { BASE_URL } from '../store/actions/auth';
+import { PATTERNS_API_URL } from '../config';
 import { changeAsset } from '../store/actions/action';
 import './SidebarRightContainer.css';
 import bookmark from '../images/icon-diary-gray.svg';
@@ -24,7 +24,10 @@ class SidebarRightContainer extends Component {
     ];
     let body = { assets: newAsset };
     axios
-      .patch(`${BASE_URL}/stages/${this.props.activity.stages[0]._id}`, body)
+      .patch(
+        `${PATTERNS_API_URL}/stages/${this.props.activity.stages[0]._id}`,
+        body
+      )
       .then(res => {
         let newStageAsset = [
           ...this.props.activity.stages[0].assets,
@@ -73,10 +76,13 @@ class SidebarRightContainer extends Component {
       // patch request to server to update stages
       let firstRes;
       axios
-        .patch(`${BASE_URL}/stages/${stageId[0]}`, prevBody)
+        .patch(`${PATTERNS_API_URL}/stages/${stageId[0]}`, prevBody)
         .then(prevRes => {
           firstRes = prevRes;
-          return axios.patch(`${BASE_URL}/stages/${stageId[1]}`, nextBody);
+          return axios.patch(
+            `${PATTERNS_API_URL}/stages/${stageId[1]}`,
+            nextBody
+          );
         })
         .then(nextRes => {
           let changeObj = {};
