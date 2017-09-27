@@ -35,3 +35,20 @@ export function updateStage(stageId, stageBody) {
   });
 }
 
+export function postAuth(code) {
+  return new Promise((resolve, reject) => {
+    return axios
+      .post(`${PATTERNS_API_URL}/auth/google/callback`, code)
+      .then(res => resolve(res.data))
+      .catch(err => reject(err));
+  });
+}
+
+export function getLoginResource(path) {
+  return new Promise((resolve, reject) => {
+    return axios
+      .get(path)
+      .then(res => resolve(res.data))
+      .catch(err => reject(err));
+  });
+}

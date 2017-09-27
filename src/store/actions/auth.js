@@ -1,6 +1,7 @@
 import axios from 'axios';
 import jwtDecode from 'jwt-decode';
 import { PATTERNS_API_URL } from '../../config';
+import { getLoginResource, postAuth } from '../../services/api';
 
 export const SET_TOKEN = 'SET_TOKEN';
 export const SET_LOGIN_ERROR = 'SET_LOGIN_ERROR';
@@ -19,36 +20,42 @@ export function setAuthorizationToken(token) {
 
 export function login(code) {
   return dispatch => {
-    return axios
-      .post(`${PATTERNS_API_URL}/auth/google/callback`, code)
-      .then(res => {
-        const token = res.data;
-        const userProfile = {
-          name: `${jwtDecode(token).firstName} ${jwtDecode(token).lastName}`,
-          picture: jwtDecode(token).picture
-        };
-        localStorage.setItem('jwtToken', token);
-        setAuthorizationToken(token);
-        dispatch(setToken(token));
-        dispatch(setUser(userProfile));
-        const userId = jwtDecode(token).mongoId;
-        return axios.get(`${PATTERNS_API_URL}/users/${userId}/activities`);
-      })
-      .then(ares => {
-        dispatch(setActivities(ares.data));
-        return axios.get(`${PATTERNS_API_URL}/types`);
-      })
-      .then(types => {
-        let companyId = types.data.find(obj => obj.name === 'Company')._id;
-        return axios.get(`${PATTERNS_API_URL}/types/${companyId}/assets`);
-      })
-      .then(companies => {
-        dispatch(setCompanies(companies.data.assets));
-      })
-      .catch(err => {
-        var errObj = Object.keys(err).length ? err : null;
-        dispatch(setLoginError(errObj));
-      });
+    return (
+      postAuth(code)
+        // .post(`${PATTERNS_API_URL}/auth/google/callback`, code)
+        .then(res => {
+          const token = res;
+          const userProfile = {
+            name: `${jwtDecode(token).firstName} ${jwtDecode(token).lastName}`,
+            picture: jwtDecode(token).picture
+          };
+          localStorage.setItem('jwtToken', token);
+          setAuthorizationToken(token);
+          dispatch(setToken(token));
+          dispatch(setUser(userProfile));
+          const userId = jwtDecode(token).mongoId;
+          return getLoginResource(
+            `${PATTERNS_API_URL}/users/${userId}/activities`
+          );
+        })
+        .then(ares => {
+          dispatch(setActivities(ares));
+          return getLoginResource(`${PATTERNS_API_URL}/types`);
+        })
+        .then(types => {
+          let companyId = types.find(obj => obj.name === 'Company')._id;
+          return getLoginResource(
+            `${PATTERNS_API_URL}/types/${companyId}/assets`
+          );
+        })
+        .then(companies => {
+          dispatch(setCompanies(companies.assets));
+        })
+        .catch(err => {
+          var errObj = Object.keys(err).length ? err : null;
+          dispatch(setLoginError(errObj));
+        })
+    );
   };
 }
 
