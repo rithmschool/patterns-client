@@ -1,8 +1,10 @@
-export const TOGGLE_MODAL = 'TOGGLE_MODAL';
-export const SET_ACTIVE_ACTIVITY = 'SET_ACTIVE_ACTIVITY';
-export const ADD_COMPANY = 'ADD_COMPANY';
-export const SET_ACTIVE_COMPANY = 'SET_ACTIVE_COMPANY';
-export const CHANGE_ASSET = 'CHANGE_ASSET';
+import {
+  TOGGLE_MODAL,
+  SET_ACTIVE_ACTIVITY,
+  SET_ACTIVE_COMPANY,
+  ADD_COMPANY,
+  CHANGE_ASSET
+} from './constants';
 
 export function toggleModal() {
   return {

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { changeAsset } from '../store/actions/action';
+import { changeAsset } from '../store/actions/actionCreators';
 import './SidebarRightContainer.css';
 import bookmark from '../images/icon-diary-gray.svg';
 import lock from '../images/icon-lock-gray.svg';

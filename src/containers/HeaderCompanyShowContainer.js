@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './HeaderCompanyShowContainer.css';
-import { setActiveCompany, toggleModal } from '../store/actions/action';
+import { setActiveCompany, toggleModal } from '../store/actions/actionCreators';
 import PropTypes from 'prop-types';
 
 class HeaderCompanyShowContainer extends Component {

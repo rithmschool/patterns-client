@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import './HeaderActivityIndexContainer.css';
-import { toggleModal } from '../store/actions/action';
+import { toggleModal } from '../store/actions/actionCreators';
 import PropTypes from 'prop-types';
 
 const HeaderActivityIndexContainer = props => {

@@ -25,6 +25,13 @@ export default function(ComposedComponent) {
     router: PropTypes.object.isRequired
   };
 
+  Authenticate.propTypes = {
+    isAuthenticated: PropTypes.string.isRequired,
+    history: PropTypes.shape({
+      push: PropTypes.func.isRequired
+    })
+  };
+
   function mapStateToProps(state) {
     return {
       isAuthenticated: state.currentUserToken
@@ -33,3 +40,5 @@ export default function(ComposedComponent) {
 
   return connect(mapStateToProps)(Authenticate);
 }
+
+

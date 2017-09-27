@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Redirect } from 'react-router';
 import { connect } from 'react-redux';
 import 'url-search-params-polyfill';
-import { login, catchLoginErr } from '../store/actions/auth';
+import { login, catchLoginErr } from '../helpers/auth';
 import PropTypes from 'prop-types';
 
 class AuthContainer extends Component {

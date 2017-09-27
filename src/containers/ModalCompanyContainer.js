@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import close from '../images/icon-x-gray.svg';
 import './ModalCompanyContainer.css';
-import { toggleModal, addCompany } from '../store/actions/action';
+import { toggleModal, addCompany } from '../store/actions/actionCreators';
 import UploadCare from '../components/UploadCare';
 import PropTypes from 'prop-types';
 import { fetchTypes, postType } from '../services/api';

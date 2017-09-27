@@ -4,7 +4,10 @@ import { updateStage } from '../services/api';
 import { DragDropContext } from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
 import SmartStage from '../components/SmartStage';
-import { setActiveActivity, changeAsset } from '../store/actions/action';
+import {
+  setActiveActivity,
+  changeAsset
+} from '../store/actions/actionCreators';
 import PropTypes from 'prop-types';
 
 const ModifiedBackend = (...args) => {

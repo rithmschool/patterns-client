@@ -1,17 +1,19 @@
 import jwtDecode from 'jwt-decode';
-import { PATTERNS_API_URL } from '../../config';
+import { PATTERNS_API_URL } from '../config';
 import {
   getLoginResource,
   postAuth,
   setAuthorizationToken
-} from '../../services/api';
+} from '../services/api';
 
-export const SET_TOKEN = 'SET_TOKEN';
-export const SET_LOGIN_ERROR = 'SET_LOGIN_ERROR';
-export const LOG_OUT = 'LOG_OUT';
-export const SET_USER = 'SET_USER';
-export const SET_ACTIVITIES = 'SET_ACTIVITIES';
-export const SET_COMPANIES = 'SET_COMPANIES';
+import {
+  SET_TOKEN,
+  SET_LOGIN_ERROR,
+  LOG_OUT,
+  SET_USER,
+  SET_ACTIVITIES,
+  SET_COMPANIES
+} from '../store/actions/constants';
 
 export function login(code) {
   return dispatch => {
