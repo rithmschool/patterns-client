@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import axios from 'axios';
-import { PATTERNS_API_URL } from '../config';
 import { changeAsset } from '../store/actions/action';
 import './SidebarRightContainer.css';
 import bookmark from '../images/icon-diary-gray.svg';
@@ -9,6 +7,7 @@ import lock from '../images/icon-lock-gray.svg';
 import more from '../images/icon-more-gray.svg';
 import hide from '../images/icon-open-collapse-left-gray.svg';
 import PropTypes from 'prop-types';
+import { updateStage } from '../services/api';
 
 class SidebarRightContainer extends Component {
   constructor(props) {
@@ -23,12 +22,8 @@ class SidebarRightContainer extends Component {
       this.props.company
     ];
     let body = { assets: newAsset };
-    axios
-      .patch(
-        `${PATTERNS_API_URL}/stages/${this.props.activity.stages[0]._id}`,
-        body
-      )
-      .then(res => {
+    updateStage(this.props.activity.stages[0]._id, body)
+      .then(() => {
         let newStageAsset = [
           ...this.props.activity.stages[0].assets,
           this.props.company
@@ -75,19 +70,15 @@ class SidebarRightContainer extends Component {
 
       // patch request to server to update stages
       let firstRes;
-      axios
-        .patch(`${PATTERNS_API_URL}/stages/${stageId[0]}`, prevBody)
+      updateStage(stageId[0], prevBody)
         .then(prevRes => {
           firstRes = prevRes;
-          return axios.patch(
-            `${PATTERNS_API_URL}/stages/${stageId[1]}`,
-            nextBody
-          );
+          return updateStage(stageId[1], nextBody);
         })
         .then(nextRes => {
           let changeObj = {};
-          changeObj[prevStageIdx] = firstRes.data;
-          changeObj[nextStageIdx] = nextRes.data;
+          changeObj[prevStageIdx] = firstRes;
+          changeObj[nextStageIdx] = nextRes;
           let newStagesArr = [];
           for (let i = 0; i < this.props.activity.stages.length; i++) {
             if (changeObj.hasOwnProperty(i)) {

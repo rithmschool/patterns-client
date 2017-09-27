@@ -26,3 +26,12 @@ export function postType(typeId, typeBody) {
   });
 }
 
+export function updateStage(stageId, stageBody) {
+  return new Promise((resolve, reject) => {
+    return axios
+      .patch(`${PATTERNS_API_URL}/stages/${stageId}`, stageBody)
+      .then(res => resolve(res.data))
+      .catch(err => reject(err));
+  });
+}
+
