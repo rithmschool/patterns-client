@@ -85,7 +85,7 @@ UserProfileContainer.propTypes = {
     push: PropTypes.func.isRequired
   }),
   user: PropTypes.shape({
-    picture: PropTypes.string.isRequired,
+    picture: PropTypes.string,
     name: PropTypes.string.isRequired
   })
 };
