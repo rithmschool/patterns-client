@@ -1,6 +1,32 @@
 import axios from 'axios';
 import { PATTERNS_API_URL } from '../config';
 
+export function setAuthorizationToken(token) {
+  if (token) {
+    axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+  } else {
+    delete axios.defaults.headers.common['Authorization'];
+  }
+}
+
+export function postAuth(code) {
+  return new Promise((resolve, reject) => {
+    return axios
+      .post(`${PATTERNS_API_URL}/auth/google/callback`, code)
+      .then(res => resolve(res.data))
+      .catch(err => reject(err));
+  });
+}
+
+export function getLoginResource(path) {
+  return new Promise((resolve, reject) => {
+    return axios
+      .get(path)
+      .then(res => resolve(res.data))
+      .catch(err => reject(err));
+  });
+}
+
 export function fetchTypes() {
   return new Promise((resolve, reject) => {
     return axios
@@ -30,24 +56,6 @@ export function updateStage(stageId, stageBody) {
   return new Promise((resolve, reject) => {
     return axios
       .patch(`${PATTERNS_API_URL}/stages/${stageId}`, stageBody)
-      .then(res => resolve(res.data))
-      .catch(err => reject(err));
-  });
-}
-
-export function postAuth(code) {
-  return new Promise((resolve, reject) => {
-    return axios
-      .post(`${PATTERNS_API_URL}/auth/google/callback`, code)
-      .then(res => resolve(res.data))
-      .catch(err => reject(err));
-  });
-}
-
-export function getLoginResource(path) {
-  return new Promise((resolve, reject) => {
-    return axios
-      .get(path)
       .then(res => resolve(res.data))
       .catch(err => reject(err));
   });

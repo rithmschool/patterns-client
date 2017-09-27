@@ -4,8 +4,7 @@ import {
   LOG_OUT,
   SET_USER,
   SET_ACTIVITIES,
-  SET_COMPANIES,
-  setAuthorizationToken
+  SET_COMPANIES
 } from '../actions/auth';
 
 import {
@@ -15,6 +14,8 @@ import {
   SET_ACTIVE_COMPANY,
   CHANGE_ASSET
 } from '../actions/action';
+
+import { setAuthorizationToken } from '../../services/api';
 
 const DEFAULT_STATE = {
   currentUserToken: '',

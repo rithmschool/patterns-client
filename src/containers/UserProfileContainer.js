@@ -86,7 +86,7 @@ UserProfileContainer.propTypes = {
   }),
   user: PropTypes.shape({
     picture: PropTypes.string,
-    name: PropTypes.string.isRequired
+    name: PropTypes.string
   })
 };
 

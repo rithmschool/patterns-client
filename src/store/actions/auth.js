@@ -1,7 +1,10 @@
-import axios from 'axios';
 import jwtDecode from 'jwt-decode';
 import { PATTERNS_API_URL } from '../../config';
-import { getLoginResource, postAuth } from '../../services/api';
+import {
+  getLoginResource,
+  postAuth,
+  setAuthorizationToken
+} from '../../services/api';
 
 export const SET_TOKEN = 'SET_TOKEN';
 export const SET_LOGIN_ERROR = 'SET_LOGIN_ERROR';
@@ -9,14 +12,6 @@ export const LOG_OUT = 'LOG_OUT';
 export const SET_USER = 'SET_USER';
 export const SET_ACTIVITIES = 'SET_ACTIVITIES';
 export const SET_COMPANIES = 'SET_COMPANIES';
-
-export function setAuthorizationToken(token) {
-  if (token) {
-    axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-  } else {
-    delete axios.defaults.headers.common['Authorization'];
-  }
-}
 
 export function login(code) {
   return dispatch => {
