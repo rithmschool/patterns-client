@@ -6,6 +6,8 @@ import {
   setAuthorizationToken
 } from '../../services/api';
 
+import { getTypes } from './actionCreators';
+
 import {
   SET_TOKEN,
   SET_LOGIN_ERROR,
@@ -16,7 +18,7 @@ import {
 } from './constants';
 
 export function login(code) {
-  return dispatch => {
+  return (dispatch, getState) => {
     return postAuth(code)
       .then(res => {
         const token = res;
@@ -35,10 +37,12 @@ export function login(code) {
       })
       .then(ares => {
         dispatch(setActivities(ares));
-        return getLoginResource(`${PATTERNS_API_URL}/types`);
+        return dispatch(getTypes());
+        //return getLoginResource(`${PATTERNS_API_URL}/types`);
       })
       .then(types => {
-        let companyId = types.find(obj => obj.name === 'Company')._id;
+        let companyId = getState().typeId.Company;
+        //types.find(obj => obj.name === 'Company')._id;
         return getLoginResource(
           `${PATTERNS_API_URL}/types/${companyId}/assets`
         );
