@@ -17,13 +17,12 @@ class ModalCompanyContainer extends Component {
       name: '',
       url: '',
       logo: '',
-      companyTypeId: ''
+      submitted: false
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleLogo = this.handleLogo.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.addNewCompany = this.addNewCompany.bind(this);
-    this.getTypeId = this.getTypeId.bind(this);
     this.cancelModal = this.cancelModal.bind(this);
   }
 
@@ -41,27 +40,18 @@ class ModalCompanyContainer extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.getTypeId();
+    this.props.getTypes().then(() => {
+      this.setState({ submitted: true });
+    });
   }
 
   componentDidUpdate(prevProps, prevState) {
     if (
-      this.state.companyTypeId &&
-      prevState.companyTypeId !== this.state.companyTypeId
+      this.state.submitted &&
+      prevState.companyTypeId !== this.props.companyTypeId
     ) {
-      this.addNewCompany(this.state.companyTypeId);
+      this.addNewCompany(this.props.companyTypeId);
     }
-  }
-
-  componentDidMount() {
-    this.props.getTypes();
-  }
-
-  getTypeId() {
-    this.setState({
-      companyTypeId: this.props.typeIds.find(type => type.name === 'Company')
-        ._id
-    });
   }
 
   addNewCompany(companyTypeId) {
@@ -146,12 +136,11 @@ class ModalCompanyContainer extends Component {
 
 ModalCompanyContainer.propTypes = {
   addCompany: PropTypes.func.isRequired,
-  toggleModal: PropTypes.func.isRequired,
-  typeIds: PropTypes.array.isRequired
+  toggleModal: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
-  typeIds: state.typeIds
+  companyTypeId: state.typeId.Company
 });
 
 const mapDispatchToProps = dispatch => {

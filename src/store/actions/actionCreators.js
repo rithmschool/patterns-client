@@ -40,9 +40,17 @@ function getTypesError(error) {
 
 export function getTypes() {
   return dispatch =>
-    fetchTypes()
-      .then(res => dispatch(getTypesSuccess(res)))
-      .catch(err => dispatch(getTypesError(err)));
+    new Promise((resolve, reject) => {
+      fetchTypes()
+        .then(res => {
+          dispatch(getTypesSuccess(res));
+          return resolve();
+        })
+        .catch(err => {
+          dispatch(getTypesError(err));
+          return reject(err);
+        });
+    });
 }
 
 function addCompanySuccess(company) {

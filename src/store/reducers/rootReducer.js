@@ -24,7 +24,7 @@ const DEFAULT_STATE = {
   companies: [],
   company: {},
   modal: false,
-  typeIds: []
+  typeId: {}
 };
 
 export default (state = DEFAULT_STATE, action = { type: null }) => {
@@ -71,9 +71,14 @@ export default (state = DEFAULT_STATE, action = { type: null }) => {
         activity: action.activity
       };
     case GET_TYPES_SUCCESS:
+      var typeId = action.typeIds.reduce((acc, type) => {
+        acc[type.name] = type._id;
+        return acc;
+      }, {});
+
       return {
         ...state,
-        typeIds: action.typeIds
+        typeId: typeId
       };
     case ADD_COMPANY:
       return {
