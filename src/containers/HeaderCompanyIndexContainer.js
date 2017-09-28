@@ -26,4 +26,14 @@ HeaderCompanyIndexContainer.propTypes = {
   toggleModal: PropTypes.func.isRequired
 };
 
-export default connect(undefined, { toggleModal })(HeaderCompanyIndexContainer);
+const mapStateToProps = state => ({});
+
+const mapDispatchToProps = dispatch => {
+  return {
+    toggleModal: () => dispatch(toggleModal())
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(
+  HeaderCompanyIndexContainer
+);

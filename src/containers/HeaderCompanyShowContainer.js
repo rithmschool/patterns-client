@@ -43,13 +43,6 @@ class HeaderCompanyShowContainer extends Component {
   }
 }
 
-function mapStateToProps(state) {
-  return {
-    companies: state.companies,
-    company: state.company
-  };
-}
-
 HeaderCompanyShowContainer.propTypes = {
   companies: PropTypes.arrayOf(
     PropTypes.shape({
@@ -71,6 +64,18 @@ HeaderCompanyShowContainer.propTypes = {
   })
 };
 
-export default connect(mapStateToProps, { setActiveCompany, toggleModal })(
+const mapStateToProps = state => ({
+  companies: state.companies,
+  company: state.company
+});
+
+const mapDispatchToProps = dispatch => {
+  return {
+    toggleModal: () => dispatch(toggleModal()),
+    setActiveCompany: company => dispatch(setActiveCompany(company))
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(
   HeaderCompanyShowContainer
 );

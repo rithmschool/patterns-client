@@ -73,12 +73,6 @@ class UserProfileContainer extends Component {
   }
 }
 
-function mapToUserProfileContainer(state) {
-  return {
-    user: state.userProfile
-  };
-}
-
 UserProfileContainer.propTypes = {
   logout: PropTypes.func.isRequired,
   history: PropTypes.shape({
@@ -90,6 +84,16 @@ UserProfileContainer.propTypes = {
   })
 };
 
-export default connect(mapToUserProfileContainer, { logout })(
+const mapStateToProps = state => {
+  return {
+    user: state.userProfile
+  };
+};
+
+const mapDispatchToProps = dispatch => ({
+  logout: () => dispatch(logout())
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(
   withRouter(UserProfileContainer)
 );

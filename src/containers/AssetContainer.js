@@ -35,14 +35,14 @@ class AssetContainer extends Component {
   }
 }
 
-function mapModalState(state) {
-  return {
-    modalState: state.modal
-  };
-}
-
 AssetContainer.propTypes = {
   modalState: PropTypes.bool.isRequired
 };
 
-export default connect(mapModalState)(AssetContainer);
+const mapStateToProps = state => ({
+  modalState: state.modal
+});
+
+const mapDispatchToProps = dispatch => ({});
+
+export default connect(mapStateToProps, mapDispatchToProps)(AssetContainer);

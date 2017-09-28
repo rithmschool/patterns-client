@@ -23,14 +23,14 @@ class MainContainer extends Component {
   }
 }
 
-function mapModalState(state) {
-  return {
-    modalState: state.modal
-  };
-}
-
 MainContainer.propTypes = {
   modalState: PropTypes.bool.isRequired
 };
 
-export default connect(mapModalState)(MainContainer);
+const mapStateToProps = state => ({
+  modalState: state.modal
+});
+
+const mapDispatchToProps = dispatch => ({});
+
+export default connect(mapStateToProps, mapDispatchToProps)(MainContainer);

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Redirect } from 'react-router';
 import { connect } from 'react-redux';
 import 'url-search-params-polyfill';
-import { login, catchLoginErr } from '../store/actions/auth';
+import { login } from '../store/actions/auth';
 import PropTypes from 'prop-types';
 
 class AuthContainer extends Component {
@@ -29,13 +29,6 @@ class AuthContainer extends Component {
   }
 }
 
-function mapStateForAuth(state) {
-  return {
-    userToken: state.currentUserToken,
-    loginError: state.loginError
-  };
-}
-
 AuthContainer.propTypes = {
   login: PropTypes.func,
   location: PropTypes.shape({
@@ -44,6 +37,15 @@ AuthContainer.propTypes = {
   userToken: PropTypes.string.isRequired
 };
 
-export default connect(mapStateForAuth, { login, catchLoginErr })(
-  AuthContainer
-);
+const mapStateToProps = state => ({
+  userToken: state.currentUserToken,
+  loginError: state.loginError
+});
+
+const mapDispatchToProps = dispatch => {
+  return {
+    login: code => dispatch(login(code))
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(AuthContainer);

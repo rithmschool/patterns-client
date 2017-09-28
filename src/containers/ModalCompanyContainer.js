@@ -2,10 +2,13 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import close from '../images/icon-x-gray.svg';
 import './ModalCompanyContainer.css';
-import { toggleModal, addCompany } from '../store/actions/actionCreators';
+import {
+  toggleModal,
+  addCompanyRequest,
+  getTypes
+} from '../store/actions/actionCreators';
 import UploadCare from '../components/UploadCare';
 import PropTypes from 'prop-types';
-import { fetchTypes, postType } from '../services/api';
 
 class ModalCompanyContainer extends Component {
   constructor(props) {
@@ -50,15 +53,15 @@ class ModalCompanyContainer extends Component {
     }
   }
 
+  componentDidMount() {
+    this.props.getTypes();
+  }
+
   getTypeId() {
-    // This should be refactored to use Redux by saving Activity (and companyTypeId) in the store.
-    fetchTypes()
-      .then(types => {
-        this.setState({
-          companyTypeId: types.find(type => type.name === 'Company')._id
-        });
-      })
-      .catch(error => console.log(error));
+    this.setState({
+      companyTypeId: this.props.typeIds.find(type => type.name === 'Company')
+        ._id
+    });
   }
 
   addNewCompany(companyTypeId) {
@@ -67,17 +70,13 @@ class ModalCompanyContainer extends Component {
       url: this.state.url,
       logo: this.state.logo
     };
-    postType(companyTypeId, companyInfo)
-      .then(res => {
-        this.props.addCompany(res);
-        this.setState({
-          name: '',
-          url: '',
-          logo: ''
-        });
-      })
-      .then(() => this.props.toggleModal())
-      .catch(err => console.log(err));
+    this.props.addCompany(companyTypeId, companyInfo);
+    this.setState({
+      name: '',
+      url: '',
+      logo: ''
+    });
+    this.props.toggleModal();
   }
 
   cancelModal() {
@@ -147,9 +146,23 @@ class ModalCompanyContainer extends Component {
 
 ModalCompanyContainer.propTypes = {
   addCompany: PropTypes.func.isRequired,
-  toggleModal: PropTypes.func.isRequired
+  toggleModal: PropTypes.func.isRequired,
+  typeIds: PropTypes.array.isRequired
 };
 
-export default connect(undefined, { toggleModal, addCompany })(
+const mapStateToProps = state => ({
+  typeIds: state.typeIds
+});
+
+const mapDispatchToProps = dispatch => {
+  return {
+    toggleModal: () => dispatch(toggleModal()),
+    addCompany: (companyTypeId, companyInfo) =>
+      dispatch(addCompanyRequest(companyTypeId, companyInfo)),
+    getTypes: () => dispatch(getTypes())
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(
   ModalCompanyContainer
 );

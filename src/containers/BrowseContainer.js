@@ -28,12 +28,6 @@ class BrowseContainer extends Component {
   }
 }
 
-function mapStateToProps(state) {
-  return {
-    companies: state.companies
-  };
-}
-
 BrowseContainer.propTypes = {
   companies: PropTypes.arrayOf(
     PropTypes.shape({
@@ -45,4 +39,10 @@ BrowseContainer.propTypes = {
   )
 };
 
-export default connect(mapStateToProps)(BrowseContainer);
+const mapStateToProps = state => ({
+  companies: state.companies
+});
+
+const mapDispatchToProps = dispatch => ({});
+
+export default connect(mapStateToProps, mapDispatchToProps)(BrowseContainer);

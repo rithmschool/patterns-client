@@ -12,9 +12,14 @@ export const TOGGLE_MODAL = 'TOGGLE_MODAL';
 // Companies
 export const ADD_COMPANY = 'ADD_COMPANY';
 export const SET_ACTIVE_COMPANY = 'SET_ACTIVE_COMPANY';
+export const ADD_COMPANY_FAIL = 'ADD_COMPANY_FAIL';
 
 // Assets
 export const CHANGE_ASSET = 'CHANGE_ASSET';
 
 // Activities
 export const SET_ACTIVE_ACTIVITY = 'SET_ACTIVE_ACTIVITY';
+
+//Type
+export const GET_TYPES_SUCCESS = 'GET_TYPES_SUCCESS';
+export const GET_TYPES_FAIL = 'GET_TYPES_FAIL';

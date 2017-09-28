@@ -26,6 +26,12 @@ HeaderActivityIndexContainer.propTypes = {
   toggleModal: PropTypes.func.isRequired
 };
 
-export default connect(undefined, { toggleModal })(
+const mapStateToProps = state => ({});
+
+const mapDispatchToProps = dispatch => ({
+  toggleModal: () => dispatch(toggleModal())
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(
   HeaderActivityIndexContainer
 );

@@ -250,13 +250,6 @@ class SidebarRightContainer extends Component {
   }
 }
 
-function mapStateToProps(state) {
-  return {
-    activity: state.activity,
-    company: state.company
-  };
-}
-
 SidebarRightContainer.propTypes = {
   company: PropTypes.shape({
     _id: PropTypes.string.isRequired,
@@ -280,4 +273,17 @@ SidebarRightContainer.propTypes = {
   })
 };
 
-export default connect(mapStateToProps, { changeAsset })(SidebarRightContainer);
+const mapStateToProps = state => ({
+  activity: state.activity,
+  company: state.company
+});
+
+const mapDispatchToProps = dispatch => {
+  return {
+    changeAsset: stages => dispatch(changeAsset(stages))
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(
+  SidebarRightContainer
+);

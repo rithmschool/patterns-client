@@ -9,7 +9,8 @@ import {
   SET_ACTIVE_ACTIVITY,
   ADD_COMPANY,
   SET_ACTIVE_COMPANY,
-  CHANGE_ASSET
+  CHANGE_ASSET,
+  GET_TYPES_SUCCESS
 } from '../actions/constants';
 
 import { setAuthorizationToken } from '../../services/api';
@@ -22,7 +23,8 @@ const DEFAULT_STATE = {
   activity: {},
   companies: [],
   company: {},
-  modal: false
+  modal: false,
+  typeIds: []
 };
 
 export default (state = DEFAULT_STATE, action = { type: null }) => {
@@ -67,6 +69,11 @@ export default (state = DEFAULT_STATE, action = { type: null }) => {
       return {
         ...state,
         activity: action.activity
+      };
+    case GET_TYPES_SUCCESS:
+      return {
+        ...state,
+        typeIds: action.typeIds
       };
     case ADD_COMPANY:
       return {

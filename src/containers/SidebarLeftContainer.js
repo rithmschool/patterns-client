@@ -44,12 +44,6 @@ class SidebarLeftContainer extends Component {
   }
 }
 
-function mapStateForActivities(state) {
-  return {
-    activities: state.activities
-  };
-}
-
 SidebarLeftContainer.propTypes = {
   activities: PropTypes.arrayOf(
     PropTypes.shape({
@@ -58,4 +52,12 @@ SidebarLeftContainer.propTypes = {
   )
 };
 
-export default connect(mapStateForActivities)(SidebarLeftContainer);
+const mapStateToProps = state => ({
+  activities: state.activities
+});
+
+const mapDispatchToProps = dispatch => ({});
+
+export default connect(mapStateToProps, mapDispatchToProps)(
+  SidebarLeftContainer
+);
