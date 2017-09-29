@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const Button = styled.button`
+const WideButton = styled.button`
   background-color: #585b60;
   border: none;
   outline: none;
@@ -22,4 +22,4 @@ const Button = styled.button`
   }
 `;
 
-export default Button;
+export default WideButton;

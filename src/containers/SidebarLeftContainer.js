@@ -7,7 +7,7 @@ import hide from "../images/icon-open-collapse-left-gray.svg";
 import ActivitySideBox from "../components/ActivitySideBox";
 import UserProfileContainer from "./UserProfileContainer";
 import PropTypes from "prop-types";
-import Button from "../components/atoms/Button";
+import WideButton from "../components/atoms/WideButton";
 
 class SidebarLeftContainer extends Component {
   render() {
@@ -25,7 +25,7 @@ class SidebarLeftContainer extends Component {
         <div className="activity-list">{allActivities}</div>
 
         <div className="button-holder">
-          <Button>ADD NEW ACTIVITY</Button>
+          <WideButton>ADD NEW ACTIVITY</WideButton>
           {/* <button>
             <p>ADD NEW ACTIVITY</p>
           </button>*/}

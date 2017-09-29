@@ -4,17 +4,20 @@ import { storiesOf } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
 import { linkTo } from "@storybook/addon-links";
 
-// import { Button, Welcome } from "@storybook/react/demo";
-import Button from "../components/atoms/Button";
+import { Button, Welcome } from "@storybook/react/demo";
+import WideButton from "../components/atoms/WideButton";
+import Modal from "../components/atoms/Modal";
 
 storiesOf("Welcome", module).add("to Storybook", () => (
-  <Welcome showApp={linkTo("Button")} />
+  <Welcome showApp={linkTo("WideButton")} />
 ));
 
-storiesOf("Button", module)
+storiesOf("WideButton", module)
   .add("with text", () => (
-    <Button onClick={action("clicked")}>Hello Adele</Button>
+    <WideButton onClick={action("clicked")}>Hello Adele</WideButton>
   ))
   .add("with some emoji", () => (
-    <Button onClick={action("clicked")}>😀 😎 👍 💯</Button>
+    <WideButton onClick={action("clicked")}>😀 😎 👍 💯</WideButton>
   ));
+
+storiesOf("Modal", module).add("testing", () => <Modal />);
