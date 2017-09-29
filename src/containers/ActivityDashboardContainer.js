@@ -4,22 +4,22 @@ import Activity from '../components/Activity';
 import PropTypes from 'prop-types';
 
 class ActivityDashboardContainer extends Component {
-	render() {
-		let allActivities = this.props.activities.map(val => (
-			<Activity key={val._id} name={val.name} activityId={val._id} />
-		));
-		return <div>{allActivities}</div>;
-	}
-}
-
-function mapStateToProps(state) {
-	return {
-		activities: state.activities
-	};
+  render() {
+    let allActivities = this.props.activities.map(val => (
+      <Activity key={val._id} name={val.name} activityId={val._id} />
+    ));
+    return <div>{allActivities}</div>;
+  }
 }
 
 ActivityDashboardContainer.propTypes = {
-	activities: PropTypes.array.isRequired
+  activities: PropTypes.array.isRequired
 };
 
-export default connect(mapStateToProps)(ActivityDashboardContainer);
+const mapStateToProps = state => ({ activities: state.activities });
+
+const mapDispatchToProps = dispatch => ({});
+
+export default connect(mapStateToProps, mapDispatchToProps)(
+  ActivityDashboardContainer
+);

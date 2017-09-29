@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './HeaderActivityShowContainer.css';
-import { setActiveActivity, toggleModal } from '../store/actions/action';
+import {
+  setActiveActivity,
+  toggleModal
+} from '../store/actions/actionCreators';
 import PropTypes from 'prop-types';
 
 class HeaderActivityShowContainer extends Component {
@@ -33,13 +36,6 @@ class HeaderActivityShowContainer extends Component {
   }
 }
 
-function mapStateToProps(state) {
-  return {
-    activities: state.activities,
-    activity: state.activity
-  };
-}
-
 HeaderActivityShowContainer.propTypes = {
   activities: PropTypes.arrayOf(
     PropTypes.shape({
@@ -59,6 +55,16 @@ HeaderActivityShowContainer.propTypes = {
   toggleModal: PropTypes.func.isRequired
 };
 
-export default connect(mapStateToProps, { setActiveActivity, toggleModal })(
+const mapStateToProps = state => ({
+  activities: state.activities,
+  activity: state.activity
+});
+
+const mapDispatchToProps = dispatch => ({
+  setActiveActivity: activity => dispatch(setActiveActivity(activity)),
+  toggleModal: () => dispatch(toggleModal())
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(
   HeaderActivityShowContainer
 );

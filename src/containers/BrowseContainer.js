@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Company from '../components/Company';
-import axios from 'axios';
-import { BASE_URL } from '../store/actions/auth';
 import PropTypes from 'prop-types';
 
 class BrowseContainer extends Component {
@@ -30,12 +28,6 @@ class BrowseContainer extends Component {
   }
 }
 
-function mapStateToProps(state) {
-  return {
-    companies: state.companies
-  };
-}
-
 BrowseContainer.propTypes = {
   companies: PropTypes.arrayOf(
     PropTypes.shape({
@@ -47,4 +39,10 @@ BrowseContainer.propTypes = {
   )
 };
 
-export default connect(mapStateToProps)(BrowseContainer);
+const mapStateToProps = state => ({
+  companies: state.companies
+});
+
+const mapDispatchToProps = dispatch => ({});
+
+export default connect(mapStateToProps, mapDispatchToProps)(BrowseContainer);

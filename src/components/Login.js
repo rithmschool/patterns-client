@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './Login.css';
 import logo from '../images/logo-light-gray.png';
-import { BASE_URL } from '../store/actions/auth';
+import { PATTERNS_API_URL } from '../config';
 
 class Login extends Component {
   constructor(props) {
@@ -10,7 +10,7 @@ class Login extends Component {
   }
 
   handleClick() {
-    window.location = `${BASE_URL}/auth/google`;
+    window.location = `${PATTERNS_API_URL}/auth/google`;
   }
 
   render() {

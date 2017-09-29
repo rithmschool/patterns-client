@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import axios from 'axios';
+import { updateStage } from '../services/api';
 import { DragDropContext } from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
 import SmartStage from '../components/SmartStage';
-import { setActiveActivity, changeAsset } from '../store/actions/action';
-import { BASE_URL } from '../store/actions/auth';
+import { changeAsset } from '../store/actions/actionCreators';
 import PropTypes from 'prop-types';
 
 const ModifiedBackend = (...args) => {
@@ -105,14 +104,9 @@ class StageContainer extends Component {
     const nextId = this.state.stages[nextIdx]._id;
     const prevBody = { assets: this.state.stages[prevIdx].assets };
     const nextBody = { assets: this.state.stages[nextIdx].assets };
-    axios
-      .patch(`${BASE_URL}/stages/${prevId}`, prevBody)
-      .then(prevRes => {
-        return axios.patch(`${BASE_URL}/stages/${nextId}`, nextBody);
-      })
-      .then(nextRes => {
-        this.props.changeAsset(this.state.stages);
-      })
+    updateStage(prevId, prevBody)
+      .then(prevRes => updateStage(nextId, nextBody))
+      .then(nextRes => this.props.changeAsset(this.state.stages))
       .catch(err => console.log(err));
   }
 
@@ -138,12 +132,6 @@ class StageContainer extends Component {
   }
 }
 
-function mapStateToProps(state) {
-  return {
-    activity: state.activity
-  };
-}
-
 StageContainer.propTypes = {
   changeAsset: PropTypes.func.isRequired,
   activity: PropTypes.shape({
@@ -151,6 +139,16 @@ StageContainer.propTypes = {
   })
 };
 
+const mapStateToProps = state => ({
+  activity: state.activity
+});
+
+const mapDispatchToProps = dispatch => {
+  return {
+    changeAsset: stages => dispatch(changeAsset(stages))
+  };
+};
+
 export default DragDropContext(ModifiedBackend)(
-  connect(mapStateToProps, { setActiveActivity, changeAsset })(StageContainer)
+  connect(mapStateToProps, mapDispatchToProps)(StageContainer)
 );

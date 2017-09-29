@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import registerServiceWorker from './registerServiceWorker';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { Provider } from 'react-redux';
+import logger from 'redux-logger'
 import thunk from 'redux-thunk';
 import { createStore, compose, applyMiddleware } from 'redux';
 import { persistStore, autoRehydrate } from 'redux-persist';
@@ -11,10 +12,14 @@ import rootReducer from './store/reducers/rootReducer';
 import App from './components/App';
 import './index.css';
 
+const middlewares = [thunk];
+if (process.env.NODE_ENV === `development`) {
+  middlewares.push(logger);
+}
 const store = createStore(
   rootReducer,
   compose(
-    applyMiddleware(thunk),
+    applyMiddleware(...middlewares),
     window.devToolsExtension ? window.devToolsExtension() : f => f,
     autoRehydrate()
   )

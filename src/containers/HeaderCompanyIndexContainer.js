@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import './HeaderCompanyIndexContainer.css';
-import { toggleModal } from '../store/actions/action';
+import { toggleModal } from '../store/actions/actionCreators';
 import PropTypes from 'prop-types';
 
 const HeaderCompanyIndexContainer = props => {
@@ -26,4 +26,14 @@ HeaderCompanyIndexContainer.propTypes = {
   toggleModal: PropTypes.func.isRequired
 };
 
-export default connect(undefined, { toggleModal })(HeaderCompanyIndexContainer);
+const mapStateToProps = state => ({});
+
+const mapDispatchToProps = dispatch => {
+  return {
+    toggleModal: () => dispatch(toggleModal())
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(
+  HeaderCompanyIndexContainer
+);

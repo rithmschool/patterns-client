@@ -5,16 +5,15 @@ import {
   SET_USER,
   SET_ACTIVITIES,
   SET_COMPANIES,
-  setAuthorizationToken
-} from '../actions/auth';
-
-import {
   TOGGLE_MODAL,
   SET_ACTIVE_ACTIVITY,
   ADD_COMPANY,
   SET_ACTIVE_COMPANY,
-  CHANGE_ASSET
-} from '../actions/action';
+  CHANGE_ASSET,
+  GET_TYPES_SUCCESS
+} from '../actions/constants';
+
+import { setAuthorizationToken } from '../../services/api';
 
 const DEFAULT_STATE = {
   currentUserToken: '',
@@ -24,7 +23,8 @@ const DEFAULT_STATE = {
   activity: {},
   companies: [],
   company: {},
-  modal: false
+  modal: false,
+  typeId: {}
 };
 
 export default (state = DEFAULT_STATE, action = { type: null }) => {
@@ -69,6 +69,16 @@ export default (state = DEFAULT_STATE, action = { type: null }) => {
       return {
         ...state,
         activity: action.activity
+      };
+    case GET_TYPES_SUCCESS:
+      var typeId = action.typeIds.reduce((acc, type) => {
+        acc[type.name] = type._id;
+        return acc;
+      }, {});
+
+      return {
+        ...state,
+        typeId: typeId
       };
     case ADD_COMPANY:
       return {

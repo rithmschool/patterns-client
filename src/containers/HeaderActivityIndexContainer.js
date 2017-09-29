@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import './HeaderActivityIndexContainer.css';
-import { toggleModal } from '../store/actions/action';
+import { toggleModal } from '../store/actions/actionCreators';
 import PropTypes from 'prop-types';
 
 const HeaderActivityIndexContainer = props => {
@@ -26,6 +26,12 @@ HeaderActivityIndexContainer.propTypes = {
   toggleModal: PropTypes.func.isRequired
 };
 
-export default connect(undefined, { toggleModal })(
+const mapStateToProps = state => ({});
+
+const mapDispatchToProps = dispatch => ({
+  toggleModal: () => dispatch(toggleModal())
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(
   HeaderActivityIndexContainer
 );

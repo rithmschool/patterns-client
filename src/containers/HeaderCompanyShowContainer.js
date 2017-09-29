@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './HeaderCompanyShowContainer.css';
-import { setActiveCompany, toggleModal } from '../store/actions/action';
+import { setActiveCompany, toggleModal } from '../store/actions/actionCreators';
 import PropTypes from 'prop-types';
 
 class HeaderCompanyShowContainer extends Component {
@@ -43,13 +43,6 @@ class HeaderCompanyShowContainer extends Component {
   }
 }
 
-function mapStateToProps(state) {
-  return {
-    companies: state.companies,
-    company: state.company
-  };
-}
-
 HeaderCompanyShowContainer.propTypes = {
   companies: PropTypes.arrayOf(
     PropTypes.shape({
@@ -71,6 +64,18 @@ HeaderCompanyShowContainer.propTypes = {
   })
 };
 
-export default connect(mapStateToProps, { setActiveCompany, toggleModal })(
+const mapStateToProps = state => ({
+  companies: state.companies,
+  company: state.company
+});
+
+const mapDispatchToProps = dispatch => {
+  return {
+    toggleModal: () => dispatch(toggleModal()),
+    setActiveCompany: company => dispatch(setActiveCompany(company))
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(
   HeaderCompanyShowContainer
 );

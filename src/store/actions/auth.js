@@ -1,30 +1,27 @@
-import axios from 'axios';
 import jwtDecode from 'jwt-decode';
+import { PATTERNS_API_URL } from '../../config';
+import {
+  getLoginResource,
+  postAuth,
+  setAuthorizationToken
+} from '../../services/api';
 
-export const SET_TOKEN = 'SET_TOKEN';
-export const SET_LOGIN_ERROR = 'SET_LOGIN_ERROR';
-export const LOG_OUT = 'LOG_OUT';
-export const SET_USER = 'SET_USER';
-export const SET_ACTIVITIES = 'SET_ACTIVITIES';
-export const SET_COMPANIES = 'SET_COMPANIES';
+import { getTypes } from './actionCreators';
 
-export const BASE_URL =
-  process.env.REACT_APP_SERVER_URL || 'http://localhost:3001';
-
-export function setAuthorizationToken(token) {
-  if (token) {
-    axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-  } else {
-    delete axios.defaults.headers.common['Authorization'];
-  }
-}
+import {
+  SET_TOKEN,
+  SET_LOGIN_ERROR,
+  LOG_OUT,
+  SET_USER,
+  SET_ACTIVITIES,
+  SET_COMPANIES
+} from './constants';
 
 export function login(code) {
-  return dispatch => {
-    return axios
-      .post(`${BASE_URL}/auth/google/callback`, code)
+  return (dispatch, getState) => {
+    return postAuth(code)
       .then(res => {
-        const token = res.data;
+        const token = res;
         const userProfile = {
           name: `${jwtDecode(token).firstName} ${jwtDecode(token).lastName}`,
           picture: jwtDecode(token).picture
@@ -34,18 +31,24 @@ export function login(code) {
         dispatch(setToken(token));
         dispatch(setUser(userProfile));
         const userId = jwtDecode(token).mongoId;
-        return axios.get(`${BASE_URL}/users/${userId}/activities`);
+        return getLoginResource(
+          `${PATTERNS_API_URL}/users/${userId}/activities`
+        );
       })
       .then(ares => {
-        dispatch(setActivities(ares.data));
-        return axios.get(`${BASE_URL}/types`);
+        dispatch(setActivities(ares));
+        return dispatch(getTypes());
+        //return getLoginResource(`${PATTERNS_API_URL}/types`);
       })
       .then(types => {
-        let companyId = types.data.find(obj => obj.name === 'Company')._id;
-        return axios.get(`${BASE_URL}/types/${companyId}/assets`);
+        let companyId = getState().typeId.Company;
+        //types.find(obj => obj.name === 'Company')._id;
+        return getLoginResource(
+          `${PATTERNS_API_URL}/types/${companyId}/assets`
+        );
       })
       .then(companies => {
-        dispatch(setCompanies(companies.data.assets));
+        dispatch(setCompanies(companies.assets));
       })
       .catch(err => {
         var errObj = Object.keys(err).length ? err : null;

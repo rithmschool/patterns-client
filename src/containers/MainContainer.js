@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import SidebarLeftContainer from './SidebarLeftContainer';
 import Content from '../components/Content';
 import ModalCompanyContainer from './ModalCompanyContainer';
-import SidebarRightContainer from './SidebarRightContainer';
+// import SidebarRightContainer from './SidebarRightContainer';
 import './MainContainer.css';
 import PropTypes from 'prop-types';
 
@@ -23,14 +23,14 @@ class MainContainer extends Component {
   }
 }
 
-function mapModalState(state) {
-  return {
-    modalState: state.modal
-  };
-}
-
 MainContainer.propTypes = {
   modalState: PropTypes.bool.isRequired
 };
 
-export default connect(mapModalState)(MainContainer);
+const mapStateToProps = state => ({
+  modalState: state.modal
+});
+
+const mapDispatchToProps = dispatch => ({});
+
+export default connect(mapStateToProps, mapDispatchToProps)(MainContainer);
