@@ -1,12 +1,13 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
-import './SidebarLeftContainer.css';
-import logo from '../images/logo-dark-gray.svg';
-import hide from '../images/icon-open-collapse-left-gray.svg';
-import ActivitySideBox from '../components/ActivitySideBox';
-import UserProfileContainer from './UserProfileContainer';
-import PropTypes from 'prop-types';
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import "./SidebarLeftContainer.css";
+import logo from "../images/logo-dark-gray.svg";
+import hide from "../images/icon-open-collapse-left-gray.svg";
+import ActivitySideBox from "../components/ActivitySideBox";
+import UserProfileContainer from "./UserProfileContainer";
+import PropTypes from "prop-types";
+import Button from "../components/atoms/Button";
 
 class SidebarLeftContainer extends Component {
   render() {
@@ -24,9 +25,10 @@ class SidebarLeftContainer extends Component {
         <div className="activity-list">{allActivities}</div>
 
         <div className="button-holder">
-          <button>
+          <Button>ADD NEW ACTIVITY</Button>
+          {/* <button>
             <p>ADD NEW ACTIVITY</p>
-          </button>
+          </button>*/}
         </div>
 
         <div className="footer">
