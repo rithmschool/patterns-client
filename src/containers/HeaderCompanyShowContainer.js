@@ -3,6 +3,15 @@ import { connect } from 'react-redux';
 import './HeaderCompanyShowContainer.css';
 import { setActiveCompany, toggleModal } from '../store/actions/actionCreators';
 import PropTypes from 'prop-types';
+import AddEditButton from '../components/atoms/AddEditButton';
+
+//<input
+//  type="submit"
+//  className="addActivityButton"
+//  value="ADD"
+//  onClick={this.props.toggleModal}
+///>
+//<input type="submit" className="editActivityButton" value="EDIT" />
 
 class HeaderCompanyShowContainer extends Component {
   componentWillMount() {
@@ -26,13 +35,10 @@ class HeaderCompanyShowContainer extends Component {
           <div className="headerTop row">
             <div className="company-logo" style={pictureStyle} />
             <p className="headerTitle"> {this.props.company.name} </p>
-            <input type="submit" className="editActivityButton" value="EDIT" />
-            <input
-              type="submit"
-              className="addActivityButton"
-              value="ADD"
-              onClick={this.props.toggleModal}
-            />
+            <AddEditButton>EDIT</AddEditButton>
+            <AddEditButton primary onClick={this.props.toggleModal}>
+              ADD
+            </AddEditButton>
           </div>
           <p className="potentialEmployer"> Potential employer: [Blank] </p>
           <p className="lastUpdated"> LAST UPDATED </p>
