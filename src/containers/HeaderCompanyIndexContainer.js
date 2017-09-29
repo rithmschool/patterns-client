@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import './HeaderCompanyIndexContainer.css';
 import { toggleModal } from '../store/actions/actionCreators';
 import PropTypes from 'prop-types';
+import AddEditButton from '../components/atoms/AddEditButton';
 
 const HeaderCompanyIndexContainer = props => {
   return (
@@ -10,12 +11,9 @@ const HeaderCompanyIndexContainer = props => {
       <div>
         <div className="headerTop row">
           <p className="headerTitle"> Companies </p>
-          <input
-            type="submit"
-            className="addActivityButton"
-            value="ADD"
-            onClick={props.toggleModal}
-          />
+          <AddEditButton primary onClick={props.toggleModal}>
+            ADD
+          </AddEditButton>
         </div>
       </div>
     </div>
@@ -37,3 +35,10 @@ const mapDispatchToProps = dispatch => {
 export default connect(mapStateToProps, mapDispatchToProps)(
   HeaderCompanyIndexContainer
 );
+
+// <input
+//   type="submit"
+//   className="addActivityButton"
+//   value="ADD"
+//   onClick={props.toggleModal}
+// />

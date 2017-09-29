@@ -3,7 +3,7 @@ import React from "react";
 import { storiesOf } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
 import { linkTo } from "@storybook/addon-links";
-
+import AddEditButton from "../components/atoms/AddEditButton";
 import { Button, Welcome } from "@storybook/react/demo";
 import WideButton from "../components/atoms/WideButton";
 import Modal from "../components/atoms/Modal";
@@ -21,3 +21,13 @@ storiesOf("WideButton", module)
   ));
 
 storiesOf("Modal", module).add("testing", () => <Modal />);
+
+storiesOf("AddEditButton", module)
+  .add("primary button", () => (
+    <AddEditButton primary onClick={action("clicked")}>
+      ADD
+    </AddEditButton>
+  ))
+  .add("not primary button", () => (
+    <AddEditButton onClick={action("clicked")}>EDIT</AddEditButton>
+  ));
