@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import './HeaderCompanyShowContainer.css';
 import { setActiveCompany, toggleModal } from '../store/actions/actionCreators';
 import PropTypes from 'prop-types';
-import AddEditButton from '../components/atoms/AddEditButton';
+import PrimarySecondaryButton from '../components/atoms/PrimarySecondaryButton';
 
 //<input
 //  type="submit"
@@ -35,10 +35,10 @@ class HeaderCompanyShowContainer extends Component {
           <div className="headerTop row">
             <div className="company-logo" style={pictureStyle} />
             <p className="headerTitle"> {this.props.company.name} </p>
-            <AddEditButton>EDIT</AddEditButton>
-            <AddEditButton primary onClick={this.props.toggleModal}>
+            <PrimarySecondaryButton>EDIT</PrimarySecondaryButton>
+            <PrimarySecondaryButton primary onClick={this.props.toggleModal}>
               ADD
-            </AddEditButton>
+            </PrimarySecondaryButton>
           </div>
           <p className="potentialEmployer"> Potential employer: [Blank] </p>
           <p className="lastUpdated"> LAST UPDATED </p>

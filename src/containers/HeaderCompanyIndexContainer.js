@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import './HeaderCompanyIndexContainer.css';
 import { toggleModal } from '../store/actions/actionCreators';
 import PropTypes from 'prop-types';
-import AddEditButton from '../components/atoms/AddEditButton';
+import PrimarySecondaryButton from '../components/atoms/PrimarySecondaryButton';
 
 const HeaderCompanyIndexContainer = props => {
   return (
@@ -11,9 +11,9 @@ const HeaderCompanyIndexContainer = props => {
       <div>
         <div className="headerTop row">
           <p className="headerTitle"> Companies </p>
-          <AddEditButton primary onClick={props.toggleModal}>
+          <PrimarySecondaryButton primary onClick={props.toggleModal}>
             ADD
-          </AddEditButton>
+          </PrimarySecondaryButton>
         </div>
       </div>
     </div>

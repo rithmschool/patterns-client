@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const AddEditButton = styled.button`
+const PrimarySecondaryButton = styled.button`
   background-color: ${props => (props.primary ? '#cb9c59' : '#585b60')};
   text-align: center;
   color: #ffffff;
@@ -28,7 +28,7 @@ const AddEditButton = styled.button`
   }
 `;
 
-export default AddEditButton;
+export default PrimarySecondaryButton;
 
 //background-color: yellow #cb9c59;
 
