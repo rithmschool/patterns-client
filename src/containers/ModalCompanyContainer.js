@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import close from "../images/icon-x-gray.svg";
 import "./ModalCompanyContainer.css";
 import Modal from "../components/molecules/Modal";
 import AddCompanyForm from "../components/molecules/AddCompanyForm";
@@ -28,6 +27,7 @@ class ModalCompanyContainer extends Component {
   }
 
   handleChange(e) {
+    console.log(e.target);
     this.setState({
       [e.target.name]: e.target.value
     });
@@ -86,7 +86,7 @@ class ModalCompanyContainer extends Component {
         <AddCompanyForm
           handleSubmit={this.handleSubmit}
           handleChange={this.handleChange}
-          handleLogo={this.handleChange}
+          handleLogo={this.handleLogo}
           cancelModal={this.cancelModal}
           {...this.state}
         />
