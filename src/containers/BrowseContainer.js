@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Company from '../components/Company';
 import PropTypes from 'prop-types';
+import LongDataDisplay from '../components/atoms/LongDataDisplay';
 
 class BrowseContainer extends Component {
   render() {
@@ -23,6 +24,9 @@ class BrowseContainer extends Component {
           {this.props.companies.length} Potential Employers
         </div>
         <div className="company-holder">{companies}</div>
+        <div>
+          <LongDataDisplay />
+        </div>
       </div>
     );
   }

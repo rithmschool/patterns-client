@@ -29,9 +29,3 @@ const PrimarySecondaryButton = styled.button`
 `;
 
 export default PrimarySecondaryButton;
-
-//background-color: yellow #cb9c59;
-
-//grey : #585b60
-
-//${props => (props.add ? '#cb9c59' : '#585b60')}
