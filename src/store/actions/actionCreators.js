@@ -11,7 +11,7 @@ import {
   GET_TYPES_FAIL
 } from './constants';
 
-import { postType, fetchTypes } from '../../services/api';
+import { postType, fetchTypes, postActivity } from '../../services/api';
 
 export function toggleModal() {
   return {
@@ -26,9 +26,9 @@ function addActivitySuccess(activity) {
   };
 }
 
-export function addActivityRequest(activityTypeId, activityInfo) {
+export function addActivityRequest(userId, activityInfo) {
   return dispatch =>
-    postType(activityTypeId, activityInfo)
+    postActivity(userId, activityInfo)
       .then(res => dispatch(addActivitySuccess(res)))
       .catch(err => dispatch(addActivityError(err)));
 }

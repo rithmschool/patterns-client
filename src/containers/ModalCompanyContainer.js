@@ -1,22 +1,22 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import "./ModalCompanyContainer.css";
-import Modal from "../components/molecules/Modal";
-import AddCompanyForm from "../components/molecules/AddCompanyForm";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import './ModalCompanyContainer.css';
+import Modal from '../components/molecules/Modal';
+import AddCompanyForm from '../components/molecules/AddCompanyForm';
 import {
   toggleModal,
   addCompanyRequest,
   getTypes
-} from "../store/actions/actionCreators";
-import PropTypes from "prop-types";
+} from '../store/actions/actionCreators';
+import PropTypes from 'prop-types';
 
 class ModalCompanyContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: "",
-      url: "",
-      logo: "",
+      name: '',
+      url: '',
+      logo: '',
       submitted: false
     };
     this.handleChange = this.handleChange.bind(this);
@@ -63,19 +63,19 @@ class ModalCompanyContainer extends Component {
     };
     this.props.addCompany(companyTypeId, companyInfo);
     this.setState({
-      name: "",
-      url: "",
-      logo: ""
+      name: '',
+      url: '',
+      logo: ''
     });
     this.props.toggleModal();
   }
 
   cancelModal() {
     this.setState({
-      name: "",
-      url: "",
-      logo: "",
-      companyTypeId: ""
+      name: '',
+      url: '',
+      logo: '',
+      companyTypeId: ''
     });
     this.props.toggleModal();
   }

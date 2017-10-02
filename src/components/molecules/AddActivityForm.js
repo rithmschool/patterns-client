@@ -16,13 +16,20 @@ const AddActivityForm = props => (
     <div className="form-group">
       <label htmlFor="asset-type">Asset Type</label>
       <select name="asset-type" id="asset" onChange={props.dropdownChange}>
-        {props.assetDropdownOptions}
+        <option value={props.companyTypeId}>Company</option>
       </select>
     </div>
 
     <div className="form-group">
       <label htmlFor="activity-stages">Activity Stages</label>
       <StageList>{stageItems}</StageList>
+      <input
+        className=""
+        type="text"
+        name="stage"
+        value={props.stage}
+        onChange={props.handleChange}
+      />
     </div>
 
     <div className="button-wrap">

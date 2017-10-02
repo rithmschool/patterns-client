@@ -13,6 +13,7 @@ import {
   SET_LOGIN_ERROR,
   LOG_OUT,
   SET_USER,
+  SET_USER_ID,
   SET_ACTIVITIES,
   SET_COMPANIES
 } from './constants';
@@ -31,6 +32,7 @@ export function login(code) {
         dispatch(setToken(token));
         dispatch(setUser(userProfile));
         const userId = jwtDecode(token).mongoId;
+        dispatch(setUserId(userId));
         return getLoginResource(
           `${PATTERNS_API_URL}/users/${userId}/activities`
         );
@@ -95,6 +97,13 @@ export function setUser(userObj) {
   return {
     type: SET_USER,
     userObj
+  };
+}
+
+export function setUserId(userId) {
+  return {
+    type: SET_USER_ID,
+    userId
   };
 }
 

@@ -3,6 +3,7 @@ import {
   SET_LOGIN_ERROR,
   LOG_OUT,
   SET_USER,
+  SET_USER_ID,
   SET_ACTIVITIES,
   SET_COMPANIES,
   TOGGLE_MODAL,
@@ -18,6 +19,7 @@ import { setAuthorizationToken } from '../../services/api';
 
 const DEFAULT_STATE = {
   currentUserToken: '',
+  userId: '',
   loginError: '',
   userProfile: {},
   activities: [],
@@ -49,6 +51,11 @@ export default (state = DEFAULT_STATE, action = { type: null }) => {
       return {
         ...state,
         userProfile: action.userObj
+      };
+    case SET_USER_ID:
+      return {
+        ...state,
+        userId: action.userId
       };
     case SET_ACTIVITIES:
       return {

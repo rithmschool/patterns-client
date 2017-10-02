@@ -14,12 +14,10 @@ class ModalActivityContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: '',
-      submitted: false
+      name: ''
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.addNewActivity = this.addNewActivity.bind(this);
     this.cancelModal = this.cancelModal.bind(this);
   }
 
@@ -38,27 +36,16 @@ class ModalActivityContainer extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.getTypes().then(() => {
-      this.setState({ submitted: true });
-    });
-  }
-
-  componentDidUpdate(prevProps, prevState) {
-    if (
-      this.state.submitted &&
-      prevState.activityTypeId !== this.props.activityTypeId
-    ) {
-      this.addNewActivity(this.props.activityTypeId);
-    }
-  }
-
-  addNewActivity(activityTypeId) {
     let activityInfo = {
-      name: this.state.name
+      name: this.state.name,
+      createdBy: this.state.userId,
+      rootAssetType: this.state.companyTypeId
     };
-    this.props.addActivity(activityTypeId, activityInfo);
+    this.props.addActivity(userId, activityInfo);
     this.setState({
-      name: ''
+      name: '',
+      createdBy: '',
+      rootAssetType: ''
     });
     this.props.toggleModal();
   }
@@ -75,6 +62,7 @@ class ModalActivityContainer extends Component {
     return (
       <Modal title="Add Activity">
         <AddActivityForm
+          companyTypeId={companyTypeId}
           handleSubmit={this.handleSubmit}
           handleChange={this.handleChange}
           cancelModal={this.cancelModal}
@@ -91,14 +79,16 @@ ModalActivityContainer.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  activityTypeId: state.typeId.Activity
+  activityTypeId: state.typeId.Activity,
+  companyTypeId: state.typeId.Company,
+  userId: state.userId
 });
 
 const mapDispatchToProps = dispatch => {
   return {
     toggleModal: () => dispatch(toggleModal()),
-    addActivity: (activityTypeId, activityInfo) =>
-      dispatch(addActivityRequest(activityTypeId, activityInfo)),
+    addActivity: (userId, activityInfo) =>
+      dispatch(addActivityRequest(userId, activityInfo)),
     getTypes: () => dispatch(getTypes())
   };
 };
