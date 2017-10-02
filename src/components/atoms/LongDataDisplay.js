@@ -1,9 +1,11 @@
 import styled from 'styled-components';
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { withRouter } from 'react-router';
 import down from '../../images/icon-chevron-right-gray.svg';
 
 const CompanyLogo = styled.div`
+  background-image: ${props => (props.logo ? props.logo : 'none')};
   width: 48px;
   height: 48px;
   background-color: #e7e8ec;
@@ -13,6 +15,13 @@ const CompanyLogo = styled.div`
   background-size: contain;
   background-repeat: no-repeat;
   background-position-y: center;
+`;
+
+const CompanyRow = styled.div`
+  background-color: #ffffff;
+  height: 96px;
+  border-radius: 2px;
+  margin: 10px 24px;
 `;
 
 const CompanyName = styled.div`
@@ -64,46 +73,42 @@ const CompanyArrow = styled.div`
   }
 `;
 
-//how can we populate the data points below instead of hard-coding <DataCollectionRow> 4 times
-//loop with a prop of QtyOfData?
+class LongDataDisplay extends React.Component {
+  render() {
+    return (
+      <CompanyRow>
+        <CompanyLogo className="col-xs-1" logo={this.props.logo} />
+        <CompanyName className="col-xs-2">
+          <Link to={`/assets/companies/${this.props.companyId}`}>
+            {this.props.name}
+          </Link>
+        </CompanyName>
+        <CompanyData className="col-xs-7 row">
+          <DataCollectionRow className="col-lg-3 col-md-4 col-sm-6 hidden-xs">
+            <CompanyDataPoint>DATA POINT</CompanyDataPoint>
+            <CompanyDataValue>Data</CompanyDataValue>
+          </DataCollectionRow>
+          <DataCollectionRow className="col-lg-3 col-md-4 col-sm-6 hidden-xs">
+            <CompanyDataPoint>DATA POINT</CompanyDataPoint>
+            <CompanyDataValue>Data</CompanyDataValue>
+          </DataCollectionRow>
+          <DataCollectionRow className="col-lg-3 col-md-4 col-sm-6 hidden-xs">
+            <CompanyDataPoint>DATA POINT</CompanyDataPoint>
+            <CompanyDataValue>Data</CompanyDataValue>
+          </DataCollectionRow>
+          <DataCollectionRow className="col-lg-3 col-md-4 col-sm-6 hidden-xs">
+            <CompanyDataPoint>DATA POINT</CompanyDataPoint>
+            <CompanyDataValue>Data</CompanyDataValue>
+          </DataCollectionRow>
+        </CompanyData>
+        <CompanyArrow className="col-xs-1 hidden-sm hidden-x">
+          <Link to={`/assets/companies/${this.props.companyId}`}>
+            <img src={down} alt="Right Arrow" />
+          </Link>
+        </CompanyArrow>
+      </CompanyRow>
+    );
+  }
+}
 
-//pictureStyle? not populating image
-//let logo = props.logo || null;
-// let pictureStyle = {
-//   backgroundImage: `url(${logo})`
-// };
-
-const LongDataDisplay = props => (
-  <div>
-    <CompanyLogo className="col-xs-1" />
-    <CompanyName className="col-xs-2">
-      <Link to={`/assets/companies/${props.companyId}`}>{props.name}</Link>
-    </CompanyName>
-    <CompanyData className="col-xs-7 row">
-      <DataCollectionRow className="col-lg-3 col-md-4 col-sm-6 hidden-xs">
-        <CompanyDataPoint>DATA POINT</CompanyDataPoint>
-        <CompanyDataValue>Data</CompanyDataValue>
-      </DataCollectionRow>
-      <DataCollectionRow className="col-lg-3 col-md-4 col-sm-6 hidden-xs">
-        <CompanyDataPoint>DATA POINT</CompanyDataPoint>
-        <CompanyDataValue>Data</CompanyDataValue>
-      </DataCollectionRow>
-      <DataCollectionRow className="col-lg-3 col-md-4 col-sm-6 hidden-xs">
-        <CompanyDataPoint>DATA POINT</CompanyDataPoint>
-        <CompanyDataValue>Data</CompanyDataValue>
-      </DataCollectionRow>
-      <DataCollectionRow className="col-lg-3 col-md-4 col-sm-6 hidden-xs">
-        <CompanyDataPoint>DATA POINT</CompanyDataPoint>
-        <CompanyDataValue>Data</CompanyDataValue>
-      </DataCollectionRow>
-    </CompanyData>
-    <CompanyArrow className="col-xs-1 hidden-sm hidden-x">
-      <Link to={`/assets/companies/${props.companyId}`}>
-        <img src={down} alt="Right Arrow" />
-      </Link>
-    </CompanyArrow>
-  </div>
-);
-
-export default LongDataDisplay;
-
+export default withRouter(LongDataDisplay);
