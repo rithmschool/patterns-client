@@ -7,8 +7,9 @@ import {
   SET_COMPANIES,
   TOGGLE_MODAL,
   SET_ACTIVE_ACTIVITY,
-  ADD_COMPANY,
   SET_ACTIVE_COMPANY,
+  ADD_ACTIVITY,
+  ADD_COMPANY,
   CHANGE_ASSET,
   GET_TYPES_SUCCESS
 } from '../actions/constants';
@@ -70,6 +71,11 @@ export default (state = DEFAULT_STATE, action = { type: null }) => {
         ...state,
         activity: action.activity
       };
+    case SET_ACTIVE_COMPANY:
+      return {
+        ...state,
+        company: action.company
+      };
     case GET_TYPES_SUCCESS:
       var typeId = action.typeIds.reduce((acc, type) => {
         acc[type.name] = type._id;
@@ -85,10 +91,10 @@ export default (state = DEFAULT_STATE, action = { type: null }) => {
         ...state,
         companies: [...state.companies, action.company]
       };
-    case SET_ACTIVE_COMPANY:
+    case ADD_ACTIVITY:
       return {
         ...state,
-        company: action.company
+        activities: [...state.activities, action.activity]
       };
     case CHANGE_ASSET:
       let changeActivity = {

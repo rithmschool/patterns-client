@@ -2,9 +2,11 @@ import {
   TOGGLE_MODAL,
   SET_ACTIVE_ACTIVITY,
   SET_ACTIVE_COMPANY,
+  ADD_ACTIVITY,
   ADD_COMPANY,
   CHANGE_ASSET,
   ADD_COMPANY_FAIL,
+  ADD_ACTIVITY_FAIL,
   GET_TYPES_SUCCESS,
   GET_TYPES_FAIL
 } from './constants';
@@ -14,6 +16,27 @@ import { postType, fetchTypes } from '../../services/api';
 export function toggleModal() {
   return {
     type: TOGGLE_MODAL
+  };
+}
+
+function addActivitySuccess(activity) {
+  return {
+    type: ADD_ACTIVITY,
+    activity
+  };
+}
+
+export function addActivityRequest(activityTypeId, activityInfo) {
+  return dispatch =>
+    postType(activityTypeId, activityInfo)
+      .then(res => dispatch(addActivitySuccess(res)))
+      .catch(err => dispatch(addActivityError(err)));
+}
+
+function addActivityError(error) {
+  return {
+    type: ADD_ACTIVITY_FAIL,
+    error
   };
 }
 

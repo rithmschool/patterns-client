@@ -18,7 +18,9 @@ export const ADD_COMPANY_FAIL = 'ADD_COMPANY_FAIL';
 export const CHANGE_ASSET = 'CHANGE_ASSET';
 
 // Activities
+export const ADD_ACTIVITY = 'ADD_ACTIVITY';
 export const SET_ACTIVE_ACTIVITY = 'SET_ACTIVE_ACTIVITY';
+export const ADD_ACTIVITY_FAIL = 'ADD_ACTIVITY_FAIL';
 
 //Type
 export const GET_TYPES_SUCCESS = 'GET_TYPES_SUCCESS';

@@ -1,5 +1,5 @@
-import React from "react";
-import UploadCare from "../../components/UploadCare";
+import React from 'react';
+import UploadCare from '../../components/UploadCare';
 
 const AddCompanyForm = props => (
   <form onSubmit={props.handleSubmit}>
