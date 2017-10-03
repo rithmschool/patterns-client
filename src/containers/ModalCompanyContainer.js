@@ -82,7 +82,7 @@ class ModalCompanyContainer extends Component {
 
   render() {
     return (
-      <Modal title="Add Company">
+      <Modal cancelModal={this.cancelModal} title="Add Company">
         <AddCompanyForm
           handleSubmit={this.handleSubmit}
           handleChange={this.handleChange}

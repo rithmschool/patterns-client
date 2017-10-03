@@ -60,7 +60,7 @@ class ModalActivityContainer extends Component {
 
   render() {
     return (
-      <Modal title="Add Activity">
+      <Modal cancelModal={this.cancelModal} title="Add Activity">
         <AddActivityForm
           companyTypeId={companyTypeId}
           handleSubmit={this.handleSubmit}

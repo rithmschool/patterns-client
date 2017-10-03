@@ -1,13 +1,14 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import { connect } from "react-redux";
-import "./SidebarLeftContainer.css";
-import logo from "../images/logo-dark-gray.svg";
-import hide from "../images/icon-open-collapse-left-gray.svg";
-import ActivitySideBox from "../components/ActivitySideBox";
-import UserProfileContainer from "./UserProfileContainer";
-import PropTypes from "prop-types";
-import WideButton from "../components/atoms/WideButton";
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import './SidebarLeftContainer.css';
+import logo from '../images/logo-dark-gray.svg';
+import { toggleModal } from '../store/actions/actionCreators';
+import hide from '../images/icon-open-collapse-left-gray.svg';
+import ActivitySideBox from '../components/ActivitySideBox';
+import UserProfileContainer from './UserProfileContainer';
+import PropTypes from 'prop-types';
+import WideButton from '../components/atoms/WideButton';
 
 class SidebarLeftContainer extends Component {
   render() {
@@ -25,10 +26,9 @@ class SidebarLeftContainer extends Component {
         <div className="activity-list">{allActivities}</div>
 
         <div className="button-holder">
-          <WideButton>ADD NEW ACTIVITY</WideButton>
-          {/* <button>
-            <p>ADD NEW ACTIVITY</p>
-          </button>*/}
+          <WideButton onClick={this.props.toggleModal}>
+            ADD NEW ACTIVITY
+          </WideButton>
         </div>
 
         <div className="footer">
@@ -47,6 +47,7 @@ class SidebarLeftContainer extends Component {
 }
 
 SidebarLeftContainer.propTypes = {
+  toggleModal: PropTypes.func.isRequired,
   activities: PropTypes.arrayOf(
     PropTypes.shape({
       _id: PropTypes.string.isRequired
@@ -58,7 +59,9 @@ const mapStateToProps = state => ({
   activities: state.activities
 });
 
-const mapDispatchToProps = dispatch => ({});
+const mapDispatchToProps = dispatch => ({
+  toggleModal: () => dispatch(toggleModal())
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(
   SidebarLeftContainer

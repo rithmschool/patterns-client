@@ -50,7 +50,7 @@ HeaderActivityShowContainer.propTypes = {
   }),
   setActiveActivity: PropTypes.func.isRequired,
   activity: PropTypes.shape({
-    name: PropTypes.string.isRequired
+    name: PropTypes.string
   }),
   toggleModal: PropTypes.func.isRequired
 };
