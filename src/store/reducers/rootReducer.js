@@ -6,7 +6,6 @@ import {
   SET_USER_ID,
   SET_ACTIVITIES,
   SET_COMPANIES,
-  TOGGLE_MODAL,
   SET_ACTIVE_ACTIVITY,
   SET_ACTIVE_COMPANY,
   ADD_ACTIVITY,
@@ -26,7 +25,6 @@ const DEFAULT_STATE = {
   activity: {},
   companies: [],
   company: {},
-  modal: false,
   typeId: {}
 };
 
@@ -66,12 +64,6 @@ export default (state = DEFAULT_STATE, action = { type: null }) => {
       return {
         ...state,
         companies: action.companies
-      };
-    case TOGGLE_MODAL:
-      let toggle = !state.modal;
-      return {
-        ...state,
-        modal: toggle
       };
     case SET_ACTIVE_ACTIVITY:
       return {

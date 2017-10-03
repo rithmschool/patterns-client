@@ -7,9 +7,6 @@ export const SET_USER_ID = 'SET_USER_ID';
 export const SET_ACTIVITIES = 'SET_ACTIVITIES';
 export const SET_COMPANIES = 'SET_COMPANIES';
 
-// UI
-export const TOGGLE_MODAL = 'TOGGLE_MODAL';
-
 // Companies
 export const ADD_COMPANY = 'ADD_COMPANY';
 export const SET_ACTIVE_COMPANY = 'SET_ACTIVE_COMPANY';

@@ -33,8 +33,8 @@ class ModalActivityContainer extends Component {
     e.preventDefault();
     let activityInfo = {
       name: this.state.name,
-      createdBy: this.state.userId,
-      rootAssetType: this.state.companyTypeId
+      createdBy: this.props.userId,
+      rootAssetType: this.props.companyTypeId
     };
     this.props.addActivity(this.props.userId, activityInfo);
     this.setState({

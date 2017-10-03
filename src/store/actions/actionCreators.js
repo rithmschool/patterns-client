@@ -1,5 +1,4 @@
 import {
-  TOGGLE_MODAL,
   SET_ACTIVE_ACTIVITY,
   SET_ACTIVE_COMPANY,
   ADD_ACTIVITY,
@@ -12,12 +11,6 @@ import {
 } from './constants';
 
 import { postType, fetchTypes, postActivity } from '../../services/api';
-
-export function toggleModal() {
-  return {
-    type: TOGGLE_MODAL
-  };
-}
 
 function addActivitySuccess(activity) {
   return {
