@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import React from 'react';
 import close from '../../images/icon-x-gray.svg';
-// import { toggleModal } from '../../store/actions/actionCreators';
 
 const Overlay = styled.div`
   position: fixed;
@@ -44,7 +43,7 @@ const Modal = props => (
     <ModalCard className="col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
       <Heading>
         {props.title}
-        <img onClick={props.toggleModal} src={close} alt="Close Modal" />
+        <img onClick={props.cancelModal} src={close} alt="Close Modal" />
       </Heading>
       {props.children}
     </ModalCard>

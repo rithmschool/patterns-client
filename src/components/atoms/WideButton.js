@@ -1,7 +1,8 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const WideButton = styled.button`
   background-color: #585b60;
+  cursor: pointer;
   border: none;
   outline: none;
   border-radius: 2px;
