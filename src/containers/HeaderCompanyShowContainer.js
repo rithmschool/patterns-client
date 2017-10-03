@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './HeaderCompanyShowContainer.css';
-import { setActiveCompany, toggleModal } from '../store/actions/actionCreators';
+import { setActiveCompany } from '../store/actions/actionCreators';
 import PropTypes from 'prop-types';
 import PrimarySecondaryButton from '../components/atoms/PrimarySecondaryButton';
 import ModalCompanyContainer from './ModalCompanyContainer';
@@ -82,7 +82,6 @@ HeaderCompanyShowContainer.propTypes = {
     })
   }),
   setActiveCompany: PropTypes.func.isRequired,
-  toggleModal: PropTypes.func.isRequired,
   company: PropTypes.shape({
     logo: PropTypes.string,
     name: PropTypes.string.isRequired,
@@ -97,7 +96,6 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => {
   return {
-    toggleModal: () => dispatch(toggleModal()),
     setActiveCompany: company => dispatch(setActiveCompany(company))
   };
 };
