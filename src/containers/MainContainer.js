@@ -7,14 +7,40 @@ import ModalCompanyContainer from './ModalCompanyContainer';
 import './MainContainer.css';
 import PropTypes from 'prop-types';
 
-class MainContainer extends Component {
+class MainContainer extends React.Component {
+  // constructor(props) {
+  //   super(props);
+  //   this.state = {
+  //     modalOpen: false
+  //   };
+  //   this.toggleModal = this.toggleModal.bind(this);
+  // }
+
+  // toggleModal(e) {
+  //   this.setState({ modalOpen: !this.state.modalOpen });
+  // }
+
   render() {
-    let modal = this.props.modalState ? (
-      <ModalCompanyContainer name="Edit" logo="Replace" />
-    ) : null;
+    // let modal;
+    // if (this.state.modalOpen) {
+    //   modal = (
+    //     <ModalCompanyContainer
+    //       toggleModal={this.toggleModal}
+    //       name="Edit"
+    //       logo="Replace"
+    //     />
+    //   );
+    // } else {
+    //   modal = null;
+    // }
+
+    // let modal = this.props.modalState ? (
+    //   <ModalCompanyContainer name="Edit" logo="Replace" />
+    // ) : null;
+
     return (
       <div className="main">
-        {modal}
+        {/* {modal} */}
         <SidebarLeftContainer />
         <Content />
         {/* <SidebarRightContainer /> */}
@@ -23,14 +49,16 @@ class MainContainer extends Component {
   }
 }
 
-MainContainer.propTypes = {
-  modalState: PropTypes.bool.isRequired
-};
+// MainContainer.propTypes = {
+//   modalState: PropTypes.bool.isRequired
+// };
 
-const mapStateToProps = state => ({
-  modalState: state.modal
-});
+// const mapStateToProps = state => ({
+//   modalState: state.modal
+// });
 
-const mapDispatchToProps = dispatch => ({});
+// const mapDispatchToProps = dispatch => ({});
 
-export default connect(mapStateToProps, mapDispatchToProps)(MainContainer);
+//export default connect(mapStateToProps, mapDispatchToProps)(MainContainer);
+
+export default MainContainer;

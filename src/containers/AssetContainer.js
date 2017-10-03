@@ -1,21 +1,18 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
-import { connect } from 'react-redux';
 import SidebarLeftContainer from './SidebarLeftContainer';
 import Content from '../components/Content';
 import SmallerContent from '../components/SmallerContent';
 import SidebarRightContainer from './SidebarRightContainer';
-import ModalCompanyContainer from './ModalCompanyContainer';
 import PropTypes from 'prop-types';
 
 class AssetContainer extends Component {
   render() {
-    let modal = this.props.modalState ? (
-      <ModalCompanyContainer name="Edit" logo="Replace" />
-    ) : null;
+    // let modal = this.props.modalState ? (
+    //   <ModalCompanyContainer name="Edit" logo="Replace" />
+    // ) : null;
     return (
       <div className="asset row">
-        {modal}
         <SidebarLeftContainer />
         <Switch>
           <Route exact path="/assets/companies" component={Content} />
@@ -39,10 +36,12 @@ AssetContainer.propTypes = {
   modalState: PropTypes.bool.isRequired
 };
 
-const mapStateToProps = state => ({
-  modalState: state.modal
-});
+// const mapStateToProps = state => ({
+//   modalState: state.modal
+// });
 
-const mapDispatchToProps = dispatch => ({});
+// const mapDispatchToProps = dispatch => ({});
 
-export default connect(mapStateToProps, mapDispatchToProps)(AssetContainer);
+// export default connect(mapStateToProps, mapDispatchToProps)(AssetContainer);
+
+export default AssetContainer;

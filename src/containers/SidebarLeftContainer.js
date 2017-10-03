@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import './SidebarLeftContainer.css';
 import logo from '../images/logo-dark-gray.svg';
-import { toggleModal } from '../store/actions/actionCreators';
 import hide from '../images/icon-open-collapse-left-gray.svg';
 import ActivitySideBox from '../components/ActivitySideBox';
 import UserProfileContainer from './UserProfileContainer';
@@ -47,7 +46,6 @@ class SidebarLeftContainer extends Component {
 }
 
 SidebarLeftContainer.propTypes = {
-  toggleModal: PropTypes.func.isRequired,
   activities: PropTypes.arrayOf(
     PropTypes.shape({
       _id: PropTypes.string.isRequired
@@ -59,10 +57,4 @@ const mapStateToProps = state => ({
   activities: state.activities
 });
 
-const mapDispatchToProps = dispatch => ({
-  toggleModal: () => dispatch(toggleModal())
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(
-  SidebarLeftContainer
-);
+export default connect(mapStateToProps)(SidebarLeftContainer);
