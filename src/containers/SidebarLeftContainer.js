@@ -8,9 +8,35 @@ import ActivitySideBox from '../components/ActivitySideBox';
 import UserProfileContainer from './UserProfileContainer';
 import PropTypes from 'prop-types';
 import WideButton from '../components/atoms/WideButton';
+import ModalActivityContainer from './ModalActivityContainer';
 
 class SidebarLeftContainer extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      modalOpen: false
+    };
+    this.toggleModal = this.toggleModal.bind(this);
+  }
+
+  toggleModal(e) {
+    this.setState({ modalOpen: !this.state.modalOpen });
+  }
+
   render() {
+    let modal;
+    if (this.state.modalOpen) {
+      modal = (
+        <ModalActivityContainer
+          toggleModal={this.toggleModal}
+          name="Edit"
+          logo="Replace"
+        />
+      );
+    } else {
+      modal = null;
+    }
+
     let allActivities = this.props.activities.map(val => (
       <ActivitySideBox key={val._id} data={val} />
     ));
@@ -25,9 +51,8 @@ class SidebarLeftContainer extends Component {
         <div className="activity-list">{allActivities}</div>
 
         <div className="button-holder">
-          <WideButton onClick={this.props.toggleModal}>
-            ADD NEW ACTIVITY
-          </WideButton>
+          <WideButton onClick={this.toggleModal}>ADD NEW ACTIVITY</WideButton>
+          {modal}
         </div>
 
         <div className="footer">
