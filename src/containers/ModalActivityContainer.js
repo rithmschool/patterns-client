@@ -1,13 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import './ModalActivityContainer.css';
 import Modal from '../components/molecules/Modal';
 import AddActivityForm from '../components/molecules/AddActivityForm';
-import {
-  toggleModal,
-  addActivityRequest,
-  getTypes
-} from '../store/actions/actionCreators';
+import { addActivityRequest, getTypes } from '../store/actions/actionCreators';
 import PropTypes from 'prop-types';
 
 class ModalActivityContainer extends Component {
@@ -41,7 +36,7 @@ class ModalActivityContainer extends Component {
       createdBy: this.state.userId,
       rootAssetType: this.state.companyTypeId
     };
-    this.props.addActivity(userId, activityInfo);
+    this.props.addActivity(this.props.userId, activityInfo);
     this.setState({
       name: '',
       createdBy: '',
@@ -62,7 +57,7 @@ class ModalActivityContainer extends Component {
     return (
       <Modal title="Add Activity">
         <AddActivityForm
-          companyTypeId={companyTypeId}
+          companyTypeId={this.props.companyTypeId}
           handleSubmit={this.handleSubmit}
           handleChange={this.handleChange}
           cancelModal={this.cancelModal}
@@ -86,7 +81,6 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => {
   return {
-    toggleModal: () => dispatch(toggleModal()),
     addActivity: (userId, activityInfo) =>
       dispatch(addActivityRequest(userId, activityInfo)),
     getTypes: () => dispatch(getTypes())

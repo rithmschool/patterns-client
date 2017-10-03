@@ -22,7 +22,7 @@ const AddActivityForm = props => (
 
     <div className="form-group">
       <label htmlFor="activity-stages">Activity Stages</label>
-      <StageList>{stageItems}</StageList>
+      {/*<StageList>{stageItems}</StageList> */}
       <input
         className=""
         type="text"

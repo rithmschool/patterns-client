@@ -3,11 +3,7 @@ import { connect } from 'react-redux';
 import './ModalCompanyContainer.css';
 import Modal from '../components/molecules/Modal';
 import AddCompanyForm from '../components/molecules/AddCompanyForm';
-import {
-  toggleModal,
-  addCompanyRequest,
-  getTypes
-} from '../store/actions/actionCreators';
+import { addCompanyRequest, getTypes } from '../store/actions/actionCreators';
 import PropTypes from 'prop-types';
 
 class ModalCompanyContainer extends Component {
@@ -27,7 +23,6 @@ class ModalCompanyContainer extends Component {
   }
 
   handleChange(e) {
-    console.log(e.target);
     this.setState({
       [e.target.name]: e.target.value
     });
@@ -106,7 +101,6 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => {
   return {
-    toggleModal: () => dispatch(toggleModal()),
     addCompany: (companyTypeId, companyInfo) =>
       dispatch(addCompanyRequest(companyTypeId, companyInfo)),
     getTypes: () => dispatch(getTypes())

@@ -1,37 +1,51 @@
-import React from 'react';
-import { connect } from 'react-redux';
+import React, { Component } from 'react';
 import './HeaderActivityIndexContainer.css';
-import { toggleModal } from '../store/actions/actionCreators';
-import PropTypes from 'prop-types';
+import ModalActivityContainer from './ModalActivityContainer';
 
-const HeaderActivityIndexContainer = props => {
-  return (
-    <div className="header-index">
-      <div>
-        <div className="headerTop row">
-          <p className="headerTitle"> Activities </p>
-          <input
-            type="submit"
-            className="addActivityButton"
-            value="ADD"
-            onClick={props.toggleModal}
-          />
+class HeaderActivityIndexContainer extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      modalOpen: false
+    };
+    this.toggleModal = this.toggleModal.bind(this);
+  }
+
+  toggleModal(e) {
+    this.setState({ modalOpen: !this.state.modalOpen });
+  }
+
+  render() {
+    let modal;
+    if (this.state.modalOpen) {
+      modal = (
+        <ModalActivityContainer
+          toggleModal={this.toggleModal}
+          name="Edit"
+          logo="Replace"
+        />
+      );
+    } else {
+      modal = null;
+    }
+
+    return (
+      <div className="header-index">
+        <div>
+          <div className="headerTop row">
+            <p className="headerTitle"> Activities </p>
+            <input
+              type="submit"
+              className="addActivityButton"
+              value="ADD"
+              onClick={this.toggleModal}
+            />
+            {modal}
+          </div>
         </div>
       </div>
-    </div>
-  );
-};
+    );
+  }
+}
 
-HeaderActivityIndexContainer.propTypes = {
-  toggleModal: PropTypes.func.isRequired
-};
-
-const mapStateToProps = state => ({});
-
-const mapDispatchToProps = dispatch => ({
-  toggleModal: () => dispatch(toggleModal())
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(
-  HeaderActivityIndexContainer
-);
+export default HeaderActivityIndexContainer;
