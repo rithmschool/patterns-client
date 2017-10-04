@@ -27,6 +27,15 @@ const ActivityForm = styled.form`
     opacity: 0.5;
     background-color: #c2cbd3;
   }
+  .add-new-stage {
+    width: 100%;
+    height: 24px;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.71;
+    text-align: left;
+    color: #a0a1a5;
+  }
   label {
     font-size: 12px;
     font-weight: 600;
@@ -95,15 +104,16 @@ const AddActivityForm = props => (
 
     <div className="form-group">
       <label htmlFor="activity-stages">Activity Stages</label>
-      {/*<StageList>{stageItems}</StageList> 
+      {/*<StageList>{stageItems}</StageList> */}
       <input
-        className=""
+        className="add-new-stage"
         type="text"
         name="stage"
+        placeholder="Add new stage"
         value={props.stage}
         onChange={props.handleChange}
-      />*/}
-      <p className="add-new-stage">Add new stage</p>
+      />
+      {/*<p className="add-new-stage">Add new stage</p>*/}
       <div className="stage-line" />
     </div>
 

@@ -113,8 +113,8 @@ class LongDataDisplay extends React.Component {
 }
 
 LongDataDisplay.propTypes = {
-  name: PropTypes.string.isRequired,
-  companyId: PropTypes.isRequired,
+  name: PropTypes.string,
+  companyId: PropTypes.string,
   logo: PropTypes.string
 };
 

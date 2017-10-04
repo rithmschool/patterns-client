@@ -2,21 +2,22 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Company from '../components/Company';
-import LongDataDisplay from '../components/atoms/LongDataDisplay';
 
 class BrowseContainer extends Component {
   render() {
     let companies = null;
     if (this.props.companies.length > 0) {
-      companies = this.props.companies.map((company, i) => (
-        <Company
-          key={i}
-          companyId={company._id}
-          name={company.name}
-          description={company.description}
-          logo={company.logo}
-        />
-      ));
+      companies = this.props.companies.map((company, i) => {
+        return (
+          <Company
+            key={i}
+            companyId={company._id}
+            name={company.name}
+            description={company.description}
+            logo={company.logo}
+          />
+        );
+      });
     }
     return (
       <div className="inner-content">
@@ -24,9 +25,6 @@ class BrowseContainer extends Component {
           {this.props.companies.length} Potential Employers
         </div>
         <div className="company-holder">{companies}</div>
-        <div>
-          <LongDataDisplay />
-        </div>
       </div>
     );
   }
