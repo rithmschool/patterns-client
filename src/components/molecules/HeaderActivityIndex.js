@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import './HeaderCompanyIndexContainer.css';
-import PrimarySecondaryButton from '../components/atoms/PrimarySecondaryButton';
-import ModalCompanyContainer from './ModalCompanyContainer';
+import './HeaderActivityIndex.css';
+import ModalActivityContainer from '../../containers/ModalActivityContainer';
 
-class HeaderCompanyIndexContainer extends Component {
+class HeaderActivityIndex extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -20,7 +19,7 @@ class HeaderCompanyIndexContainer extends Component {
     let modal;
     if (this.state.modalOpen) {
       modal = (
-        <ModalCompanyContainer
+        <ModalActivityContainer
           toggleModal={this.toggleModal}
           name="Edit"
           logo="Replace"
@@ -34,10 +33,13 @@ class HeaderCompanyIndexContainer extends Component {
       <div className="header-index">
         <div>
           <div className="headerTop row">
-            <p className="headerTitle"> Companies </p>
-            <PrimarySecondaryButton primary onClick={this.toggleModal}>
-              ADD
-            </PrimarySecondaryButton>
+            <p className="headerTitle"> Activities </p>
+            <input
+              type="submit"
+              className="addActivityButton"
+              value="ADD"
+              onClick={this.toggleModal}
+            />
             {modal}
           </div>
         </div>
@@ -46,4 +48,4 @@ class HeaderCompanyIndexContainer extends Component {
   }
 }
 
-export default HeaderCompanyIndexContainer;
+export default HeaderActivityIndex;

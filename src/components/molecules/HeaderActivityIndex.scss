@@ -1,4 +1,4 @@
-@import "../index.scss";
+@import '../../index.scss';
 
 @each $p in ($md-percentage, $lg-percentage) {
   @media (min-width: $p * 1024px) {

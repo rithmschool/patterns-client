@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
-import SidebarLeftContainer from './SidebarLeftContainer';
-import Content from '../components/Content';
-import SmallerContent from '../components/SmallerContent';
-import SidebarRightContainer from './SidebarRightContainer';
+import SidebarLeftContainer from '../../containers/SidebarLeftContainer';
+import Content from '../Content';
+import SmallerContent from '../SmallerContent';
+import SidebarRightContainer from '../../containers/SidebarRightContainer';
 
-class AssetContainer extends Component {
+class Asset extends Component {
   render() {
     return (
       <div className="asset row">
@@ -28,4 +28,4 @@ class AssetContainer extends Component {
   }
 }
 
-export default AssetContainer;
+export default Asset;

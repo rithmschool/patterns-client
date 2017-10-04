@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import CompanyDetail from '../components/CompanyDetail';
+import CompanyDetail from '../CompanyDetail';
 
-class CompanyInfoContainer extends Component {
+class CompanyInfo extends Component {
   render() {
     return (
       <div>
@@ -13,4 +13,4 @@ class CompanyInfoContainer extends Component {
   }
 }
 
-export default CompanyInfoContainer;
+export default CompanyInfo;
