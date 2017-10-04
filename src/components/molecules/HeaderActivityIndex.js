@@ -16,7 +16,7 @@ class HeaderActivityIndex extends Component {
   }
 
   render() {
-    let modal;
+    let modal = null;
     if (this.state.modalOpen) {
       modal = (
         <ModalActivityContainer
@@ -25,8 +25,6 @@ class HeaderActivityIndex extends Component {
           logo="Replace"
         />
       );
-    } else {
-      modal = null;
     }
 
     return (

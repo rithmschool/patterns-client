@@ -27,7 +27,7 @@ class HeaderCompanyShowContainer extends Component {
   }
 
   render() {
-    let modal;
+    let modal = null;
     if (this.state.modalOpen) {
       modal = (
         <ModalCompanyContainer
@@ -36,8 +36,6 @@ class HeaderCompanyShowContainer extends Component {
           logo="Replace"
         />
       );
-    } else {
-      modal = null;
     }
 
     let logo = this.props.company.logo || null;

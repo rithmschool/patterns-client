@@ -9,7 +9,7 @@ const ActivityForm = styled.form`
   margin: 0px;
   padding: 24px;
   border-bottom-left-radius: 4px;
-  border-bottom-right-radius: 4px; }
+  border-bottom-right-radius: 4px;
   button {
     margin-top: 0px;
   }
@@ -43,7 +43,8 @@ const ActivityForm = styled.form`
     font-weight: 600;
     text-transform: uppercase;
     color: #a0a1a5;
-    line-height: 18px; }
+    line-height: 18px;
+  }
   .text-input {
     border: 1px solid #c3cbd3;
     border-radius: 4px;
@@ -52,13 +53,15 @@ const ActivityForm = styled.form`
     margin-top: 0px;
     margin-right: 0px;
     margin-bottom: 18px;
-    padding-left: 12px; }
+    padding-left: 12px;
+  }
   #asset-type {
     height: 36px;
     width: 100%;
     margin-top: 0px;
     margin-left: 0px;
-    margin-bottom: 18px; }
+    margin-bottom: 18px;
+  }
   .uploadcare--widget__button {
     padding-top: 36px;
     color: #ffffff;
@@ -67,21 +70,25 @@ const ActivityForm = styled.form`
     padding: 5px;
     width: 94px;
     cursor: pointer;
-    background-color: #a0a1a5; }
+    background-color: #a0a1a5;
+  }
   .uploadcare--widget__button:hover {
-    background-color: #cb9c59; }
+    background-color: #cb9c59;
+  }
   .button-wrap {
     padding-top: 36px;
-    text-align: right; }
-    form .button-wrap .cancel,
-    form .button-wrap .save {
-      color: #ffffff;
-      text-transform: uppercase;
-      font-size: 12px;
-      padding: 12px;
-      width: 94px;
-      margin: 0 0 0 12px;
-      cursor: pointer; }
+    text-align: right;
+  }
+  form .button-wrap .cancel,
+  form .button-wrap .save {
+    color: #ffffff;
+    text-transform: uppercase;
+    font-size: 12px;
+    padding: 12px;
+    width: 94px;
+    margin: 0 0 0 12px;
+    cursor: pointer;
+  }
 `;
 
 const AddActivityForm = props => (
