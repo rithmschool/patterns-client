@@ -5,6 +5,7 @@ import './CompanyDetail.css';
 import LongDataDisplay from './atoms/LongDataDisplay';
 
 const CompanyDetail = props => {
+  debugger;
   return (
     <div>
       <LongDataDisplay

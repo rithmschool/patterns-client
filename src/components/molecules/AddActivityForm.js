@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import PrimarySecondaryButton from '../atoms/PrimarySecondaryButton';
+import StageList from '../molecules/StageList';
 
 const ActivityForm = styled.form`
   background-color: #e7e8ec;
@@ -35,6 +36,7 @@ const ActivityForm = styled.form`
     line-height: 1.71;
     text-align: left;
     color: #a0a1a5;
+    background-color: #e7e8ec
   }
   label {
     font-size: 12px;
@@ -94,29 +96,13 @@ const AddActivityForm = props => (
         onChange={props.handleChange}
       />
     </div>
-
     <div className="form-group">
       <label htmlFor="asset-type">Asset Type</label>
       <select name="asset-type" id="asset-type" onChange={props.dropdownChange}>
         <option value={props.companyTypeId}>Company</option>
       </select>
     </div>
-
-    <div className="form-group">
-      <label htmlFor="activity-stages">Activity Stages</label>
-      {/*<StageList>{stageItems}</StageList> */}
-      <input
-        className="add-new-stage"
-        type="text"
-        name="stage"
-        placeholder="Add new stage"
-        value={props.stage}
-        onChange={props.handleChange}
-      />
-      {/*<p className="add-new-stage">Add new stage</p>*/}
-      <div className="stage-line" />
-    </div>
-
+    <StageList handleSubmit={props.handleSubmit} />
     <div className="button-wrap">
       <PrimarySecondaryButton primary onClick={props.handleSubmit}>
         SAVE
