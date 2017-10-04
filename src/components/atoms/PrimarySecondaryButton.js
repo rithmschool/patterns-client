@@ -8,7 +8,7 @@ const PrimarySecondaryButton = styled.button`
   cursor: pointer;
   width: 96px;
   height: 36px;
-  font-size: 14px;
+  font-size: 13px;
   line-height: 1.38;
   border-style: none;
   border-radius: 2px;
@@ -18,6 +18,7 @@ const PrimarySecondaryButton = styled.button`
   margin-right: 3px;
   margin-left: 3px;
   padding-top: 2px;
+  padding-bottom: 3px;
   margin-top: 24px;
   box-sizing: border-box;
   @media (min-width: 768px) {
