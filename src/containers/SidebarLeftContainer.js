@@ -24,7 +24,7 @@ class SidebarLeftContainer extends Component {
   }
 
   render() {
-    let modal;
+    let modal = null;
     if (this.state.modalOpen) {
       modal = (
         <ModalActivityContainer
@@ -33,8 +33,6 @@ class SidebarLeftContainer extends Component {
           logo="Replace"
         />
       );
-    } else {
-      modal = null;
     }
 
     let allActivities = this.props.activities.map(val => (
