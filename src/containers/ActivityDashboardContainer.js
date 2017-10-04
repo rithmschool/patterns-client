@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Activity from '../components/Activity';
 import PropTypes from 'prop-types';
+import Activity from '../components/Activity';
 
 class ActivityDashboardContainer extends Component {
   render() {

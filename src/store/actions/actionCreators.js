@@ -1,19 +1,35 @@
 import {
-  TOGGLE_MODAL,
   SET_ACTIVE_ACTIVITY,
   SET_ACTIVE_COMPANY,
+  ADD_ACTIVITY,
   ADD_COMPANY,
   CHANGE_ASSET,
   ADD_COMPANY_FAIL,
+  ADD_ACTIVITY_FAIL,
   GET_TYPES_SUCCESS,
   GET_TYPES_FAIL
 } from './constants';
 
-import { postType, fetchTypes } from '../../services/api';
+import { postType, fetchTypes, postActivity } from '../../services/api';
 
-export function toggleModal() {
+function addActivitySuccess(activity) {
   return {
-    type: TOGGLE_MODAL
+    type: ADD_ACTIVITY,
+    activity
+  };
+}
+
+export function addActivityRequest(userId, activityInfo) {
+  return dispatch =>
+    postActivity(userId, activityInfo)
+      .then(res => dispatch(addActivitySuccess(res)))
+      .catch(err => dispatch(addActivityError(err)));
+}
+
+function addActivityError(error) {
+  return {
+    type: ADD_ACTIVITY_FAIL,
+    error
   };
 }
 

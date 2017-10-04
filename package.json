@@ -7,28 +7,32 @@
     "bootstrap-grid": "2.0.1",
     "bootstrap-sass": "3.3.7",
     "jwt-decode": "2.2.0",
-    "prop-types": "15.5.10",
-    "react": "15.6.1",
-    "react-dnd": "2.5.1",
-    "react-dnd-html5-backend": "2.5.1",
-    "react-dom": "15.6.1",
+    "prop-types": "15.6.0",
+    "react": "16.0.0",
+    "react-dnd": "2.5.3",
+    "react-dnd-html5-backend": "2.5.3",
+    "react-dom": "16.0.0",
     "react-redux": "5.0.6",
     "react-router-dom": "4.2.2",
     "redux": "3.7.2",
     "redux-logger": "^3.0.6",
-    "redux-persist": "4.10.0",
+    "redux-persist": "4.10.1",
     "redux-thunk": "2.2.0",
+    "styled-components": "^2.2.0",
     "uploadcare-widget": "3.1.4",
     "url-search-params-polyfill": "2.0.1"
   },
   "devDependencies": {
-    "enzyme": "2.9.1",
-    "jest-enzyme": "3.8.3",
+    "enzyme": "3.1.0",
+    "jest-enzyme": "4.0.0",
     "node-sass-chokidar": "0.0.3",
     "npm-run-all": "4.1.1",
-    "react-dom": "15.6.1",
-    "react-scripts": "1.0.13",
-    "react-test-renderer": "15.6.1"
+    "react-dom": "16.0.0",
+    "react-scripts": "1.0.14",
+    "react-test-renderer": "16.0.0",
+    "@storybook/react": "^3.2.11",
+    "@storybook/addon-actions": "^3.2.11",
+    "@storybook/addon-links": "^3.2.10"
   },
   "scripts": {
     "start-js": "react-scripts start",
@@ -37,7 +41,9 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "build-css": "node-sass-chokidar src/ -o src/",
-    "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive"
+    "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive",
+    "storybook": "start-storybook -p 9009 -s public",
+    "build-storybook": "build-storybook -s public"
   },
   "eslintConfig": {
     "extends": "react-app"

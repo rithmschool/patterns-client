@@ -1,21 +1,23 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Company from '../components/Company';
 import PropTypes from 'prop-types';
+import Company from '../components/Company';
 
 class BrowseContainer extends Component {
   render() {
     let companies = null;
     if (this.props.companies.length > 0) {
-      companies = this.props.companies.map((company, i) => (
-        <Company
-          key={i}
-          companyId={company._id}
-          name={company.name}
-          description={company.description}
-          logo={company.logo}
-        />
-      ));
+      companies = this.props.companies.map((company, i) => {
+        return (
+          <Company
+            key={i}
+            companyId={company._id}
+            name={company.name}
+            description={company.description}
+            logo={company.logo}
+          />
+        );
+      });
     }
     return (
       <div className="inner-content">

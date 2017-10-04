@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import down from '../images/icon-chevron-right-gray.svg';
 import PropTypes from 'prop-types';
+import down from '../images/icon-chevron-right-gray.svg';
 
 class ActivitySideBox extends Component {
   constructor(props) {

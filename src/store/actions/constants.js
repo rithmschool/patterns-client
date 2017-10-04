@@ -3,11 +3,9 @@ export const SET_TOKEN = 'SET_TOKEN';
 export const SET_LOGIN_ERROR = 'SET_LOGIN_ERROR';
 export const LOG_OUT = 'LOG_OUT';
 export const SET_USER = 'SET_USER';
+export const SET_USER_ID = 'SET_USER_ID';
 export const SET_ACTIVITIES = 'SET_ACTIVITIES';
 export const SET_COMPANIES = 'SET_COMPANIES';
-
-// UI
-export const TOGGLE_MODAL = 'TOGGLE_MODAL';
 
 // Companies
 export const ADD_COMPANY = 'ADD_COMPANY';
@@ -18,7 +16,9 @@ export const ADD_COMPANY_FAIL = 'ADD_COMPANY_FAIL';
 export const CHANGE_ASSET = 'CHANGE_ASSET';
 
 // Activities
+export const ADD_ACTIVITY = 'ADD_ACTIVITY';
 export const SET_ACTIVE_ACTIVITY = 'SET_ACTIVE_ACTIVITY';
+export const ADD_ACTIVITY_FAIL = 'ADD_ACTIVITY_FAIL';
 
 //Type
 export const GET_TYPES_SUCCESS = 'GET_TYPES_SUCCESS';

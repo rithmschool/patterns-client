@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { updateStage } from '../services/api';
 import { DragDropContext } from 'react-dnd';
+import PropTypes from 'prop-types';
 import HTML5Backend from 'react-dnd-html5-backend';
+import { updateStage } from '../services/api';
 import SmartStage from '../components/SmartStage';
 import { changeAsset } from '../store/actions/actionCreators';
-import PropTypes from 'prop-types';
 
 const ModifiedBackend = (...args) => {
   const instance = new HTML5Backend(...args);

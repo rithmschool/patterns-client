@@ -2,25 +2,20 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { createPortal } from 'react-dom';
-import './ModalCompanyContainer.css';
 import Modal from '../components/molecules/Modal';
-import AddCompanyForm from '../components/molecules/AddCompanyForm';
-import { addCompanyRequest, getTypes } from '../store/actions/actionCreators';
+import AddActivityForm from '../components/molecules/AddActivityForm';
+import { addActivityRequest, getTypes } from '../store/actions/actionCreators';
 
-class ModalCompanyContainer extends Component {
+class ModalActivityContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: '',
-      url: '',
-      logo: '',
-      submitted: false
+      name: ''
     };
+
     this.el = document.createElement('div');
     this.handleChange = this.handleChange.bind(this);
-    this.handleLogo = this.handleLogo.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.addNewCompany = this.addNewCompany.bind(this);
     this.cancelModal = this.cancelModal.bind(this);
   }
 
@@ -49,31 +44,16 @@ class ModalCompanyContainer extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.getTypes().then(() => {
-      this.setState({ submitted: true });
-    });
-  }
-
-  componentDidUpdate(prevProps, prevState) {
-    if (
-      this.state.submitted &&
-      prevState.companyTypeId !== this.props.companyTypeId
-    ) {
-      this.addNewCompany(this.props.companyTypeId);
-    }
-  }
-
-  addNewCompany(companyTypeId) {
-    let companyInfo = {
+    let activityInfo = {
       name: this.state.name,
-      url: this.state.url,
-      logo: this.state.logo
+      createdBy: this.props.userId,
+      rootAssetType: this.props.companyTypeId
     };
-    this.props.addCompany(companyTypeId, companyInfo);
+    this.props.addActivity(this.props.userId, activityInfo);
     this.setState({
       name: '',
-      url: '',
-      logo: ''
+      createdBy: '',
+      rootAssetType: ''
     });
     this.props.toggleModal();
   }
@@ -81,20 +61,18 @@ class ModalCompanyContainer extends Component {
   cancelModal() {
     this.setState({
       name: '',
-      url: '',
-      logo: '',
-      companyTypeId: ''
+      activityTypeId: ''
     });
     this.props.toggleModal();
   }
 
   render() {
     return createPortal(
-      <Modal cancelModal={this.cancelModal} title="Add Company">
-        <AddCompanyForm
+      <Modal cancelModal={this.cancelModal} title="Add Activity">
+        <AddActivityForm
+          companyTypeId={this.props.companyTypeId}
           handleSubmit={this.handleSubmit}
           handleChange={this.handleChange}
-          handleLogo={this.handleLogo}
           cancelModal={this.cancelModal}
           {...this.state}
         />
@@ -104,25 +82,27 @@ class ModalCompanyContainer extends Component {
   }
 }
 
-ModalCompanyContainer.propTypes = {
+ModalActivityContainer.propTypes = {
+  userId: PropTypes.string.isRequired,
   companyTypeId: PropTypes.string.isRequired,
-  getTypes: PropTypes.func.isRequired,
-  addCompany: PropTypes.func.isRequired,
+  addActivity: PropTypes.func.isRequired,
   toggleModal: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
-  companyTypeId: state.typeId.Company
+  activityTypeId: state.typeId.Activity,
+  companyTypeId: state.typeId.Company,
+  userId: state.userId
 });
 
 const mapDispatchToProps = dispatch => {
   return {
-    addCompany: (companyTypeId, companyInfo) =>
-      dispatch(addCompanyRequest(companyTypeId, companyInfo)),
+    addActivity: (userId, activityInfo) =>
+      dispatch(addActivityRequest(userId, activityInfo)),
     getTypes: () => dispatch(getTypes())
   };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(
-  ModalCompanyContainer
+  ModalActivityContainer
 );

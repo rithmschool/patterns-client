@@ -4,8 +4,8 @@ import PropTypes from 'prop-types';
 
 class UploadCare extends Component {
   componentDidMount() {
-    const { id, onChange } = this.props;
-    const widget = uploadcare.Widget(`#${id}`);
+    const { onChange } = this.props;
+    const widget = uploadcare.Widget(this.input);
 
     if (onChange && typeof onChange === 'function') {
       widget.onChange(file => {
@@ -23,8 +23,11 @@ class UploadCare extends Component {
     return (
       <input
         type="hidden"
-        id={id}
         name={name}
+        id={id}
+        ref={input => {
+          this.input = input;
+        }}
         data-public-key={process.env.REACT_APP_UPLOADCARE_PUBLIC_KEY}
       />
     );

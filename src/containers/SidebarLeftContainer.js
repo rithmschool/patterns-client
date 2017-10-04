@@ -1,15 +1,40 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import './SidebarLeftContainer.css';
 import logo from '../images/logo-dark-gray.svg';
 import hide from '../images/icon-open-collapse-left-gray.svg';
 import ActivitySideBox from '../components/ActivitySideBox';
 import UserProfileContainer from './UserProfileContainer';
-import PropTypes from 'prop-types';
+import WideButton from '../components/atoms/WideButton';
+import ModalActivityContainer from './ModalActivityContainer';
 
 class SidebarLeftContainer extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      modalOpen: false
+    };
+    this.toggleModal = this.toggleModal.bind(this);
+  }
+
+  toggleModal(e) {
+    this.setState({ modalOpen: !this.state.modalOpen });
+  }
+
   render() {
+    let modal = null;
+    if (this.state.modalOpen) {
+      modal = (
+        <ModalActivityContainer
+          toggleModal={this.toggleModal}
+          name="Edit"
+          logo="Replace"
+        />
+      );
+    }
+
     let allActivities = this.props.activities.map(val => (
       <ActivitySideBox key={val._id} data={val} />
     ));
@@ -24,9 +49,8 @@ class SidebarLeftContainer extends Component {
         <div className="activity-list">{allActivities}</div>
 
         <div className="button-holder">
-          <button>
-            <p>ADD NEW ACTIVITY</p>
-          </button>
+          <WideButton onClick={this.toggleModal}>ADD NEW ACTIVITY</WideButton>
+          {modal}
         </div>
 
         <div className="footer">
@@ -56,8 +80,4 @@ const mapStateToProps = state => ({
   activities: state.activities
 });
 
-const mapDispatchToProps = dispatch => ({});
-
-export default connect(mapStateToProps, mapDispatchToProps)(
-  SidebarLeftContainer
-);
+export default connect(mapStateToProps)(SidebarLeftContainer);

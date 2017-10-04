@@ -3,12 +3,13 @@ import {
   SET_LOGIN_ERROR,
   LOG_OUT,
   SET_USER,
+  SET_USER_ID,
   SET_ACTIVITIES,
   SET_COMPANIES,
-  TOGGLE_MODAL,
   SET_ACTIVE_ACTIVITY,
-  ADD_COMPANY,
   SET_ACTIVE_COMPANY,
+  ADD_ACTIVITY,
+  ADD_COMPANY,
   CHANGE_ASSET,
   GET_TYPES_SUCCESS
 } from '../actions/constants';
@@ -17,13 +18,13 @@ import { setAuthorizationToken } from '../../services/api';
 
 const DEFAULT_STATE = {
   currentUserToken: '',
+  userId: '',
   loginError: '',
   userProfile: {},
   activities: [],
   activity: {},
   companies: [],
   company: {},
-  modal: false,
   typeId: {}
 };
 
@@ -49,6 +50,11 @@ export default (state = DEFAULT_STATE, action = { type: null }) => {
         ...state,
         userProfile: action.userObj
       };
+    case SET_USER_ID:
+      return {
+        ...state,
+        userId: action.userId
+      };
     case SET_ACTIVITIES:
       return {
         ...state,
@@ -59,16 +65,15 @@ export default (state = DEFAULT_STATE, action = { type: null }) => {
         ...state,
         companies: action.companies
       };
-    case TOGGLE_MODAL:
-      let toggle = !state.modal;
-      return {
-        ...state,
-        modal: toggle
-      };
     case SET_ACTIVE_ACTIVITY:
       return {
         ...state,
         activity: action.activity
+      };
+    case SET_ACTIVE_COMPANY:
+      return {
+        ...state,
+        company: action.company
       };
     case GET_TYPES_SUCCESS:
       var typeId = action.typeIds.reduce((acc, type) => {
@@ -85,10 +90,10 @@ export default (state = DEFAULT_STATE, action = { type: null }) => {
         ...state,
         companies: [...state.companies, action.company]
       };
-    case SET_ACTIVE_COMPANY:
+    case ADD_ACTIVITY:
       return {
         ...state,
-        company: action.company
+        activities: [...state.activities, action.activity]
       };
     case CHANGE_ASSET:
       let changeActivity = {

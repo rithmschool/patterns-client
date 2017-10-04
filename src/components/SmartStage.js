@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { DropTarget } from 'react-dnd';
-import Stage from './Stage';
 import PropTypes from 'prop-types';
+import Stage from './Stage';
 
 const stageTarget = {
   drop(props, monitor, component) {

@@ -1,13 +1,23 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import './HeaderActivityShowContainer.css';
-import {
-  setActiveActivity,
-  toggleModal
-} from '../store/actions/actionCreators';
 import PropTypes from 'prop-types';
+import './HeaderActivityShowContainer.css';
+import { setActiveActivity } from '../store/actions/actionCreators';
+import ModalActivityContainer from './ModalActivityContainer';
 
 class HeaderActivityShowContainer extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      modalOpen: false
+    };
+    this.toggleModal = this.toggleModal.bind(this);
+  }
+
+  toggleModal(e) {
+    this.setState({ modalOpen: !this.state.modalOpen });
+  }
+
   componentWillMount() {
     let foundActivity = this.props.activities.find(
       val => val._id === this.props.match.params.activityId
@@ -16,6 +26,17 @@ class HeaderActivityShowContainer extends Component {
   }
 
   render() {
+    let modal = null;
+    if (this.state.modalOpen) {
+      modal = (
+        <ModalActivityContainer
+          toggleModal={this.toggleModal}
+          name="Edit"
+          logo="Replace"
+        />
+      );
+    }
+
     return (
       <div className="header">
         <div>
@@ -27,8 +48,9 @@ class HeaderActivityShowContainer extends Component {
               type="submit"
               className="addActivityButton"
               value="ADD"
-              onClick={this.props.toggleModal}
+              onClick={this.toggleModal}
             />
+            {modal}
           </div>
         </div>
       </div>
@@ -39,8 +61,7 @@ class HeaderActivityShowContainer extends Component {
 HeaderActivityShowContainer.propTypes = {
   activities: PropTypes.arrayOf(
     PropTypes.shape({
-      _id: PropTypes.string.isRequired,
-      name: PropTypes.string.isRequired
+      _id: PropTypes.string.isRequired
     })
   ),
   match: PropTypes.shape({
@@ -50,9 +71,8 @@ HeaderActivityShowContainer.propTypes = {
   }),
   setActiveActivity: PropTypes.func.isRequired,
   activity: PropTypes.shape({
-    name: PropTypes.string.isRequired
-  }),
-  toggleModal: PropTypes.func.isRequired
+    name: PropTypes.string
+  })
 };
 
 const mapStateToProps = state => ({
@@ -61,8 +81,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  setActiveActivity: activity => dispatch(setActiveActivity(activity)),
-  toggleModal: () => dispatch(toggleModal())
+  setActiveActivity: activity => dispatch(setActiveActivity(activity))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(
