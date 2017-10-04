@@ -6,8 +6,7 @@ import './MainContainer.css';
 class MainContainer extends React.Component {
   render() {
     return (
-      <div id="app-root" className="main">
-        <div id="modal-root" />
+      <div>
         <SidebarLeftContainer />
         <Content />
       </div>
