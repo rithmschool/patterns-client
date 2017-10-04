@@ -7,7 +7,6 @@ import LongDataDisplay from './atoms/LongDataDisplay';
 const Company = props => {
   let logo = props.logo || null;
   let pictureStyle = `url('${logo}')`;
-  console.log(pictureStyle);
 
   return (
     <div>

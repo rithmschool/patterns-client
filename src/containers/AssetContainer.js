@@ -8,9 +8,6 @@ import PropTypes from 'prop-types';
 
 class AssetContainer extends Component {
   render() {
-    // let modal = this.props.modalState ? (
-    //   <ModalCompanyContainer name="Edit" logo="Replace" />
-    // ) : null;
     return (
       <div className="asset row">
         <SidebarLeftContainer />
@@ -33,15 +30,7 @@ class AssetContainer extends Component {
 }
 
 AssetContainer.propTypes = {
-  modalState: PropTypes.bool.isRequired
+  modalState: PropTypes.bool
 };
-
-// const mapStateToProps = state => ({
-//   modalState: state.modal
-// });
-
-// const mapDispatchToProps = dispatch => ({});
-
-// export default connect(mapStateToProps, mapDispatchToProps)(AssetContainer);
 
 export default AssetContainer;

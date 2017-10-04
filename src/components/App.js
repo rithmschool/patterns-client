@@ -8,7 +8,8 @@ import RequireAuth from '../hocs/RequireAuth';
 import './App.css';
 
 const App = () => (
-  <div className="App container-fluid">
+  <div className="App container-fluid" id="app-root">
+    <div id="modal-root" />
     <Switch>
       <Route exact path="/" component={Login} />
       <Route path="/auth/google/callback" component={AuthContainer} />
