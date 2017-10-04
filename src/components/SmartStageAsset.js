@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { findDOMNode } from 'react-dom';
 import { DragSource, DropTarget } from 'react-dnd';
-import StageAsset from './StageAsset';
 import PropTypes from 'prop-types';
+import StageAsset from './StageAsset';
 
 const stageAssetSource = {
   beginDrag(props) {

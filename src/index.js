@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import registerServiceWorker from './registerServiceWorker';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import logger from 'redux-logger';
@@ -8,6 +7,7 @@ import thunk from 'redux-thunk';
 import { createStore, compose, applyMiddleware } from 'redux';
 import { persistStore, autoRehydrate } from 'redux-persist';
 import 'bootstrap-grid';
+import registerServiceWorker from './registerServiceWorker';
 import rootReducer from './store/reducers/rootReducer';
 import App from './components/App';
 import './index.css';

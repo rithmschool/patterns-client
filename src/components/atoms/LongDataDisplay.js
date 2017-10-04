@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { withRouter } from 'react-router';
+import PropTypes from 'prop-types';
 import down from '../../images/icon-chevron-right-gray.svg';
 
 const CompanyLogo = styled.div`
@@ -110,5 +111,11 @@ class LongDataDisplay extends React.Component {
     );
   }
 }
+
+LongDataDisplay.propTypes = {
+  name: PropTypes.string.isRequired,
+  companyId: PropTypes.isRequired,
+  logo: PropTypes.string
+};
 
 export default withRouter(LongDataDisplay);

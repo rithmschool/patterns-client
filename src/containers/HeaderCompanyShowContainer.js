@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import './HeaderCompanyShowContainer.css';
 import { setActiveCompany } from '../store/actions/actionCreators';
-import PropTypes from 'prop-types';
 import PrimarySecondaryButton from '../components/atoms/PrimarySecondaryButton';
 import ModalCompanyContainer from './ModalCompanyContainer';
 
@@ -72,8 +72,7 @@ class HeaderCompanyShowContainer extends Component {
 HeaderCompanyShowContainer.propTypes = {
   companies: PropTypes.arrayOf(
     PropTypes.shape({
-      _id: PropTypes.string.isRequired,
-      name: PropTypes.string.isRequired
+      _id: PropTypes.string.isRequired
     })
   ),
   match: PropTypes.shape({

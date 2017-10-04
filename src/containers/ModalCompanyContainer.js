@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { createPortal } from 'react-dom';
 import './ModalCompanyContainer.css';
 import Modal from '../components/molecules/Modal';
 import AddCompanyForm from '../components/molecules/AddCompanyForm';
 import { addCompanyRequest, getTypes } from '../store/actions/actionCreators';
-import PropTypes from 'prop-types';
-import { createPortal } from 'react-dom';
 
 class ModalCompanyContainer extends Component {
   constructor(props) {
@@ -105,6 +105,8 @@ class ModalCompanyContainer extends Component {
 }
 
 ModalCompanyContainer.propTypes = {
+  companyTypeId: PropTypes.string.isRequired,
+  getTypes: PropTypes.func.isRequired,
   addCompany: PropTypes.func.isRequired,
   toggleModal: PropTypes.func.isRequired
 };

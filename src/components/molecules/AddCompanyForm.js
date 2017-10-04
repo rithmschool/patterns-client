@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import PrimarySecondaryButton from '../atoms/PrimarySecondaryButton';
 import UploadCare from '../../components/UploadCare';
 
@@ -95,5 +96,14 @@ const AddCompanyForm = props => (
     </div>
   </CompanyForm>
 );
+
+AddActivityForm.propTypes = {
+  name: PropTypes.string,
+  url: PropTypes.string,
+  handleLogo: PropTypes.func.isRequired,
+  handleChange: PropTypes.func.isRequired,
+  handleSubmit: PropTypes.func.isRequired,
+  cancelModal: PropTypes.func.isRequired
+};
 
 export default AddCompanyForm;

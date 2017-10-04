@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import React from 'react';
+import PropTypes from 'prop-types';
 import close from '../../images/icon-x-gray.svg';
 
 const Overlay = styled.div`
@@ -49,5 +50,11 @@ const Modal = props => (
     </ModalCard>
   </Overlay>
 );
+
+Modal.propTypes = {
+  title: PropTypes.string.isRequired,
+  children: PropTypes.node.isRequired,
+  cancelModal: PropTypes.func.isRequired
+};
 
 export default Modal;

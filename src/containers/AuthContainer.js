@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { Redirect } from 'react-router';
 import { connect } from 'react-redux';
 import 'url-search-params-polyfill';
-import { login } from '../store/actions/auth';
 import PropTypes from 'prop-types';
+import { login } from '../store/actions/auth';
 
 class AuthContainer extends Component {
   componentWillMount() {
@@ -38,8 +38,7 @@ AuthContainer.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  userToken: state.currentUserToken,
-  loginError: state.loginError
+  userToken: state.currentUserToken
 });
 
 const mapDispatchToProps = dispatch => {

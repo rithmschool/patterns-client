@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Company from '../components/Company';
 import PropTypes from 'prop-types';
+import Company from '../components/Company';
 import LongDataDisplay from '../components/atoms/LongDataDisplay';
 
 class BrowseContainer extends Component {

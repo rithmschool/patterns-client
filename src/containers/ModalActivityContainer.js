@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { createPortal } from 'react-dom';
 import Modal from '../components/molecules/Modal';
 import AddActivityForm from '../components/molecules/AddActivityForm';
 import { addActivityRequest, getTypes } from '../store/actions/actionCreators';
-import PropTypes from 'prop-types';
-import { createPortal } from 'react-dom';
 
 class ModalActivityContainer extends Component {
   constructor(props) {
@@ -83,6 +83,8 @@ class ModalActivityContainer extends Component {
 }
 
 ModalActivityContainer.propTypes = {
+  userId: PropTypes.string.isRequired,
+  companyTypeId: PropTypes.string.isRequired,
   addActivity: PropTypes.func.isRequired,
   toggleModal: PropTypes.func.isRequired
 };

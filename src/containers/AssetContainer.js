@@ -4,7 +4,6 @@ import SidebarLeftContainer from './SidebarLeftContainer';
 import Content from '../components/Content';
 import SmallerContent from '../components/SmallerContent';
 import SidebarRightContainer from './SidebarRightContainer';
-import PropTypes from 'prop-types';
 
 class AssetContainer extends Component {
   render() {
@@ -28,9 +27,5 @@ class AssetContainer extends Component {
     );
   }
 }
-
-AssetContainer.propTypes = {
-  modalState: PropTypes.bool
-};
 
 export default AssetContainer;

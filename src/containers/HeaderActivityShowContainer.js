@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import './HeaderActivityShowContainer.css';
 import { setActiveActivity } from '../store/actions/actionCreators';
-import PropTypes from 'prop-types';
 import ModalActivityContainer from './ModalActivityContainer';
 
 class HeaderActivityShowContainer extends Component {
@@ -63,8 +63,7 @@ class HeaderActivityShowContainer extends Component {
 HeaderActivityShowContainer.propTypes = {
   activities: PropTypes.arrayOf(
     PropTypes.shape({
-      _id: PropTypes.string.isRequired,
-      name: PropTypes.string.isRequired
+      _id: PropTypes.string.isRequired
     })
   ),
   match: PropTypes.shape({

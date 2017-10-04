@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import PrimarySecondaryButton from '../atoms/PrimarySecondaryButton';
 
 const ActivityForm = styled.form`
@@ -116,5 +117,14 @@ const AddActivityForm = props => (
     </div>
   </ActivityForm>
 );
+
+AddActivityForm.propTypes = {
+  name: PropTypes.string,
+  companyTypeId: PropTypes.string,
+  handleChange: PropTypes.func.isRequired,
+  dropdownChange: PropTypes.func.isRequired,
+  handleSubmit: PropTypes.func.isRequired,
+  cancelModal: PropTypes.func.isRequired
+};
 
 export default AddActivityForm;

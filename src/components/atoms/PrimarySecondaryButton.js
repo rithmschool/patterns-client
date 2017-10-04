@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 const PrimarySecondaryButton = styled.button`
   background-color: ${props => (props.primary ? '#cb9c59' : '#585b60')};
@@ -28,5 +29,9 @@ const PrimarySecondaryButton = styled.button`
     margin-right: 12px;
   }
 `;
+
+PrimarySecondaryButton.PropTypes = {
+  primary: PropTypes.bool
+};
 
 export default PrimarySecondaryButton;

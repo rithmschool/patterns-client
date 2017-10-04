@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import './SidebarLeftContainer.css';
 import logo from '../images/logo-dark-gray.svg';
 import hide from '../images/icon-open-collapse-left-gray.svg';
 import ActivitySideBox from '../components/ActivitySideBox';
 import UserProfileContainer from './UserProfileContainer';
-import PropTypes from 'prop-types';
 import WideButton from '../components/atoms/WideButton';
 import ModalActivityContainer from './ModalActivityContainer';
 
