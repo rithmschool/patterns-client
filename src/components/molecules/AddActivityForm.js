@@ -36,7 +36,7 @@ const ActivityForm = styled.form`
     line-height: 1.71;
     text-align: left;
     color: #a0a1a5;
-    background-color: #e7e8ec
+    background-color: #e7e8ec;
   }
   label {
     font-size: 12px;
