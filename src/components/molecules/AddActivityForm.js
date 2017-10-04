@@ -30,7 +30,8 @@ const ActivityForm = styled.form`
     height: 36px;
     width: 100%;
     margin-top: 0px;
-    margin-left: 0px; }
+    margin-left: 0px;
+    margin-bottom: 18px; }
   .uploadcare--widget__button {
     padding-top: 36px;
     color: #ffffff;
