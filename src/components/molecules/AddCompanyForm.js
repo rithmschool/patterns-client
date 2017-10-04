@@ -97,7 +97,7 @@ const AddCompanyForm = props => (
   </CompanyForm>
 );
 
-AddActivityForm.propTypes = {
+AddCompanyForm.propTypes = {
   name: PropTypes.string,
   url: PropTypes.string,
   handleLogo: PropTypes.func.isRequired,
