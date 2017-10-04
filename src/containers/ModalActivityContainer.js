@@ -4,6 +4,7 @@ import Modal from '../components/molecules/Modal';
 import AddActivityForm from '../components/molecules/AddActivityForm';
 import { addActivityRequest, getTypes } from '../store/actions/actionCreators';
 import PropTypes from 'prop-types';
+import { createPortal } from 'react-dom';
 
 class ModalActivityContainer extends Component {
   constructor(props) {
@@ -11,9 +12,22 @@ class ModalActivityContainer extends Component {
     this.state = {
       name: ''
     };
+
+    this.el = document.createElement('div');
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.cancelModal = this.cancelModal.bind(this);
+  }
+
+  //creating a portal
+  componentDidMount() {
+    const modalRoot = document.getElementById('modal-root');
+    modalRoot.appendChild(this.el);
+  }
+
+  componentWillUnmount() {
+    const modalRoot = document.getElementById('modal-root');
+    modalRoot.removeChild(this.el);
   }
 
   handleChange(e) {
@@ -54,7 +68,7 @@ class ModalActivityContainer extends Component {
   }
 
   render() {
-    return (
+    return createPortal(
       <Modal cancelModal={this.cancelModal} title="Add Activity">
         <AddActivityForm
           companyTypeId={this.props.companyTypeId}
@@ -63,7 +77,8 @@ class ModalActivityContainer extends Component {
           cancelModal={this.cancelModal}
           {...this.state}
         />
-      </Modal>
+      </Modal>,
+      this.el
     );
   }
 }
