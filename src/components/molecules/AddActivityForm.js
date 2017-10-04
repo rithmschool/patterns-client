@@ -11,6 +11,21 @@ const ActivityForm = styled.form`
   button {
     margin-top: 0px;
   }
+  p.add-new-stage {
+    width: 88px;
+    height: 24px;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.71;
+    text-align: left;
+    color: #a0a1a5;
+  }
+  div.stage-line {
+    width: 100%;
+    height: 1px;
+    opacity: 0.5;
+    background-color: #c2cbd3;
+  }
   label {
     font-size: 12px;
     font-weight: 600;
@@ -87,6 +102,8 @@ const AddActivityForm = props => (
         value={props.stage}
         onChange={props.handleChange}
       />*/}
+      <p className="add-new-stage">Add new stage</p>
+      <div className="stage-line" />
     </div>
 
     <div className="button-wrap">
