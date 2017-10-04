@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 class UploadCare extends Component {
   componentDidMount() {
     const { id, onChange } = this.props;
+    console.log('This is the id ' + id);
     const widget = uploadcare.Widget(`#${id}`);
 
     if (onChange && typeof onChange === 'function') {

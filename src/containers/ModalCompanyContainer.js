@@ -5,6 +5,7 @@ import Modal from '../components/molecules/Modal';
 import AddCompanyForm from '../components/molecules/AddCompanyForm';
 import { addCompanyRequest, getTypes } from '../store/actions/actionCreators';
 import PropTypes from 'prop-types';
+import { createPortal } from 'react-dom';
 
 class ModalCompanyContainer extends Component {
   constructor(props) {
@@ -15,11 +16,23 @@ class ModalCompanyContainer extends Component {
       logo: '',
       submitted: false
     };
+    this.el = document.createElement('div');
     this.handleChange = this.handleChange.bind(this);
     this.handleLogo = this.handleLogo.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.addNewCompany = this.addNewCompany.bind(this);
     this.cancelModal = this.cancelModal.bind(this);
+  }
+
+  //creating a portal
+  componentDidMount() {
+    const modalRoot = document.getElementById('modal-root');
+    modalRoot.appendChild(this.el);
+  }
+
+  componentWillUnmount() {
+    const modalRoot = document.getElementById('modal-root');
+    modalRoot.removeChild(this.el);
   }
 
   handleChange(e) {
@@ -76,7 +89,7 @@ class ModalCompanyContainer extends Component {
   }
 
   render() {
-    return (
+    return createPortal(
       <Modal cancelModal={this.cancelModal} title="Add Company">
         <AddCompanyForm
           handleSubmit={this.handleSubmit}
@@ -85,7 +98,8 @@ class ModalCompanyContainer extends Component {
           cancelModal={this.cancelModal}
           {...this.state}
         />
-      </Modal>
+      </Modal>,
+      this.el
     );
   }
 }
