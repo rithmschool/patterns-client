@@ -12,32 +12,7 @@ const ActivityForm = styled.form`
   border-bottom-left-radius: 4px;
   border-bottom-right-radius: 4px;
   button {
-    margin-top: 0px;
-  }
-  p.add-new-stage {
-    width: 88px;
-    height: 24px;
-    font-size: 14px;
-    font-weight: 600;
-    line-height: 1.71;
-    text-align: left;
-    color: #a0a1a5;
-  }
-  div.stage-line {
-    width: 100%;
-    height: 1px;
-    opacity: 0.5;
-    background-color: #c2cbd3;
-  }
-  .add-new-stage {
-    width: 100%;
-    height: 24px;
-    font-size: 14px;
-    font-weight: 600;
-    line-height: 1.71;
-    text-align: left;
-    color: #a0a1a5;
-    background-color: #e7e8ec;
+    margin-top: 24px;
   }
   label {
     font-size: 12px;
@@ -55,6 +30,10 @@ const ActivityForm = styled.form`
     margin-right: 0px;
     margin-bottom: 18px;
     padding-left: 12px;
+    font-size: 14px;
+    font-weight: 600;
+    text-align: left;
+    color: #a0a1a5;
   }
   #asset-type {
     height: 36px;
@@ -62,33 +41,14 @@ const ActivityForm = styled.form`
     margin-top: 0px;
     margin-left: 0px;
     margin-bottom: 18px;
-  }
-  .uploadcare--widget__button {
-    padding-top: 36px;
-    color: #ffffff;
-    text-transform: uppercase;
-    font-size: 12px;
-    padding: 5px;
-    width: 94px;
-    cursor: pointer;
-    background-color: #a0a1a5;
-  }
-  .uploadcare--widget__button:hover {
-    background-color: #cb9c59;
+    font-size: 14px;
+    font-weight: 600;
+    text-align: left;
+    color: #585b60;
   }
   .button-wrap {
-    padding-top: 36px;
+    padding-top: 24px;
     text-align: right;
-  }
-  form .button-wrap .cancel,
-  form .button-wrap .save {
-    color: #ffffff;
-    text-transform: uppercase;
-    font-size: 12px;
-    padding: 12px;
-    width: 94px;
-    margin: 0 0 0 12px;
-    cursor: pointer;
   }
 `;
 
@@ -126,7 +86,7 @@ AddActivityForm.propTypes = {
   name: PropTypes.string,
   companyTypeId: PropTypes.string,
   handleChange: PropTypes.func.isRequired,
-  dropdownChange: PropTypes.func.isRequired,
+  dropdownChange: PropTypes.func,
   handleSubmit: PropTypes.func.isRequired,
   cancelModal: PropTypes.func.isRequired
 };

@@ -15,7 +15,7 @@ const Overlay = styled.div`
 const ModalCard = styled.div`
   background-color: #e7e8ec;
   border-radius: 4px;
-  height: 400px;
+  height: auto;
   margin-top: 8vh;
   z-index: 30;
   padding: 0;

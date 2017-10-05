@@ -52,8 +52,8 @@ class StageList extends Component {
     return (
       <div>
         <label>Activity Stages</label>
-        <StageItemForm addStageItem={this.handleAdd} />
         {stageItems}
+        <StageItemForm addStageItem={this.handleAdd} />
       </div>
     );
   }
