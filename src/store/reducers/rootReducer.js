@@ -11,21 +11,23 @@ import {
   ADD_ACTIVITY,
   ADD_COMPANY,
   CHANGE_ASSET,
-  GET_TYPES_SUCCESS
-} from '../actions/constants';
+  GET_TYPES_SUCCESS,
+  ADD_STAGE
+} from "../actions/constants";
 
-import { setAuthorizationToken } from '../../services/api';
+import { setAuthorizationToken } from "../../services/api";
 
 const DEFAULT_STATE = {
-  currentUserToken: '',
-  userId: '',
-  loginError: '',
+  currentUserToken: "",
+  userId: "",
+  loginError: "",
   userProfile: {},
   activities: [],
   activity: {},
   companies: [],
   company: {},
-  typeId: {}
+  typeId: {},
+  stages: []
 };
 
 export default (state = DEFAULT_STATE, action = { type: null }) => {
@@ -64,6 +66,11 @@ export default (state = DEFAULT_STATE, action = { type: null }) => {
       return {
         ...state,
         companies: action.companies
+      };
+    case ADD_STAGE:
+      return {
+        ...state,
+        stages: action.stage
       };
     case SET_ACTIVE_ACTIVITY:
       return {
@@ -106,7 +113,7 @@ export default (state = DEFAULT_STATE, action = { type: null }) => {
         activity: changeActivity,
         activities: changeActivities
       };
-    case 'persist/REHYDRATE':
+    case "persist/REHYDRATE":
       setAuthorizationToken(action.payload.currentUserToken);
       return Object.assign({}, state, action.payload);
     default:

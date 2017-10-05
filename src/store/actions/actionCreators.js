@@ -7,11 +7,19 @@ import {
   ADD_COMPANY_FAIL,
   ADD_ACTIVITY_FAIL,
   GET_TYPES_SUCCESS,
-  GET_TYPES_FAIL
-} from './constants';
+  GET_TYPES_FAIL,
+  ADD_STAGE,
+  ADD_STAGE_FAIL
+} from "./constants";
 
-import { postType, fetchTypes, postActivity } from '../../services/api';
+import {
+  postStage,
+  postType,
+  fetchTypes,
+  postActivity
+} from "../../services/api";
 
+//Activity
 function addActivitySuccess(activity) {
   return {
     type: ADD_ACTIVITY,
@@ -40,6 +48,29 @@ export function setActiveActivity(activity) {
   };
 }
 
+//Stage
+function addStageSuccess(stage) {
+  return {
+    type: ADD_STAGE,
+    stage
+  };
+}
+
+export function addStageRequest(activityId, stageInfo) {
+  return dispatch =>
+    postStage(activityId, stageInfo)
+      .then(res => dispatch(addStageSuccess(res)))
+      .catch(err => dispatch(addStageError(err)));
+}
+
+function addStageError(error) {
+  return {
+    type: ADD_STAGE_FAIL,
+    error
+  };
+}
+
+//Types
 function getTypesSuccess(typeIds) {
   return {
     type: GET_TYPES_SUCCESS,
@@ -69,6 +100,7 @@ export function getTypes() {
     });
 }
 
+//Company
 function addCompanySuccess(company) {
   return {
     type: ADD_COMPANY,
@@ -97,6 +129,7 @@ export function setActiveCompany(company) {
   };
 }
 
+//Asset
 export function changeAsset(stages) {
   return {
     type: CHANGE_ASSET,
