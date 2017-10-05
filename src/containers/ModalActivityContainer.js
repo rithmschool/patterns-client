@@ -1,19 +1,23 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
-import { createPortal } from 'react-dom';
-import Modal from '../components/molecules/Modal';
-import AddActivityForm from '../components/molecules/AddActivityForm';
-import { addActivityRequest, getTypes } from '../store/actions/actionCreators';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
+import { createPortal } from "react-dom";
+import Modal from "../components/molecules/Modal";
+import AddActivityForm from "../components/molecules/AddActivityForm";
+import {
+  addActivityRequest,
+  addStageRequest,
+  getTypes
+} from "../store/actions/actionCreators";
 
 class ModalActivityContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: ''
+      name: ""
     };
 
-    this.el = document.createElement('div');
+    this.el = document.createElement("div");
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.cancelModal = this.cancelModal.bind(this);
@@ -21,12 +25,12 @@ class ModalActivityContainer extends Component {
 
   //creating a portal
   componentDidMount() {
-    const modalRoot = document.getElementById('modal-root');
+    const modalRoot = document.getElementById("modal-root");
     modalRoot.appendChild(this.el);
   }
 
   componentWillUnmount() {
-    const modalRoot = document.getElementById('modal-root');
+    const modalRoot = document.getElementById("modal-root");
     modalRoot.removeChild(this.el);
   }
 
@@ -50,18 +54,30 @@ class ModalActivityContainer extends Component {
       rootAssetType: this.props.companyTypeId
     };
     this.props.addActivity(this.props.userId, activityInfo);
+    // let stageInfo = {
+    //   name: this.state.stageItem,
+    //   activity: ""
+    // }
+    //this.props.addStage(activityId, stageInfo)
+    //after activity is added need to get activityId to add stages
+    //stages will be added individually using activityId and creating
+    //posts through redux action creators
+    //to create stage need to get name from StageForm and activityId
+    //then can setState?
+    //
+    //to make stage = {name: "", activity: ""} (id and createdBy get made on own)
     this.setState({
-      name: '',
-      createdBy: '',
-      rootAssetType: ''
+      name: "",
+      createdBy: "",
+      rootAssetType: ""
     });
     this.props.toggleModal();
   }
 
   cancelModal() {
     this.setState({
-      name: '',
-      activityTypeId: ''
+      name: "",
+      activityTypeId: ""
     });
     this.props.toggleModal();
   }
@@ -97,6 +113,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => {
   return {
+    addStage: (activityId, stageInfo) =>
+      dispatch(addStageRequest(activityId, stageInfo)),
     addActivity: (userId, activityInfo) =>
       dispatch(addActivityRequest(userId, activityInfo)),
     getTypes: () => dispatch(getTypes())
