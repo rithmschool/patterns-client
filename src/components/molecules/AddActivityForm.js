@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import PrimarySecondaryButton from '../atoms/PrimarySecondaryButton';
 import StageList from '../molecules/StageList';
+import downArrow from '../../images/icon-chevron-down-gray.svg';
 
 const ActivityForm = styled.form`
   background-color: #e7e8ec;
@@ -109,7 +110,7 @@ const AddActivityForm = props => (
         <option value={props.companyTypeId}>Company</option>
       </select>
     </div>
-    <StageList handleSubmit={props.handleSubmit} />
+    <StageList />
     <div className="button-wrap">
       <PrimarySecondaryButton primary onClick={props.handleSubmit}>
         SAVE

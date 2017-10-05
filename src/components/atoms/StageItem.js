@@ -1,7 +1,9 @@
-import React, { Component } from 'react';
 import styled from 'styled-components';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import remove from '../../images/icon-x-circle-gray.svg';
 
-const Stage = styled.form`
+const Stage = styled.div`
   .add-new-stage {
     width: 100%;
     height: 24px;
@@ -12,38 +14,46 @@ const Stage = styled.form`
     color: #a0a1a5;
     background-color: #e7e8ec;
   }
+  img {
+    height: 16px;
+    width: 16px;
+    float: right;
+    margin: 4px;
+    cursor: pointer;
+  }
 `;
 
 class StageItem extends Component {
-  onKeyPress(event) {
-    if (event.which === 13) {
-      event.preventDefault();
-      console.log('inside onKeyPress');
-      //append item to the list with a delete x to remove
-    }
+  constructor(props) {
+    super(props);
   }
+
+  // onKeyPress(event) {
+  //   if (event.which === 13) {
+  //     event.preventDefault();
+  //     console.log('inside onKeyPress');
+  //   }
+  // }
 
   render() {
     return (
-      <div>
-        <Stage onKeyPress={this.onKeyPress.bind(this)}>
-          <div className="form-group">
-            <label htmlFor="activity-stages">Activity Stages</label>
-            <ol />
-            <input
-              className="add-new-stage"
-              type="text"
-              name="stage"
-              placeholder="Add new stage"
-              value={this.props.stage}
-              onChange={this.props.handleChange}
-            />
-            <div className="stage-line" />
-          </div>
-        </Stage>
-      </div>
+      <Stage /*onKeyPress={this.onKeyPress.bind(this)}*/>
+        <p className="add-new-stage">
+          {this.props.stageItem}
+          <img
+            onClick={this.props.handleDelete}
+            src={remove}
+            alt="Remove Stage"
+          />
+        </p>
+      </Stage>
     );
   }
 }
+
+StageItem.propTypes = {
+  stageItem: PropTypes.string,
+  handleDelete: PropTypes.func.isRequired
+};
 
 export default StageItem;
