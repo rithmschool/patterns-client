@@ -62,7 +62,6 @@ class StageItemForm extends Component {
       this.setState({
         stageItem: ''
       });
-      console.log('inside onKeyPress');
     }
   }
 

@@ -2,8 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import PrimarySecondaryButton from '../atoms/PrimarySecondaryButton';
-import StageList from '../molecules/StageList';
-import downArrow from '../../images/icon-chevron-down-gray.svg';
+import StageList from './StageList';
+import selectArrow from '../../images/icon-chevron-down-gray.svg';
 
 const ActivityForm = styled.form`
   background-color: #e7e8ec;
@@ -45,6 +45,12 @@ const ActivityForm = styled.form`
     font-weight: 600;
     text-align: left;
     color: #585b60;
+    padding-left: 12px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: url(${selectArrow}) no-repeat #ffffff;
+    background-position: 96%;
   }
   .button-wrap {
     padding-top: 24px;
@@ -67,7 +73,7 @@ const AddActivityForm = props => (
     <div className="form-group">
       <label htmlFor="asset-type">Asset Type</label>
       <select name="asset-type" id="asset-type" onChange={props.dropdownChange}>
-        <option value={props.companyTypeId}>Company</option>
+        <option value={props.companyTypeId}> Company</option>
       </select>
     </div>
     <StageList />

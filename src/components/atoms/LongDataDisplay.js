@@ -34,6 +34,12 @@ const CompanyName = styled.div`
   vertical-align: middle;
   line-height: 96px;
   text-align: left;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  :hover {
+    overflow: visible;
+  }
   a {
     color: #25272a;
     text-decoration: none;

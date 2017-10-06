@@ -1,6 +1,4 @@
-import styled from 'styled-components';
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import StageItem from '../atoms/StageItem';
 import StageItemForm from './StageItemForm';
 

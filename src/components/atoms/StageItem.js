@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import remove from '../../images/icon-x-circle-gray.svg';
 
@@ -29,25 +29,12 @@ const Stage = styled.div`
   }
 `;
 
-class StageItem extends Component {
-  constructor(props) {
-    super(props);
-  }
-
-  render() {
-    return (
-      <Stage className="stage-line">
-        <p className="stage-item">{this.props.stageItem}</p>
-        <img
-          onClick={this.props.handleDelete}
-          src={remove}
-          alt="Remove Stage"
-        />
-        <div className="stage-line" />
-      </Stage>
-    );
-  }
-}
+const StageItem = props => (
+  <Stage className="stage-line">
+    <p className="stage-item">{props.stageItem}</p>
+    <img onClick={props.handleDelete} src={remove} alt="Remove Stage" />
+  </Stage>
+);
 
 StageItem.propTypes = {
   stageItem: PropTypes.string,
