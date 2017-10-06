@@ -14,7 +14,8 @@ class ModalActivityContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: ""
+      name: "",
+      stages: []
     };
 
     this.el = document.createElement("div");
@@ -32,6 +33,26 @@ class ModalActivityContainer extends Component {
   componentWillUnmount() {
     const modalRoot = document.getElementById("modal-root");
     modalRoot.removeChild(this.el);
+  }
+
+  componentWillReceiveProps(prevProps, nextProps, stagesToAdd) {
+    //if newActivityId is added
+    if (
+      prevProps.newActivityId !== nextProps.newActivityId &&
+      nextProps.newActivityId
+    ) {
+      //how to get stageToAdd (array of objects in format {name:"",activity:""}) from form to post??
+      var promises = [];
+      for (var i = 0; i < stagesToAdd.length; i++) {
+        var promise = this.props.addStage(
+          this.props.newActivityId,
+          stagesToAdd[i]
+        );
+        promises.push(promise);
+      }
+      Promise.all(promises).then(this.props.toggleModal());
+      //.then(this.state.activityId = null)
+    }
   }
 
   handleChange(e) {
@@ -53,25 +74,13 @@ class ModalActivityContainer extends Component {
       createdBy: this.props.userId,
       rootAssetType: this.props.companyTypeId
     };
+    //how to get stages names from form?
     this.props.addActivity(this.props.userId, activityInfo);
-    // let stageInfo = {
-    //   name: this.state.stageItem,
-    //   activity: ""
-    // }
-    //this.props.addStage(activityId, stageInfo)
-    //after activity is added need to get activityId to add stages
-    //stages will be added individually using activityId and creating
-    //posts through redux action creators
-    //to create stage need to get name from StageForm and activityId
-    //then can setState?
-    //
-    //to make stage = {name: "", activity: ""} (id and createdBy get made on own)
     this.setState({
       name: "",
       createdBy: "",
       rootAssetType: ""
     });
-    this.props.toggleModal();
   }
 
   cancelModal() {
@@ -107,6 +116,7 @@ ModalActivityContainer.propTypes = {
 
 const mapStateToProps = state => ({
   activityTypeId: state.typeId.Activity,
+  newActivityId: state.newActivityId,
   companyTypeId: state.typeId.Company,
   userId: state.userId
 });
