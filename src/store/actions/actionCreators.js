@@ -48,7 +48,6 @@ export function setActiveActivity(activity) {
   };
 }
 
-//Stage
 function addStageSuccess(stage) {
   return {
     type: ADD_STAGE,
