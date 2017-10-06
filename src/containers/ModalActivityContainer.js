@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import { createPortal } from "react-dom";
 import Modal from "../components/molecules/Modal";
 import AddActivityForm from "../components/molecules/AddActivityForm";
+//import StageItem from "../components/atoms/StageItem";
 import {
   addActivityRequest,
   addStageRequest,
@@ -14,14 +15,42 @@ class ModalActivityContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      activityId: "",
       name: "",
-      stages: []
+      stageItems: [
+        {
+          id: 0,
+          stageItem: "Stage A"
+        }
+      ],
+      nextId: 1
     };
-
+    this.handleAdd = this.handleAdd.bind(this);
     this.el = document.createElement("div");
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.cancelModal = this.cancelModal.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
+  }
+
+  handleAdd(newItem) {
+    let newItems = this.state.stageItems.slice();
+    newItems.push({
+      id: this.state.nextId++,
+      stageItem: newItem.stageItem
+    });
+
+    this.setState({
+      stageItems: newItems,
+      nextId: this.state.nextId
+    });
+  }
+
+  handleDelete(id) {
+    let newItems = this.state.stageItems.filter(item => item.id !== id);
+    this.setState({
+      stageItems: newItems
+    });
   }
 
   //creating a portal
@@ -35,13 +64,14 @@ class ModalActivityContainer extends Component {
     modalRoot.removeChild(this.el);
   }
 
-  componentWillReceiveProps(prevProps, nextProps, stagesToAdd) {
-    //if newActivityId is added
+  componentWillReceiveProps(nextProps) {
+    console.log("Inside componentWillReceiveProps");
+
     if (
-      prevProps.newActivityId !== nextProps.newActivityId &&
+      this.props.newActivityId !== nextProps.newActivityId &&
       nextProps.newActivityId
     ) {
-      //how to get stageToAdd (array of objects in format {name:"",activity:""}) from form to post??
+      var stagesToAdd = this.state.stageItems;
       var promises = [];
       for (var i = 0; i < stagesToAdd.length; i++) {
         var promise = this.props.addStage(
@@ -50,20 +80,23 @@ class ModalActivityContainer extends Component {
         );
         promises.push(promise);
       }
-      Promise.all(promises).then(this.props.toggleModal());
-      //.then(this.state.activityId = null)
     }
+
+    Promise.all(promises)
+      .then()
+      .then(
+        this.setState({
+          name: "",
+          createdBy: "",
+          rootAssetType: ""
+        })
+      )
+      .then((this.setState.activityId = ""));
   }
 
   handleChange(e) {
     this.setState({
       [e.target.name]: e.target.value
-    });
-  }
-
-  handleLogo(e) {
-    this.setState({
-      logo: e
     });
   }
 
@@ -74,13 +107,8 @@ class ModalActivityContainer extends Component {
       createdBy: this.props.userId,
       rootAssetType: this.props.companyTypeId
     };
-    //how to get stages names from form?
     this.props.addActivity(this.props.userId, activityInfo);
-    this.setState({
-      name: "",
-      createdBy: "",
-      rootAssetType: ""
-    });
+    this.props.toggleModal();
   }
 
   cancelModal() {
@@ -96,9 +124,12 @@ class ModalActivityContainer extends Component {
       <Modal cancelModal={this.cancelModal} title="Add Activity">
         <AddActivityForm
           companyTypeId={this.props.companyTypeId}
+          handleAdd={this.handleAdd}
           handleSubmit={this.handleSubmit}
           handleChange={this.handleChange}
           cancelModal={this.cancelModal}
+          handleDelete={this.handleDelete}
+          stageItemComponents={this.state.stageItems}
           {...this.state}
         />
       </Modal>,
@@ -111,7 +142,8 @@ ModalActivityContainer.propTypes = {
   userId: PropTypes.string.isRequired,
   companyTypeId: PropTypes.string.isRequired,
   addActivity: PropTypes.func.isRequired,
-  toggleModal: PropTypes.func.isRequired
+  toggleModal: PropTypes.func.isRequired,
+  newActivityId: PropTypes.string
 };
 
 const mapStateToProps = state => ({

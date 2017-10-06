@@ -1,6 +1,6 @@
-import styled from 'styled-components';
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import styled from "styled-components";
+import React, { Component } from "react";
+import PropTypes from "prop-types";
 
 const StageForm = styled.div`
   input {
@@ -44,7 +44,7 @@ class StageItemForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      stageItem: ''
+      stageItem: ""
     };
     this.handleChange = this.handleChange.bind(this);
   }
@@ -58,9 +58,9 @@ class StageItemForm extends Component {
   onKeyPress(event) {
     if (event.which === 13) {
       event.preventDefault();
-      this.props.addStageItem(this.state);
+      this.props.handleAdd(this.state);
       this.setState({
-        stageItem: ''
+        stageItem: ""
       });
     }
   }

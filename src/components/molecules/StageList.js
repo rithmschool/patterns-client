@@ -1,49 +1,19 @@
-import React, { Component } from 'react';
-import StageItem from '../atoms/StageItem';
-import StageItemForm from './StageItemForm';
-
+import React, { Component } from "react";
+// import StageItem from "../atoms/StageItem";
+import StageItemForm from "./StageItemForm";
+import StageItem from "../atoms/StageItem";
 class StageList extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      stageItems: [
-        {
-          id: 0,
-          stageItem: 'Stage A'
-        }
-      ],
-      nextId: 1
-    };
-
-    this.handleAdd = this.handleAdd.bind(this);
-  }
-
-  handleAdd(newItem) {
-    let newItems = this.state.stageItems.slice();
-    newItems.push({
-      id: this.state.nextId++,
-      stageItem: newItem.stageItem
-    });
-
-    this.setState({
-      stageItems: newItems,
-      nextId: this.state.nextId
-    });
-  }
-
-  handleDelete(id) {
-    let newItems = this.state.stageItems.filter(item => item.id !== id);
-    this.setState({
-      stageItems: newItems
-    });
   }
 
   render() {
-    let stageItems = this.state.stageItems.map(item => (
+    let stageItems = this.props.stageItemComponents.map(item => (
       <StageItem
         stageItem={item.stageItem}
         key={item.id}
-        handleDelete={this.handleDelete.bind(this, item.id)}
+        id={item.id}
+        handleDelete={this.props.handleDelete}
       />
     ));
 
@@ -51,7 +21,7 @@ class StageList extends Component {
       <div>
         <label>Activity Stages</label>
         {stageItems}
-        <StageItemForm addStageItem={this.handleAdd} />
+        <StageItemForm handleAdd={this.props.handleAdd} />
       </div>
     );
   }

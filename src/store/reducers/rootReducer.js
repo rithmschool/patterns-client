@@ -24,7 +24,7 @@ const DEFAULT_STATE = {
   userProfile: {},
   activities: [],
   activity: {},
-  newActivityId: null,
+  newActivityId: "",
   companies: [],
   company: {},
   typeId: {},
@@ -102,7 +102,7 @@ export default (state = DEFAULT_STATE, action = { type: null }) => {
       return {
         ...state,
         activities: [...state.activities, action.activity],
-        newActivityId: action.activity.mongoId
+        newActivityId: action.activity._id
       };
     case CHANGE_ASSET:
       let changeActivity = {

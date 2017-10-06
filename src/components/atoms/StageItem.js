@@ -1,7 +1,7 @@
-import styled from 'styled-components';
-import React from 'react';
-import PropTypes from 'prop-types';
-import remove from '../../images/icon-x-circle-gray.svg';
+import styled from "styled-components";
+import React from "react";
+import PropTypes from "prop-types";
+import remove from "../../images/icon-x-circle-gray.svg";
 
 const Stage = styled.div`
   p.stage-item {
@@ -29,12 +29,18 @@ const Stage = styled.div`
   }
 `;
 
-const StageItem = props => (
-  <Stage className="stage-line">
-    <p className="stage-item">{props.stageItem}</p>
-    <img onClick={props.handleDelete} src={remove} alt="Remove Stage" />
-  </Stage>
-);
+const StageItem = props => {
+  const deleteStage = () => {
+    props.handleDelete(props.id);
+  };
+
+  return (
+    <Stage className="stage-line">
+      <p className="stage-item">{props.stageItem}</p>
+      <img onClick={deleteStage} src={remove} alt="Remove Stage" />
+    </Stage>
+  );
+};
 
 StageItem.propTypes = {
   stageItem: PropTypes.string,
