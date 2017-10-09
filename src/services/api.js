@@ -19,10 +19,18 @@ export function postAuth(code) {
 }
 
 export function postActivity(userId, activityBody) {
-  console.log(userId, activityBody);
   return new Promise((resolve, reject) => {
     return axios
       .post(`${PATTERNS_API_URL}/users/${userId}/activities`, activityBody)
+      .then(res => resolve(res.data))
+      .catch(err => reject(err));
+  });
+}
+
+export function postStage(stageBody) {
+  return new Promise((resolve, reject) => {
+    return axios
+      .post(`${PATTERNS_API_URL}/stages`, stageBody)
       .then(res => resolve(res.data))
       .catch(err => reject(err));
   });

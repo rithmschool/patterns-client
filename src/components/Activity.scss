@@ -25,6 +25,13 @@ div.activity-bar {
   vertical-align: middle;
   line-height: 96px;
   text-align: left;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.activity-bar-name:hover {
+  overflow: visible;
 }
 
 .activity-bar-name a {

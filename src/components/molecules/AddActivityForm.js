@@ -2,6 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import PrimarySecondaryButton from '../atoms/PrimarySecondaryButton';
+import StageList from '../organisms/StageList';
+import selectArrow from '../../images/icon-chevron-down-gray.svg';
 
 const ActivityForm = styled.form`
   background-color: #e7e8ec;
@@ -10,31 +12,7 @@ const ActivityForm = styled.form`
   border-bottom-left-radius: 4px;
   border-bottom-right-radius: 4px;
   button {
-    margin-top: 0px;
-  }
-  p.add-new-stage {
-    width: 88px;
-    height: 24px;
-    font-size: 14px;
-    font-weight: 600;
-    line-height: 1.71;
-    text-align: left;
-    color: #a0a1a5;
-  }
-  div.stage-line {
-    width: 100%;
-    height: 1px;
-    opacity: 0.5;
-    background-color: #c2cbd3;
-  }
-  .add-new-stage {
-    width: 100%;
-    height: 24px;
-    font-size: 14px;
-    font-weight: 600;
-    line-height: 1.71;
-    text-align: left;
-    color: #a0a1a5;
+    margin-top: 24px;
   }
   label {
     font-size: 12px;
@@ -52,40 +30,32 @@ const ActivityForm = styled.form`
     margin-right: 0px;
     margin-bottom: 18px;
     padding-left: 12px;
+    font-size: 14px;
+    font-weight: 600;
+    text-align: left;
+    color: #a0a1a5;
   }
   #asset-type {
     height: 36px;
     width: 100%;
+    display: block;
     margin-top: 0px;
     margin-left: 0px;
     margin-bottom: 18px;
-  }
-  .uploadcare--widget__button {
-    padding-top: 36px;
-    color: #ffffff;
-    text-transform: uppercase;
-    font-size: 12px;
-    padding: 5px;
-    width: 94px;
-    cursor: pointer;
-    background-color: #a0a1a5;
-  }
-  .uploadcare--widget__button:hover {
-    background-color: #cb9c59;
+    font-size: 14px;
+    font-weight: 600;
+    text-align: left;
+    color: #585b60;
+    padding-left: 12px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: url(${selectArrow}) no-repeat #ffffff;
+    background-position: 96%;
   }
   .button-wrap {
-    padding-top: 36px;
+    padding-top: 24px;
     text-align: right;
-  }
-  form .button-wrap .cancel,
-  form .button-wrap .save {
-    color: #ffffff;
-    text-transform: uppercase;
-    font-size: 12px;
-    padding: 12px;
-    width: 94px;
-    margin: 0 0 0 12px;
-    cursor: pointer;
   }
 `;
 
@@ -101,29 +71,17 @@ const AddActivityForm = props => (
         onChange={props.handleChange}
       />
     </div>
-
     <div className="form-group">
       <label htmlFor="asset-type">Asset Type</label>
       <select name="asset-type" id="asset-type" onChange={props.dropdownChange}>
-        <option value={props.companyTypeId}>Company</option>
+        <option value={props.companyTypeId}> Company</option>
       </select>
     </div>
-
-    <div className="form-group">
-      <label htmlFor="activity-stages">Activity Stages</label>
-      {/*<StageList>{stageItems}</StageList> */}
-      <input
-        className="add-new-stage"
-        type="text"
-        name="stage"
-        placeholder="Add new stage"
-        value={props.stage}
-        onChange={props.handleChange}
-      />
-      {/*<p className="add-new-stage">Add new stage</p>*/}
-      <div className="stage-line" />
-    </div>
-
+    <StageList
+      handleDelete={props.handleDelete}
+      handleAdd={props.handleAdd}
+      stageItemComponents={props.stageItemComponents}
+    />
     <div className="button-wrap">
       <PrimarySecondaryButton primary onClick={props.handleSubmit}>
         SAVE
@@ -139,7 +97,7 @@ AddActivityForm.propTypes = {
   name: PropTypes.string,
   companyTypeId: PropTypes.string,
   handleChange: PropTypes.func.isRequired,
-  dropdownChange: PropTypes.func.isRequired,
+  dropdownChange: PropTypes.func,
   handleSubmit: PropTypes.func.isRequired,
   cancelModal: PropTypes.func.isRequired
 };

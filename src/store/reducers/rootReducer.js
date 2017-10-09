@@ -11,7 +11,8 @@ import {
   ADD_ACTIVITY,
   ADD_COMPANY,
   CHANGE_ASSET,
-  GET_TYPES_SUCCESS
+  GET_TYPES_SUCCESS,
+  ADD_STAGE
 } from '../actions/constants';
 
 import { setAuthorizationToken } from '../../services/api';
@@ -23,9 +24,11 @@ const DEFAULT_STATE = {
   userProfile: {},
   activities: [],
   activity: {},
+  newActivityId: null,
   companies: [],
   company: {},
-  typeId: {}
+  typeId: {},
+  stages: []
 };
 
 export default (state = DEFAULT_STATE, action = { type: null }) => {
@@ -65,6 +68,11 @@ export default (state = DEFAULT_STATE, action = { type: null }) => {
         ...state,
         companies: action.companies
       };
+    case ADD_STAGE:
+      return {
+        ...state,
+        stages: action.stage
+      };
     case SET_ACTIVE_ACTIVITY:
       return {
         ...state,
@@ -93,7 +101,8 @@ export default (state = DEFAULT_STATE, action = { type: null }) => {
     case ADD_ACTIVITY:
       return {
         ...state,
-        activities: [...state.activities, action.activity]
+        activities: [...state.activities, action.activity],
+        newActivityId: action.activity._id
       };
     case CHANGE_ASSET:
       let changeActivity = {

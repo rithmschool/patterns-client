@@ -23,3 +23,7 @@ export const ADD_ACTIVITY_FAIL = 'ADD_ACTIVITY_FAIL';
 //Type
 export const GET_TYPES_SUCCESS = 'GET_TYPES_SUCCESS';
 export const GET_TYPES_FAIL = 'GET_TYPES_FAIL';
+
+//Stage
+export const ADD_STAGE = 'ADD_STAGE';
+export const ADD_STAGE_FAIL = 'ADD_STAGE_FAIL';
