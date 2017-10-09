@@ -1,9 +1,9 @@
-import React from "react";
-import styled from "styled-components";
-import PropTypes from "prop-types";
-import PrimarySecondaryButton from "../atoms/PrimarySecondaryButton";
-import StageList from "./StageList";
-import selectArrow from "../../images/icon-chevron-down-gray.svg";
+import React from 'react';
+import styled from 'styled-components';
+import PropTypes from 'prop-types';
+import PrimarySecondaryButton from '../atoms/PrimarySecondaryButton';
+import StageList from './StageList';
+import selectArrow from '../../images/icon-chevron-down-gray.svg';
 
 const ActivityForm = styled.form`
   background-color: #e7e8ec;

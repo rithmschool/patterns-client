@@ -1,11 +1,11 @@
-import axios from "axios";
-import { PATTERNS_API_URL } from "../config";
+import axios from 'axios';
+import { PATTERNS_API_URL } from '../config';
 
 export function setAuthorizationToken(token) {
   if (token) {
-    axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+    axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
   } else {
-    delete axios.defaults.headers.common["Authorization"];
+    delete axios.defaults.headers.common['Authorization'];
   }
 }
 

@@ -1,7 +1,7 @@
-import styled from "styled-components";
-import React from "react";
-import PropTypes from "prop-types";
-import remove from "../../images/icon-x-circle-gray.svg";
+import styled from 'styled-components';
+import React from 'react';
+import PropTypes from 'prop-types';
+import remove from '../../images/icon-x-circle-gray.svg';
 
 const Stage = styled.div`
   p.stage-item {

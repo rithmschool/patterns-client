@@ -1,7 +1,7 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 // import StageItem from "../atoms/StageItem";
-import StageItemForm from "./StageItemForm";
-import StageItem from "../atoms/StageItem";
+import StageItemForm from './StageItemForm';
+import StageItem from '../atoms/StageItem';
 class StageList extends Component {
   render() {
     let stageItems = this.props.stageItemComponents.map(item => (

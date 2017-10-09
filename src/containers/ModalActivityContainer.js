@@ -1,32 +1,32 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import PropTypes from "prop-types";
-import { createPortal } from "react-dom";
-import Modal from "../components/molecules/Modal";
-import AddActivityForm from "../components/molecules/AddActivityForm";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { createPortal } from 'react-dom';
+import Modal from '../components/molecules/Modal';
+import AddActivityForm from '../components/molecules/AddActivityForm';
 //import StageItem from "../components/atoms/StageItem";
 import {
   addActivityRequest,
   addStageRequest,
   getTypes
-} from "../store/actions/actionCreators";
+} from '../store/actions/actionCreators';
 
 class ModalActivityContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      newActivityId: "",
-      name: "",
+      newActivityId: '',
+      name: '',
       stageItems: [
         {
           id: 0,
-          stageItem: "Stage A"
+          stageItem: 'Stage A'
         }
       ],
       nextId: 1
     };
     this.handleAdd = this.handleAdd.bind(this);
-    this.el = document.createElement("div");
+    this.el = document.createElement('div');
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.cancelModal = this.cancelModal.bind(this);
@@ -55,12 +55,12 @@ class ModalActivityContainer extends Component {
 
   //creating a portal
   componentDidMount() {
-    const modalRoot = document.getElementById("modal-root");
+    const modalRoot = document.getElementById('modal-root');
     modalRoot.appendChild(this.el);
   }
 
   componentWillUnmount() {
-    const modalRoot = document.getElementById("modal-root");
+    const modalRoot = document.getElementById('modal-root');
     modalRoot.removeChild(this.el);
   }
 
@@ -85,12 +85,12 @@ class ModalActivityContainer extends Component {
       .then()
       .then(
         this.setState({
-          name: "",
-          createdBy: "",
-          rootAssetType: ""
+          name: '',
+          createdBy: '',
+          rootAssetType: ''
         })
       )
-      .then((this.setState.activityId = ""))
+      .then((this.setState.activityId = ''))
       .then(this.props.toggleModal());
   }
 
@@ -112,8 +112,8 @@ class ModalActivityContainer extends Component {
 
   cancelModal() {
     this.setState({
-      name: "",
-      activityTypeId: ""
+      name: '',
+      activityTypeId: ''
     });
     this.props.toggleModal();
   }
