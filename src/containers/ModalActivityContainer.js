@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { createPortal } from 'react-dom';
 import Modal from '../components/molecules/Modal';
 import AddActivityForm from '../components/molecules/AddActivityForm';
-//import StageItem from "../components/atoms/StageItem";
+
 import {
   addActivityRequest,
   addStageRequest,
@@ -17,12 +17,7 @@ class ModalActivityContainer extends Component {
     this.state = {
       newActivityId: '',
       name: '',
-      stageItems: [
-        {
-          id: 0,
-          stageItem: 'Stage A'
-        }
-      ],
+      stageItems: [],
       nextId: 1
     };
     this.handleAdd = this.handleAdd.bind(this);
@@ -47,7 +42,7 @@ class ModalActivityContainer extends Component {
   }
 
   handleDelete(id) {
-    let newItems = this.state.stageItems.filter(item => item.id !== id);
+    const newItems = this.state.stageItems.filter(item => item.id !== id);
     this.setState({
       stageItems: newItems
     });
@@ -69,29 +64,24 @@ class ModalActivityContainer extends Component {
       this.props.newActivityId !== nextProps.newActivityId &&
       nextProps.newActivityId
     ) {
-      var items = this.state.stageItems;
-      var stagesToAdd = items.map(stage => ({
+      var stagesToAdd = this.state.stageItems.map(stage => ({
         name: stage.stageItem,
         activity: this.props.newActivityId
       }));
-      var promises = [];
-      for (var i = 0; i < stagesToAdd.length; i++) {
-        var promise = this.props.addStage(stagesToAdd[i]);
-        promises.push(promise);
-      }
-    }
 
-    Promise.all(promises)
-      .then()
-      .then(
-        this.setState({
-          name: '',
-          createdBy: '',
-          rootAssetType: ''
-        })
-      )
-      .then((this.setState.activityId = ''))
-      .then(this.props.toggleModal());
+      const promises = stagesToAdd.map(stage => this.props.addStage(stage));
+
+      Promise.all(promises)
+        .then(() =>
+          this.setState({
+            name: '',
+            createdBy: '',
+            rootAssetType: '',
+            activityId: ''
+          })
+        )
+        .then(() => this.props.toggleModal());
+    }
   }
 
   handleChange(e) {

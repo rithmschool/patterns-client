@@ -56,7 +56,8 @@ class StageItemForm extends Component {
   }
 
   onKeyPress(event) {
-    if (event.which === 13) {
+    console.log(event);
+    if (event.key === 'Enter') {
       event.preventDefault();
       this.props.handleAdd(this.state);
       this.setState({

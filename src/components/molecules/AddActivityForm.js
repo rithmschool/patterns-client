@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import PrimarySecondaryButton from '../atoms/PrimarySecondaryButton';
-import StageList from './StageList';
+import StageList from '../organisms/StageList';
 import selectArrow from '../../images/icon-chevron-down-gray.svg';
 
 const ActivityForm = styled.form`
@@ -38,6 +38,7 @@ const ActivityForm = styled.form`
   #asset-type {
     height: 36px;
     width: 100%;
+    display: block;
     margin-top: 0px;
     margin-left: 0px;
     margin-bottom: 18px;
