@@ -13,18 +13,18 @@ import {
   CHANGE_ASSET,
   GET_TYPES_SUCCESS,
   ADD_STAGE
-} from "../actions/constants";
+} from '../actions/constants';
 
-import { setAuthorizationToken } from "../../services/api";
+import { setAuthorizationToken } from '../../services/api';
 
 const DEFAULT_STATE = {
-  currentUserToken: "",
-  userId: "",
-  loginError: "",
+  currentUserToken: '',
+  userId: '',
+  loginError: '',
   userProfile: {},
   activities: [],
   activity: {},
-  newActivityId: "",
+  newActivityId: null,
   companies: [],
   company: {},
   typeId: {},
@@ -115,7 +115,7 @@ export default (state = DEFAULT_STATE, action = { type: null }) => {
         activity: changeActivity,
         activities: changeActivities
       };
-    case "persist/REHYDRATE":
+    case 'persist/REHYDRATE':
       setAuthorizationToken(action.payload.currentUserToken);
       return Object.assign({}, state, action.payload);
     default:

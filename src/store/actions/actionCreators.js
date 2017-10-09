@@ -10,14 +10,14 @@ import {
   GET_TYPES_FAIL,
   ADD_STAGE,
   ADD_STAGE_FAIL
-} from "./constants";
+} from './constants';
 
 import {
   postStage,
   postType,
   fetchTypes,
   postActivity
-} from "../../services/api";
+} from '../../services/api';
 
 //Activity
 function addActivitySuccess(activity) {
@@ -55,9 +55,9 @@ function addStageSuccess(stage) {
   };
 }
 
-export function addStageRequest(activityId, stageInfo) {
+export function addStageRequest(stageInfo) {
   return dispatch =>
-    postStage(activityId, stageInfo)
+    postStage(stageInfo)
       .then(res => dispatch(addStageSuccess(res)))
       .catch(err => dispatch(addStageError(err)));
 }

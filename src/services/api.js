@@ -1,11 +1,11 @@
-import axios from "axios";
-import { PATTERNS_API_URL } from "../config";
+import axios from 'axios';
+import { PATTERNS_API_URL } from '../config';
 
 export function setAuthorizationToken(token) {
   if (token) {
-    axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+    axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
   } else {
-    delete axios.defaults.headers.common["Authorization"];
+    delete axios.defaults.headers.common['Authorization'];
   }
 }
 
@@ -27,8 +27,8 @@ export function postActivity(userId, activityBody) {
   });
 }
 
-export function postStage(activityId, stageBody) {
-  console.log(activityId, stageBody);
+export function postStage(stageBody) {
+  console.log('post stage api' + stageBody);
   return new Promise((resolve, reject) => {
     return axios
       .post(`${PATTERNS_API_URL}/stages`, stageBody)
