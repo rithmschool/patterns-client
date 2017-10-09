@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import StageItemForm from '../molecules/StageItemForm';
+import StageItemInput from '../molecules/StageItemInput';
 import StageItem from '../atoms/StageItem';
 
 class StageList extends Component {
@@ -17,7 +17,7 @@ class StageList extends Component {
       <div>
         <label>Activity Stages</label>
         {stageItems}
-        <StageItemForm handleAdd={this.props.handleAdd} />
+        <StageItemInput handleAdd={this.props.handleAdd} />
       </div>
     );
   }

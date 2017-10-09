@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-const StageForm = styled.div`
+const StageInput = styled.div`
   input {
     width: 100%;
     height: 30px;
@@ -40,7 +40,7 @@ const StageForm = styled.div`
   }
 `;
 
-class StageItemForm extends Component {
+class StageItemInput extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -68,7 +68,7 @@ class StageItemForm extends Component {
 
   render() {
     return (
-      <StageForm onKeyPress={this.onKeyPress.bind(this)}>
+      <StageInput onKeyPress={this.onKeyPress.bind(this)}>
         <div>
           <input
             className="stage-line"
@@ -78,13 +78,13 @@ class StageItemForm extends Component {
             value={this.state.stageItem}
           />
         </div>
-      </StageForm>
+      </StageInput>
     );
   }
 }
 
-StageItemForm.propTypes = {
+StageItemInput.propTypes = {
   addStageItem: PropTypes.func
 };
 
-export default StageItemForm;
+export default StageItemInput;

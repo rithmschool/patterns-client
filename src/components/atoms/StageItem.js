@@ -5,7 +5,7 @@ import remove from '../../images/icon-x-circle-gray.svg';
 
 const Stage = styled.div`
   p.stage-item {
-    width: 100px;
+    width: 90%;
     height: 24px;
     font-size: 14px;
     font-weight: 600;
@@ -35,9 +35,11 @@ const StageItem = props => {
   };
 
   return (
-    <Stage className="stage-line">
-      <p className="stage-item">{props.stageItem}</p>
-      <img onClick={deleteStage} src={remove} alt="Remove Stage" />
+    <Stage>
+      <div className="stage-line">
+        <p className="stage-item">{props.stageItem}</p>
+        <img onClick={deleteStage} src={remove} alt="Remove Stage" />
+      </div>
     </Stage>
   );
 };

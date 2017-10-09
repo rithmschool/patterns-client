@@ -19,6 +19,9 @@ const ModalCard = styled.div`
   margin-top: 8vh;
   z-index: 30;
   padding: 0;
+  @media (max-width: 768px) {
+    padding-bottom: 18px;
+  }
 `;
 
 const Heading = styled.div`
