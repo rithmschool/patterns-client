@@ -3,10 +3,6 @@ import React, { Component } from "react";
 import StageItemForm from "./StageItemForm";
 import StageItem from "../atoms/StageItem";
 class StageList extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     let stageItems = this.props.stageItemComponents.map(item => (
       <StageItem

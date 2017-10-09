@@ -4,5 +4,5 @@ src/**/*.css
 src/*.css
 build
 .DS_Store
-src/containers/.DS_Store
+src/**/.DS_Store
 .env
