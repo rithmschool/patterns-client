@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import SidebarLeftContainer from '../../containers/SidebarLeftContainer';
-import Content from '../Content';
-import SmallerContent from '../SmallerContent';
+import Content from './Content';
+import SmallerContent from './SmallerContent';
 import SidebarRightContainer from '../../containers/SidebarRightContainer';
 
 class Asset extends Component {

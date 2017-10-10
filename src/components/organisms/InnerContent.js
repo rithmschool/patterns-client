@@ -1,9 +1,9 @@
 import { Route, Switch } from 'react-router';
 import React from 'react';
-import ActivityDashboardContainer from '../containers/ActivityDashboardContainer';
-import ActivityContainer from '../containers/ActivityContainer';
-import BrowseContainer from '../containers/BrowseContainer';
-import CompanyInfo from './molecules/CompanyInfo';
+import ActivityDashboardContainer from '../../containers/ActivityDashboardContainer';
+import ActivityContainer from '../../containers/ActivityContainer';
+import BrowseContainer from '../../containers/BrowseContainer';
+import CompanyInfo from '../molecules/CompanyInfo';
 import './InnerContent.css';
 
 const InnerContent = () => (

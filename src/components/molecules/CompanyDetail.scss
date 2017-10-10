@@ -1,25 +1,22 @@
-@import '../index.scss';
+@import '../../index.scss';
 
-div.company {
+div.company-bar {
   background-color: $white;
   height: 96px;
   border-radius: 2px;
   margin: 10px 24px;
 }
 
-.company-logo {
+.company-bar-logo {
   width: 48px;
   height: 48px;
   background-color: $pale-grey;
   margin: 24px auto 24px 24px;
   display: inline-block;
   float: left;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position-y: center;
 }
 
-.company-name {
+.company-bar-name {
   font-size: 20px;
   font-weight: 600;
   color: $dark-grey;
@@ -30,19 +27,19 @@ div.company {
   text-align: left;
 }
 
-.company-name a {
+.company-bar-name a {
   color: $dark-grey;
   text-decoration: none;
 }
 
-.company-data {
+.company-bar-data {
   display: inline-block;
   vertical-align: middle;
   text-align: left;
   float: left;
 }
 
-.company-data-point {
+.company-bar-data-point {
   color: $cool-grey;
   font-weight: bold;
   font-size: 12px;
@@ -50,18 +47,18 @@ div.company {
   margin-bottom: 6px;
 }
 
-.company-data-value {
+.company-bar-data-value {
   color: $dark-grey;
   font-size: 16px;
 }
 
-.company-arrow {
+.company-bar-arrow {
   display: inline-block;
   vertical-align: top;
   line-height: 96px;
   text-align: right;
 }
 
-.company-arrow img {
+.company-bar-arrow img {
   vertical-align: middle;
 }

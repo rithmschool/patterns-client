@@ -1,6 +1,6 @@
 import React from 'react';
 import './ActivityContainer.css';
-import BrowseCompanies from '../components/BrowseCompanies';
+import BrowseCompanies from '../components/molecules/BrowseCompanies';
 import StageContainer from '../containers/StageContainer';
 
 const ActivityContainer = props => {

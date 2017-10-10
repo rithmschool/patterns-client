@@ -9,7 +9,7 @@ import { persistStore, autoRehydrate } from 'redux-persist';
 import 'bootstrap-grid';
 import registerServiceWorker from './registerServiceWorker';
 import rootReducer from './store/reducers/rootReducer';
-import App from './components/App';
+import App from './components/pages/App';
 import './index.css';
 
 const middlewares = [thunk];

@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import PrimarySecondaryButton from '../atoms/PrimarySecondaryButton';
-import UploadCare from '../../components/UploadCare';
+import UploadCare from '../atoms/UploadCare';
 
 const CompanyForm = styled.form`
   background-color: #e7e8ec;

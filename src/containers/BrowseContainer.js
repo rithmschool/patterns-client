@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import Company from '../components/Company';
+import Company from '../components/molecules/Company';
 
 class BrowseContainer extends Component {
   render() {

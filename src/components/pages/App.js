@@ -1,10 +1,10 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import Main from './molecules/Main';
-import AuthContainer from '../containers/AuthContainer';
-import Login from './Login';
-import Asset from './molecules/Asset';
-import RequireAuth from '../hocs/RequireAuth';
+import Main from './Main';
+import AuthContainer from '../../containers/AuthContainer';
+import Login from '../atoms/Login';
+import Asset from './Asset';
+import RequireAuth from '../../hocs/RequireAuth';
 import './App.css';
 
 const App = () => (

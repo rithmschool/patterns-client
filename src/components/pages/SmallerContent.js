@@ -1,8 +1,8 @@
 import React from 'react';
 import './SmallerContent.css';
-import InnerContent from './InnerContent';
-import TopNav from './TopNav';
-import Header from './Header';
+import InnerContent from '../organisms/InnerContent';
+import TopNav from '../atoms/TopNav';
+import Header from '../organisms/Header';
 
 const SmallerContent = () => (
   <div className="smaller-content-holder">

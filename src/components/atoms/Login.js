@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './Login.css';
-import logo from '../images/logo-light-gray.png';
-import { PATTERNS_API_URL } from '../config';
+import logo from '../../images/logo-light-gray.png';
+import { PATTERNS_API_URL } from '../../config';
 
 class Login extends Component {
   constructor(props) {

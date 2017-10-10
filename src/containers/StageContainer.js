@@ -4,7 +4,7 @@ import { DragDropContext } from 'react-dnd';
 import PropTypes from 'prop-types';
 import HTML5Backend from 'react-dnd-html5-backend';
 import { updateStage } from '../services/api';
-import SmartStage from '../components/SmartStage';
+import SmartStage from '../components/organisms/SmartStage';
 import { changeAsset } from '../store/actions/actionCreators';
 
 const ModifiedBackend = (...args) => {

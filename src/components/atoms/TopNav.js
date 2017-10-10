@@ -1,6 +1,6 @@
 import React from 'react';
 import './TopNav.css';
-import arrow from '../images/icon-chevron-right-gray.svg';
+import arrow from '../../images/icon-chevron-right-gray.svg';
 
 const TopNav = props => (
   <div className="topNav">

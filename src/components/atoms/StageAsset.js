@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import './StageAsset.css';
-import down from '../images/icon-chevron-right-gray.svg';
+import down from '../../images/icon-chevron-right-gray.svg';
 
 const StageAsset = props => {
   let logo = props.logo || null;

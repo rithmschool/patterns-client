@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import CompanyDetail from '../CompanyDetail';
+import CompanyDetail from './CompanyDetail';
 
 class CompanyInfo extends Component {
   render() {
