@@ -56,7 +56,6 @@ class StageItemInput extends Component {
   }
 
   onKeyPress(event) {
-    console.log(event);
     if (event.key === 'Enter') {
       event.preventDefault();
       this.props.handleAdd(this.state);
