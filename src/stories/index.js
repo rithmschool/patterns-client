@@ -1,13 +1,11 @@
+import Modal from '../components/molecules/Modal';
+import PrimarySecondaryButton from '../components/atoms/PrimarySecondaryButton';
 import React from 'react';
-
-import { storiesOf } from '@storybook/react';
+import { Welcome } from '@storybook/react/demo';
+import WideButton from '../components/atoms/WideButton';
 import { action } from '@storybook/addon-actions';
 import { linkTo } from '@storybook/addon-links';
-import PrimarySecondaryButton from '../components/atoms/PrimarySecondaryButton';
-import { Button, Welcome } from '@storybook/react/demo';
-import WideButton from '../components/atoms/WideButton';
-import LongDataDisplay from '../components/atoms/LongDataDisplay';
-import Modal from '../components/molecules/Modal';
+import { storiesOf } from '@storybook/react';
 
 storiesOf('Welcome', module).add('to Storybook', () => (
   <Welcome showApp={linkTo('WideButton')} />
@@ -30,7 +28,3 @@ storiesOf('PrimarySecondaryButton', module)
       EDIT
     </PrimarySecondaryButton>
   ));
-
-storiesOf('LongDataDisplay', module).add('long data display', () => (
-  <LongDataDisplay />
-));
