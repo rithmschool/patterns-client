@@ -66,7 +66,7 @@ class ModalActivityContainer extends Component {
     ) {
       var stagesToAdd = this.state.stageItems.map(stage => ({
         name: stage.stageItem,
-        activity: this.props.newActivityId
+        activity: this.nextProps.newActivityId
       }));
 
       const promises = stagesToAdd.map(stage => this.props.addStage(stage));
