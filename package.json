@@ -6,6 +6,7 @@
     "axios": "0.16.2",
     "bootstrap-grid": "2.0.1",
     "bootstrap-sass": "3.3.7",
+    "jest-styled-components": "^4.7.0",
     "jwt-decode": "2.2.0",
     "prop-types": "15.6.0",
     "react": "16.0.0",
