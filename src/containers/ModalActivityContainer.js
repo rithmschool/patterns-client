@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { createPortal } from 'react-dom';
 import Modal from '../components/molecules/Modal';
 import AddActivityForm from '../components/molecules/AddActivityForm';
-
+import fetchActivities from '../store/actions/auth';
 import {
   addActivityRequest,
   addStageRequest,

@@ -4,7 +4,7 @@ export const SET_LOGIN_ERROR = 'SET_LOGIN_ERROR';
 export const LOG_OUT = 'LOG_OUT';
 export const SET_USER = 'SET_USER';
 export const SET_USER_ID = 'SET_USER_ID';
-export const SET_ACTIVITIES = 'SET_ACTIVITIES';
+export const FETCH_ACTIVITIES = 'FETCH_ACTIVITIES';
 export const SET_COMPANIES = 'SET_COMPANIES';
 
 // Companies

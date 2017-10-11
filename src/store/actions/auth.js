@@ -14,7 +14,7 @@ import {
   LOG_OUT,
   SET_USER,
   SET_USER_ID,
-  SET_ACTIVITIES,
+  FETCH_ACTIVITIES,
   SET_COMPANIES
 } from './constants';
 
@@ -38,7 +38,7 @@ export function login(code) {
         );
       })
       .then(ares => {
-        dispatch(setActivities(ares));
+        dispatch(fetchActivities(ares));
         return dispatch(getTypes());
         //return getLoginResource(`${PATTERNS_API_URL}/types`);
       })
@@ -107,9 +107,9 @@ export function setUserId(userId) {
   };
 }
 
-export function setActivities(activities) {
+export function fetchActivities(activities) {
   return {
-    type: SET_ACTIVITIES,
+    type: FETCH_ACTIVITIES,
     activities
   };
 }
