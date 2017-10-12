@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { createPortal } from 'react-dom';
 import Modal from '../components/molecules/Modal';
 import AddActivityForm from '../components/molecules/AddActivityForm';
-import fetchActivities from '../store/actions/auth';
+import { fetchActivitiesRequest } from '../store/actions/auth';
 import {
   addActivityRequest,
   addStageRequest,
@@ -72,14 +72,15 @@ class ModalActivityContainer extends Component {
       const promises = stagesToAdd.map(stage => this.props.addStage(stage));
 
       Promise.all(promises)
-        .then(() =>
+        .then(() => {
           this.setState({
             name: '',
             createdBy: '',
             rootAssetType: '',
             activityId: ''
-          })
-        )
+          });
+          fetchActivitiesRequest(this.props.userId);
+        })
         .then(() => this.props.toggleModal());
     }
   }

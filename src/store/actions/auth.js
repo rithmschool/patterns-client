@@ -14,7 +14,8 @@ import {
   LOG_OUT,
   SET_USER,
   SET_USER_ID,
-  FETCH_ACTIVITIES,
+  FETCH_ACTIVITIES_SUCCESS,
+  FETCH_ACTIVITIES_FAIL,
   SET_COMPANIES
 } from './constants';
 
@@ -33,12 +34,10 @@ export function login(code) {
         dispatch(setUser(userProfile));
         const userId = jwtDecode(token).mongoId;
         dispatch(setUserId(userId));
-        return getLoginResource(
-          `${PATTERNS_API_URL}/users/${userId}/activities`
-        );
+
+        return dispatch(fetchActivitiesRequest(userId));
       })
       .then(ares => {
-        dispatch(fetchActivities(ares));
         return dispatch(getTypes());
         //return getLoginResource(`${PATTERNS_API_URL}/types`);
       })
@@ -107,11 +106,28 @@ export function setUserId(userId) {
   };
 }
 
-export function fetchActivities(activities) {
+function fetchActivitiesError(error) {
   return {
-    type: FETCH_ACTIVITIES,
+    type: FETCH_ACTIVITIES_FAIL,
+    error
+  };
+}
+
+export function fetchActivitiesSuccess(activities) {
+  return {
+    type: FETCH_ACTIVITIES_SUCCESS,
     activities
   };
+}
+export function fetchActivitiesRequest(userId) {
+  return dispatch =>
+    getLoginResource(`${PATTERNS_API_URL}/users/${userId}/activities`)
+      .then(res => {
+        dispatch(fetchActivitiesSuccess(res));
+      })
+      .catch(err => {
+        dispatch(fetchActivitiesError(err));
+      });
 }
 
 export function setCompanies(companies) {
