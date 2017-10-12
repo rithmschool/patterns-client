@@ -79,7 +79,7 @@ class ModalActivityContainer extends Component {
             rootAssetType: '',
             activityId: ''
           });
-          fetchActivitiesRequest(this.props.userId);
+          this.props.fetchActivitiesRequest(this.props.userId);
         })
         .then(() => this.props.toggleModal());
     }
@@ -150,7 +150,8 @@ const mapDispatchToProps = dispatch => {
     addStage: stageInfo => dispatch(addStageRequest(stageInfo)),
     addActivity: (userId, activityInfo) =>
       dispatch(addActivityRequest(userId, activityInfo)),
-    getTypes: () => dispatch(getTypes())
+    getTypes: () => dispatch(getTypes()),
+    fetchActivitiesRequest: userId => dispatch(fetchActivitiesRequest(userId))
   };
 };
 
