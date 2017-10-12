@@ -113,7 +113,7 @@ function fetchActivitiesError(error) {
   };
 }
 
-export function fetchActivitiesSuccess(activities) {
+function fetchActivitiesSuccess(activities) {
   return {
     type: FETCH_ACTIVITIES_SUCCESS,
     activities
@@ -122,9 +122,7 @@ export function fetchActivitiesSuccess(activities) {
 export function fetchActivitiesRequest(userId) {
   return dispatch =>
     getLoginResource(`${PATTERNS_API_URL}/users/${userId}/activities`)
-      .then(res => {
-        dispatch(fetchActivitiesSuccess(res));
-      })
+      .then(res => dispatch(fetchActivitiesSuccess(res)))
       .catch(err => {
         dispatch(fetchActivitiesError(err));
       });

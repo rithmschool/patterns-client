@@ -71,17 +71,16 @@ class ModalActivityContainer extends Component {
 
       const promises = stagesToAdd.map(stage => this.props.addStage(stage));
 
-      Promise.all(promises)
-        .then(() => {
-          this.setState({
-            name: '',
-            createdBy: '',
-            rootAssetType: '',
-            activityId: ''
-          });
-          this.props.fetchActivitiesRequest(this.props.userId);
-        })
-        .then(() => this.props.toggleModal());
+      Promise.all(promises).then(() => {
+        this.setState({
+          name: '',
+          createdBy: '',
+          rootAssetType: '',
+          activityId: ''
+        });
+        this.props.fetchActivitiesRequest(this.props.userId);
+        this.props.toggleModal();
+      });
     }
   }
 

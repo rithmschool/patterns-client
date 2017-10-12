@@ -40,9 +40,7 @@ export function getLoginResource(path) {
   return new Promise((resolve, reject) => {
     return axios
       .get(path)
-      .then(res => {
-        resolve(res.data);
-      })
+      .then(res => resolve(res.data))
       .catch(err => reject(err));
   });
 }
