@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { createPortal } from 'react-dom';
 import Modal from '../components/molecules/Modal';
 import AddActivityForm from '../components/molecules/AddActivityForm';
-
+import { fetchActivitiesRequest } from '../store/actions/auth';
 import {
   addActivityRequest,
   addStageRequest,
@@ -66,21 +66,21 @@ class ModalActivityContainer extends Component {
     ) {
       var stagesToAdd = this.state.stageItems.map(stage => ({
         name: stage.stageItem,
-        activity: this.props.newActivityId
+        activity: nextProps.newActivityId
       }));
 
       const promises = stagesToAdd.map(stage => this.props.addStage(stage));
 
-      Promise.all(promises)
-        .then(() =>
-          this.setState({
-            name: '',
-            createdBy: '',
-            rootAssetType: '',
-            activityId: ''
-          })
-        )
-        .then(() => this.props.toggleModal());
+      Promise.all(promises).then(() => {
+        this.setState({
+          name: '',
+          createdBy: '',
+          rootAssetType: '',
+          activityId: ''
+        });
+        this.props.fetchActivitiesRequest(this.props.userId);
+        this.props.toggleModal();
+      });
     }
   }
 
@@ -149,7 +149,8 @@ const mapDispatchToProps = dispatch => {
     addStage: stageInfo => dispatch(addStageRequest(stageInfo)),
     addActivity: (userId, activityInfo) =>
       dispatch(addActivityRequest(userId, activityInfo)),
-    getTypes: () => dispatch(getTypes())
+    getTypes: () => dispatch(getTypes()),
+    fetchActivitiesRequest: userId => dispatch(fetchActivitiesRequest(userId))
   };
 };
 
