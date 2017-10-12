@@ -1,14 +1,12 @@
-import React from "react";
+import React from 'react';
 //import "./ActivityWrapper.css";
-import BrowseCompanies from "../molecules/BrowseCompanies";
-import StageContainer from "../../containers/StageContainer";
-import styled from "styled-components";
-import StyleVariables from "../../StyleVariables";
+import BrowseCompanies from '../molecules/BrowseCompanies';
+import StageContainer from '../../containers/StageContainer';
+import styled from 'styled-components';
+import StyleVariables from '../../StyleVariables';
 
-const Activity = styled.div`
-  .activityContentHolder {
-    background-color: ${StyleVariables["content-background"]};
-  }
+const ActivityWrapperStyle = styled.div`
+  background-color: ${StyleVariables['content-background']};
 
   .row {
     margin: 0;
@@ -27,12 +25,10 @@ const Activity = styled.div`
 
 const ActivityWrapper = props => {
   return (
-    <Activity>
-      <div className="ActivityContainerHolder row">
-        <BrowseCompanies />
-        <StageContainer />
-      </div>
-    </Activity>
+    <ActivityWrapperStyle classname="row">
+      <BrowseCompanies />
+      <StageContainer />
+    </ActivityWrapperStyle>
   );
 };
 
