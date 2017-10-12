@@ -2,6 +2,22 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './Stage.css';
 import SmartStageAsset from '../molecules/SmartStageAsset';
+import styled from 'styled-components';
+
+const StageStyle = styled.div`
+  .isDragging {
+    font-size: 15;
+    font-weight: bold;
+    cursor: move;
+  }
+  color: #354052;
+  font-size: 16px;
+`;
+
+const LineStyle = styled.hr`
+  height: 2px;
+  border: solid 1px #ccd3da;
+`;
 
 const Stage = props => {
   let allAssets = props.assets.map((val, idx) => (
@@ -19,11 +35,11 @@ const Stage = props => {
     />
   ));
   return (
-    <div className="stageText">
+    <StageStyle>
       <p> {props.name} </p>
-      <hr className="line" />
+      <LineStyle />
       {allAssets}
-    </div>
+    </StageStyle>
   );
 };
 

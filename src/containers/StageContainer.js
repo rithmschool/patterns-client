@@ -113,19 +113,17 @@ class StageContainer extends Component {
   render() {
     let stages = this.state.stages.map((val, idx) => {
       return (
-        <div key={val._id} className="stage col-lg-3">
-          <SmartStage
-            key={val._id}
-            stageId={val._id}
-            stageIdx={idx}
-            name={val.name}
-            assets={val.assets}
-            items={val.assets.length}
-            moveCard={this.moveCard}
-            moveAndUpdateCard={this.moveAndUpdateCard}
-            dispatchState={this.dispatchState}
-          />
-        </div>
+        <SmartStage
+          key={val._id}
+          stageId={val._id}
+          stageIdx={idx}
+          name={val.name}
+          assets={val.assets}
+          items={val.assets.length}
+          moveCard={this.moveCard}
+          moveAndUpdateCard={this.moveAndUpdateCard}
+          dispatchState={this.dispatchState}
+        />
       );
     });
     return <div>{stages}</div>;
