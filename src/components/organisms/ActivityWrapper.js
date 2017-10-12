@@ -7,16 +7,6 @@ import StyleVariables from '../../StyleVariables';
 const ActivityWrapperStyle = styled.div`
   background-color: ${StyleVariables['content-background']};
   margin: 0;
-
-  .dragTarget {
-    height: 200px;
-  }
-
-  .isDragging {
-    font-size: 15;
-    font-weight: bold;
-    cursor: move;
-  }
 `;
 
 const ActivityWrapper = props => {
