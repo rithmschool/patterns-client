@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-// import './Login.css';
 import styled from 'styled-components';
-import GoogleButton from '../../images/google-signin-normal.png';
-import GoogleButtonPressed from '../../images/google-signin-pressed.png';
-import GoogleButtonFocus from '../../images/google-signin-focus.png';
+import googleButton from '../../images/google-signin-normal.png';
+import googleButtonPressed from '../../images/google-signin-pressed.png';
+import googleButtonFocus from '../../images/google-signin-focus.png';
 import backgroundImg from '../../images/login-bike.png';
 import logo from '../../images/logo-light-gray.png';
 import { PATTERNS_API_URL } from '../../config';
@@ -61,7 +60,7 @@ const SignInStyle = styled.h1`
 `;
 
 const GoogleSignInButton = styled.button`
-  background-image: url(${GoogleButton});
+  background-image: url(${googleButton});
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
@@ -74,11 +73,11 @@ const GoogleSignInButton = styled.button`
   padding: 0px;
 
   :active {
-    background-image: url(${GoogleButtonPressed});
+    background-image: url(${googleButtonPressed});
     outline: none;
   }
   :hover {
-    background-image: url(${GoogleButtonFocus});
+    background-image: url(${googleButtonFocus});
     border: none;
   }
 `;

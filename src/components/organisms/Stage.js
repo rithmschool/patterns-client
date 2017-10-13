@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './Stage.css';
-import SmartStageAsset from '../molecules/SmartStageAsset';
 import styled from 'styled-components';
+import SmartStageAsset from '../organisms/SmartStageAsset';
 
 const StageStyle = styled.div`
   .isDragging {

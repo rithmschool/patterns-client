@@ -53,9 +53,7 @@ const CompanyData = styled.div`
   float: left;
 `;
 
-const DataCollectionRow = styled.div`
-  className="company-data-point"
-  className="company-data-value`;
+const DataCollectionRow = styled.div``;
 
 const CompanyDataPoint = styled.div`
   color: #a0a1a5;
