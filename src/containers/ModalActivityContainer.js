@@ -14,17 +14,13 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 const ActivityAddedStyle = styled.div`
-  padding: 5px;
+  padding: 33px;
   p {
-    width: 310px;
-    height: 72px;
     font-family: 'Source Sans Pro', sans-serif;
     font-size: 16px;
     line-height: 1.71;
     text-align: center;
     color: #585b60;
-    display: inline-block;
-    margin: 0 auto;
   }
   a {
   }
