@@ -2,36 +2,107 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import down from '../../images/icon-chevron-right-gray.svg';
-import './Activity.css';
+import styled from 'styled-components';
+import StyleVariables from '../../StyleVariables';
+
+const ActivityBarStyle = styled.div`
+  background-color: ${StyleVariables['white']};
+  height: 96px;
+  border-radius: 2px;
+  margin: 10px 24px;
+`;
+
+const ActivityBarLogoStyle = styled.div`
+  width: 48px;
+  height: 48px;
+  background-color: ${StyleVariables['pale-grey']};
+  margin: 24px auto 24px 24px;
+  display: inline-block;
+  float: left;
+`;
+
+const ActivityBarNameStyle = styled.div`
+  font-size: 20px;
+  font-weight: 600;
+  color: ${StyleVariables['dark-grey']};
+  display: inline-block;
+  float: left;
+  vertical-align: middle;
+  line-height: 96px;
+  text-align: left;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  :hover {
+    overflow: visible;
+  }
+
+  a {
+    color: ${StyleVariables['dark-grey']};
+    text-decoration: none;
+  }
+`;
+
+const ActivityBarDataStyle = styled.div`
+  display: inline-block;
+  vertical-align: middle;
+  text-align: left;
+  float: left;
+`;
+
+const ActivityBarDataPointStyle = styled.div`
+  color: ${StyleVariables['cool-grey']};
+  font-weight: bold;
+  font-size: 12px;
+  margin-top: 30px;
+  margin-bottom: 6px;
+`;
+
+const ActivityBarDataValueStyle = styled.div`
+  color: ${StyleVariables['dark-grey']};
+  font-size: 16px;
+`;
+
+const ActivityBarDataArrowStyle = styled.div`
+  display: inline-block;
+  vertical-align: top;
+  line-height: 96px;
+  text-align: right;
+
+  .activity-bar-arrow img {
+    vertical-align: middle;
+  }
+`;
 
 const Activity = props => {
   const logo = props.logo || null;
   logo ? <img src={logo} alt={`${props.name}'s logo`} /> : null; // eslint-disable-line
   return (
-    <div className="activity-bar row">
-      <div className="activity-bar-logo col-xs-1">{logo}</div>
-      <div className="activity-bar-name col-xs-3">
+    <ActivityBarStyle className="row">
+      <ActivityBarLogoStyle className="col-xs-1">{logo}</ActivityBarLogoStyle>
+      <ActivityBarNameStyle className="col-xs-3">
         <Link to={`/activities/${props.activityId}`}>{props.name}</Link>
-      </div>
-      <div className="activity-bar-data col-xs-7 row">
+      </ActivityBarNameStyle>
+      <ActivityBarDataStyle className="activity-bar-data col-xs-7 row">
         <div className="first-data-collection col-lg-3 col-md-4 col-sm-6 hidden-xs">
-          <div className="activity-bar-data-point">DATA POINT</div>
-          <div className="activity-bar-data-value">Data</div>
+          <ActivityBarDataPointStyle>DATA POINT</ActivityBarDataPointStyle>
+          <ActivityBarDataValueStyle>Data</ActivityBarDataValueStyle>
         </div>
         <div className="second-data-collection col-lg-3 col-md-4 col-sm-6 hidden-xs">
-          <div className="activity-bar-data-point">DATA POINT</div>
-          <div className="activity-bar-data-value">Data</div>
+          <ActivityBarDataPointStyle>DATA POINT</ActivityBarDataPointStyle>
+          <ActivityBarDataValueStyle>Data</ActivityBarDataValueStyle>
         </div>
         <div className="third-data-collection col-lg-3 col-md-4 hidden-sm hidden-xs">
-          <div className="activity-bar-data-point">DATA POINT</div>
-          <div className="activity-bar-data-value">Data</div>
+          <ActivityBarDataPointStyle>DATA POINT</ActivityBarDataPointStyle>
+          <ActivityBarDataValueStyle>Data</ActivityBarDataValueStyle>
         </div>
         <div className="fourth-data-collection col-lg-3 hidden-md hidden-sm hidden-xs">
-          <div className="activity-bar-data-point">DATA POINT</div>
-          <div className="activity-bar-data-value">Data</div>
+          <ActivityBarDataPointStyle>DATA POINT</ActivityBarDataPointStyle>
+          <ActivityBarDataValueStyle>Data</ActivityBarDataValueStyle>
         </div>
-      </div>
-      <div className="activity-bar-arrow col-xs-1 hidden-sm hidden-xs">
+      </ActivityBarDataStyle>
+      <ActivityBarDataArrowStyle className="col-xs-1 hidden-sm hidden-xs">
         <Link to={`/activities/${props.activityId}`}>
           <img
             className="activity-barRightArrow"
@@ -39,8 +110,8 @@ const Activity = props => {
             alt="Right Arrow"
           />
         </Link>
-      </div>
-    </div>
+      </ActivityBarDataArrowStyle>
+    </ActivityBarStyle>
   );
 };
 
