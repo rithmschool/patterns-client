@@ -2,3 +2,38 @@
   padding: 0;
   margin: 0;
 }
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  min-height: 1vh;
+}
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Source Sans Pro', sans-serif;
+  min-height: 1vh;
+}
+
+/* PADDINGS AND MARGINS */
+
+$lg-percentage: 1;
+$md-percentage: 0.75;
+$sm-percentage: 0.2;
+// $lg-sidebar-left-width:352px;
+
+/* MEDIA QUERIES */
+
+@media (min-width: 768px) {
+  html {
+    font-size: 46.875%;
+  }
+}
+
+@media (min-width: 1024px) {
+  html {
+    font-size: 62.5%;
+  }
+}

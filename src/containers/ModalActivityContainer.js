@@ -10,6 +10,21 @@ import {
   addStageRequest,
   getTypes
 } from '../store/actions/actionCreators';
+import { Link } from 'react-router-dom';
+import styled from 'styled-components';
+
+const ActivityAddedStyle = styled.div`
+  padding: 33px;
+  p {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 16px;
+    line-height: 1.71;
+    text-align: center;
+    color: #585b60;
+  }
+  a {
+  }
+`;
 
 class ModalActivityContainer extends Component {
   constructor(props) {
@@ -18,7 +33,8 @@ class ModalActivityContainer extends Component {
       newActivityId: '',
       name: '',
       stageItems: [],
-      nextId: 1
+      nextId: 1,
+      submitted: false
     };
     this.handleAdd = this.handleAdd.bind(this);
     this.el = document.createElement('div');
@@ -76,10 +92,10 @@ class ModalActivityContainer extends Component {
           name: '',
           createdBy: '',
           rootAssetType: '',
-          activityId: ''
+          activityId: '',
+          submitted: true
         });
         this.props.fetchActivitiesRequest(this.props.userId);
-        this.props.toggleModal();
       });
     }
   }
@@ -111,16 +127,30 @@ class ModalActivityContainer extends Component {
   render() {
     return createPortal(
       <Modal cancelModal={this.cancelModal} title="Add Activity">
-        <AddActivityForm
-          companyTypeId={this.props.companyTypeId}
-          handleAdd={this.handleAdd}
-          handleSubmit={this.handleSubmit}
-          handleChange={this.handleChange}
-          cancelModal={this.cancelModal}
-          handleDelete={this.handleDelete}
-          stageItemComponents={this.state.stageItems}
-          {...this.state}
-        />
+        {this.state.submitted ? (
+          <ActivityAddedStyle>
+            <p>
+              Your activity was added successfully.{' '}
+              <Link
+                to={`/activities/${this.props.newActivityId}`}
+                replace={false}
+              >
+                See it here.
+              </Link>
+            </p>
+          </ActivityAddedStyle>
+        ) : (
+          <AddActivityForm
+            companyTypeId={this.props.companyTypeId}
+            handleAdd={this.handleAdd}
+            handleSubmit={this.handleSubmit}
+            handleChange={this.handleChange}
+            cancelModal={this.cancelModal}
+            handleDelete={this.handleDelete}
+            stageItemComponents={this.state.stageItems}
+            {...this.state}
+          />
+        )}
       </Modal>,
       this.el
     );
