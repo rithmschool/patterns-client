@@ -26,10 +26,14 @@ $sm-percentage: 0.2;
 
 /* MEDIA QUERIES */
 
-@each $p in ($md-percentage, $lg-percentage) {
-  @media (min-width: $p * 1024px) {
-    html {
-      font-size: $p * 62.5%;
-    }
+@media (min-width: 768px) {
+  html {
+    font-size: 46.875%;
+  }
+}
+
+@media (min-width: 1024px) {
+  html {
+    font-size: 62.5%;
   }
 }
