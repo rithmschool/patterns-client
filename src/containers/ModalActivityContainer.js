@@ -96,7 +96,6 @@ class ModalActivityContainer extends Component {
           submitted: true
         });
         this.props.fetchActivitiesRequest(this.props.userId);
-        //this.props.toggleModal();
       });
     }
   }
