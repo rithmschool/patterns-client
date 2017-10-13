@@ -109,6 +109,7 @@ class ModalActivityContainer extends Component {
   }
 
   render() {
+    console.log('hey, im rendering over here');
     return createPortal(
       <Modal cancelModal={this.cancelModal} title="Add Activity">
         <AddActivityForm
