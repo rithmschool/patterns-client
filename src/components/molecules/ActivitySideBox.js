@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import down from '../../images/icon-chevron-right-gray.svg';
+import styled from 'styled-components';
+
+const ActivityNameStyle = styled.div`overflow: hidden;`;
 
 class ActivitySideBox extends Component {
   constructor(props) {
@@ -33,13 +36,13 @@ class ActivitySideBox extends Component {
       <div className="activity">
         <div className="title">
           <div className={toggleStatus} />
-          <div className="activity-name">
+          <ActivityNameStyle className="activity-name">
             <h3>
               <Link to={`/activities/${this.props.data._id}`}>
                 {this.props.data.name}
               </Link>
             </h3>
-          </div>
+          </ActivityNameStyle>
           <div className={toggleArrow} onClick={this.handleClick}>
             <img src={down} alt="Activity Toggle Arrow" />
           </div>

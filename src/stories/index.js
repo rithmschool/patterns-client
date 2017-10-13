@@ -1,5 +1,6 @@
 import Modal from '../components/molecules/Modal';
 import PrimarySecondaryButton from '../components/atoms/PrimarySecondaryButton';
+import ModalActivityContainer from '../containers/ModalActivityContainer';
 import React from 'react';
 import { Welcome } from '@storybook/react/demo';
 import WideButton from '../components/atoms/WideButton';
@@ -28,3 +29,24 @@ storiesOf('PrimarySecondaryButton', module)
       EDIT
     </PrimarySecondaryButton>
   ));
+
+storiesOf(
+  'ModalActivityContainer',
+  module
+).add('ModalActivityContainer for AddActivitySuccess', () => (
+  <ModalActivityContainer
+    store={{
+      getState() {
+        return {
+          newActivityId: 'oldActivityID',
+          activities: [{ _id: 'newActivityId:', name: 'Bob' }],
+          typeId: {},
+          userId: 'Bob-sID'
+        };
+      },
+      newActivityId: 'oldActivityID',
+      activities: [{ _id: 'newActivityId:', name: 'Bob' }]
+    }}
+    newActivityId="newActivityId"
+  />
+));
