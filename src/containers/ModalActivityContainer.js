@@ -14,16 +14,19 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 const ActivityAddedStyle = styled.div`
-  a {
+  padding: 5px;
+  p {
     width: 310px;
-    height: 24px;
-    font-family: SourceSansPro;
-    font-size: 14px;
+    height: 72px;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 16px;
     line-height: 1.71;
     text-align: center;
     color: #585b60;
     display: inline-block;
     margin: 0 auto;
+  }
+  a {
   }
 `;
 
@@ -131,12 +134,15 @@ class ModalActivityContainer extends Component {
       <Modal cancelModal={this.cancelModal} title="Add Activity">
         {this.state.submitted ? (
           <ActivityAddedStyle>
-            <Link
-              to={`/activities/${this.props.newActivityId}`}
-              replace={false}
-            >
-              Added Activity
-            </Link>
+            <p>
+              Your activity was added successfully.{' '}
+              <Link
+                to={`/activities/${this.props.newActivityId}`}
+                replace={false}
+              >
+                See it here.
+              </Link>
+            </p>
           </ActivityAddedStyle>
         ) : (
           <AddActivityForm
