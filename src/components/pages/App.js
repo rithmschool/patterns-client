@@ -7,7 +7,7 @@ import Login from '../atoms/Login';
 import Asset from './Asset';
 import RequireAuth from '../../hocs/RequireAuth';
 
-const AppStyle = styled.div``;
+const AppStyle = styled.div`padding: 0;`;
 
 const App = () => (
   <AppStyle className="container-fluid" id="app-root">

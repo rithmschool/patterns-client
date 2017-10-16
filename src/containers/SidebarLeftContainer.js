@@ -37,7 +37,11 @@ class SidebarLeftContainer extends Component {
     }
 
     let allActivities = sortActivitiesByDate(this.props.activities).map(val => (
-      <ActivitySideBox key={val._id} data={val} />
+      <ActivitySideBox
+        key={val._id}
+        data={val}
+        active={this.props.activity._id === val._id}
+      />
     ));
     return (
       <div className="sidebar">
@@ -78,7 +82,8 @@ SidebarLeftContainer.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  activities: state.activities
+  activities: state.activities,
+  activity: state.activity
 });
 
 export default connect(mapStateToProps)(SidebarLeftContainer);
