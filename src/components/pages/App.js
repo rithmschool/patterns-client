@@ -10,6 +10,9 @@ import RequireAuth from '../../hocs/RequireAuth';
 const AppStyle = styled.div`
   padding: 0;
   margin: 0;
+  font-family: 'Source Sans Pro', sans-serif;
+  min-height: 1vh;
+  box-sizing: border-box;
 `;
 
 const App = () => (
