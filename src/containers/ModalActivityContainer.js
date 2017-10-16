@@ -93,7 +93,8 @@ class ModalActivityContainer extends Component {
           createdBy: '',
           rootAssetType: '',
           activityId: '',
-          submitted: true
+          submitted: true,
+          saving: false
         });
         this.props.fetchActivitiesRequest(this.props.userId);
       });
@@ -108,6 +109,7 @@ class ModalActivityContainer extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
+    this.setState({ saving: true });
     let activityInfo = {
       name: this.state.name,
       createdBy: this.props.userId,
