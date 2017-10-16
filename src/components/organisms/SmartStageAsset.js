@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { findDOMNode } from 'react-dom';
 import { DragSource, DropTarget } from 'react-dnd';
 import PropTypes from 'prop-types';
-import StageAsset from '../atoms/StageAsset';
+import StageAsset from '../molecules/StageAsset';
 
 const stageAssetSource = {
   beginDrag(props) {

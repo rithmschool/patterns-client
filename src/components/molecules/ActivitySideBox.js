@@ -21,6 +21,7 @@ class ActivitySideBox extends Component {
   }
 
   render() {
+    let green = this.props.active ? 'green' : null;
     let toggleStatus = this.state.status ? 'active-toggle' : 'inactive-toggle';
     let toggleArrow = this.state.status ? 'arrow' : 'inactive-arrow';
     let menuItems = this.props.data.stages.map(val => {
@@ -35,7 +36,7 @@ class ActivitySideBox extends Component {
     return (
       <div className="activity">
         <div className="title">
-          <div className={toggleStatus} />
+          <div className={`${toggleStatus} ${green}`} />
           <ActivityNameStyle className="activity-name">
             <h3>
               <Link to={`/activities/${this.props.data._id}`}>

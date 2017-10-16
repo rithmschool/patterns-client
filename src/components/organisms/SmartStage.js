@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import { DropTarget } from 'react-dnd';
 import PropTypes from 'prop-types';
 import Stage from './Stage';
+import styled from 'styled-components';
 
+const SmartStageStyle = styled.div`height: 200px;`;
 const stageTarget = {
   drop(props, monitor, component) {
     return {
@@ -36,8 +38,11 @@ class SmartStage extends Component {
     const { connectDropTarget } = this.props;
 
     return connectDropTarget(
-      <div className="dragTarget">
-        <Stage {...this.props} />
+      //DnD needs native react component
+      <div className="dragTarget col-lg-3">
+        <SmartStageStyle>
+          <Stage {...this.props} />
+        </SmartStageStyle>
       </div>
     );
   }

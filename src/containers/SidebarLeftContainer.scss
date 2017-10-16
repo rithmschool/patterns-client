@@ -1,4 +1,4 @@
-@import "../index.scss";
+@import '../index.scss';
 
 /* MAIN SIDEBAR STYLES */
 
@@ -329,10 +329,6 @@
   background-color: $dark;
 }
 
-.activity {
-  padding: 1px 0;
-}
-
 .activity .title {
   display: inline-block;
   background-color: $dark-grey;
@@ -352,6 +348,10 @@
   background-color: $cool-grey;
   display: inline-block;
   vertical-align: top;
+}
+
+.activity .title .green {
+  background-color: $greenish-teal;
 }
 
 .activity .title .activity-name {
