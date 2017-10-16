@@ -2,10 +2,7 @@ import React, { Component } from 'react';
 import PrimarySecondaryButton from '../atoms/PrimarySecondaryButton';
 import PropTypes from 'prop-types';
 import ModalCompanyContainer from '../../containers/ModalCompanyContainer';
-import styled from 'styled-components';
-//import './HeaderCompanyShowContainer.css';
-
-const HeaderStyle = styled.div``;
+import '../../containers/HeaderCompanyShowContainer.css';
 
 class HeaderCompanyShow extends Component {
   constructor(props) {

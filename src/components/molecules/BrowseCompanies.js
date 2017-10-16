@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-//import './BrowseCompanies.css';
 import styled from 'styled-components';
 import StyleVariables from '../../StyleVariables';
 
