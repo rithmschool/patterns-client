@@ -8,7 +8,7 @@ import {
   SET_COMPANIES,
   SET_ACTIVE_ACTIVITY,
   SET_ACTIVE_COMPANY,
-  ADD_ACTIVITY,
+  ADD_ACTIVITY_SUCCESS,
   ADD_COMPANY,
   CHANGE_ASSET,
   GET_TYPES_SUCCESS,
@@ -98,7 +98,7 @@ export default (state = DEFAULT_STATE, action = { type: null }) => {
         ...state,
         companies: [...state.companies, action.company]
       };
-    case ADD_ACTIVITY:
+    case ADD_ACTIVITY_SUCCESS:
       return {
         ...state,
         activities: [...state.activities, action.activity],

@@ -1,7 +1,7 @@
 import {
   SET_ACTIVE_ACTIVITY,
   SET_ACTIVE_COMPANY,
-  ADD_ACTIVITY,
+  ADD_ACTIVITY_SUCCESS,
   ADD_COMPANY,
   CHANGE_ASSET,
   ADD_COMPANY_FAIL,
@@ -22,7 +22,7 @@ import {
 //Activity
 function addActivitySuccess(activity) {
   return {
-    type: ADD_ACTIVITY,
+    type: ADD_ACTIVITY_SUCCESS,
     activity
   };
 }
