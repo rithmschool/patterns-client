@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-
 import Activity from '../components/molecules/Activity';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';

@@ -1,21 +1,56 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './BrowseCompanies.css';
+//import './BrowseCompanies.css';
+import styled from 'styled-components';
+import StyleVariables from '../../StyleVariables';
+
+const BrowseCompaniesStyle = styled.div`
+  color: #354052;
+  font-size: 16px;
+`;
+const FindCompaniesStyle = styled.div`
+  height: 96px;
+  background-color: white;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.33;
+  text-align: left;
+  color: #354052;
+`;
+
+const BrowseCompsStyle = styled.div`
+  margin: 0px;
+  background-color: white;
+`;
+
+const LineStyle = styled.hr`
+  height: 2px;
+  border: solid 1px #ccd3da;
+`;
+const SearchIconStyle = styled.div`
+  width: 36px;
+  height: 36px;
+  border-radius: 4px;
+  background-color: ${StyleVariables['pale-grey']};
+  margin: 24px 12px 12px 12px;
+`;
+
+const FindCompaniesTextStyle = styled.p`margin: 24px 12px 12px 12px;`;
 
 const BrowseCompanies = props => (
-  <div className="browseCompsHolder col-lg-3">
+  <BrowseCompaniesStyle className="col-lg-3">
     <p> Browse Companies ...</p>
-    <hr className="line" />
-    <div className="browseComps row">
-      <div className="searchIcon col-lg-1" />
-      <div className="findCompanies col-lg-8">
-        <p className="findCompaniesText">
+    <LineStyle />
+    <BrowseCompsStyle className="row">
+      <SearchIconStyle className="col-lg-1" />
+      <FindCompaniesStyle className="col-lg-8">
+        <FindCompaniesTextStyle>
           {' '}
           <Link to="/assets/companies">Find Companies </Link>{' '}
-        </p>
-      </div>
-    </div>
-  </div>
+        </FindCompaniesTextStyle>
+      </FindCompaniesStyle>
+    </BrowseCompsStyle>
+  </BrowseCompaniesStyle>
 );
 
 export default BrowseCompanies;

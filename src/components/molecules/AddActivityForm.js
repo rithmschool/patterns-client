@@ -83,7 +83,11 @@ const AddActivityForm = props => (
       stageItemComponents={props.stageItemComponents}
     />
     <div className="button-wrap">
-      <PrimarySecondaryButton primary onClick={props.handleSubmit}>
+      <PrimarySecondaryButton
+        primary
+        onClick={props.handleSubmit}
+        disabled={props.saving}
+      >
         SAVE
       </PrimarySecondaryButton>
       <PrimarySecondaryButton onClick={props.cancelModal}>
