@@ -5,7 +5,6 @@ import Stage from './Stage';
 import styled from 'styled-components';
 
 const SmartStageStyle = styled.div`height: 200px;`;
-
 const stageTarget = {
   drop(props, monitor, component) {
     return {

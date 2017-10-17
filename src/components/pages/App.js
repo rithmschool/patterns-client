@@ -7,13 +7,7 @@ import Login from '../atoms/Login';
 import Asset from './Asset';
 import RequireAuth from '../../hocs/RequireAuth';
 
-const AppStyle = styled.div`
-  padding: 0;
-  margin: 0;
-  font-family: 'Source Sans Pro', sans-serif;
-  min-height: 1vh;
-  box-sizing: border-box;
-`;
+const AppStyle = styled.div`padding: 0;`;
 
 const App = () => (
   <AppStyle className="container-fluid" id="app-root">
