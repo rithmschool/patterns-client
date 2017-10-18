@@ -103,8 +103,8 @@ class StageContainer extends Component {
     const nextId = this.state.stages[nextIdx]._id;
     const prevBody = { assets: this.state.stages[prevIdx].assets };
     const nextBody = { assets: this.state.stages[nextIdx].assets };
-    updateStageAssets(prevId, prevBody);
-    updateStageAssets(nextId, nextBody);
+    this.props.updateStageAssets(prevId, prevBody);
+    this.props.updateStageAssets(nextId, nextBody);
   }
 
   render() {
