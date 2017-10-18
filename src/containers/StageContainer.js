@@ -3,9 +3,8 @@ import { connect } from 'react-redux';
 import { DragDropContext } from 'react-dnd';
 import PropTypes from 'prop-types';
 import HTML5Backend from 'react-dnd-html5-backend';
-import { updateStage } from '../services/api';
 import SmartStage from '../components/organisms/SmartStage';
-import { changeAsset } from '../store/actions/actionCreators';
+import { updateStageAssets } from '../store/actions/actionCreators';
 
 const ModifiedBackend = (...args) => {
   const instance = new HTML5Backend(...args);
@@ -104,10 +103,8 @@ class StageContainer extends Component {
     const nextId = this.state.stages[nextIdx]._id;
     const prevBody = { assets: this.state.stages[prevIdx].assets };
     const nextBody = { assets: this.state.stages[nextIdx].assets };
-    updateStage(prevId, prevBody)
-      .then(prevRes => updateStage(nextId, nextBody))
-      .then(nextRes => this.props.changeAsset(this.state.stages))
-      .catch(err => console.log(err));
+    this.props.updateStageAssets(prevId, prevBody);
+    this.props.updateStageAssets(nextId, nextBody);
   }
 
   render() {
@@ -131,7 +128,7 @@ class StageContainer extends Component {
 }
 
 StageContainer.propTypes = {
-  changeAsset: PropTypes.func.isRequired,
+  updateStageAssets: PropTypes.func.isRequired,
   activity: PropTypes.shape({
     stages: PropTypes.array
   })
@@ -143,7 +140,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => {
   return {
-    changeAsset: stages => dispatch(changeAsset(stages))
+    updateStageAssets: (stageId, stageBody) =>
+      dispatch(updateStageAssets(stageId, stageBody))
   };
 };
 

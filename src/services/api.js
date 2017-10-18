@@ -70,7 +70,7 @@ export function postType(typeId, typeBody) {
   });
 }
 
-export function updateStage(stageId, stageBody) {
+export function patchStage(stageId, stageBody) {
   return new Promise((resolve, reject) => {
     return axios
       .patch(`${PATTERNS_API_URL}/stages/${stageId}`, stageBody)
