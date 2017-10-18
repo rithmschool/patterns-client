@@ -4,6 +4,7 @@ import PrimarySecondaryButton from '../atoms/PrimarySecondaryButton';
 import ModalCompanyContainer from '../../containers/ModalCompanyContainer';
 import HeaderTitleStyle from '../atoms/HeaderTitleStyle';
 import HeaderTopStyle from '../atoms/HeaderTopStyle';
+import HeaderIndexStyle from '../atoms/HeaderIndexStyle';
 
 class HeaderCompanyIndex extends Component {
   constructor(props) {
@@ -31,7 +32,7 @@ class HeaderCompanyIndex extends Component {
     }
 
     return (
-      <div className="header-index">
+      <HeaderIndexStyle>
         <div>
           <HeaderTopStyle className="row">
             <HeaderTitleStyle> Companies </HeaderTitleStyle>
@@ -41,7 +42,7 @@ class HeaderCompanyIndex extends Component {
             {modal}
           </HeaderTopStyle>
         </div>
-      </div>
+      </HeaderIndexStyle>
     );
   }
 }

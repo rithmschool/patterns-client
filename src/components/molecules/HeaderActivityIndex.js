@@ -3,6 +3,7 @@ import './HeaderActivityIndex.css';
 import ModalActivityContainer from '../../containers/ModalActivityContainer';
 import HeaderTitleStyle from '../atoms/HeaderTitleStyle';
 import HeaderTopStyle from '../atoms/HeaderTopStyle';
+import HeaderIndexStyle from '../atoms/HeaderIndexStyle';
 
 class HeaderActivityIndex extends Component {
   constructor(props) {
@@ -30,7 +31,7 @@ class HeaderActivityIndex extends Component {
     }
 
     return (
-      <div className="header-index">
+      <HeaderIndexStyle>
         <div>
           <HeaderTopStyle className="row">
             <HeaderTitleStyle> Activities </HeaderTitleStyle>
@@ -43,7 +44,7 @@ class HeaderActivityIndex extends Component {
             {modal}
           </HeaderTopStyle>
         </div>
-      </div>
+      </HeaderIndexStyle>
     );
   }
 }
