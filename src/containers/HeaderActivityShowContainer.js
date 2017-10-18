@@ -4,71 +4,9 @@ import PropTypes from 'prop-types';
 import { setActiveActivity } from '../store/actions/actionCreators';
 import styled from 'styled-components';
 import ModalCompanyContainer from './ModalCompanyContainer';
-
-const HeaderStyle = styled.div`
-  width: 100%;
-  background-color: #f8f9fa;
-  box-shadow: 0 3px 8px 0 rgba(0, 0, 0, 0.04), 0 1px 2px 0 rgba(0, 0, 0, 0.04);
-  @media (min-width: 768px) {
-    height: 144px;
-  }
-  @media (min-width: 1024px) {
-    height: 192px;
-  }
-`;
-const HeaderTopStyle = styled.div`
-  @media (min-width: 768px) {
-    input {
-      font-size: 10.5px;
-      width: 72px;
-      height: 27px;
-      line-height: 1.035;
-      margin-top: 18px;
-      margin-right: 12px;
-    }
-  }
-  @media (min-width: 1024px) {
-    input {
-      font-size: 14px;
-      width: 96px;
-      height: 36px;
-      line-height: 1.38;
-      margin-top: 24px;
-      margin-right: 12px;
-    }
-  }
-`;
-
-const CompanyLogoStyle = styled.div`
-  width: 48px;
-  height: 48px;
-  background-color: #e7e8ec;
-  margin: 24px auto 24px 24px;
-  display: inline-block;
-  float: left;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position-y: center;
-`;
-
-const HeaderTitleStyle = styled.p`
-  font-weight: 600;
-  float: left;
-  vertical-align: middle;
-  line-height: 45px;
-  text-align: left;
-  margin-left: 20px;
-  @media (min-width: 768px) {
-    font-size: 15px;
-    line-height: 1.035;
-    margin: 18px;
-  }
-  @media (min-width: 1024px) {
-    font-size: 20px;
-    line-height: 1.38;
-    margin: 24px;
-  }
-`;
+import HeaderTitleStyle from '../components/atoms/HeaderTitleStyle';
+import HeaderTopStyle from '../components/atoms/HeaderTopStyle';
+import HeaderStyle from '../components/atoms/HeaderStyle';
 
 const StatusToggleStyle = styled.div`
   border-radius: 2px;

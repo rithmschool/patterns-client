@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import './HeaderActivityIndex.css';
 import ModalActivityContainer from '../../containers/ModalActivityContainer';
+import HeaderTitleStyle from '../atoms/HeaderTitleStyle';
+import HeaderTopStyle from '../atoms/HeaderTopStyle';
+import HeaderIndexStyle from '../atoms/HeaderIndexStyle';
 
 class HeaderActivityIndex extends Component {
   constructor(props) {
@@ -28,10 +31,10 @@ class HeaderActivityIndex extends Component {
     }
 
     return (
-      <div className="header-index">
+      <HeaderIndexStyle>
         <div>
-          <div className="headerTop row">
-            <p className="headerTitle"> Activities </p>
+          <HeaderTopStyle className="row">
+            <HeaderTitleStyle> Activities </HeaderTitleStyle>
             <input
               type="submit"
               className="addActivityButton"
@@ -39,9 +42,9 @@ class HeaderActivityIndex extends Component {
               onClick={this.toggleModal}
             />
             {modal}
-          </div>
+          </HeaderTopStyle>
         </div>
-      </div>
+      </HeaderIndexStyle>
     );
   }
 }

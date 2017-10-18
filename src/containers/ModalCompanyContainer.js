@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { createPortal } from 'react-dom';
-import './ModalCompanyContainer.css';
 import Modal from '../components/molecules/Modal';
 import AddCompanyForm from '../components/molecules/AddCompanyForm';
 import { addCompanyRequest, getTypes } from '../store/actions/actionCreators';
