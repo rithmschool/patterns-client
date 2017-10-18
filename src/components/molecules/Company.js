@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import down from '../../images/icon-chevron-right-gray.svg';
-import './Company.css';
 import LongDataDisplay from '../atoms/LongDataDisplay';
 
 const Company = props => {
