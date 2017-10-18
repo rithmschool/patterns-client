@@ -119,6 +119,7 @@ function fetchActivitiesSuccess(activities) {
     activities
   };
 }
+
 export function fetchActivitiesRequest() {
   return (dispatch, getState) =>
     getLoginResource(

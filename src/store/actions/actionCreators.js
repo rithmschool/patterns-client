@@ -3,7 +3,6 @@ import {
   SET_ACTIVE_COMPANY,
   ADD_ACTIVITY_SUCCESS,
   ADD_COMPANY,
-  CHANGE_ASSET,
   ADD_COMPANY_FAIL,
   ADD_ACTIVITY_FAIL,
   GET_TYPES_SUCCESS,
@@ -129,14 +128,6 @@ export function setActiveCompany(company) {
   return {
     type: SET_ACTIVE_COMPANY,
     company
-  };
-}
-
-//Asset
-export function changeAsset(stages) {
-  return {
-    type: CHANGE_ASSET,
-    stages
   };
 }
 
