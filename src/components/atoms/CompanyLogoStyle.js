@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-
+//
 const CompanyLogoStyle = styled.div`
   width: 48px;
   height: 48px;
