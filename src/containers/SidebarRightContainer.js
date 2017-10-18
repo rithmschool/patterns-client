@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { changeAsset } from '../store/actions/actionCreators';
+import { updateStageAssets } from '../store/actions/actionCreators';
 import './SidebarRightContainer.css';
 import bookmark from '../images/icon-diary-gray.svg';
 import lock from '../images/icon-lock-gray.svg';
 import more from '../images/icon-more-gray.svg';
 import hide from '../images/icon-open-collapse-left-gray.svg';
-import { updateStage } from '../services/api';
 
 class SidebarRightContainer extends Component {
   constructor(props) {
@@ -21,21 +20,9 @@ class SidebarRightContainer extends Component {
       ...this.props.activity.stages[0].assets,
       this.props.company
     ];
-    let body = { assets: newAsset };
-    updateStage(this.props.activity.stages[0]._id, body)
-      .then(() => {
-        let newStageAsset = [
-          ...this.props.activity.stages[0].assets,
-          this.props.company
-        ];
-        let firstStage = {
-          ...this.props.activity.stages[0],
-          assets: newStageAsset
-        };
-        let stages = [firstStage, ...this.props.activity.stages.slice(1)];
-        this.props.changeAsset(stages);
-      })
-      .catch(error => console.log(error));
+    this.props.updateStageAssets(this.props.activity.stages[0]._id, {
+      assets: newAsset
+    });
   }
 
   dropdownChange(e) {
@@ -68,28 +55,8 @@ class SidebarRightContainer extends Component {
         assets: nextStageAssetsArr
       };
 
-      // patch request to server to update stages
-      let firstRes;
-      updateStage(stageId[0], prevBody)
-        .then(prevRes => {
-          firstRes = prevRes;
-          return updateStage(stageId[1], nextBody);
-        })
-        .then(nextRes => {
-          let changeObj = {};
-          changeObj[prevStageIdx] = firstRes;
-          changeObj[nextStageIdx] = nextRes;
-          let newStagesArr = [];
-          for (let i = 0; i < this.props.activity.stages.length; i++) {
-            if (changeObj.hasOwnProperty(i)) {
-              newStagesArr.push(changeObj[i]);
-            } else {
-              newStagesArr.push(this.props.activity.stages[i]);
-            }
-          }
-          this.props.changeAsset(newStagesArr);
-        })
-        .catch(error => console.log(error));
+      this.props.updateStageAssets(stageId[0], prevBody);
+      this.props.updateStageAssets(stageId[1], nextBody);
     }
   }
 
@@ -260,7 +227,7 @@ SidebarRightContainer.propTypes = {
       companyId: PropTypes.string.isRequired
     })
   }),
-  changeAsset: PropTypes.func.isRequired,
+  updateStageAssets: PropTypes.func.isRequired,
   activity: PropTypes.shape({
     name: PropTypes.string.isRequired,
     stages: PropTypes.arrayOf(
@@ -280,7 +247,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => {
   return {
-    changeAsset: stages => dispatch(changeAsset(stages))
+    updateStageAssets: (stageId, stageBody) =>
+      dispatch(updateStageAssets(stageId, stageBody))
   };
 };
 

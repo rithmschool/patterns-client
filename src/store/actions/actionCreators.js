@@ -3,21 +3,24 @@ import {
   SET_ACTIVE_COMPANY,
   ADD_ACTIVITY_SUCCESS,
   ADD_COMPANY,
-  CHANGE_ASSET,
   ADD_COMPANY_FAIL,
   ADD_ACTIVITY_FAIL,
   GET_TYPES_SUCCESS,
   GET_TYPES_FAIL,
   ADD_STAGE,
-  ADD_STAGE_FAIL
+  ADD_STAGE_FAIL,
+  UPDATE_STAGE_FAIL
 } from './constants';
 
 import {
   postStage,
   postType,
   fetchTypes,
-  postActivity
+  postActivity,
+  patchStage
 } from '../../services/api';
+
+import { fetchActivitiesRequest } from './auth';
 
 //Activity
 function addActivitySuccess(activity) {
@@ -128,10 +131,16 @@ export function setActiveCompany(company) {
   };
 }
 
-//Asset
-export function changeAsset(stages) {
+export function updateStageAssets(stageId, stageBody) {
+  return dispatch =>
+    patchStage(stageId, stageBody)
+      .then(res => dispatch(fetchActivitiesRequest()))
+      .catch(err => dispatch(updateStageFail(err)));
+}
+
+export function updateStageFail(error) {
   return {
-    type: CHANGE_ASSET,
-    stages
+    type: UPDATE_STAGE_FAIL,
+    error
   };
 }

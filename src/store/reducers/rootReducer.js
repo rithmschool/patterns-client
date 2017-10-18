@@ -10,7 +10,6 @@ import {
   SET_ACTIVE_COMPANY,
   ADD_ACTIVITY_SUCCESS,
   ADD_COMPANY,
-  CHANGE_ASSET,
   GET_TYPES_SUCCESS,
   ADD_STAGE
 } from '../actions/constants';
@@ -103,17 +102,6 @@ export default (state = DEFAULT_STATE, action = { type: null }) => {
         ...state,
         activities: [...state.activities, action.activity],
         newActivityId: action.activity._id
-      };
-    case CHANGE_ASSET:
-      let changeActivity = {
-        ...state.activity,
-        stages: action.stages
-      };
-      let changeActivities = [...state.activities, changeActivity];
-      return {
-        ...state,
-        activity: changeActivity,
-        activities: changeActivities
       };
     case 'persist/REHYDRATE':
       setAuthorizationToken(action.payload.currentUserToken);
