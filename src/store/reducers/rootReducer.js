@@ -71,7 +71,7 @@ export default (state = DEFAULT_STATE, action = { type: null }) => {
     case ADD_STAGE:
       return {
         ...state,
-        stages: action.stage
+        stages: [...state.stages, action.stage]
       };
     case SET_ACTIVE_ACTIVITY:
       return {
@@ -109,7 +109,7 @@ export default (state = DEFAULT_STATE, action = { type: null }) => {
         ...state.activity,
         stages: action.stages
       };
-      let changeActivities = [changeActivity];
+      let changeActivities = [...state.activities, changeActivity];
       return {
         ...state,
         activity: changeActivity,
