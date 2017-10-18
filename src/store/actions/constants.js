@@ -28,3 +28,4 @@ export const GET_TYPES_FAIL = 'GET_TYPES_FAIL';
 //Stage
 export const ADD_STAGE = 'ADD_STAGE';
 export const ADD_STAGE_FAIL = 'ADD_STAGE_FAIL';
+export const UPDATE_STAGE_FAIL = 'UPDATE_STAGE_FAIL';

@@ -9,15 +9,19 @@ import {
   GET_TYPES_SUCCESS,
   GET_TYPES_FAIL,
   ADD_STAGE,
-  ADD_STAGE_FAIL
+  ADD_STAGE_FAIL,
+  UPDATE_STAGE_FAIL
 } from './constants';
 
 import {
   postStage,
   postType,
   fetchTypes,
-  postActivity
+  postActivity,
+  patchStage
 } from '../../services/api';
+
+import { fetchActivitiesRequest } from './auth';
 
 //Activity
 function addActivitySuccess(activity) {
@@ -133,5 +137,19 @@ export function changeAsset(stages) {
   return {
     type: CHANGE_ASSET,
     stages
+  };
+}
+
+export function updateStageAssets(stageId, stageBody) {
+  return dispatch =>
+    patchStage(stageId, stageBody)
+      .then(res => dispatch(fetchActivitiesRequest()))
+      .catch(err => dispatch(updateStageFail(err)));
+}
+
+export function updateStageFail(error) {
+  return {
+    type: UPDATE_STAGE_FAIL,
+    error
   };
 }

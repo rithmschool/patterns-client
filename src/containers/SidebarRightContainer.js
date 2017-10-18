@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { changeAsset } from '../store/actions/actionCreators';
+import { updateStageAssets } from '../store/actions/actionCreators';
 import './SidebarRightContainer.css';
 import bookmark from '../images/icon-diary-gray.svg';
 import lock from '../images/icon-lock-gray.svg';
@@ -69,27 +69,28 @@ class SidebarRightContainer extends Component {
       };
 
       // patch request to server to update stages
-      let firstRes;
-      updateStage(stageId[0], prevBody)
-        .then(prevRes => {
-          firstRes = prevRes;
-          return updateStage(stageId[1], nextBody);
-        })
-        .then(nextRes => {
-          let changeObj = {};
-          changeObj[prevStageIdx] = firstRes;
-          changeObj[nextStageIdx] = nextRes;
-          let newStagesArr = [];
-          for (let i = 0; i < this.props.activity.stages.length; i++) {
-            if (changeObj.hasOwnProperty(i)) {
-              newStagesArr.push(changeObj[i]);
-            } else {
-              newStagesArr.push(this.props.activity.stages[i]);
-            }
-          }
-          this.props.changeAsset(newStagesArr);
-        })
-        .catch(error => console.log(error));
+      //  let firstRes;
+      updateStageAssets(stageId[0], prevBody);
+      updateStageAssets(stageId[1], nextBody);
+      //     .then(prevRes => {
+      //       firstRes = prevRes;
+      //       return updateStage(stageId[1], nextBody);
+      //     })
+      //     .then(nextRes => {
+      //       let changeObj = {};
+      //       changeObj[prevStageIdx] = firstRes;
+      //       changeObj[nextStageIdx] = nextRes;
+      //       let newStagesArr = [];
+      //       for (let i = 0; i < this.props.activity.stages.length; i++) {
+      //         if (changeObj.hasOwnProperty(i)) {
+      //           newStagesArr.push(changeObj[i]);
+      //         } else {
+      //           newStagesArr.push(this.props.activity.stages[i]);
+      //         }
+      //       }
+      //       this.props.changeAsset(newStagesArr);
+      //     })
+      //     .catch(error => console.log(error));
     }
   }
 
@@ -260,7 +261,7 @@ SidebarRightContainer.propTypes = {
       companyId: PropTypes.string.isRequired
     })
   }),
-  changeAsset: PropTypes.func.isRequired,
+  updateStageAssets: PropTypes.func.isRequired,
   activity: PropTypes.shape({
     name: PropTypes.string.isRequired,
     stages: PropTypes.arrayOf(
@@ -280,7 +281,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => {
   return {
-    changeAsset: stages => dispatch(changeAsset(stages))
+    updateStageAssets: (stageId, stageBody) =>
+      dispatch(updateStageAssets(stageId, stageBody))
   };
 };
 

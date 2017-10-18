@@ -119,9 +119,11 @@ function fetchActivitiesSuccess(activities) {
     activities
   };
 }
-export function fetchActivitiesRequest(userId) {
-  return dispatch =>
-    getLoginResource(`${PATTERNS_API_URL}/users/${userId}/activities`)
+export function fetchActivitiesRequest() {
+  return (dispatch, getState) =>
+    getLoginResource(
+      `${PATTERNS_API_URL}/users/${getState().userId}/activities`
+    )
       .then(res => dispatch(fetchActivitiesSuccess(res)))
       .catch(err => {
         dispatch(fetchActivitiesError(err));
