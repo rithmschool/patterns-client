@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 import { setActiveActivity } from '../store/actions/actionCreators';
 import styled from 'styled-components';
 import ModalCompanyContainer from './ModalCompanyContainer';
+import HeaderTitleStyle from '../components/atoms/HeaderTitleStyle';
+import HeaderTopStyle from '../components/atoms/HeaderTopStyle';
 
 const HeaderStyle = styled.div`
   width: 100%;
@@ -16,28 +18,28 @@ const HeaderStyle = styled.div`
     height: 192px;
   }
 `;
-const HeaderTopStyle = styled.div`
-  @media (min-width: 768px) {
-    input {
-      font-size: 10.5px;
-      width: 72px;
-      height: 27px;
-      line-height: 1.035;
-      margin-top: 18px;
-      margin-right: 12px;
-    }
-  }
-  @media (min-width: 1024px) {
-    input {
-      font-size: 14px;
-      width: 96px;
-      height: 36px;
-      line-height: 1.38;
-      margin-top: 24px;
-      margin-right: 12px;
-    }
-  }
-`;
+// const HeaderTopStyle = styled.div`
+//   @media (min-width: 768px) {
+//     input {
+//       font-size: 10.5px;
+//       width: 72px;
+//       height: 27px;
+//       line-height: 1.035;
+//       margin-top: 18px;
+//       margin-right: 12px;
+//     }
+//   }
+//   @media (min-width: 1024px) {
+//     input {
+//       font-size: 14px;
+//       width: 96px;
+//       height: 36px;
+//       line-height: 1.38;
+//       margin-top: 24px;
+//       margin-right: 12px;
+//     }
+//   }
+// `;
 
 const CompanyLogoStyle = styled.div`
   width: 48px;
@@ -49,25 +51,6 @@ const CompanyLogoStyle = styled.div`
   background-size: contain;
   background-repeat: no-repeat;
   background-position-y: center;
-`;
-
-const HeaderTitleStyle = styled.p`
-  font-weight: 600;
-  float: left;
-  vertical-align: middle;
-  line-height: 45px;
-  text-align: left;
-  margin-left: 20px;
-  @media (min-width: 768px) {
-    font-size: 15px;
-    line-height: 1.035;
-    margin: 18px;
-  }
-  @media (min-width: 1024px) {
-    font-size: 20px;
-    line-height: 1.38;
-    margin: 24px;
-  }
 `;
 
 const StatusToggleStyle = styled.div`

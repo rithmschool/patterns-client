@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import './HeaderCompanyIndex.css';
 import PrimarySecondaryButton from '../atoms/PrimarySecondaryButton';
 import ModalCompanyContainer from '../../containers/ModalCompanyContainer';
+import HeaderTitleStyle from '../atoms/HeaderTitleStyle';
+import HeaderTopStyle from '../atoms/HeaderTopStyle';
 
 class HeaderCompanyIndex extends Component {
   constructor(props) {
@@ -31,13 +33,13 @@ class HeaderCompanyIndex extends Component {
     return (
       <div className="header-index">
         <div>
-          <div className="headerTop row">
-            <p className="headerTitle"> Companies </p>
+          <HeaderTopStyle className="row">
+            <HeaderTitleStyle> Companies </HeaderTitleStyle>
             <PrimarySecondaryButton primary onClick={this.toggleModal}>
               ADD
             </PrimarySecondaryButton>
             {modal}
-          </div>
+          </HeaderTopStyle>
         </div>
       </div>
     );

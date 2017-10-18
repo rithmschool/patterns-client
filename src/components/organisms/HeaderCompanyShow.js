@@ -3,6 +3,9 @@ import PrimarySecondaryButton from '../atoms/PrimarySecondaryButton';
 import PropTypes from 'prop-types';
 import ModalCompanyContainer from '../../containers/ModalCompanyContainer';
 import '../../containers/HeaderCompanyShowContainer.css';
+import HeaderTitleStyle from '../atoms/HeaderTitleStyle';
+import HeaderTopStyle from '../atoms/HeaderTopStyle';
+import CompanyLogoStyle from '../atoms/CompanyLogoStyle';
 
 class HeaderCompanyShow extends Component {
   constructor(props) {
@@ -41,15 +44,15 @@ class HeaderCompanyShow extends Component {
     return (
       <div className="header">
         <div>
-          <div className="headerTop row">
-            <div className="company-logo" style={pictureStyle} />
-            <p className=""> {this.props.company.name} </p>
+          <HeaderTopStyle className="row">
+            <CompanyLogoStyle style={pictureStyle} />
+            <HeaderTitleStyle> {this.props.company.name} </HeaderTitleStyle>
             <PrimarySecondaryButton>EDIT</PrimarySecondaryButton>
             <PrimarySecondaryButton primary onClick={this.toggleModal}>
               ADD
             </PrimarySecondaryButton>
             {modal}
-          </div>
+          </HeaderTopStyle>
           <p className="potentialEmployer"> Potential employer: [Blank] </p>
           <p className="lastUpdated"> LAST UPDATED </p>
           <p className="latestUpdatedText"> {dateStr} </p>
