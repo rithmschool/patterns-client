@@ -6,52 +6,7 @@ import styled from 'styled-components';
 import ModalCompanyContainer from './ModalCompanyContainer';
 import HeaderTitleStyle from '../components/atoms/HeaderTitleStyle';
 import HeaderTopStyle from '../components/atoms/HeaderTopStyle';
-
-const HeaderStyle = styled.div`
-  width: 100%;
-  background-color: #f8f9fa;
-  box-shadow: 0 3px 8px 0 rgba(0, 0, 0, 0.04), 0 1px 2px 0 rgba(0, 0, 0, 0.04);
-  @media (min-width: 768px) {
-    height: 144px;
-  }
-  @media (min-width: 1024px) {
-    height: 192px;
-  }
-`;
-// const HeaderTopStyle = styled.div`
-//   @media (min-width: 768px) {
-//     input {
-//       font-size: 10.5px;
-//       width: 72px;
-//       height: 27px;
-//       line-height: 1.035;
-//       margin-top: 18px;
-//       margin-right: 12px;
-//     }
-//   }
-//   @media (min-width: 1024px) {
-//     input {
-//       font-size: 14px;
-//       width: 96px;
-//       height: 36px;
-//       line-height: 1.38;
-//       margin-top: 24px;
-//       margin-right: 12px;
-//     }
-//   }
-// `;
-
-const CompanyLogoStyle = styled.div`
-  width: 48px;
-  height: 48px;
-  background-color: #e7e8ec;
-  margin: 24px auto 24px 24px;
-  display: inline-block;
-  float: left;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position-y: center;
-`;
+import HeaderStyle from '../components/atoms/HeaderStyle';
 
 const StatusToggleStyle = styled.div`
   border-radius: 2px;

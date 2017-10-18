@@ -6,6 +6,7 @@ import '../../containers/HeaderCompanyShowContainer.css';
 import HeaderTitleStyle from '../atoms/HeaderTitleStyle';
 import HeaderTopStyle from '../atoms/HeaderTopStyle';
 import CompanyLogoStyle from '../atoms/CompanyLogoStyle';
+import HeaderStyle from '../atoms/HeaderStyle';
 
 class HeaderCompanyShow extends Component {
   constructor(props) {
@@ -42,7 +43,7 @@ class HeaderCompanyShow extends Component {
       1}/${date.getUTCDate()}/${date.getUTCFullYear()}`;
 
     return (
-      <div className="header">
+      <HeaderStyle>
         <div>
           <HeaderTopStyle className="row">
             <CompanyLogoStyle style={pictureStyle} />
@@ -57,7 +58,7 @@ class HeaderCompanyShow extends Component {
           <p className="lastUpdated"> LAST UPDATED </p>
           <p className="latestUpdatedText"> {dateStr} </p>
         </div>
-      </div>
+      </HeaderStyle>
     );
   }
 }
