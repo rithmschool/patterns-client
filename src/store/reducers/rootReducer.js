@@ -10,8 +10,7 @@ import {
   SET_ACTIVE_COMPANY,
   ADD_ACTIVITY_SUCCESS,
   ADD_COMPANY,
-  GET_TYPES_SUCCESS,
-  ADD_STAGE
+  GET_TYPES_SUCCESS
 } from '../actions/constants';
 
 import { setAuthorizationToken } from '../../services/api';
@@ -26,8 +25,7 @@ const DEFAULT_STATE = {
   newActivityId: null,
   companies: [],
   company: {},
-  typeId: {},
-  stages: []
+  typeId: {}
 };
 
 export default (state = DEFAULT_STATE, action = { type: null }) => {
@@ -66,11 +64,6 @@ export default (state = DEFAULT_STATE, action = { type: null }) => {
       return {
         ...state,
         companies: action.companies
-      };
-    case ADD_STAGE:
-      return {
-        ...state,
-        stages: [...state.stages, action.stage]
       };
     case SET_ACTIVE_ACTIVITY:
       return {
