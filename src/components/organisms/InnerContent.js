@@ -4,7 +4,7 @@ import ActivityDashboardContainer from '../../containers/ActivityDashboardContai
 import ActivityWrapper from './ActivityWrapper';
 import BrowseContainer from '../../containers/BrowseContainer';
 import CompanyInfo from '../molecules/CompanyInfo';
-import './InnerContent.css';
+//import './InnerContent.css';
 
 const InnerContent = () => (
   <Switch>

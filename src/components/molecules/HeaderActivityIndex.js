@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import './HeaderActivityIndex.css';
+//import './HeaderActivityIndex.css';
 import ModalActivityContainer from '../../containers/ModalActivityContainer';
 import HeaderTitleStyle from '../atoms/HeaderTitleStyle';
 import HeaderTopStyle from '../atoms/HeaderTopStyle';
 import HeaderIndexStyle from '../atoms/HeaderIndexStyle';
+import AddActivityButtonStyle from '../atoms/AddActivityButtonStyle';
 
 class HeaderActivityIndex extends Component {
   constructor(props) {
@@ -35,12 +36,7 @@ class HeaderActivityIndex extends Component {
         <div>
           <HeaderTopStyle className="row">
             <HeaderTitleStyle> Activities </HeaderTitleStyle>
-            <input
-              type="submit"
-              className="addActivityButton"
-              value="ADD"
-              onClick={this.toggleModal}
-            />
+            <AddActivityButtonStyle value="ADD" onClick={this.toggleModal} />
             {modal}
           </HeaderTopStyle>
         </div>

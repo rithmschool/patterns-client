@@ -7,6 +7,7 @@ import ModalCompanyContainer from './ModalCompanyContainer';
 import HeaderTitleStyle from '../components/atoms/HeaderTitleStyle';
 import HeaderTopStyle from '../components/atoms/HeaderTopStyle';
 import HeaderStyle from '../components/atoms/HeaderStyle';
+import AddActivityButtonStyle from '../components/atoms/AddActivityButtonStyle';
 
 const StatusToggleStyle = styled.div`
   border-radius: 2px;
@@ -49,15 +50,15 @@ const EditActivityButtonStyle = styled.input`
   }
 `;
 
-const AddActivityButtonStyle = styled.input`
-  background-color: #cb9c59;
-  text-align: center;
-  color: white;
-  float: right;
-  cursor: pointer;
-  border-style: none;
-  border-radius: 2px;
-`;
+// const AddActivityButtonStyle = styled.input`
+//   background-color: #cb9c59;
+//   text-align: center;
+//   color: white;
+//   float: right;
+//   cursor: pointer;
+//   border-style: none;
+//   border-radius: 2px;
+// `;
 
 class HeaderActivityShowContainer extends Component {
   constructor(props) {
