@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-//import './HeaderActivityIndex.css';
 import ModalActivityContainer from '../../containers/ModalActivityContainer';
 import HeaderTitleStyle from '../atoms/HeaderTitleStyle';
 import HeaderTopStyle from '../atoms/HeaderTopStyle';
