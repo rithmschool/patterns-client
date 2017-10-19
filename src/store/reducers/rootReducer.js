@@ -6,7 +6,7 @@ import {
   SET_USER_ID,
   FETCH_ACTIVITIES_SUCCESS,
   SET_COMPANIES,
-  SET_ACTIVE_ACTIVITY,
+  SET_CURRENT_ACTIVITY_ID,
   SET_ACTIVE_COMPANY,
   ADD_ACTIVITY_SUCCESS,
   ADD_COMPANY,
@@ -21,7 +21,7 @@ const DEFAULT_STATE = {
   loginError: '',
   userProfile: {},
   activities: [],
-  activity: {},
+  currentActivityId: '',
   newActivityId: null,
   companies: [],
   company: {},
@@ -65,10 +65,10 @@ export default (state = DEFAULT_STATE, action = { type: null }) => {
         ...state,
         companies: action.companies
       };
-    case SET_ACTIVE_ACTIVITY:
+    case SET_CURRENT_ACTIVITY_ID:
       return {
         ...state,
-        activity: action.activity
+        currentActivityId: action.activityId
       };
     case SET_ACTIVE_COMPANY:
       return {

@@ -6,7 +6,7 @@ import {
   setAuthorizationToken
 } from '../../services/api';
 
-import { getTypes, setActiveActivity } from './actionCreators';
+import { getTypes, setCurrentActivityId } from './actionCreators';
 
 import {
   SET_TOKEN,
@@ -115,10 +115,10 @@ function fetchActivitiesError(error) {
 
 function fetchActivitiesSuccess(activities) {
   return (dispatch, getState) => {
-    var reloadedActivity = activities.find(
-      v => v._id === getState().activity._id
-    );
-    dispatch(setActiveActivity(reloadedActivity));
+    // var reloadedActivity = activities.find(
+    //   v => v._id === getState().activity._id
+    // );
+    // dispatch(setActiveActivity(reloadedActivity));
     return dispatch({
       type: FETCH_ACTIVITIES_SUCCESS,
       activities

@@ -40,7 +40,7 @@ class SidebarLeftContainer extends Component {
       <ActivitySideBox
         key={val._id}
         data={val}
-        active={this.props.activity._id === val._id}
+        active={this.props.currentActivityId === val._id}
       />
     ));
     return (
@@ -83,7 +83,8 @@ SidebarLeftContainer.propTypes = {
 
 const mapStateToProps = state => ({
   activities: state.activities,
-  activity: state.activity
+  //activity: state.activities.find(v => v._id === state.currentActivityId),
+  currentActivityId: state.currentActivityId
 });
 
 export default connect(mapStateToProps)(SidebarLeftContainer);

@@ -1,5 +1,5 @@
 import {
-  SET_ACTIVE_ACTIVITY,
+  SET_CURRENT_ACTIVITY_ID,
   SET_ACTIVE_COMPANY,
   ADD_ACTIVITY_SUCCESS,
   ADD_COMPANY,
@@ -44,10 +44,10 @@ function addActivityError(error) {
   };
 }
 
-export function setActiveActivity(activity) {
+export function setCurrentActivityId(activityId) {
   return {
-    type: SET_ACTIVE_ACTIVITY,
-    activity
+    type: SET_CURRENT_ACTIVITY_ID,
+    activityId
   };
 }
 

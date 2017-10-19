@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { setActiveActivity } from '../store/actions/actionCreators';
+import { setCurrentActivityId } from '../store/actions/actionCreators';
 import styled from 'styled-components';
 import ModalCompanyContainer from './ModalCompanyContainer';
 import HeaderTitleStyle from '../components/atoms/HeaderTitleStyle';
@@ -73,10 +73,10 @@ class HeaderActivityShowContainer extends Component {
   }
 
   componentWillMount() {
-    let foundActivity = this.props.activities.find(
-      val => val._id === this.props.match.params.activityId
-    );
-    this.props.setActiveActivity(foundActivity);
+    // let foundActivity = this.props.activities.find(
+    //   val => val._id === this.props.match.params.activityId
+    // );
+    this.props.setCurrentActivityId(this.props.match.params.activityId);
   }
 
   render() {
@@ -122,19 +122,19 @@ HeaderActivityShowContainer.propTypes = {
       activityId: PropTypes.string.isRequired
     })
   }),
-  setActiveActivity: PropTypes.func.isRequired,
+  setCurrentActivityId: PropTypes.func.isRequired,
   activity: PropTypes.shape({
     name: PropTypes.string
   })
 };
 
 const mapStateToProps = state => ({
-  activities: state.activities,
-  activity: state.activity
+  activity: state.activities.find(v => v._id === state.currentActivityId),
+  currentActivityId: state.activity
 });
 
 const mapDispatchToProps = dispatch => ({
-  setActiveActivity: activity => dispatch(setActiveActivity(activity))
+  setCurrentActivityId: activityId => dispatch(setCurrentActivityId(activityId))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(
