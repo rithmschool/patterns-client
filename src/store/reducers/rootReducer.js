@@ -20,7 +20,7 @@ const DEFAULT_STATE = {
   userId: '',
   loginError: '',
   userProfile: {},
-  activities: [],
+  activities: {},
   currentActivityId: '',
   newActivityId: null,
   companies: [],

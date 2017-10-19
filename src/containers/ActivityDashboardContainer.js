@@ -14,7 +14,7 @@ class ActivityDashboardContainer extends Component {
 }
 
 ActivityDashboardContainer.propTypes = {
-  activities: PropTypes.array.isRequired
+  activities: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({ activities: state.activities });

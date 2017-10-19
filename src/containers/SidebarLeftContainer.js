@@ -74,7 +74,7 @@ class SidebarLeftContainer extends Component {
 }
 
 SidebarLeftContainer.propTypes = {
-  activities: PropTypes.arrayOf(
+  activities: PropTypes.objectOf(
     PropTypes.shape({
       _id: PropTypes.string.isRequired
     })
@@ -83,7 +83,6 @@ SidebarLeftContainer.propTypes = {
 
 const mapStateToProps = state => ({
   activities: state.activities,
-  //activity: state.activities.find(v => v._id === state.currentActivityId),
   currentActivityId: state.currentActivityId
 });
 

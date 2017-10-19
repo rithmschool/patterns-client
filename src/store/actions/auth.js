@@ -7,7 +7,7 @@ import {
 } from '../../services/api';
 
 import { getTypes, setCurrentActivityId } from './actionCreators';
-
+import sortActivitiesByDate from '../../helpers/sortActivitiesByDate';
 import {
   SET_TOKEN,
   SET_LOGIN_ERROR,
@@ -36,6 +36,11 @@ export function login(code) {
         dispatch(setUserId(userId));
 
         return dispatch(fetchActivitiesRequest(userId));
+      })
+      .then(activitiesAction => {
+        var activityId = sortActivitiesByDate(activitiesAction.activities)[0]
+          ._id;
+        return dispatch(setCurrentActivityId(activityId));
       })
       .then(ares => {
         return dispatch(getTypes());
@@ -114,16 +119,11 @@ function fetchActivitiesError(error) {
 }
 
 function fetchActivitiesSuccess(activities) {
-  return (dispatch, getState) => {
-    // var reloadedActivity = activities.find(
-    //   v => v._id === getState().activity._id
-    // );
-    // dispatch(setActiveActivity(reloadedActivity));
-    return dispatch({
+  return (dispatch, getState) =>
+    dispatch({
       type: FETCH_ACTIVITIES_SUCCESS,
       activities
     });
-  };
 }
 
 export function fetchActivitiesRequest() {
@@ -131,7 +131,16 @@ export function fetchActivitiesRequest() {
     getLoginResource(
       `${PATTERNS_API_URL}/users/${getState().userId}/activities`
     )
-      .then(res => dispatch(fetchActivitiesSuccess(res)))
+      .then(res =>
+        dispatch(
+          fetchActivitiesSuccess(
+            res.reduce((t, v) => {
+              t[v._id] = v;
+              return t;
+            }, {})
+          )
+        )
+      )
       .catch(err => {
         dispatch(fetchActivitiesError(err));
       });
