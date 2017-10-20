@@ -1,15 +1,15 @@
 import React from 'react';
-import './Content.css';
 import InnerContent from '../organisms/InnerContent';
 import TopNav from '../atoms/TopNav';
 import Header from '../organisms/Header';
+import ContentHolderStyle from '../atoms/ContentHolderStyle';
 
 const Content = props => (
-  <div className="content-holder">
+  <ContentHolderStyle>
     <TopNav />
     <Header />
     <InnerContent />
-  </div>
+  </ContentHolderStyle>
 );
 
 export default Content;
