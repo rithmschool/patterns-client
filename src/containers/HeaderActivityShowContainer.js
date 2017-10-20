@@ -13,23 +13,23 @@ const StatusToggleStyle = styled.div`
   border-radius: 2px;
   background-color: #38d682;
   float: left;
-  font-weight: 600;
+  font-weight: 300;
   text-align: center;
   color: white;
   text-transform: uppercase;
   @media (min-width: 768px) {
     width: 30px;
     height: 15px;
-    font-size: 7.5px;
+    font-size: 3.5px;
     margin-top: 21px;
-    padding: 3px;
+    padding: 1px 3px 3px 3px;
   }
   @media (min-width: 1024px) {
     width: 40px;
     height: 20px;
-    font-size: 10px;
+    font-size: 12px;
     margin-top: 28px;
-    padding: 4px;
+    padding: 2px 4px 4px 4px;
   }
 `;
 
