@@ -20,9 +20,9 @@ const StatusToggleStyle = styled.div`
   @media (min-width: 768px) {
     width: 30px;
     height: 15px;
-    font-size: 3.5px;
+    font-size: 7.5px;
     margin-top: 21px;
-    padding: 1px 3px 3px 3px;
+    padding: 3px;
   }
   @media (min-width: 1024px) {
     width: 40px;
