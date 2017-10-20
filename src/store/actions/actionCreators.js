@@ -3,6 +3,7 @@ import {
   SET__CURRENT_COMPANY_ID,
   ADD_COMPANY_FAIL,
   ADD_ACTIVITY_FAIL,
+  ADD_ACTIVITY_SUCCESS,
   GET_TYPES_SUCCESS,
   GET_TYPES_FAIL,
   ADD_STAGE,
@@ -21,10 +22,18 @@ import {
 import { fetchActivitiesRequest, fetchComaniesRequest } from './auth';
 
 //Activity
+function addActivitySuccess(activity) {
+  return {
+    type: ADD_ACTIVITY_SUCCESS,
+    activity
+  };
+}
+
 export function addActivityRequest(userId, activityInfo) {
   return dispatch =>
     postActivity(userId, activityInfo)
-      .then(res => dispatch(fetchActivitiesRequest()))
+      .then(res => dispatch(addActivitySuccess(res)))
+      .then(res2 => dispatch(fetchActivitiesRequest()))
       .catch(err => dispatch(addActivityError(err)));
 }
 

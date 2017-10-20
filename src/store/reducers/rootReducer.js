@@ -4,6 +4,7 @@ import {
   LOG_OUT,
   SET_USER,
   SET_USER_ID,
+  ADD_ACTIVITY_SUCCESS,
   FETCH_ACTIVITIES_SUCCESS,
   FETCH_COMPANIES_SUCCESS,
   SET_CURRENT_ACTIVITY_ID,
@@ -52,6 +53,11 @@ export default (state = DEFAULT_STATE, action = { type: null }) => {
       return {
         ...state,
         userId: action.userId
+      };
+    case ADD_ACTIVITY_SUCCESS:
+      return {
+        ...state,
+        newActivityId: action.activity._id
       };
     case FETCH_ACTIVITIES_SUCCESS:
       return {
