@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import SmartStageAsset from '../organisms/SmartStageAsset';
+import LineStyle from '../atoms/LineStyle';
 
 const StageStyle = styled.div`
   .isDragging {
@@ -11,11 +12,6 @@ const StageStyle = styled.div`
   }
   color: #354052;
   font-size: 16px;
-`;
-
-const LineStyle = styled.hr`
-  height: 2px;
-  border: solid 1px #ccd3da;
 `;
 
 const Stage = props => {
