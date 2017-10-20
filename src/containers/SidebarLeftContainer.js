@@ -9,7 +9,7 @@ import ActivitySideBox from '../components/molecules/ActivitySideBox';
 import UserProfileContainer from './UserProfileContainer';
 import WideButton from '../components/atoms/WideButton';
 import ModalActivityContainer from './ModalActivityContainer';
-import sortActivitiesByDate from '../helpers/sortActivitiesByDate';
+import sortByUpdatedAt from '../helpers/sortByUpdatedAt';
 
 class SidebarLeftContainer extends Component {
   constructor(props) {
@@ -36,7 +36,7 @@ class SidebarLeftContainer extends Component {
       );
     }
 
-    let allActivities = sortActivitiesByDate(this.props.activities).map(val => (
+    let allActivities = sortByUpdatedAt(this.props.activities).map(val => (
       <ActivitySideBox
         key={val._id}
         data={val}

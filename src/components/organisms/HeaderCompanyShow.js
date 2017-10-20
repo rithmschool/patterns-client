@@ -74,7 +74,6 @@ HeaderCompanyShow.propTypes = {
       companyId: PropTypes.string.isRequired
     })
   }),
-  setActiveCompany: PropTypes.func.isRequired,
   company: PropTypes.shape({
     logo: PropTypes.string,
     name: PropTypes.string.isRequired,

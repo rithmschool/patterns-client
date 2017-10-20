@@ -126,7 +126,7 @@ HeaderActivityShowContainer.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  activity: state.activities.find(v => v._id === state.currentActivityId),
+  activity: state.activities[state.currentActivityId],
   currentActivityId: state.activity
 });
 

@@ -5,11 +5,9 @@ import {
   SET_USER,
   SET_USER_ID,
   FETCH_ACTIVITIES_SUCCESS,
-  SET_COMPANIES,
+  FETCH_COMPANIES_SUCCESS,
   SET_CURRENT_ACTIVITY_ID,
-  SET_ACTIVE_COMPANY,
-  ADD_ACTIVITY_SUCCESS,
-  ADD_COMPANY,
+  SET__CURRENT_COMPANY_ID,
   GET_TYPES_SUCCESS
 } from '../actions/constants';
 
@@ -23,8 +21,8 @@ const DEFAULT_STATE = {
   activities: {},
   currentActivityId: '',
   newActivityId: null,
-  companies: [],
-  company: {},
+  companies: {},
+  currentCompanyId: '',
   typeId: {}
 };
 
@@ -60,7 +58,7 @@ export default (state = DEFAULT_STATE, action = { type: null }) => {
         ...state,
         activities: action.activities
       };
-    case SET_COMPANIES:
+    case FETCH_COMPANIES_SUCCESS:
       return {
         ...state,
         companies: action.companies
@@ -70,10 +68,10 @@ export default (state = DEFAULT_STATE, action = { type: null }) => {
         ...state,
         currentActivityId: action.activityId
       };
-    case SET_ACTIVE_COMPANY:
+    case SET__CURRENT_COMPANY_ID:
       return {
         ...state,
-        company: action.company
+        currentCompanyId: action.companyId
       };
     case GET_TYPES_SUCCESS:
       var typeId = action.typeIds.reduce((acc, type) => {
@@ -84,17 +82,6 @@ export default (state = DEFAULT_STATE, action = { type: null }) => {
       return {
         ...state,
         typeId: typeId
-      };
-    case ADD_COMPANY:
-      return {
-        ...state,
-        companies: [...state.companies, action.company]
-      };
-    case ADD_ACTIVITY_SUCCESS:
-      return {
-        ...state,
-        activities: [...state.activities, action.activity],
-        newActivityId: action.activity._id
       };
     case 'persist/REHYDRATE':
       setAuthorizationToken(action.payload.currentUserToken);

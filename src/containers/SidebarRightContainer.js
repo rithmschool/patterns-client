@@ -70,7 +70,10 @@ class SidebarRightContainer extends Component {
         break;
       }
       for (let j = 0; j < stages[i].assets.length; j++) {
-        if (this.props.match.params.companyId === stages[i].assets[j]._id) {
+        if (
+          stages[i].assets[j] &&
+          this.props.match.params.companyId === stages[i].assets[j]._id
+        ) {
           foundStage = curStage;
           foundObj = true;
           break;
@@ -241,8 +244,8 @@ SidebarRightContainer.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  activity: state.activities.find(v => v._id === state.currentActivityId),
-  company: state.company
+  activity: state.activities[state.currentActivityId],
+  company: state.companies[state.currentCompanyId]
 });
 
 const mapDispatchToProps = dispatch => {

@@ -1,8 +1,6 @@
 import {
   SET_CURRENT_ACTIVITY_ID,
-  SET_ACTIVE_COMPANY,
-  ADD_ACTIVITY_SUCCESS,
-  ADD_COMPANY,
+  SET__CURRENT_COMPANY_ID,
   ADD_COMPANY_FAIL,
   ADD_ACTIVITY_FAIL,
   GET_TYPES_SUCCESS,
@@ -20,20 +18,13 @@ import {
   patchStage
 } from '../../services/api';
 
-import { fetchActivitiesRequest } from './auth';
+import { fetchActivitiesRequest, fetchComaniesRequest } from './auth';
 
 //Activity
-function addActivitySuccess(activity) {
-  return {
-    type: ADD_ACTIVITY_SUCCESS,
-    activity
-  };
-}
-
 export function addActivityRequest(userId, activityInfo) {
   return dispatch =>
     postActivity(userId, activityInfo)
-      .then(res => dispatch(addActivitySuccess(res)))
+      .then(res => dispatch(fetchActivitiesRequest()))
       .catch(err => dispatch(addActivityError(err)));
 }
 
@@ -103,17 +94,10 @@ export function getTypes() {
 }
 
 //Company
-function addCompanySuccess(company) {
-  return {
-    type: ADD_COMPANY,
-    company
-  };
-}
-
 export function addCompanyRequest(companyTypeId, companyInfo) {
   return dispatch =>
     postType(companyTypeId, companyInfo)
-      .then(res => dispatch(addCompanySuccess(res)))
+      .then(res => dispatch(fetchComaniesRequest()))
       .catch(err => dispatch(addCompanyError(err)));
 }
 
@@ -124,10 +108,10 @@ function addCompanyError(error) {
   };
 }
 
-export function setActiveCompany(company) {
+export function setCurrentCompanyId(companyId) {
   return {
-    type: SET_ACTIVE_COMPANY,
-    company
+    type: SET__CURRENT_COMPANY_ID,
+    companyId
   };
 }
 

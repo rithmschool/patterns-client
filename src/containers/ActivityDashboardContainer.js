@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import Activity from '../components/molecules/Activity';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import sortActivitiesByDate from '../helpers/sortActivitiesByDate';
+import sortByUpdatedAt from '../helpers/sortByUpdatedAt';
 
 class ActivityDashboardContainer extends Component {
   render() {
-    let allActivities = sortActivitiesByDate(this.props.activities).map(val => (
+    let allActivities = sortByUpdatedAt(this.props.activities).map(val => (
       <Activity key={val._id} name={val.name} activityId={val._id} />
     ));
     return <div>{allActivities}</div>;

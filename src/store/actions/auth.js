@@ -6,8 +6,12 @@ import {
   setAuthorizationToken
 } from '../../services/api';
 
-import { getTypes, setCurrentActivityId } from './actionCreators';
-import sortActivitiesByDate from '../../helpers/sortActivitiesByDate';
+import {
+  getTypes,
+  setCurrentActivityId,
+  setCurrentCompanyId
+} from './actionCreators';
+import sortByUpdatedAt from '../../helpers/sortByUpdatedAt';
 import {
   SET_TOKEN,
   SET_LOGIN_ERROR,
@@ -16,7 +20,7 @@ import {
   SET_USER_ID,
   FETCH_ACTIVITIES_SUCCESS,
   FETCH_ACTIVITIES_FAIL,
-  SET_COMPANIES
+  FETCH_COMPANIES_SUCCESS
 } from './constants';
 
 export function login(code) {
@@ -35,11 +39,10 @@ export function login(code) {
         const userId = jwtDecode(token).mongoId;
         dispatch(setUserId(userId));
 
-        return dispatch(fetchActivitiesRequest(userId));
+        return dispatch(fetchActivitiesRequest());
       })
       .then(activitiesAction => {
-        var activityId = sortActivitiesByDate(activitiesAction.activities)[0]
-          ._id;
+        var activityId = sortByUpdatedAt(activitiesAction.activities)[0]._id;
         return dispatch(setCurrentActivityId(activityId));
       })
       .then(ares => {
@@ -47,14 +50,11 @@ export function login(code) {
         //return getLoginResource(`${PATTERNS_API_URL}/types`);
       })
       .then(types => {
-        let companyId = getState().typeId.Company;
-        //types.find(obj => obj.name === 'Company')._id;
-        return getLoginResource(
-          `${PATTERNS_API_URL}/types/${companyId}/assets`
-        );
+        return dispatch(fetchComaniesRequest());
       })
       .then(companies => {
-        dispatch(setCompanies(companies.assets));
+        var companyId = sortByUpdatedAt(companies.companies)[0]._id;
+        return dispatch(setCurrentCompanyId(companyId));
       })
       .catch(err => {
         var errObj = Object.keys(err).length ? err : null;
@@ -146,9 +146,29 @@ export function fetchActivitiesRequest() {
       });
 }
 
-export function setCompanies(companies) {
+export function fetchComaniesRequest() {
+  return (dispatch, getState) =>
+    getLoginResource(
+      `${PATTERNS_API_URL}/types/${getState().typeId.Company}/assets`
+    )
+      .then(res => {
+        return dispatch(
+          fetchCompaniesSuccess(
+            res.assets.reduce((t, v) => {
+              t[v._id] = v;
+              return t;
+            }, {})
+          )
+        );
+      })
+      .catch(err => {
+        dispatch(fetchActivitiesError(err));
+      });
+}
+
+function fetchCompaniesSuccess(companies) {
   return {
-    type: SET_COMPANIES,
+    type: FETCH_COMPANIES_SUCCESS,
     companies
   };
 }
