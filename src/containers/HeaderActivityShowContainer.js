@@ -1,12 +1,13 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
-import { setActiveActivity } from '../store/actions/actionCreators';
-import styled from 'styled-components';
-import ModalCompanyContainer from './ModalCompanyContainer';
-import HeaderTitleStyle from '../components/atoms/HeaderTitleStyle';
-import HeaderTopStyle from '../components/atoms/HeaderTopStyle';
-import HeaderStyle from '../components/atoms/HeaderStyle';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
+import { setActiveActivity } from "../store/actions/actionCreators";
+import styled from "styled-components";
+import ModalCompanyContainer from "./ModalCompanyContainer";
+import HeaderTitleStyle from "../components/atoms/HeaderTitleStyle";
+import HeaderTopStyle from "../components/atoms/HeaderTopStyle";
+import HeaderStyle from "../components/atoms/HeaderStyle";
+import ModalActivityContainer from "./ModalActivityContainer";
 
 const StatusToggleStyle = styled.div`
   border-radius: 2px;
@@ -49,7 +50,7 @@ const EditActivityButtonStyle = styled.input`
   }
 `;
 
-const AddActivityButtonStyle = styled.input`
+const AddCompanyButtonStyle = styled.input`
   background-color: #cb9c59;
   text-align: center;
   color: white;
@@ -63,9 +64,20 @@ class HeaderActivityShowContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      modalOpen: false
+      modalOpen: false,
+      addCompany: false,
+      editActivity: false
     };
+    this.addCompany = this.addCompany.bind(this);
+    this.editActivity = this.editActivity.bind(this);
     this.toggleModal = this.toggleModal.bind(this);
+  }
+
+  addCompany(e) {
+    this.setState({ modalOpen: true, addCompany: true, editActivity: false });
+  }
+  editActivity(e) {
+    this.setState({ modalOpen: true, addCompany: false, editActivity: true });
   }
 
   toggleModal(e) {
@@ -81,12 +93,21 @@ class HeaderActivityShowContainer extends Component {
 
   render() {
     let modal = null;
-    if (this.state.modalOpen) {
+    if (this.state.addCompany) {
       modal = (
         <ModalCompanyContainer
           toggleModal={this.toggleModal}
           name="Edit"
           logo="Replace"
+        />
+      );
+    }
+    if (this.state.editActivity) {
+      modal = (
+        <ModalActivityContainer
+          toggleModal={this.toggleModal}
+          name="Edit"
+          activity={this.props.activity}
         />
       );
     }
@@ -97,11 +118,15 @@ class HeaderActivityShowContainer extends Component {
           <HeaderTopStyle className="row">
             <HeaderTitleStyle> {this.props.activity.name} </HeaderTitleStyle>
             <StatusToggleStyle>OPEN</StatusToggleStyle>
-            <EditActivityButtonStyle type="submit" value="EDIT" />
-            <AddActivityButtonStyle
+            <EditActivityButtonStyle
+              type="submit"
+              value="EDIT"
+              onClick={this.editActivity}
+            />
+            <AddCompanyButtonStyle
               type="submit"
               value="ADD"
-              onClick={this.toggleModal}
+              onClick={this.addCompany}
             />
             {modal}
           </HeaderTopStyle>
