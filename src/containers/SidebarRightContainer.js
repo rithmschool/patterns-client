@@ -61,54 +61,34 @@ class SidebarRightContainer extends Component {
   }
 
   render() {
-    let stages = this.props.activity.stages;
-    let curStage, foundStage;
-    let foundObj = false;
-    for (let i = 0; i < stages.length; i++) {
-      curStage = stages[i]._id;
-      if (foundObj) {
-        break;
-      }
-      for (let j = 0; j < stages[i].assets.length; j++) {
-        if (this.props.match.params.companyId === stages[i].assets[j]._id) {
-          foundStage = curStage;
-          foundObj = true;
-          break;
-        }
-      }
-    }
+    var foundStage = this.props.activity.stages.find(s =>
+      s.assets.find(a => a._id === this.props.match.params.companyId)
+    );
+    var foundStageId = foundStage ? foundStage._id : null;
 
-    let funnelToggle = (
+    let funnelOption = (
       <div>
         <button className="funnel-button" onClick={this.funnelClick}>
           <p>ADD TO FUNNEL</p>
         </button>
       </div>
     );
-
-    let funnelDropdownOptions = this.props.activity.stages.map(val => {
-      if (foundStage === val._id) {
-        return (
-          <option key={val._id} value={`${foundStage}.${val._id}`} selected>
-            {val.name}
-          </option>
-        );
-      } else {
-        return (
-          <option key={val._id} value={`${foundStage}.${val._id}`}>
-            {val.name}
-          </option>
-        );
-      }
-    });
-
-    let funnelDropdown = (
-      <select name="stage" id="stage" onChange={this.dropdownChange}>
-        {funnelDropdownOptions}
-      </select>
-    );
-
-    let funnelOption = foundObj ? funnelDropdown : funnelToggle;
+    if (foundStageId) {
+      let funnelDropdownOptions = this.props.activity.stages.map(val => (
+        <option
+          key={val._id}
+          value={`${foundStageId}.${val._id}`}
+          selected={foundStageId === val._id}
+        >
+          {val.name}
+        </option>
+      ));
+      funnelOption = (
+        <select name="stage" id="stage" onChange={this.dropdownChange}>
+          {funnelDropdownOptions}
+        </select>
+      );
+    }
 
     return (
       <div className="sidebar-right">
