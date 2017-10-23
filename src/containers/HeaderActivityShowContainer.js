@@ -81,7 +81,11 @@ class HeaderActivityShowContainer extends Component {
   }
 
   toggleModal(e) {
-    this.setState({ modalOpen: !this.state.modalOpen });
+    this.setState({
+      modalOpen: !this.state.modalOpen,
+      addCompany: false,
+      editActivity: false
+    });
   }
 
   componentWillMount() {
