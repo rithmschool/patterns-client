@@ -61,23 +61,6 @@ class SidebarRightContainer extends Component {
   }
 
   render() {
-    // let stages = this.props.activity.stages;
-    // let curStage, foundStage;
-    // let foundObj = false;
-    // debugger;
-    // for (let i = 0; i < stages.length; i++) {
-    //   curStage = stages[i]._id;
-    //   if (foundObj) {
-    //     break;
-    //   }
-    //   for (let j = 0; j < stages[i].assets.length; j++) {
-    //     if (this.props.match.params.companyId === stages[i].assets[j]._id) {
-    //       foundStage = curStage;
-    //       foundObj = true;
-    //       break;
-    //     }
-    //   }
-    // }
     var foundStage = this.props.activity.stages.find(s =>
       s.assets.find(a => a._id === this.props.match.params.companyId)
     );
