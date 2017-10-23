@@ -6,8 +6,13 @@ import {
   setAuthorizationToken
 } from '../../services/api';
 
-import { getTypes, setActiveActivity } from './actionCreators';
-
+import {
+  getTypes,
+  setCurrentActivityId,
+  setCurrentCompanyId
+} from './actionCreators';
+import sortByUpdatedAt from '../../helpers/sortByUpdatedAt';
+import mostRecentlyUpdated from '../../helpers/mostRecentlyUpdated';
 import {
   SET_TOKEN,
   SET_LOGIN_ERROR,
@@ -16,7 +21,7 @@ import {
   SET_USER_ID,
   FETCH_ACTIVITIES_SUCCESS,
   FETCH_ACTIVITIES_FAIL,
-  SET_COMPANIES
+  FETCH_COMPANIES_SUCCESS
 } from './constants';
 
 export function login(code) {
@@ -35,21 +40,22 @@ export function login(code) {
         const userId = jwtDecode(token).mongoId;
         dispatch(setUserId(userId));
 
-        return dispatch(fetchActivitiesRequest(userId));
+        return dispatch(fetchActivitiesRequest());
+      })
+      .then(activitiesAction => {
+        var activityId = mostRecentlyUpdated(activitiesAction.activities);
+        return dispatch(setCurrentActivityId(activityId));
       })
       .then(ares => {
         return dispatch(getTypes());
         //return getLoginResource(`${PATTERNS_API_URL}/types`);
       })
       .then(types => {
-        let companyId = getState().typeId.Company;
-        //types.find(obj => obj.name === 'Company')._id;
-        return getLoginResource(
-          `${PATTERNS_API_URL}/types/${companyId}/assets`
-        );
+        return dispatch(fetchCompaniesRequest());
       })
       .then(companies => {
-        dispatch(setCompanies(companies.assets));
+        var companyId = mostRecentlyUpdated(companies.companies);
+        return dispatch(setCurrentCompanyId(companyId));
       })
       .catch(err => {
         var errObj = Object.keys(err).length ? err : null;
@@ -114,16 +120,11 @@ function fetchActivitiesError(error) {
 }
 
 function fetchActivitiesSuccess(activities) {
-  return (dispatch, getState) => {
-    var reloadedActivity = activities.find(
-      v => v._id === getState().activity._id
-    );
-    dispatch(setActiveActivity(reloadedActivity));
-    return dispatch({
+  return (dispatch, getState) =>
+    dispatch({
       type: FETCH_ACTIVITIES_SUCCESS,
       activities
     });
-  };
 }
 
 export function fetchActivitiesRequest() {
@@ -131,15 +132,42 @@ export function fetchActivitiesRequest() {
     getLoginResource(
       `${PATTERNS_API_URL}/users/${getState().userId}/activities`
     )
-      .then(res => dispatch(fetchActivitiesSuccess(res)))
+      .then(res =>
+        dispatch(
+          fetchActivitiesSuccess(
+            res.reduce((t, v) => {
+              t[v._id] = v;
+              return t;
+            }, {})
+          )
+        )
+      )
+      .catch(err => dispatch(fetchActivitiesError(err)));
+}
+
+export function fetchCompaniesRequest() {
+  return (dispatch, getState) =>
+    getLoginResource(
+      `${PATTERNS_API_URL}/types/${getState().typeId.Company}/assets`
+    )
+      .then(res => {
+        return dispatch(
+          fetchCompaniesSuccess(
+            res.assets.reduce((t, v) => {
+              t[v._id] = v;
+              return t;
+            }, {})
+          )
+        );
+      })
       .catch(err => {
         dispatch(fetchActivitiesError(err));
       });
 }
 
-export function setCompanies(companies) {
+function fetchCompaniesSuccess(companies) {
   return {
-    type: SET_COMPANIES,
+    type: FETCH_COMPANIES_SUCCESS,
     companies
   };
 }

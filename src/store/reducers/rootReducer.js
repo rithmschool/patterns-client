@@ -4,14 +4,12 @@ import {
   LOG_OUT,
   SET_USER,
   SET_USER_ID,
-  FETCH_ACTIVITIES_SUCCESS,
-  SET_COMPANIES,
-  SET_ACTIVE_ACTIVITY,
-  SET_ACTIVE_COMPANY,
   ADD_ACTIVITY_SUCCESS,
-  ADD_COMPANY,
-  GET_TYPES_SUCCESS,
-  ADD_STAGE
+  FETCH_ACTIVITIES_SUCCESS,
+  FETCH_COMPANIES_SUCCESS,
+  SET_CURRENT_ACTIVITY_ID,
+  SET__CURRENT_COMPANY_ID,
+  GET_TYPES_SUCCESS
 } from '../actions/constants';
 
 import { setAuthorizationToken } from '../../services/api';
@@ -21,13 +19,12 @@ const DEFAULT_STATE = {
   userId: '',
   loginError: '',
   userProfile: {},
-  activities: [],
-  activity: {},
+  activities: {},
+  currentActivityId: '',
   newActivityId: null,
-  companies: [],
-  company: {},
-  typeId: {},
-  stages: []
+  companies: {},
+  currentCompanyId: '',
+  typeId: {}
 };
 
 export default (state = DEFAULT_STATE, action = { type: null }) => {
@@ -57,30 +54,30 @@ export default (state = DEFAULT_STATE, action = { type: null }) => {
         ...state,
         userId: action.userId
       };
+    case ADD_ACTIVITY_SUCCESS:
+      return {
+        ...state,
+        newActivityId: action.activity._id
+      };
     case FETCH_ACTIVITIES_SUCCESS:
       return {
         ...state,
         activities: action.activities
       };
-    case SET_COMPANIES:
+    case FETCH_COMPANIES_SUCCESS:
       return {
         ...state,
         companies: action.companies
       };
-    case ADD_STAGE:
+    case SET_CURRENT_ACTIVITY_ID:
       return {
         ...state,
-        stages: [...state.stages, action.stage]
+        currentActivityId: action.activityId
       };
-    case SET_ACTIVE_ACTIVITY:
+    case SET__CURRENT_COMPANY_ID:
       return {
         ...state,
-        activity: action.activity
-      };
-    case SET_ACTIVE_COMPANY:
-      return {
-        ...state,
-        company: action.company
+        currentCompanyId: action.companyId
       };
     case GET_TYPES_SUCCESS:
       var typeId = action.typeIds.reduce((acc, type) => {
@@ -91,17 +88,6 @@ export default (state = DEFAULT_STATE, action = { type: null }) => {
       return {
         ...state,
         typeId: typeId
-      };
-    case ADD_COMPANY:
-      return {
-        ...state,
-        companies: [...state.companies, action.company]
-      };
-    case ADD_ACTIVITY_SUCCESS:
-      return {
-        ...state,
-        activities: [...state.activities, action.activity],
-        newActivityId: action.activity._id
       };
     case 'persist/REHYDRATE':
       setAuthorizationToken(action.payload.currentUserToken);

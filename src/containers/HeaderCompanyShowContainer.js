@@ -1,15 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { setActiveCompany } from '../store/actions/actionCreators';
+import { setCurrentCompanyId } from '../store/actions/actionCreators';
 import HeaderCompanyShow from '../components/organisms/HeaderCompanyShow';
 
 class HeaderCompanyShowContainer extends Component {
   componentWillMount() {
-    let foundCompany = this.props.companies.find(
-      val => val._id === this.props.match.params.companyId
-    );
-    this.props.setActiveCompany(foundCompany);
+    this.props.setCurrentCompanyId(this.props.match.params.companyId);
   }
 
   render() {
@@ -28,7 +25,7 @@ HeaderCompanyShowContainer.propTypes = {
       companyId: PropTypes.string.isRequired
     })
   }),
-  setActiveCompany: PropTypes.func.isRequired,
+  setCurrentCompanyId: PropTypes.func.isRequired,
   company: PropTypes.shape({
     logo: PropTypes.string,
     name: PropTypes.string.isRequired,
@@ -37,13 +34,12 @@ HeaderCompanyShowContainer.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  companies: state.companies,
-  company: state.company
+  company: state.companies[state.currentCompanyId]
 });
 
 const mapDispatchToProps = dispatch => {
   return {
-    setActiveCompany: company => dispatch(setActiveCompany(company))
+    setCurrentCompanyId: companyId => dispatch(setCurrentCompanyId(companyId))
   };
 };
 

@@ -135,7 +135,7 @@ StageContainer.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  activity: state.activity
+  activity: state.activities[state.currentActivityId]
 });
 
 const mapDispatchToProps = dispatch => {
