@@ -32,7 +32,7 @@ class ModalActivityContainer extends Component {
     super(props);
     this.state = {
       newActivityId: '',
-      name: '',
+      name: this.props.activity.name || '',
       stageItems: [],
       nextId: 1,
       submitted: false
@@ -117,7 +117,7 @@ class ModalActivityContainer extends Component {
       createdBy: this.props.userId,
       rootAssetType: this.props.companyTypeId
     };
-    if (this.props.activity) {
+    if (!this.props.activity) {
       this.props.addActivity(this.props.userId, activityInfo);
     } else {
       this.props.updateActivity(this.props.activity._id, activityInfo);
@@ -156,6 +156,8 @@ class ModalActivityContainer extends Component {
             cancelModal={this.cancelModal}
             handleDelete={this.handleDelete}
             stageItemComponents={this.state.stageItems}
+            activity={this.props.activity}
+            name={this.state.name}
             {...this.state}
           />
         )}

@@ -8,7 +8,9 @@ import {
   GET_TYPES_FAIL,
   ADD_STAGE,
   ADD_STAGE_FAIL,
-  UPDATE_STAGE_FAIL
+  UPDATE_STAGE_FAIL,
+  UPDATE_ACTIVITY_FAIL,
+  UPDATE_ACTIVITY_SUCCESS
 } from './constants';
 
 import {
@@ -39,15 +41,31 @@ export function addActivityRequest(userId, activityInfo) {
 }
 
 export function updateActivityRequest(activityId, activityInfo) {
-  return dispatch => 
-  patchActivity(activityId, activityInfo)
-  .then(res => )
+  return (dispatch, getState) =>
+    patchActivity(getState().userId, activityId, activityInfo)
+      .then(res => dispatch(updateActivitySuccess()))
+      .then(() => dispatch(fetchActivitiesRequest()))
+      .catch(err => dispatch(updateActivityError(err)));
 }
 
 function addActivityError(error) {
   return {
     type: ADD_ACTIVITY_FAIL,
     error
+  };
+}
+
+function updateActivityError(error) {
+  return {
+    type: UPDATE_ACTIVITY_FAIL,
+    error
+  };
+}
+
+function updateActivitySuccess(activity) {
+  return {
+    type: UPDATE_ACTIVITY_SUCCESS,
+    activity
   };
 }
 
