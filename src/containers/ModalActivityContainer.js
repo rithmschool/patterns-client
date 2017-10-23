@@ -1,23 +1,23 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import PropTypes from "prop-types";
-import { createPortal } from "react-dom";
-import Modal from "../components/molecules/Modal";
-import ActivityForm from "../components/molecules/ActivityForm";
-import { fetchActivitiesRequest } from "../store/actions/auth";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { createPortal } from 'react-dom';
+import Modal from '../components/molecules/Modal';
+import ActivityForm from '../components/molecules/ActivityForm';
+import { fetchActivitiesRequest } from '../store/actions/auth';
 import {
   updateActivityRequest,
   addActivityRequest,
   addStageRequest,
   getTypes
-} from "../store/actions/actionCreators";
-import { Link } from "react-router-dom";
-import styled from "styled-components";
+} from '../store/actions/actionCreators';
+import { Link } from 'react-router-dom';
+import styled from 'styled-components';
 
 const ActivityAddedStyle = styled.div`
   padding: 33px;
   p {
-    font-family: "Source Sans Pro", sans-serif;
+    font-family: 'Source Sans Pro', sans-serif;
     font-size: 16px;
     line-height: 1.71;
     text-align: center;
@@ -31,14 +31,14 @@ class ModalActivityContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      newActivityId: "",
-      name: "",
+      newActivityId: '',
+      name: '',
       stageItems: [],
       nextId: 1,
       submitted: false
     };
     this.handleAdd = this.handleAdd.bind(this);
-    this.el = document.createElement("div");
+    this.el = document.createElement('div');
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.cancelModal = this.cancelModal.bind(this);
@@ -67,12 +67,12 @@ class ModalActivityContainer extends Component {
 
   //creating a portal
   componentDidMount() {
-    const modalRoot = document.getElementById("modal-root");
+    const modalRoot = document.getElementById('modal-root');
     modalRoot.appendChild(this.el);
   }
 
   componentWillUnmount() {
-    const modalRoot = document.getElementById("modal-root");
+    const modalRoot = document.getElementById('modal-root');
     modalRoot.removeChild(this.el);
   }
 
@@ -90,10 +90,10 @@ class ModalActivityContainer extends Component {
 
       Promise.all(promises).then(() => {
         this.setState({
-          name: "",
-          createdBy: "",
-          rootAssetType: "",
-          activityId: "",
+          name: '',
+          createdBy: '',
+          rootAssetType: '',
+          activityId: '',
           submitted: true,
           saving: false
         });
@@ -126,8 +126,8 @@ class ModalActivityContainer extends Component {
 
   cancelModal() {
     this.setState({
-      name: "",
-      activityTypeId: ""
+      name: '',
+      activityTypeId: ''
     });
     this.props.toggleModal();
   }
@@ -138,7 +138,7 @@ class ModalActivityContainer extends Component {
         {this.state.submitted ? (
           <ActivityAddedStyle>
             <p>
-              Your activity was added successfully.{" "}
+              Your activity was added successfully.{' '}
               <Link
                 to={`/activities/${this.props.newActivityId}`}
                 replace={false}

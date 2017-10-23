@@ -2,6 +2,18 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Company from '../components/molecules/Company';
+import styled from 'styled-components';
+
+const InnerContentStyle = styled.div`background-color: #edf0f2;`;
+
+const NumberOfCompanies = styled.div`
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.33;
+  color: #585b60;
+  display: block;
+  margin: 24px;
+`;
 
 class BrowseContainer extends Component {
   render() {
@@ -20,12 +32,12 @@ class BrowseContainer extends Component {
       });
     }
     return (
-      <div className="inner-content">
-        <div className="number-of-companies">
+      <InnerContentStyle>
+        <NumberOfCompanies>
           {this.props.companies.length} Potential Employers
-        </div>
-        <div className="company-holder">{companies}</div>
-      </div>
+        </NumberOfCompanies>
+        <div>{companies}</div>
+      </InnerContentStyle>
     );
   }
 }

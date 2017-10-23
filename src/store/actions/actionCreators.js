@@ -17,7 +17,8 @@ import {
   postType,
   fetchTypes,
   postActivity,
-  patchStage
+  patchStage,
+  patchActivity
 } from '../../services/api';
 
 import { fetchActivitiesRequest } from './auth';
@@ -37,7 +38,7 @@ export function addActivityRequest(userId, activityInfo) {
       .catch(err => dispatch(addActivityError(err)));
 }
 
-export updateActivityRequest(activityId, activityInfo) {
+export function updateActivityRequest(activityId, activityInfo) {
   return dispatch => 
   patchActivity(activityId, activityInfo)
   .then(res => )

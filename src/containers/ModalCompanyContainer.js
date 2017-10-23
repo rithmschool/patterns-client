@@ -1,21 +1,21 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import PropTypes from "prop-types";
-import { createPortal } from "react-dom";
-import Modal from "../components/molecules/Modal";
-import AddCompanyForm from "../components/molecules/AddCompanyForm";
-import { addCompanyRequest, getTypes } from "../store/actions/actionCreators";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { createPortal } from 'react-dom';
+import Modal from '../components/molecules/Modal';
+import AddCompanyForm from '../components/molecules/AddCompanyForm';
+import { addCompanyRequest, getTypes } from '../store/actions/actionCreators';
 
 class ModalCompanyContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: "",
-      url: "",
-      logo: "",
+      name: '',
+      url: '',
+      logo: '',
       submitted: false
     };
-    this.el = document.createElement("div");
+    this.el = document.createElement('div');
     this.handleChange = this.handleChange.bind(this);
     this.handleLogo = this.handleLogo.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -25,12 +25,12 @@ class ModalCompanyContainer extends Component {
 
   //creating a portal
   componentDidMount() {
-    const modalRoot = document.getElementById("modal-root");
+    const modalRoot = document.getElementById('modal-root');
     modalRoot.appendChild(this.el);
   }
 
   componentWillUnmount() {
-    const modalRoot = document.getElementById("modal-root");
+    const modalRoot = document.getElementById('modal-root');
     modalRoot.removeChild(this.el);
   }
 
@@ -67,19 +67,19 @@ class ModalCompanyContainer extends Component {
     };
     this.props.addCompany(companyTypeId, companyInfo);
     this.setState({
-      name: "",
-      url: "",
-      logo: ""
+      name: '',
+      url: '',
+      logo: ''
     });
     this.props.toggleModal();
   }
 
   cancelModal() {
     this.setState({
-      name: "",
-      url: "",
-      logo: "",
-      companyTypeId: ""
+      name: '',
+      url: '',
+      logo: '',
+      companyTypeId: ''
     });
     this.props.toggleModal();
   }
