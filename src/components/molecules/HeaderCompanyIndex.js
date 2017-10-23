@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './HeaderCompanyIndex.css';
 import PrimarySecondaryButton from '../atoms/PrimarySecondaryButton';
 import ModalCompanyContainer from '../../containers/ModalCompanyContainer';
 import HeaderTitleStyle from '../atoms/HeaderTitleStyle';
