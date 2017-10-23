@@ -221,8 +221,8 @@ SidebarRightContainer.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  activity: state.activity,
-  company: state.company
+  activity: state.activities[state.currentActivityId],
+  company: state.companies[state.currentCompanyId]
 });
 
 const mapDispatchToProps = dispatch => {

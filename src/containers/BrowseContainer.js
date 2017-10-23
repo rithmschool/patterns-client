@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Company from '../components/molecules/Company';
+import sortByUpdatedAt from '../helpers/sortByUpdatedAt';
 import styled from 'styled-components';
 
 const InnerContentStyle = styled.div`background-color: #edf0f2;`;
@@ -17,20 +18,17 @@ const NumberOfCompanies = styled.div`
 
 class BrowseContainer extends Component {
   render() {
-    let companies = null;
-    if (this.props.companies.length > 0) {
-      companies = this.props.companies.map((company, i) => {
-        return (
-          <Company
-            key={i}
-            companyId={company._id}
-            name={company.name}
-            description={company.description}
-            logo={company.logo}
-          />
-        );
-      });
-    }
+    let companies = sortByUpdatedAt(this.props.companies).map((company, i) => {
+      return (
+        <Company
+          key={i}
+          companyId={company._id}
+          name={company.name}
+          description={company.description}
+          logo={company.logo}
+        />
+      );
+    });
     return (
       <InnerContentStyle>
         <NumberOfCompanies>
@@ -43,7 +41,7 @@ class BrowseContainer extends Component {
 }
 
 BrowseContainer.propTypes = {
-  companies: PropTypes.arrayOf(
+  companies: PropTypes.objectOf(
     PropTypes.shape({
       _id: PropTypes.string.isRequired,
       name: PropTypes.string.isRequired,

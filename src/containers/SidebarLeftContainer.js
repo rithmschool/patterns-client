@@ -9,7 +9,7 @@ import ActivitySideBox from '../components/molecules/ActivitySideBox';
 import UserProfileContainer from './UserProfileContainer';
 import WideButton from '../components/atoms/WideButton';
 import ModalActivityContainer from './ModalActivityContainer';
-import sortActivitiesByDate from '../helpers/sortActivitiesByDate';
+import sortByUpdatedAt from '../helpers/sortByUpdatedAt';
 
 class SidebarLeftContainer extends Component {
   constructor(props) {
@@ -36,11 +36,11 @@ class SidebarLeftContainer extends Component {
       );
     }
 
-    let allActivities = sortActivitiesByDate(this.props.activities).map(val => (
+    let allActivities = sortByUpdatedAt(this.props.activities).map(val => (
       <ActivitySideBox
         key={val._id}
         data={val}
-        active={this.props.activity._id === val._id}
+        active={this.props.currentActivityId === val._id}
       />
     ));
     return (
@@ -74,7 +74,7 @@ class SidebarLeftContainer extends Component {
 }
 
 SidebarLeftContainer.propTypes = {
-  activities: PropTypes.arrayOf(
+  activities: PropTypes.objectOf(
     PropTypes.shape({
       _id: PropTypes.string.isRequired
     })
@@ -83,7 +83,7 @@ SidebarLeftContainer.propTypes = {
 
 const mapStateToProps = state => ({
   activities: state.activities,
-  activity: state.activity
+  currentActivityId: state.currentActivityId
 });
 
 export default connect(mapStateToProps)(SidebarLeftContainer);
