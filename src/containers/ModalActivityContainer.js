@@ -6,6 +6,7 @@ import Modal from "../components/molecules/Modal";
 import ActivityForm from "../components/molecules/ActivityForm";
 import { fetchActivitiesRequest } from "../store/actions/auth";
 import {
+  updateActivityRequest,
   addActivityRequest,
   addStageRequest,
   getTypes
@@ -109,13 +110,18 @@ class ModalActivityContainer extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
+
     this.setState({ saving: true });
     let activityInfo = {
       name: this.state.name,
       createdBy: this.props.userId,
       rootAssetType: this.props.companyTypeId
     };
-    this.props.addActivity(this.props.userId, activityInfo);
+    if (this.props.activity) {
+      this.props.addActivity(this.props.userId, activityInfo);
+    } else {
+      this.props.updateActivity(this.props.activity._id, activityInfo);
+    }
   }
 
   cancelModal() {
@@ -181,6 +187,9 @@ const mapDispatchToProps = dispatch => {
     addStage: stageInfo => dispatch(addStageRequest(stageInfo)),
     addActivity: (userId, activityInfo) =>
       dispatch(addActivityRequest(userId, activityInfo)),
+    updateActivity: (activityId, activityInfo) =>
+      dispatch(updateActivityRequest(activityId, activityInfo)),
+
     getTypes: () => dispatch(getTypes()),
     fetchActivitiesRequest: userId => dispatch(fetchActivitiesRequest(userId))
   };

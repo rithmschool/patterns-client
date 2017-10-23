@@ -37,6 +37,12 @@ export function addActivityRequest(userId, activityInfo) {
       .catch(err => dispatch(addActivityError(err)));
 }
 
+export updateActivityRequest(activityId, activityInfo) {
+  return dispatch => 
+  patchActivity(activityId, activityInfo)
+  .then(res => )
+}
+
 function addActivityError(error) {
   return {
     type: ADD_ACTIVITY_FAIL,
