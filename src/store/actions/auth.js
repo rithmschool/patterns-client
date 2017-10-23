@@ -12,6 +12,7 @@ import {
   setCurrentCompanyId
 } from './actionCreators';
 import sortByUpdatedAt from '../../helpers/sortByUpdatedAt';
+import mostRecentlyUpdated from '../../helpers/mostRecentlyUpdated';
 import {
   SET_TOKEN,
   SET_LOGIN_ERROR,
@@ -42,7 +43,7 @@ export function login(code) {
         return dispatch(fetchActivitiesRequest());
       })
       .then(activitiesAction => {
-        var activityId = sortByUpdatedAt(activitiesAction.activities)[0]._id;
+        var activityId = mostRecentlyUpdated(activitiesAction.activities);
         return dispatch(setCurrentActivityId(activityId));
       })
       .then(ares => {
@@ -50,10 +51,10 @@ export function login(code) {
         //return getLoginResource(`${PATTERNS_API_URL}/types`);
       })
       .then(types => {
-        return dispatch(fetchComaniesRequest());
+        return dispatch(fetchCompaniesRequest());
       })
       .then(companies => {
-        var companyId = sortByUpdatedAt(companies.companies)[0]._id;
+        var companyId = mostRecentlyUpdated(companies.companies);
         return dispatch(setCurrentCompanyId(companyId));
       })
       .catch(err => {
@@ -141,12 +142,10 @@ export function fetchActivitiesRequest() {
           )
         )
       )
-      .catch(err => {
-        dispatch(fetchActivitiesError(err));
-      });
+      .catch(err => dispatch(fetchActivitiesError(err)));
 }
 
-export function fetchComaniesRequest() {
+export function fetchCompaniesRequest() {
   return (dispatch, getState) =>
     getLoginResource(
       `${PATTERNS_API_URL}/types/${getState().typeId.Company}/assets`

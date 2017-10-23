@@ -19,7 +19,7 @@ import {
   patchStage
 } from '../../services/api';
 
-import { fetchActivitiesRequest, fetchComaniesRequest } from './auth';
+import { fetchActivitiesRequest, fetchCompaniesRequest } from './auth';
 
 //Activity
 function addActivitySuccess(activity) {
@@ -33,7 +33,7 @@ export function addActivityRequest(userId, activityInfo) {
   return dispatch =>
     postActivity(userId, activityInfo)
       .then(res => dispatch(addActivitySuccess(res)))
-      .then(res2 => dispatch(fetchActivitiesRequest()))
+      .then(() => dispatch(fetchActivitiesRequest()))
       .catch(err => dispatch(addActivityError(err)));
 }
 
@@ -106,7 +106,7 @@ export function getTypes() {
 export function addCompanyRequest(companyTypeId, companyInfo) {
   return dispatch =>
     postType(companyTypeId, companyInfo)
-      .then(res => dispatch(fetchComaniesRequest()))
+      .then(res => dispatch(fetchCompaniesRequest()))
       .catch(err => dispatch(addCompanyError(err)));
 }
 

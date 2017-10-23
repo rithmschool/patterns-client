@@ -9,7 +9,7 @@ class ActivityDashboardContainer extends Component {
     let allActivities = sortByUpdatedAt(this.props.activities).map(val => (
       <Activity key={val._id} name={val.name} activityId={val._id} />
     ));
-    return <div>{allActivities}</div>;
+    return allActivities;
   }
 }
 
