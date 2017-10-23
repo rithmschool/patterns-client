@@ -7,6 +7,53 @@ import HeaderTitleStyle from '../atoms/HeaderTitleStyle';
 import HeaderTopStyle from '../atoms/HeaderTopStyle';
 import CompanyLogoStyle from '../atoms/CompanyLogoStyle';
 import HeaderStyle from '../atoms/HeaderStyle';
+import styled from 'styled-components';
+
+const PotentialEmployerStyle = styled.p`
+  font-weight: 600;
+  text-align: left;
+  color: #585b60;
+  @media (min-width: 768px) {
+    height: 17.25px;
+    font-size: 13.5px;
+    line-height: 0.9975;
+    margin: 9px 18px;
+  }
+  @media (min-width: 1024px) {
+    height: 23px;
+    font-size: 18px;
+    line-height: 1.33;
+    margin: 12px 24px;
+  }
+`;
+const LastUpdatedStyle = styled.p`
+  font-weight: bold;
+  text-align: left;
+  color: #a0a1a5;
+  text-transform: uppercase;
+  @media (min-width: 768px) {
+    font-size: 12px;
+    margin: 0px 18px;
+    line-height: 1.125;
+  }
+  @media (min-width: 1024px) {
+    font-size: 12px;
+    margin: 0px 24px;
+  }
+`;
+const LatestUpdatedTextStyle = styled.p`
+  text-align: left;
+  color: #25272a;
+  @media (min-width: 768px) {
+    font-size: 9px;
+    margin: 0px 18px;
+  }
+  @media (min-width: 1024px) {
+    font-size: 16px;
+    margin: 0px 24px;
+    line-height: 1.5;
+  }
+`;
 
 class HeaderCompanyShow extends Component {
   constructor(props) {
@@ -54,9 +101,12 @@ class HeaderCompanyShow extends Component {
             </PrimarySecondaryButton>
             {modal}
           </HeaderTopStyle>
-          <p className="potentialEmployer"> Potential employer: [Blank] </p>
-          <p className="lastUpdated"> LAST UPDATED </p>
-          <p className="latestUpdatedText"> {dateStr} </p>
+          <PotentialEmployerStyle>
+            {' '}
+            Potential employer: [Blank]{' '}
+          </PotentialEmployerStyle>
+          <LastUpdatedStyle> LAST UPDATED </LastUpdatedStyle>
+          <LatestUpdatedTextStyle> {dateStr} </LatestUpdatedTextStyle>
         </div>
       </HeaderStyle>
     );

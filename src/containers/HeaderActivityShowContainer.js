@@ -7,12 +7,13 @@ import ModalCompanyContainer from './ModalCompanyContainer';
 import HeaderTitleStyle from '../components/atoms/HeaderTitleStyle';
 import HeaderTopStyle from '../components/atoms/HeaderTopStyle';
 import HeaderStyle from '../components/atoms/HeaderStyle';
+import AddActivityButtonStyle from '../components/atoms/AddActivityButtonStyle';
 
 const StatusToggleStyle = styled.div`
   border-radius: 2px;
   background-color: #38d682;
   float: left;
-  font-weight: 600;
+  font-weight: 300;
   text-align: center;
   color: white;
   text-transform: uppercase;
@@ -26,9 +27,9 @@ const StatusToggleStyle = styled.div`
   @media (min-width: 1024px) {
     width: 40px;
     height: 20px;
-    font-size: 10px;
+    font-size: 12px;
     margin-top: 28px;
-    padding: 4px;
+    padding: 2px 4px 4px 4px;
   }
 `;
 
@@ -47,16 +48,6 @@ const EditActivityButtonStyle = styled.input`
   @media (min-width: 1024px) {
     margin-right: 12px;
   }
-`;
-
-const AddActivityButtonStyle = styled.input`
-  background-color: #cb9c59;
-  text-align: center;
-  color: white;
-  float: right;
-  cursor: pointer;
-  border-style: none;
-  border-radius: 2px;
 `;
 
 class HeaderActivityShowContainer extends Component {

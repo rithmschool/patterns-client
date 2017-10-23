@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import StyleVariables from '../../StyleVariables';
+import LineStyle from '../atoms/LineStyle';
 
 const BrowseCompaniesStyle = styled.div`
   color: #354052;
@@ -22,10 +23,6 @@ const BrowseCompsStyle = styled.div`
   background-color: white;
 `;
 
-const LineStyle = styled.hr`
-  height: 2px;
-  border: solid 1px #ccd3da;
-`;
 const SearchIconStyle = styled.div`
   width: 36px;
   height: 36px;
