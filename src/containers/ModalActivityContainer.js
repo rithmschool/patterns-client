@@ -121,7 +121,11 @@ class ModalActivityContainer extends Component {
     if (!this.props.activity) {
       this.props.addActivity(this.props.userId, activityInfo);
     } else {
-      this.props.updateActivity(this.props.activity._id, activityInfo);
+      this.props
+        .updateActivity(this.props.activity._id, activityInfo)
+        .then(() => {
+          console.log('Hit me');
+        });
     }
   }
 

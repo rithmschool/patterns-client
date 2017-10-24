@@ -44,12 +44,18 @@ export function addActivityRequest(userId, activityInfo) {
 
 export function updateActivityRequest(activityId, activityInfo) {
   return (dispatch, getState) =>
-    patchActivity(getState().userId, activityId, activityInfo)
-      .then(res => {
-        dispatch(updateActivitySuccess());
-        dispatch(fetchActivitiesRequest());
-      })
-      .catch(err => dispatch(updateActivityError(err)));
+    new Promise((resolve, reject) => {
+      patchActivity(getState().userId, activityId, activityInfo)
+        .then(res => {
+          dispatch(updateActivitySuccess());
+          dispatch(fetchActivitiesRequest());
+          resolve();
+        })
+        .catch(err => {
+          dispatch(updateActivityError(err));
+          reject(err);
+        });
+    });
 }
 
 function addActivityError(error) {
