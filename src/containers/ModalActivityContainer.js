@@ -117,6 +117,7 @@ class ModalActivityContainer extends Component {
       createdBy: this.props.userId,
       rootAssetType: this.props.companyTypeId
     };
+
     if (!this.props.activity) {
       this.props.addActivity(this.props.userId, activityInfo);
     } else {

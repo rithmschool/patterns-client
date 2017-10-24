@@ -35,16 +35,20 @@ function addActivitySuccess(activity) {
 export function addActivityRequest(userId, activityInfo) {
   return dispatch =>
     postActivity(userId, activityInfo)
-      .then(res => dispatch(addActivitySuccess(res)))
-      .then(() => dispatch(fetchActivitiesRequest()))
+      .then(res => {
+        dispatch(addActivitySuccess(res));
+        dispatch(fetchActivitiesRequest());
+      })
       .catch(err => dispatch(addActivityError(err)));
 }
 
 export function updateActivityRequest(activityId, activityInfo) {
   return (dispatch, getState) =>
     patchActivity(getState().userId, activityId, activityInfo)
-      .then(res => dispatch(updateActivitySuccess()))
-      .then(() => dispatch(fetchActivitiesRequest()))
+      .then(res => {
+        dispatch(updateActivitySuccess());
+        dispatch(fetchActivitiesRequest());
+      })
       .catch(err => dispatch(updateActivityError(err)));
 }
 

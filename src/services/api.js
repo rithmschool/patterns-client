@@ -31,7 +31,7 @@ export function patchActivity(userId, activityId, activityBody) {
   return new Promise((resolve, reject) => {
     return axios
       .patch(
-        `${PATTERNS_API_URL}/users/${userId}/activities/activityId`,
+        `${PATTERNS_API_URL}/users/${userId}/activities/${activityId}`,
         activityBody
       )
       .then(res => resolve(res.data))
