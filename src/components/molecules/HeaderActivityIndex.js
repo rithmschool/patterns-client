@@ -3,7 +3,7 @@ import ModalActivityContainer from '../../containers/ModalActivityContainer';
 import HeaderTitleStyle from '../atoms/HeaderTitleStyle';
 import HeaderTopStyle from '../atoms/HeaderTopStyle';
 import HeaderIndexStyle from '../atoms/HeaderIndexStyle';
-import AddActivityButtonStyle from '../atoms/AddActivityButtonStyle';
+import AddButtonStyle from '../atoms/AddButtonStyle';
 
 class HeaderActivityIndex extends Component {
   constructor(props) {
@@ -35,7 +35,7 @@ class HeaderActivityIndex extends Component {
         <div>
           <HeaderTopStyle className="row">
             <HeaderTitleStyle> Activities </HeaderTitleStyle>
-            <AddActivityButtonStyle value="ADD" onClick={this.toggleModal} />
+            <AddButtonStyle value="ADD" onClick={this.toggleModal} />
             {modal}
           </HeaderTopStyle>
         </div>

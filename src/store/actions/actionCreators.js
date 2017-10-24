@@ -8,7 +8,9 @@ import {
   GET_TYPES_FAIL,
   ADD_STAGE,
   ADD_STAGE_FAIL,
-  UPDATE_STAGE_FAIL
+  UPDATE_STAGE_FAIL,
+  UPDATE_ACTIVITY_FAIL,
+  UPDATE_ACTIVITY_SUCCESS
 } from './constants';
 
 import {
@@ -16,7 +18,8 @@ import {
   postType,
   fetchTypes,
   postActivity,
-  patchStage
+  patchStage,
+  patchActivity
 } from '../../services/api';
 
 import { fetchActivitiesRequest, fetchCompaniesRequest } from './auth';
@@ -32,15 +35,47 @@ function addActivitySuccess(activity) {
 export function addActivityRequest(userId, activityInfo) {
   return dispatch =>
     postActivity(userId, activityInfo)
-      .then(res => dispatch(addActivitySuccess(res)))
-      .then(() => dispatch(fetchActivitiesRequest()))
+      .then(res => {
+        dispatch(addActivitySuccess(res));
+        dispatch(fetchActivitiesRequest());
+      })
       .catch(err => dispatch(addActivityError(err)));
+}
+
+export function updateActivityRequest(activityId, activityInfo) {
+  return (dispatch, getState) =>
+    new Promise((resolve, reject) => {
+      patchActivity(getState().userId, activityId, activityInfo)
+        .then(res => {
+          dispatch(updateActivitySuccess());
+          dispatch(fetchActivitiesRequest());
+          resolve();
+        })
+        .catch(err => {
+          dispatch(updateActivityError(err));
+          reject(err);
+        });
+    });
 }
 
 function addActivityError(error) {
   return {
     type: ADD_ACTIVITY_FAIL,
     error
+  };
+}
+
+function updateActivityError(error) {
+  return {
+    type: UPDATE_ACTIVITY_FAIL,
+    error
+  };
+}
+
+function updateActivitySuccess(activity) {
+  return {
+    type: UPDATE_ACTIVITY_SUCCESS,
+    activity
   };
 }
 

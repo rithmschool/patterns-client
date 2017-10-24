@@ -27,6 +27,18 @@ export function postActivity(userId, activityBody) {
   });
 }
 
+export function patchActivity(userId, activityId, activityBody) {
+  return new Promise((resolve, reject) => {
+    return axios
+      .patch(
+        `${PATTERNS_API_URL}/users/${userId}/activities/${activityId}`,
+        activityBody
+      )
+      .then(res => resolve(res.data))
+      .catch(err => reject(err));
+  });
+}
+
 export function postStage(stageBody) {
   return new Promise((resolve, reject) => {
     return axios

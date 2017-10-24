@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const AddActivityButtonStyle = styled.input`
+const AddButtonStyle = styled.input`
   background-color: #cb9c59;
   text-align: center;
   color: white;
@@ -10,4 +10,4 @@ const AddActivityButtonStyle = styled.input`
   border-radius: 2px;
 `;
 
-export default AddActivityButtonStyle;
+export default AddButtonStyle;

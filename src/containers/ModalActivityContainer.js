@@ -3,9 +3,10 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { createPortal } from 'react-dom';
 import Modal from '../components/molecules/Modal';
-import AddActivityForm from '../components/molecules/AddActivityForm';
+import ActivityForm from '../components/molecules/ActivityForm';
 import { fetchActivitiesRequest } from '../store/actions/auth';
 import {
+  updateActivityRequest,
   addActivityRequest,
   addStageRequest,
   getTypes
@@ -31,7 +32,7 @@ class ModalActivityContainer extends Component {
     super(props);
     this.state = {
       newActivityId: '',
-      name: '',
+      name: this.props.activity.name || '',
       stageItems: [],
       nextId: 1,
       submitted: false
@@ -109,13 +110,23 @@ class ModalActivityContainer extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
+
     this.setState({ saving: true });
     let activityInfo = {
       name: this.state.name,
       createdBy: this.props.userId,
       rootAssetType: this.props.companyTypeId
     };
-    this.props.addActivity(this.props.userId, activityInfo);
+
+    if (!this.props.activity) {
+      this.props.addActivity(this.props.userId, activityInfo);
+    } else {
+      this.props
+        .updateActivity(this.props.activity._id, activityInfo)
+        .then(() => {
+          console.log('Hit me');
+        });
+    }
   }
 
   cancelModal() {
@@ -142,7 +153,7 @@ class ModalActivityContainer extends Component {
             </p>
           </ActivityAddedStyle>
         ) : (
-          <AddActivityForm
+          <ActivityForm
             companyTypeId={this.props.companyTypeId}
             handleAdd={this.handleAdd}
             handleSubmit={this.handleSubmit}
@@ -150,6 +161,8 @@ class ModalActivityContainer extends Component {
             cancelModal={this.cancelModal}
             handleDelete={this.handleDelete}
             stageItemComponents={this.state.stageItems}
+            activity={this.props.activity}
+            name={this.state.name}
             {...this.state}
           />
         )}
@@ -181,6 +194,9 @@ const mapDispatchToProps = dispatch => {
     addStage: stageInfo => dispatch(addStageRequest(stageInfo)),
     addActivity: (userId, activityInfo) =>
       dispatch(addActivityRequest(userId, activityInfo)),
+    updateActivity: (activityId, activityInfo) =>
+      dispatch(updateActivityRequest(activityId, activityInfo)),
+
     getTypes: () => dispatch(getTypes()),
     fetchActivitiesRequest: userId => dispatch(fetchActivitiesRequest(userId))
   };

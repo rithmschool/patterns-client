@@ -5,7 +5,7 @@ import PrimarySecondaryButton from '../atoms/PrimarySecondaryButton';
 import StageList from '../organisms/StageList';
 import selectArrow from '../../images/icon-chevron-down-gray.svg';
 
-const ActivityForm = styled.form`
+const ActivityFormStyle = styled.form`
   background-color: #e7e8ec;
   margin: 0px;
   padding: 24px;
@@ -59,8 +59,8 @@ const ActivityForm = styled.form`
   }
 `;
 
-const AddActivityForm = props => (
-  <ActivityForm>
+const ActivityForm = props => (
+  <ActivityFormStyle>
     <div className="form-group">
       <label htmlFor="activity-name">Activity Name</label>
       <input
@@ -94,10 +94,10 @@ const AddActivityForm = props => (
         CANCEL
       </PrimarySecondaryButton>
     </div>
-  </ActivityForm>
+  </ActivityFormStyle>
 );
 
-AddActivityForm.propTypes = {
+ActivityForm.propTypes = {
   name: PropTypes.string,
   companyTypeId: PropTypes.string,
   handleChange: PropTypes.func.isRequired,
@@ -106,4 +106,4 @@ AddActivityForm.propTypes = {
   cancelModal: PropTypes.func.isRequired
 };
 
-export default AddActivityForm;
+export default ActivityForm;

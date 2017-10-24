@@ -54,10 +54,7 @@ class ModalCompanyContainer extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    if (
-      this.state.submitted &&
-      prevState.companyTypeId !== this.props.companyTypeId
-    ) {
+    if (this.state.submitted && !this.props.companyId) {
       this.addNewCompany(this.props.companyTypeId);
     }
   }
